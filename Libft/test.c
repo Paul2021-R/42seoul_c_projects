@@ -6,13 +6,17 @@
 /*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:56:23 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/09 19:56:43 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/09 21:57:45 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <ctype.h>
 
 int main(void)
 {
+    int a;
+    int b;
+    
     printf("hello world");
 }
