@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 19:56:23 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/09 21:57:45 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/10 11:15:40 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/10 12:47:35 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
+#include "libft.h"
 
-int main(void)
+int	ft_isalnum(int c)
 {
-    int a;
-    int b;
-    
-    printf("hello world");
+	int	ret;
+
+	ret = 0;
+	if (48 <= c && c <= 57)
+		ret = 1;
+	else if (65 <= c && c <= 90)
+		ret = 1;
+	else if (97 <= c && c <= 122)
+		ret = 1;
+	return (ret);
 }
