@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:56:23 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/10 13:39:02 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/10 21:25:40 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,6 @@ int	main(void)
 	printf("re_code = %s\n",arr_re);
 	return (0);
 }
-*/
 
 extern void ft_bzero(void *s, size_t n);
 
@@ -189,10 +188,21 @@ int main(void)
 	char	arr[] = "Hello World";
 	char	arr2[] = "Hello World";
 	
-	bzero(arr, 5 /* sizeof(char)*/);
+	bzero(arr, 5 * sizeof(char));
 	for (int i = 0; i < (sizeof(arr)/sizeof(char)); i++)
-	{
 		printf("%c", arr[i]);
-	}
 	printf("\n");
+	ft_bzero(arr2, 5);
+	for (int i = 0; i < (sizeof(arr2)/sizeof(char)); i++)
+		printf("%c",arr2[i]);
+	printf("\n");
+	return (0);
+}
+*/
+
+extern void *ft_memcpy(void *restruct dest, const void *restrict src, size_t n);
+
+int main(void)
+{
+
 }
