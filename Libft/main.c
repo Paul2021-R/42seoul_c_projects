@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wildwiser-ryu <wildwiser-ryu@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:56:23 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/10 21:25:40 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/11 10:38:45 by wildwiser-r      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,9 +200,14 @@ int main(void)
 }
 */
 
+extern	char *ft_strrchr(const char *s, int c);
+
+/*
 extern void *ft_memcpy(void *restruct dest, const void *restrict src, size_t n);
 
 int main(void)
 {
 
 }
+
+*/
