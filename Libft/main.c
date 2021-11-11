@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wildwiser-ryu <wildwiser-ryu@student.42    +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:56:23 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/11 10:38:45 by wildwiser-r      ###   ########.fr       */
+/*   Updated: 2021/11/11 11:37:35 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,21 @@ int main(void)
 
 extern	char *ft_strrchr(const char *s, int c);
 
+int	main(void)
+{
+	char str[] = "This is a sample string aljfkldsajfja;r";
+	char *pch;
+	char *ret;
+
+  pch = strrchr(str,'~');
+  printf ("원본 : %s\n", pch);
+  printf("%s\n", str);
+  ret = ft_strrchr(str, '~');
+  printf("사본 : %s\n", ret);
+  printf("%s\n", str);
+  //pch - str + 1 을 해서 한 글자만 표현할 때는 단순 int가 아닌 long int 로 형변환이 일어난다. 
+  return (0);
+}
 /*
 extern void *ft_memcpy(void *restruct dest, const void *restrict src, size_t n);
 
