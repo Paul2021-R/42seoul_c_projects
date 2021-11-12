@@ -6,17 +6,17 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 11:29:43 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/12 11:53:24 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/12 16:19:58 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_toupper(int c)
+int	ft_toupper(int c)
 {
-    if (97 <= c && c <= 122)
-        c -= 32;
-    else 
-        return (c);
-    return (c);
+	if (97 <= c && c <= 122)
+		c -= 32;
+	else
+		return (c);
+	return (c);
 }

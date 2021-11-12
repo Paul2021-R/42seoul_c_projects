@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 10:35:27 by wildwiser-r       #+#    #+#             */
-/*   Updated: 2021/11/12 16:54:46 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/12 22:57:42 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/12 23:12:23 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	const char	*ret;
-
-	ret = s;
-	while (*s++)
-		;
-	while (*ret != *s && *s != (char)c)
-	{
-		s -= 1;
-		if (*s == (char)c)
-			return ((char *)s);
-	}
-	return (NULL);
+// 아직 납득이 가지 않는 부분에 대한 설명이 필요할 것으로 보인다. 
+	return (dst);
 }

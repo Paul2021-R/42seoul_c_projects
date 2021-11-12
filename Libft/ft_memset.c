@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 12:59:09 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/10 13:17:22 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/12 17:00:03 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memset(void *b, int c, size_t len)
 		return (NULL);
 	while (i < len)
 	{
-		*(unsigned char*)(b + i) = (unsigned char)c;
+		*(unsigned char *)(b + i) = (unsigned char)c;
 		i++;
 	}
 	return (b);
