@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 19:56:23 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/12 15:21:36 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/12 13:31:01 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/12 15:07:31 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
 #include "libft.h"
 
-extern char *ft_strnstr(const char *big, const char *little, size_t len);
-
-int main(int ac, char **av)
+int ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+    int i;
+    int limit;
+    int ret;
 
-	i = 10;
-	printf("origin : %s\n", strnstr(av[1], av[2], i));
-	return (0);
+    i = -1;
+    if (n > 0)
+        n = (int)(n - 1);
+    else
+        return(0);
+    while ((++i) <= n)
+    {
+        if (s1[i] != s2[i])
+            break ;
+        if (!s1[i] || !s2[i])
+            break ;
+    }
+    ret = s1[i] - s2[i];
+    return (ret);
 }
