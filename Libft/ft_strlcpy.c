@@ -6,13 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 15:35:19 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/11 16:16:51 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/16 19:08:17 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-extern size_t	ft_strlen(const char *s);
 
 size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
 {

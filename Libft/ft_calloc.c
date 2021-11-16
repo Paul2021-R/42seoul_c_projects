@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 22:57:42 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/16 15:14:40 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/16 17:01:59 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/16 17:12:10 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_calloc(size_t count, size_t size)
 {
-	unsigned char	*tmp_dst;
-	unsigned char	*tmp_src;
+	size_t	i;
+	char	*ret;
 
-	tmp_dst = dst;
-	tmp_src = (unsigned char *)src;
-	if (!dst && !src)
-		return (NULL);
-	if (dst <= src)
+	ret = (char *)malloc(count * size);
+	i = 0;
+	while (i < count * size)
 	{
-		while (len--)
-			*tmp_dst++ = *tmp_src++;
+		*(ret + i) = 0;
+		i++;
 	}
-	else
-	{
-		tmp_dst += len;
-		tmp_src += len;
-		while (len--)
-			*--tmp_dst = *--tmp_src;
-	}
-	return (dst);
+	return (ret);
 }
