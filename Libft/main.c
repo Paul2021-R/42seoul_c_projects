@@ -12,20 +12,13 @@
 
 #include "libft.h"
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-
-extern char *ft_strdup(const char *s1);
+#include <ctype.h>
 
 int	main(int ac, char **av)
 {
-	const char	*s1;
-
 	(void)ac;
-	s1 = av[1];
-	printf("original : ");
-	printf("%s", strdup(s1));
-	printf("\nre-code : ");
-	printf("%s\n", ft_strdup(s1));
+	printf("origin : %d\n", atoi(av[1]));
+	printf("re-code : %d\n", ft_atoi(av[1]));
 	return (0);
 }

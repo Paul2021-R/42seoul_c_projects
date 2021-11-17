@@ -15,7 +15,7 @@
 size_t	ft_strcheck(const char *big, const char *little, size_t loc)
 {
 	size_t	ret;
-	   int	i;
+	int		i;
 
 	i = 0;
 	ret = loc;
@@ -36,7 +36,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	   int	loc;
+	int		loc;
 
 	i = 0;
 	loc = -1;

@@ -17,9 +17,7 @@ int	ft_isalpha(int c)
 	int	ret;
 
 	ret = 0;
-	if (65 <= c && c <= 90)
-		ret = 1;
-	else if (97 <= c && c <= 122)
+	if ((65 <= c && c <= 90) || (97 <= c && c <= 122))
 		ret = 1;
 	else
 		ret = 0;

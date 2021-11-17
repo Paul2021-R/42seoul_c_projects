@@ -17,9 +17,7 @@ int	ft_isprint(int c)
 	int	ret;
 
 	ret = 1;
-	if (0 <= c && c <= 31)
-		ret = 0;
-	else if (c == 127)
+	if ((0 <= c && c <= 31) ||  (c == 127))
 		ret = 0;
 	return (ret);
 }

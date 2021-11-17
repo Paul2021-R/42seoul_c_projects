@@ -11,47 +11,30 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	ft_minus_ck(char *str)
-{
-	int	ret;
-
-	ret = 0;
-	while (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			ret += -1;
-		else if (*str == '+')
-			ret += 1;
-		str++;
-	}
-	if (ret == -1 || ret == 1)
-		return (ret);
-	else
-		return (0);
-}
+#include <stdio.h>
 
 int	ft_atoi(const char *str)
 {
-	 int	minus;
-	 int	ret;
+	int		minus;
+	int		ret;
 	char	*copy;
 
-	minus = 0;
+	minus = 1;
 	ret = 0;
 	copy = (char *)str;
 	while ((9 <= *copy && *copy <= 13) || *copy == 32)
 		copy++;
-	minus = ft_minus_ck(copy);
-	if (minus == 0)
-		return (0);
-	copy++;
-	if (48 <= *copy && *copy <= 57)
+	if (*copy == '-')
+		minus = -1;
+	if (*copy == '-' || *copy == '+')
+		copy++;
+	if (ft_isdigit(*copy))
 	{
-		while (*copy && (48 <= *copy && *copy <= 57))
+		while (*copy && ft_isdigit(*copy))
 		{
-			ret *= 10;
-			ret = ret + (*copy - 48);
+			ret = (ret * 10) + (*copy - '0');
+			if (ret == 214748364 && (*(copy + 1) == 8))
+				return (-2147483648);
 			copy++;
 		}
 	}
