@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 17:14:11 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/16 17:43:39 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/18 12:27:08 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/18 14:03:38 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char	*ft_strdup(const char *s1)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t		i;
-	char		*ret;
+	size_t	len1;
+	size_t	len2;
+	char	*ret;
 
-	if (!s1)
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	ret = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	if (ret == NULL)
 		return (NULL);
-	i = ft_strlen(s1);
-	ret = (char *)malloc(i);
-	if (!ret)
-		return (NULL);
-	return ((char *)ft_memmove(ret, s1, i));
+	ft_memmove(ret, s1, len1);
+	ft_memmove((ret + len1), s2, len2);
+	return (ret);
 }

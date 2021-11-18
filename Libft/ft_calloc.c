@@ -14,15 +14,9 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	i;
 	char	*ret;
 
 	ret = (char *)malloc(count * size);
-	i = 0;
-	while (i < count * size)
-	{
-		*(ret + i) = 0;
-		i++;
-	}
+	ft_memset(ret, 0, count * size);
 	return (ret);
 }

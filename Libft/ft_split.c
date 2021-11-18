@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 17:14:11 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/16 17:43:39 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/18 18:52:51 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/18 19:03:15 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char	*ft_strdup(const char *s1)
+char	**ft_split(char const *s, char c)
 {
-	size_t		i;
-	char		*ret;
 
-	if (!s1)
-		return (NULL);
-	i = ft_strlen(s1);
-	ret = (char *)malloc(i);
-	if (!ret)
-		return (NULL);
-	return ((char *)ft_memmove(ret, s1, i));
 }

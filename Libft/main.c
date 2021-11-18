@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:46:55 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/16 17:42:14 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/18 18:56:51 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,19 @@
 
 int	main(int ac, char **av)
 {
+	const char		*s1;
+	char			**ret;
+	int				i;
+
 	(void)ac;
-	printf("origin : %d\n", atoi(av[1]));
-	printf("re-code : %d\n", ft_atoi(av[1]));
+	s1 = av[1];
+	printf("re-code : ");
+	ret = ft_split(s1, av[2][0]);
+	i = 0;
+	while (ret[i])
+	{
+		printf("%s\n", ret[i]);
+		i++;
+	}
 	return (0);
 }

@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 17:14:11 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/16 17:43:39 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/18 15:06:40 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/18 18:49:18 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t		i;
-	char		*ret;
+	char	*ret;
+	size_t	slen;
 
-	if (!s1)
-		return (NULL);
-	i = ft_strlen(s1);
-	ret = (char *)malloc(i);
-	if (!ret)
-		return (NULL);
-	return ((char *)ft_memmove(ret, s1, i));
+	while (*s1)
+	{
+		if (!(ft_strchr(set, *s1)))
+			break ;
+		s1++;
+	}
+	slen = ft_strlen(s1);
+	while (--slen > 0)
+	{
+		if (!(ft_strrchr(set, *(s1 + slen))))
+			break ;
+	}
+	ret = (char *)malloc(sizeof(char) * (slen + 2));
+	ft_strlcpy(ret, s1, slen + 2);
+	return (ret);
 }
