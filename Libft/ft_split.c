@@ -5,116 +5,50 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 18:52:51 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/19 18:57:12 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/19 20:19:21 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/19 21:03:50 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-int	ft_height_check(char const *s, char c)
-{
-	int	height;
-	int	checker;
-	int	i;
-
-	height = 0;
-	i = -1;
-	while (++i < ft_strlen(s))
-	{
-		if (s[i] != c)
-			checker++;
-		if (s[i] == c)
-		{
-			if (checker != 0)
-			{
-				height++;
-				checker = 0;
-			}
-			else
-				checker = 0;
-		}
-		if (i == ft_strlen(s) - 1 && s[i] != c)
-			height++;
-	}
-	return (height);
-}
-
-int	ft_width_check(char const *s, char c)
-{
-	int	end;
-	int	i;
-
-	i = 0;
-	end = 0;
-	while (i < ft_strlen(s))
-	{
-		if (s[i] == c)
-			break ;
-		end++;
-		i++;
-	}
-	return (end);
-}
-
-char	**ft_one_line(const char *s)
-{
-	char	**ret;
-	 int	len;
-
-	len = (int)ft_strlen(s);
-	ret = (char **)malloc(sizeof(char *) * 1);
-	ret[0] = (char *)malloc(sizeof(char) * (len + 1));
-	ret[0] = ft_strdup(s);
-	return (ret);
-}
-
-char	**ft_str_cp(char const *s, char **dst, char c)
-{
-	int	i;
-	int	height;
-	int	width;
-
-	i = 0;
-	height = ft_height_check(s, c);
-	while (i < height)
-	{
-		if (s[0] != c || *s == c)
-		{
-			width = ft_width_check(s, c);
-			if (width != 0)
-			{
-				dst[i] = (char *)malloc(sizeof(char) * (width + 1));
-				if (dst == NULL)
-					return (NULL);
-				ft_strlcpy(dst[i], s, (size_t)width + 1);
-				i++;
-			}
-			if (i == height)
-				break ;
-			s += width;
-		}
-		s++;
-	}
-	return (dst);
-}
-
 char	**ft_split(char const *s, char c)
 {
 	char	**ret;
-	 int	height;
-	 int	width;
+	char	*end;
+	int		height;
+	int		i;
 
-	height = ft_height_check(s, c);
-	width = ft_width_check(s, c);
 	if (!s)
 		return (NULL);
-	if (height == 0 && width == (ft_strlen(s) - 1))
-		ret = ft_one_line(s);
-	ret = (char **)malloc(sizeof(char *) * height);
-	if (ret == NULL)
-		return (NULL);
-	ret = ft_str_cp(s, ret, c);
+	height = 0;
+	while (*s)
+	{
+		if (*s == c)
+		{
+			end = ft_strchr(s, c);
+			if (end == NULL)
+				break ;
+			i = 0;
+			while (s[i] == *end)
+				i++;
+			ret[height] = (char *)malloc(sizeof(char) * i);
+			if (ret[height] == NULL)
+				return (NULL);
+			ft_strlcpy(ret[height], s, i - 1);
+			s = end + 1;
+			height++;
+		}
+		else
+			s++;
+	}
+
+
+
 	return (ret);
 }
+/*
+ * 포인트 1) 문장이 주어지고, 그 문장이 정상적이지 않으면, 지금까지 전체 진행 사항을 free하고 널값을 출력해야 한다. 
+ * 포인트 2) 단순 반복문으로 진행시 필요한 경우의 수가 너무 많고, FREE 기능을 못 씀. 
+ * */

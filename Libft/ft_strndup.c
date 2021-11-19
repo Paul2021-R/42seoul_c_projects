@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 13:46:55 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/19 21:02:45 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/19 21:26:33 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/19 21:28:31 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 
-int	main(int ac, char **av)
+char	*ft_strndup(const char *s1, size_t n)
 {
-	char	*s;
-	char	set;
-	char	**ret;
-	int	i;
+	size_t	len;
+	char	*dst;
 
-	(void)ac;
-	s = av[1];
-	set = av[2][0];
-	printf("re-code : \n");
-	ret = ft_split(s, set);
-	i = 0;
-	while (ret[i])
-	{
-		printf("1");
-		printf("%s\n", ret[i]);
-		i++;
-	}
-	return (0);
+	len = ft_strlen(s1);
+	if(!(dst = malloc(sizeof(char) *(len + 1))))
+		return (NULL);
+	ft_strlcpy(dst, s1, len + 1);
+	return (dst);
 }
