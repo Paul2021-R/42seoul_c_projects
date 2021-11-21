@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 17:22:09 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/21 18:17:43 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/22 00:48:42 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*ft_strrev(char *src)
 	ret = src;
 	limit = ft_strlen(src);
 	i = 0;
-	while (i < ft_strlen(src) / 2)
+	while (i < (int)ft_strlen(src) / 2)
 	{
 		temp = ret[i];
 		ret[i] = ret[limit - 1];

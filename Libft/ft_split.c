@@ -5,50 +5,95 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 20:19:21 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/19 21:03:50 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/21 22:50:41 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/22 00:49:32 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-char	**ft_split(char const *s, char c)
+static char	*ft_strndup(char const *s, size_t n)
 {
-	char	**ret;
-	char	*end;
-	int		height;
-	int		i;
+	size_t	i;
+	size_t	limit;
+	char	*ret;
 
-	if (!s)
+	i = 0;
+	limit = n;
+	ret = (char *)malloc(sizeof(char) * (n + 1));
+	if (!ret)
 		return (NULL);
+	while (i < limit)
+	{
+		ret[i] = s[i];
+		i++;
+	}
+	ret[i] = '\0';
+	return (ret);
+}
+
+static void	ft_free_all(char **target)
+{
+	int	i;
+
+	i = 0;
+	while (target[i])
+	{
+		free (target[i]);
+		i++;
+	}
+	free (target);
+}
+
+int	ft_height_check(char const *s, char c)
+{
+	int	height;
+
 	height = 0;
 	while (*s)
 	{
-		if (*s == c)
-		{
-			end = ft_strchr(s, c);
-			if (end == NULL)
-				break ;
-			i = 0;
-			while (s[i] == *end)
-				i++;
-			ret[height] = (char *)malloc(sizeof(char) * i);
-			if (ret[height] == NULL)
-				return (NULL);
-			ft_strlcpy(ret[height], s, i - 1);
-			s = end + 1;
+		if ((*s != c && (*(s + 1) == c || *(s + 1) == '\0')))
 			height++;
-		}
-		else
-			s++;
+		s++;
 	}
+	return (height);
+}
 
+char	**ft_split_str(char **ret, char const *s, char c)
+{
+	size_t	start;
+	size_t	end;
+	size_t	i;
+	size_t	height;
 
-
+	i = -1;
+	height = 0 ;
+	while (s[++i] && (int)height < ft_height_check(s, c))
+	{
+		if (s[i] != c && (s[i - 1] == c || i == 0))
+			start = i;
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+		{
+			end = i;
+			ret[height] = ft_strndup((s + start), (end - start + 1));
+			if (ret[height++] == NULL)
+			{
+				ft_free_all(ret);
+				return (NULL);
+			}
+		}
+	}
 	return (ret);
 }
-/*
- * 포인트 1) 문장이 주어지고, 그 문장이 정상적이지 않으면, 지금까지 전체 진행 사항을 free하고 널값을 출력해야 한다. 
- * 포인트 2) 단순 반복문으로 진행시 필요한 경우의 수가 너무 많고, FREE 기능을 못 씀. 
- * */
+
+char	**ft_split(char const *s, char c)
+{
+	char	**ret;
+
+	ret = (char **)malloc(sizeof(char *) * ((ft_height_check(s, c) + 1)));
+	if (ret == NULL || !s)
+		return (NULL);
+	ret = ft_split_str(ret, s, c);
+	return (ret);
+}

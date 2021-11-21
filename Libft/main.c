@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:46:55 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/21 22:04:24 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/22 00:26:23 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,28 @@
 
 int	main(int ac, char **av)
 {
-	char	*ret;
+	char	*s;
+	char	set;
+	char	**ret;
+	int		i;
 
 	(void)ac;
-	while (*av[1])
+	s = (char *)av[1];
+	set = av[2][0];
+	printf("re-code : \n");
+	ret = ft_split(s, set);
+	i = 0;
+	while (ret[i])
 	{
-		write(1, av[1]++, 1);
-		write(1, "\n", 1);
+		printf("%s\n", ret[i]);
+		i++;
 	}
+	i = 0;
+	/*while (ret[i])
+	{
+		free(ret[i]);
+		i++;
+	}*/
+	//free (ret);
 	return (0);
 }
