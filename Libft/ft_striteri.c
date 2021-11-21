@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 13:46:55 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/21 22:04:24 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/21 20:53:39 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/21 21:19:29 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-
-int	main(int ac, char **av)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	char	*ret;
+	int	i;
 
-	(void)ac;
-	while (*av[1])
+	i = 0;
+	while (*s)
 	{
-		write(1, av[1]++, 1);
-		write(1, "\n", 1);
+		f(i, s);
+		i++;
+		s++;
 	}
-	return (0);
+	return ;
 }

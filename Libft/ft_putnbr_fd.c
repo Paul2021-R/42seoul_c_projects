@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 13:46:55 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/21 22:04:24 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/21 22:06:58 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/21 22:26:26 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 
-int	main(int ac, char **av)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*ret;
-
-	(void)ac;
-	while (*av[1])
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	if (n < 0)
 	{
-		write(1, av[1]++, 1);
-		write(1, "\n", 1);
+		write (fd, "-", 1);
+		n *= -1;
 	}
-	return (0);
+	if (n < 10)
+		ft_putchar_fd(n + '0', fd);
+	else
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	return ;
 }

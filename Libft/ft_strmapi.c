@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 13:46:55 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/21 22:04:24 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/21 18:18:15 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/21 20:47:09 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 
-int	main(int ac, char **av)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*ret;
+	unsigned int		i;
+	char				*ret;
 
-	(void)ac;
-	while (*av[1])
+	ret = (char *)malloc(sizeof(char) * ft_strlen(s));
+	if (ret == NULL)
+		return (NULL);
+	i = 0;
+	while (ret[i])
 	{
-		write(1, av[1]++, 1);
-		write(1, "\n", 1);
+		ret[i] = f(i, s[i]);
+		i++;
 	}
-	return (0);
+	return (ret);
 }
