@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 00:30:34 by haryu             #+#    #+#              #
-#    Updated: 2021/11/22 00:57:40 by haryu            ###   ########.fr        #
+#    Updated: 2021/11/22 14:19:10 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ NAME			= libft.a
 CC				= gcc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror
+INCLUDES 		= ./libft.h
 
 ifdef WITH_BONUS
 		OBJ_SWITCH = $(OBJS_BONUS)
@@ -64,12 +65,12 @@ else
 endif
 
 .c.o:
-				${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+				${CC} ${CFLAGS} -I ${INCLUDES} -c $< -o ${<:.c=.o}
 
 ${NAME}:		${OBJ_SWITCH}
-				ar rc ${NAME} ${OBJ_SWITCH}
+				ar crs ${NAME} ${OBJ_SWITCH}
 
-all:			bonus ${NAME}
+all:			 ${NAME}
 
 clean:
 				${RM} ${OBJS} ${OBJS_BONUS}
@@ -78,6 +79,9 @@ fclean:			clean
 				${RM} ${NAME}
 
 re:				fclean all
+
+${NAME} : ${OBJ_SWITCH}
+		ar crs $@ $^
 
 bonus:			
 				$(MAKE) WITH_BONUS=1 $(NAME)
