@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:58:48 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/24 15:01:51 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/24 19:49:47 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	while (lst)
+	while (lst && f)
 	{
 		f(lst -> content);
-		lst = lst -> next;
+		lst = lst->next;
 	}
+	return ;
 }
