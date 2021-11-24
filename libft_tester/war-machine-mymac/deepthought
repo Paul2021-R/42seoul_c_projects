@@ -3,7 +3,7 @@ $> hostname; uname -msr
 lyuhansol-ui-MacBookPro.local
 Darwin 21.1.0 arm64
 $> date
-2021년 11월 24일 수요일 15시 50분 28초 KST
+2021년 11월 24일 수요일 18시 04분 24초 KST
 $> gcc --version
 Apple clang version 12.0.5 (clang-1205.0.22.9)
 Target: arm64-apple-darwin21.1.0
@@ -248,3 +248,98 @@ clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-
 
 = ft_split.c ===================================================================
 $> norminette ft_split.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_split.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_itoa.c ====================================================================
+$> norminette ft_itoa.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_itoa.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_striteri.c ================================================================
+$> norminette ft_striteri.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_striteri.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_putchar_fd.c ==============================================================
+$> norminette ft_putchar_fd.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_putchar_fd.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_putstr_fd.c ===============================================================
+$> norminette ft_putstr_fd.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_putstr_fd.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_putendl_fd.c ==============================================================
+$> norminette ft_putendl_fd.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_putendl_fd.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_putnbr_fd.c ===============================================================
+$> norminette ft_putnbr_fd.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_putnbr_fd.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= Bonus_functions ==============================================================
+
+= ft_lstnew_bonus.c ============================================================
+$> norminette ft_lstnew_bonus.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstnew.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_lstdelone_bonus.c =========================================================
+$> norminette ft_lstdelone_bonus.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstdelone.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_lstclear_bonus.c ==========================================================
+$> norminette ft_lstclear_bonus.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstclear.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_lstadd_front_bonus.c ======================================================
+$> norminette ft_lstadd_front_bonus.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstadd_front.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_lstadd_back_bonus.c =======================================================
+$> norminette ft_lstadd_back_bonus.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstadd_back.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_lstsize_bonus.c ===========================================================
+$> norminette ft_lstsize_bonus.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstsize.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_lstiter_bonus.c ===========================================================
+$> norminette ft_lstiter_bonus.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstiter.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_lstmap_bonus.c ============================================================
+$> norminette ft_lstmap_bonus.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstmap.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
+
+= ft_lstlast_bonus.c ===========================================================
+$> norminette ft_lstlast_bonus.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstlast.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a'
