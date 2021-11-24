@@ -5,7 +5,7 @@
 ###################################
 
 #Edit the next line with the path of your libft project.
-PATH_LIBFT=/Users/wildeengineerr/workplace/cadet_temp/Libft
+PATH_LIBFT=/Users/wildeengineerr/workplace/Cadet-42_C/Libft
 
 #If you use a relative path, don't put double quotes.
 #For example :

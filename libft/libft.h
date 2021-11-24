@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 12:23:46 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/24 18:16:19 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/24 19:39:38 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct s_list
 {
-	void		*content;
+	void			*content;
 	struct s_list	*next;
 }			t_list;
 
