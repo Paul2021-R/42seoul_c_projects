@@ -1,0 +1,154 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+lyuhansol-ui-MacBookPro.local
+Darwin 21.1.0 arm64
+$> date
+2021년 11월 22일 월요일 20시 23분 37초 KST
+$> gcc --version
+Apple clang version 12.0.5 (clang-1205.0.22.9)
+Target: arm64-apple-darwin21.1.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+$> clang --version
+Apple clang version 12.0.5 (clang-1205.0.22.9)
+Target: arm64-apple-darwin21.1.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+
+= Compiling libft ==============================================================
+Missing Makefile, can't compil library.
+
+= Part1_functions ==============================================================
+
+= ft_memset.c ==================================================================
+Nothing turned in
+
+= ft_bzero.c ===================================================================
+Nothing turned in
+
+= ft_calloc.c ==================================================================
+Nothing turned in
+
+= ft_memcpy.c ==================================================================
+Nothing turned in
+
+= ft_memmove.c =================================================================
+Nothing turned in
+
+= ft_memchr.c ==================================================================
+Nothing turned in
+
+= ft_memcmp.c ==================================================================
+Nothing turned in
+
+= ft_strlen.c ==================================================================
+Nothing turned in
+
+= ft_strdup.c ==================================================================
+Nothing turned in
+
+= ft_strlcat.c =================================================================
+Nothing turned in
+
+= ft_strlcpy.c =================================================================
+Nothing turned in
+
+= ft_strchr.c ==================================================================
+Nothing turned in
+
+= ft_strrchr.c =================================================================
+Nothing turned in
+
+= ft_strnstr.c =================================================================
+Nothing turned in
+
+= ft_strncmp.c =================================================================
+Nothing turned in
+
+= ft_atoi.c ====================================================================
+Nothing turned in
+
+= ft_isalpha.c =================================================================
+Nothing turned in
+
+= ft_isdigit.c =================================================================
+Nothing turned in
+
+= ft_isalnum.c =================================================================
+Nothing turned in
+
+= ft_isascii.c =================================================================
+Nothing turned in
+
+= ft_isprint.c =================================================================
+Nothing turned in
+
+= ft_toupper.c =================================================================
+Nothing turned in
+
+= ft_tolower.c =================================================================
+Nothing turned in
+
+= Part2_functions ==============================================================
+
+= ft_strmapi.c =================================================================
+Nothing turned in
+
+= ft_substr.c ==================================================================
+Nothing turned in
+
+= ft_strjoin.c =================================================================
+Nothing turned in
+
+= ft_strtrim.c =================================================================
+Nothing turned in
+
+= ft_split.c ===================================================================
+Nothing turned in
+
+= ft_itoa.c ====================================================================
+Nothing turned in
+
+= ft_striteri.c ================================================================
+Nothing turned in
+
+= ft_putchar_fd.c ==============================================================
+Nothing turned in
+
+= ft_putstr_fd.c ===============================================================
+Nothing turned in
+
+= ft_putendl_fd.c ==============================================================
+Nothing turned in
+
+= ft_putnbr_fd.c ===============================================================
+Nothing turned in
+
+= Bonus_functions ==============================================================
+
+= ft_lstnew_bonus.c ============================================================
+Nothing turned in
+
+= ft_lstdelone_bonus.c =========================================================
+Nothing turned in
+
+= ft_lstclear_bonus.c ==========================================================
+Nothing turned in
+
+= ft_lstadd_front_bonus.c ======================================================
+Nothing turned in
+
+= ft_lstadd_back_bonus.c =======================================================
+Nothing turned in
+
+= ft_lstsize_bonus.c ===========================================================
+Nothing turned in
+
+= ft_lstiter_bonus.c ===========================================================
+Nothing turned in
+
+= ft_lstmap_bonus.c ============================================================
+Nothing turned in
+
+= ft_lstlast_bonus.c ===========================================================
+Nothing turned in

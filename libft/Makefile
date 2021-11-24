@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 00:30:34 by haryu             #+#    #+#              #
-#    Updated: 2021/11/24 19:17:34 by haryu            ###   ########.fr        #
+#    Updated: 2021/11/24 19:25:57 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,48 +19,50 @@ SRCNAME			= 	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c\
 				ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c\
 				ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c
 
-SRCNAME_B		= ft_lstadd_front.c\
+SRCNAME_BONUS		= 	ft_lstnew.c\
+				ft_lstadd_front.c\
 				ft_lstsize.c\
 				ft_lstlast.c\
 				ft_lstadd_back.c\
 				ft_lstdelone.c\
 				ft_lstclear.c\
 				ft_lstiter.c\
-				ft_lstmap.c\
-				ft_lstnew.c
+				ft_lstmap.c
 
-OBJS			= ${SRCNAME:.c=.o}
-OBJS_BONUS		= ${SRCNAME_B:.c=.o}
+SRCS_DIR = ./
+
+OBJS			= ${addprefix ${SRCS_DIR}, ${SRCNAME:.c=.o}}
+OBJS_BONUS		= ${addprefix ${SRCS_DIR}, ${SRCNAME_BONUS:.c=.o}}
 
 NAME			= libft.a
-CC				= gcc
-RM				= rm -f
-LIB				= ar rcs
+CC			= gcc
+RM			= rm -f
 CFLAGS			= -Wall -Wextra -Werror
 
-ifdef BONUS_PART
-	OBJ_SWITCH = ${OBJS_BONUS}
+ifdef BONUS_Part
+		OBJ_SWITCH = $(OBJS_BONUS)
 else
-	OBJ_SWITCH = ${OBJS}
+		OBJ_SWITCH = $(OBJS)
 endif
 
 .c.o:
-			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+			${CC} ${CFLAGS} -c -o  $@ $<
 
-${NAME}	:	${OBJ_SWITCH}
-		${LIB} $@ $^
+${NAME}:		${OBJ_SWITCH}
+			ar rcu $@ $^
 
-all		:	bonus ${NAME}
+all:			bonus ${NAME}
 
-clean	:
-		${RM} ${OBJS} ${OBJS_BONUS}
+clean:
+			${RM} ${OBJS} ${OBJS_BONUS}
 
-fclean	:	clean
-		${RM} ${NAME}
+fclean:			clean
+			${RM} ${NAME}
 
-re		:	fclean all
+re:			fclean all
 
-bonus	:
-		$(MAKE) BONUS_PART=1 $(NAME)
 
-.PHONY	:	all clean fclean re bonus
+bonus:			
+			$(MAKE) BONUS_Part=1 $(NAME)
+
+.PHONY:		all clean fclean re bonus
