@@ -6,12 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:44:09 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/22 15:40:46 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/24 21:49:36 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 size_t	ft_strlcat(char *restrict dst, \
 		const char *restrict src, size_t dstsize)

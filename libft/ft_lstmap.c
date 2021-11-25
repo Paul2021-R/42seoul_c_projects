@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 15:02:03 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/24 16:03:03 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/25 14:28:55 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*result;
 	t_list	*temp;	
 
-	result = ft_lstnew(f(lst -> content));
+	result = ft_lstnew(f(lst->content));
 	if (!lst || !f || !result)
 		return (NULL);
 	temp = result;
-	lst = lst -> next;
+	lst = lst->next;
 	while (lst)
 	{
-		temp -> next = ft_lstnew(f(temp -> content));
+		temp->next = ft_lstnew(f(lst->content));
 		if (!temp)
 		{
 			ft_lstclear(&result, del);
 			return (0);
 		}
-		temp = temp -> next;
-		lst = lst -> next;
+		temp = temp->next;
+		lst = lst->next;
 	}
 	return (result);
 }

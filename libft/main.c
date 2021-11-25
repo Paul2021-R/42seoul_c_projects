@@ -1,51 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/25 12:32:27 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/25 12:35:29 by haryu            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 int	main(void)
 {
-	char	*res;
+	char *src = "there is so \0ma\0ny \0 \\0 in t\0his stri\0ng !\0\0\0\0";
+	char *d1 = strrchr(src, '\0');
+	char *d2 = ft_strrchr(src, '\0');
 
-	res = ft_itoa(-0);
-	printf("0 : %s\n",res);
-	free(res);
-
-	res = ft_itoa(9);
-	printf("9 : %s\n", res);
-	free(res);
-	
-	res = ft_itoa(-9);
-	printf("-9 : %s\n", res);
-	free(res);
-	
-	res = ft_itoa(10);
-	printf("10 : %s\n", res);
-	free(res);
-	
-	res = ft_itoa(-10);
-	printf("-10 : %s\n", res);
-	free(res);
-	
-	res = ft_itoa(8124);
-	printf("8124 : %s\n", res);
-	free(res);
-
-	res = ft_itoa(-9874);
-	printf("-9874 : %s\n", res);
-	free(res);
-		
-	res = ft_itoa(543000);
-	printf("543000 : %s\n", res);
-	free(res);
-
-	res = ft_itoa(-2147483648LL);
-	printf("-2147483648LL : %s\n",res);
-	free(res);
-	
-	res = ft_itoa(2147483647);
-	printf("2147483647 : %s\n", res);
-	free(res);
-	
+	printf ("원본 : %s\n", d1);
+	printf("사본 : %s\n", d2);
+	printf("%s\n", src);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 22:50:41 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/24 12:15:34 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/25 12:51:43 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,18 @@ char	**ft_split_str(char **ret, char const *s, char c)
 {
 	size_t	start;
 	size_t	end;
-	size_t	i;
 	size_t	height;
+	int		i;
 
 	i = -1;
 	height = 0 ;
 	while (s[++i] && (int)height < ft_height_check(s, c))
 	{
 		if (s[i] != c && (s[i - 1] == c || i == 0))
-			start = i;
+			start = (size_t)i;
 		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 		{
-			end = i;
+			end = (size_t)i;
 			ret[height] = ft_strndup((s + start), (end - start + 1));
 			if (ret[height] == NULL)
 			{
@@ -88,8 +88,8 @@ char	**ft_split(char const *s, char c)
 {
 	char	**ret;
 
-	ret = (char **)calloc((ft_height_check(s, c) + 1), sizeof(char *));
-	if (ret == NULL || !s)
+	ret = (char **)ft_calloc((ft_height_check(s, c) + 1), sizeof(char *));
+	if (!ret || !s)
 		return (NULL);
 	ret = ft_split_str(ret, s, c);
 	if (ret == NULL)

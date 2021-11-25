@@ -44,7 +44,21 @@ ft_isprint:    [OK]
 ft_toupper:    [OK] 
 ft_tolower:    [OK] 
 ft_strchr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strrchr:    [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [OK] 
+ft_strrchr:    [OK] [OK] [OK] [OK] [FAILED] [OK] [CRASH] [OK] 
+[fail]: your strrchr does not work with \0
+Test code:
+	char *src = "there is so \0ma\0ny \0 \\0 in t\0his stri\0ng !\0\0\0\0";
+	char *d1 = strrchr(src, '\0');
+	char *d2 = ft_strrchr(src, '\0');
+
+	if (d1 == d2)
+		exit(TEST_SUCCESS);
+	exit(TEST_FAILED);
+
+Diffs:
+     strrchr: ||
+  ft_strrchr: |(null)|
+
 [crash]: your strrchr crash because it read too many bytes or attempt to write on s !
 Test code:
 	char *src = electric_alloc(10);
@@ -103,72 +117,34 @@ Test code:
 ft_substr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {protected}[OK] 
 ft_strjoin:    [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_strtrim:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}
-ft_split:      [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [OK] {not protected}
-[crash]: you did not protect your split
-Test code:
-	char *s = "      split       this for   me  !       ";
-
-	char **result = ft_split(s, ' ');
-	if (!result)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-
-ft_itoa:       [OK] [OK] [OK] [OK] [OK] [FAILED] [KO] [KO] [OK] 
-[fail]: you did not protect your malloc
-Test code:
-
-	char *i1 = ft_itoa(-1234);
-	if (!i1)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-        itoa: |(null)|
-     ft_itoa: |-1234|
-
-[KO]: your itoa does not allocate the good size so the \0 test may be false
-Test code:
-	int size;
-	char *i1;
-
-	i1 = ft_itoa(-5859);
-	size = get_last_malloc_size();
-	if (size == 6)
-		exit(TEST_SUCCESS);
-	exit(TEST_KO);
-
-Diffs:
-        itoa: |6|
-     ft_itoa: |27|
-
-[KO]: your itoa does not allocate the good size so the \0 test may be false
-Test code:
-	int size;
-	char *i1;
-
-	i1 = ft_itoa(0);
-	size = get_last_malloc_size();
-	if (size == 2)
-		exit(TEST_SUCCESS);
-	exit(TEST_KO);
-
-Diffs:
-        itoa: |2|
-     ft_itoa: |27|
-
+ft_split:      [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}
+ft_itoa:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strmapi:    [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_putchar_fd: [OK] [OK] 
 ft_putstr_fd:  [OK] [OK] {not protected}
 ft_putendl_fd: [OK] [OK] {not protected}
-ft_putnbr_fd:  [OK] [OK] [OK] [OK] [OK] 
-ft_lstnew:     [MISSING]
-ft_lstadd_front: [MISSING]
-ft_lstsize:    [MISSING]
-ft_lstlast:    [MISSING]
-ft_lstadd_back:[MISSING]
-ft_lstdelone:  [MISSING]
-ft_lstclear:   [MISSING]
-ft_lstiter:    [MISSING]
-ft_lstmap:     [MISSING]
+ft_putnbr_fd:  [OK] [OK] [OK] [OK] [CRASH] 
+[crash]: your putnbr_fd allocate memory, wtf ???
+Test code:
+	int i = (-2147483647 -1);
+	char buff[0xF0];
+
+	fd_to_buffer(2);
+	ft_putnbr_fd(i, 2);
+	write(2, "", 1);
+	get_fd_buffer(2, buff, 0xF0);
+	if (atoi(buff) == i)
+		exit(TEST_SUCCESS);
+	exit(TEST_FAILED);
+
+
+ft_lstnew:     [OK] [OK] [OK] [OK] 
+ft_lstadd_front: [OK] [OK] [OK] 
+ft_lstsize:    [OK] [OK] 
+ft_lstlast:    [OK] [OK] 
+ft_lstadd_back:[OK] [OK] [OK] 
+ft_lstdelone:  [OK] 
+ft_lstclear:   [OK] [OK] [OK] 
+ft_lstiter:    [OK] {protected}
+ft_lstmap:     [OK] {not protected}
 ft_striteri:   [OK] [OK] {not protected}

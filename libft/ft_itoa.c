@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 17:22:09 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/23 20:18:00 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/25 12:52:23 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char	*ft_itoa(int n)
 	if (n < 0)
 		sign = 1;
 	len = ft_numlen(n, sign);
-	ret = (char *)calloc((len + 1), sizeof(char));
+	ret = (char *)ft_calloc((len + 1), sizeof(char));
 	if (ret == NULL)
 		return (NULL);
 	ret = ft_putnbr(ret, n, len, sign);
