@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 15:35:19 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/22 15:47:38 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/26 21:02:09 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
 {
 	size_t	ret;
-	int		i;
+	size_t	i;
 
 	ret = ft_strlen((const char *)src);
 	i = 0;
-	while (i < (int)(dstsize - 1))
+	while (i + 1 < dstsize)
 	{
 		*(dst + i) = *(src + i);
 		if (! *(dst + i) || ! *(src + i))

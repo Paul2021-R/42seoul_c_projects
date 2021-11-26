@@ -1,27 +1,19 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 12:32:27 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/25 12:35:29 by haryu            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
+#include <time.h>
 #include <stdio.h>
-#include <string.h>
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	char *src = "there is so \0ma\0ny \0 \\0 in t\0his stri\0ng !\0\0\0\0";
-	char *d1 = strrchr(src, '\0');
-	char *d2 = ft_strrchr(src, '\0');
+	clock_t	start;
+	clock_t	end;
+	int	result;
 
-	printf ("원본 : %s\n", d1);
-	printf("사본 : %s\n", d2);
-	printf("%s\n", src);
-	return (0);
+	start = clock();
+	result = ft_isdigit((int)av[1][0]);
+	printf("ft_isalnum : %d\n", result);
+	printf("ft_isalpha : %d\n", ft_isalpha((int)av[1][0]));
+	printf("ft_isdigit : %d\n", ft_isdigit((int)av[1][0]));
+	printf("ft_return : %d\n", (ft_isalpha((int)av[1][0])) || (ft_isdigit((int)av[1][0])));
+	end = clock();
+	printf("[time : %f]\n", (float)(end - start)/CLOCKS_PER_SEC);
 }
