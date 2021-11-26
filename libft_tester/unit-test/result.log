@@ -44,21 +44,7 @@ ft_isprint:    [OK]
 ft_toupper:    [OK] 
 ft_tolower:    [OK] 
 ft_strchr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strrchr:    [OK] [OK] [OK] [OK] [FAILED] [OK] [CRASH] [OK] 
-[fail]: your strrchr does not work with \0
-Test code:
-	char *src = "there is so \0ma\0ny \0 \\0 in t\0his stri\0ng !\0\0\0\0";
-	char *d1 = strrchr(src, '\0');
-	char *d2 = ft_strrchr(src, '\0');
-
-	if (d1 == d2)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-     strrchr: ||
-  ft_strrchr: |(null)|
-
+ft_strrchr:    [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [OK] 
 [crash]: your strrchr crash because it read too many bytes or attempt to write on s !
 Test code:
 	char *src = electric_alloc(10);
@@ -138,13 +124,13 @@ Test code:
 	exit(TEST_FAILED);
 
 
-ft_lstnew:     [OK] [OK] [OK] [OK] 
-ft_lstadd_front: [OK] [OK] [OK] 
-ft_lstsize:    [OK] [OK] 
-ft_lstlast:    [OK] [OK] 
-ft_lstadd_back:[OK] [OK] [OK] 
-ft_lstdelone:  [OK] 
-ft_lstclear:   [OK] [OK] [OK] 
-ft_lstiter:    [OK] {protected}
-ft_lstmap:     [OK] {not protected}
+ft_lstnew:     [MISSING]
+ft_lstadd_front: [MISSING]
+ft_lstsize:    [MISSING]
+ft_lstlast:    [MISSING]
+ft_lstadd_back:[MISSING]
+ft_lstdelone:  [MISSING]
+ft_lstclear:   [MISSING]
+ft_lstiter:    [MISSING]
+ft_lstmap:     [MISSING]
 ft_striteri:   [OK] [OK] {not protected}

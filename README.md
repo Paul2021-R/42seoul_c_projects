@@ -10,3 +10,6 @@ For that reason, It doesn't have any file which contains the intellectual proper
 ## time line
 2021-11-08 Before start, prepare study of C.
 2021-11-09 Start Libft Subjects
+2021-11-25 Finish Libft Subjects and Peer evaluations. 
+		Result : 'cheating' -> Using internal funcs(calloc) except ft_calloc.
+2021-11-26 Discuss about team study method. Reschedule libft improvement ways. 

@@ -3,7 +3,7 @@ $> hostname; uname -msr
 lyuhansol-ui-MacBookPro.local
 Darwin 21.1.0 arm64
 $> date
-2021년 11월 25일 목요일 13시 16분 59초 KST
+2021년 11월 26일 금요일 16시 14분 46초 KST
 $> gcc --version
 Apple clang version 12.0.5 (clang-1205.0.22.9)
 Target: arm64-apple-darwin21.1.0
@@ -82,7 +82,7 @@ gcc -Wall -Wextra -Werror -c -o  ft_lstiter.o ft_lstiter.c
 gcc -Wall -Wextra -Werror -c -o  ft_lstmap.o ft_lstmap.c
 
 $> ls -la libft.a
--rw-r--r--  1 wildeengineerr  staff  36568 11 25 13:17 /Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a
+-rw-r--r--  1 wildeengineerr  staff  36568 11 26 16:14 /Users/wildeengineerr/workplace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 

@@ -1,4 +1,4 @@
-# Libft
+#Libft
 
 ## Goal
 함수를 이해하고, 사용법을 배우며, 재구성하는 것. 
@@ -36,8 +36,23 @@
 #### Addtional Functions
 추가적으로 유용한 함수들 목록이다. 길므로 이름만 나열한다. 
 
->   `substr` , `strjoin` ,`strtrim`, `split`, `itoa`,
->   `strmapi`, `striteri`, `putchar_fd`, `putstr_fd`, `putendl_fd`, `putnbr_fd`
+>    `substr` , `strjoin` ,`strtrim`, `split`, `itoa`,
+>    `strmapi`, `striteri`, `putchar_fd`, `putstr_fd`, `putendl_fd`, `putnbr_fd`
 
 ## Bonuse Part
-작성 중...
+list 활용을 위한 기초적인 조작 함수를 구현한다. 
+>    `lstnew` , `lstadd_front` , `lstsize`, `lstlast` , `lstadd_back` ,
+>    `lstdelone`, `lstclear` , `lstiter` , `lstmap`	
+
+## 기타 내용
+학습을 위한 추가적인 사항들을 기록해두었다. 
+1. 알아야 도움이 되는 것 
+	- 파일 디스크립션 
+	- `restrict`의 의미 
+	- `Makefile` 듀토리얼 및 구현 방법 
+	-  배열 할당의 `malloc`과 `free`의 사용 방법
+2. 현재 학습 완료 된 것
+	- 
+	-
+3. 특이사항
+	- `libft_back.h` 가 진짜 헤더 파일이며, 현재 헤더 파일은 restrict를 인식하지 못하는 테스트 프로그램 호환을 위한 임시 파일이다. 
