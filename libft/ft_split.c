@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 22:50:41 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/25 12:51:43 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/27 15:05:48 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	**ft_split_str(char **ret, char const *s, char c)
 	height = 0 ;
 	while (s[++i] && (int)height < ft_height_check(s, c))
 	{
-		if (s[i] != c && (s[i - 1] == c || i == 0))
+		if (s[i] != c && (i == 0 || s[i - 1] == c))
 			start = (size_t)i;
 		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 		{

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:44:09 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/24 21:49:36 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/27 13:58:50 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ size_t	ft_strlcat(char *restrict dst, \
 	else
 	{
 		i = 0;
-		while (i < (dstsize - dstlen - 1))
+		while (i + 1 < (dstsize - dstlen))
 		{
 			if (srclen == 0)
 				break ;
