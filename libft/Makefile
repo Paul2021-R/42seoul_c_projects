@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 00:30:34 by haryu             #+#    #+#              #
-#    Updated: 2021/11/24 19:25:57 by haryu            ###   ########.fr        #
+#    Updated: 2021/11/28 21:15:28 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ endif
 			${CC} ${CFLAGS} -c -o  $@ $<
 
 ${NAME}:		${OBJ_SWITCH}
-			ar rcu $@ $^
+			ar rc $@ $^
 
 all:			bonus ${NAME}
 

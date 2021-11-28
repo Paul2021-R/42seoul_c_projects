@@ -6,19 +6,18 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 17:22:09 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/25 12:52:23 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/28 21:08:25 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static char	*ft_strrev(char *src)
 {
 	char	*ret;
 	char	temp;
-	 int	limit;
-	 int	i;
+	int		limit;
+	int		i;
 
 	ret = src;
 	limit = ft_strlen(src);
@@ -84,8 +83,8 @@ static char	*ft_putnbr(char *str, int n, int limit, int sign)
 char	*ft_itoa(int n)
 {
 	char	*ret;
-	 int	sign;
-	 int	len;
+	int		sign;
+	int		len;
 
 	sign = 0;
 	if (n < 0)
