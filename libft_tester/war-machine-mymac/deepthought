@@ -3,7 +3,7 @@ $> hostname; uname -msr
 lyuhansol-ui-MacBookPro.local
 Darwin 21.1.0 arm64
 $> date
-2021년 11월 28일 일요일 21시 36분 52초 KST
+2021년 11월 28일 일요일 23시 39분 53초 KST
 $> gcc --version
 Apple clang version 12.0.5 (clang-1205.0.22.9)
 Target: arm64-apple-darwin21.1.0
@@ -80,9 +80,10 @@ gcc -Wall -Wextra -Werror -c -o  ft_lstdelone.o ft_lstdelone.c
 gcc -Wall -Wextra -Werror -c -o  ft_lstclear.o ft_lstclear.c
 gcc -Wall -Wextra -Werror -c -o  ft_lstiter.o ft_lstiter.c
 gcc -Wall -Wextra -Werror -c -o  ft_lstmap.o ft_lstmap.c
+ar rc libft.a ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 
 $> ls -la libft.a
--rw-r--r--  1 wildeengineerr  staff  36560 11 28 21:36 /Users/wildeengineerr/workspace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a
+-rw-r--r--  1 wildeengineerr  staff  36544 11 28 23:39 /Users/wildeengineerr/workspace/Cadet-42_C/libft_tester/war-machine-mymac/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
@@ -1047,9 +1048,6 @@ Diff OK :D
 $> norminette ft_strtrim.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strtrim.c main.c libft.a -o user_exe
 
-Forbidden function call in 'ft_strtrim.c':
-U_calloc
-
 = Test 1 ===================================================
 $> ./user_exe 01
 $> diff -U 3 user_output_test01 test01.output
@@ -1269,9 +1267,6 @@ Diff OK :D
 = ft_putnbr_fd.c ===============================================================
 $> norminette ft_putnbr_fd.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_putnbr_fd.c main.c libft.a -o user_exe
-
-Forbidden function call in 'ft_putnbr_fd.c':
-U_malloc
 
 = Test 1 ===================================================
 $> ./user_exe 01

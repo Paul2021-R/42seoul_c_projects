@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 22:57:42 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/22 15:29:05 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/28 23:14:51 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,10 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	if (!dst && !src)
 		return (NULL);
 	if (dst <= src)
-	{
-		while (len--)
+		while (len-- > 0)
 			*tmp_dst++ = *tmp_src++;
-	}
 	else
-	{
-		tmp_dst += len;
-		tmp_src += len;
 		while (len--)
-			*--tmp_dst = *--tmp_src;
-	}
+			*(tmp_dst + len) = *(tmp_src + len);
 	return (dst);
 }

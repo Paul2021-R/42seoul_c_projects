@@ -8,12 +8,15 @@ ft_bzero:      [OK] [OK] [NO CRASH] [OK]
 ft_memcpy:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [NO CRASH] [OK] [OK] [OK]
 [no crash]: your memcpy does not segv with NULL on first params
 
-ft_memccpy:    [MISSING]
 ft_memmove:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [OK] [OK] [OK] [OK] [OK]
 [crash]: your memmove crash because it read too many bytes or attempt to read on dst !
+>>> 해당 크래시의 경우 뭐가 무엇인지 확실하지 않음. 분명히, 원본과 동일하게 세그폴트가 뜨는 상황을 만들었음에도, 해당 테스터에서만 이런 식으로 작동함. 조건은 해당과 같다 (NULL, b, 5)
 
 ft_strrchr:    [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [OK]
 [crash]: your strrchr crash because it read too many bytes or attempt to write on s !
+>>> 조건 (NULL, '\0')
+>>> ft_memmove 와 동일하게 해당 옵션에 대해 어떤 걸 요구하는 지 확인이 되지 않는다. 
+>>> 내장 함수와 동일하게 세그폴트로 작동하는 구조임. 
 
 ft_atoi:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [KO] [KO] [OK] [OK] [OK] [OK]
 [KO]: your atoi does not work with over long max value
@@ -21,6 +24,8 @@ ft_atoi:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [KO] [KO] 
 
 ft_calloc:     [TIMEOUT] [OK] [OK] [OK] [OK]
 [timeout]: see the log file for informations
+>>> 해당 증상은 다른 분들도 동일하게 등장하는 것으로 판단되며, 해당 문제는 무엇이 문제인지 확실치 않다. 
+>>> 문제의 테스터 src 함수 부분이, 기묘하게도 ft_calloc (42)로만 구성되어 있다. 해당 문제에서 정확하게 값을 입력한 것인지 의문임. 
 
 ft_strdup:     [OK] [OK] [OK] [OK] [OK] [OK] [NO CRASH]
 [no crash]: your strdup does not segv with NULL parameter
@@ -43,10 +48,20 @@ war-machine
 FUNCTION              NORME          COMPIL.     FORBIDDEN FUNC.  TESTS               RESULT
 ft_strtrim            ok             success     not clean        ✓✓✓✓✓               KO
 ft_putnbr_fd          ok             success     not clean        ✓✓✓✓✓✓✓✓✓           KO
+
+>>> 둘다 클리어 
 --------
 libftTester
 ft_memchr	: 1.OK 2.KO 3.KO 4.OK 5.KO
+>>  (s, 2, 3) / (s, 2 + 256, 3) 의 값이 모두 s + 2가 나와야 한다고 한다. 확인해보니 확실히 값이 나오지 않음. 
+
 ft_strchr	: 1.OK 2.OK 3.OK 4.OK 5.KO
+>> 5번의 경우 
+s = "tripouille" strchr(s, 't' + 256) 을 넣은 값
+
 ft_substr	: 1.OK 2.MKO 3.OK 4.MOK 5.OK 6.MOK 7.OK 8.MOK 9.OK 10.MOK 11.OK 12.MOK 13.OK 14.MOK 15.OK 16.MOK
+
+
+
 ft_putnbr_fd	: 1.OK LEAKS.KO [0x600000610030 : 2] 2.OK LEAKS.KO [0x600000610050 : 3] 3.OK LEAKS.KO [0x600000610060 : 11] 4.OK LEAKS.KO [0x600000610070 : 12] 5.OK LEAKS.KO [0x600000610080 : 4]
 

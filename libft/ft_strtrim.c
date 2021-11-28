@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 15:06:40 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/24 11:59:42 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/28 23:36:42 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	if (*s1 == '\0')
 	{
-		ret = (char *)calloc(2, sizeof(char));
+		ret = (char *)ft_calloc(2, sizeof(char));
 		if (!ret)
 			return (NULL);
 		return (ret);
