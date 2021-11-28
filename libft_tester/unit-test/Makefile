@@ -6,7 +6,7 @@
 #    By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created  2015/04/04 19:22:36 by alelievr          #+#    #+#              #
-#    Updated: 2021/11/28 21:23:47 by haryu            ###   ########.fr        #
+#    Updated: 2021/11/28 21:35:14 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 #################
 
 #	Libft Makefile path
-LIBFTDIR	=	/home/wildwiser-ryu/workspace/Cadet-42_C/libft
+LIBFTDIR	=	/Users/wildeengineerr/workspace/Cadet-42_C/libft
 
 #	Sources
 SRCDIR		=	./

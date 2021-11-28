@@ -1,0 +1,52 @@
+<Unit test result>
+ft_memset:     [OK] [OK] [OK] [NO CRASH] [OK] [OK] [OK]
+[no crash]: your memset does not segfault when null parameter is sent !
+
+ft_bzero:      [OK] [OK] [NO CRASH] [OK]
+[no crash]: your bzero does not segfault when null params is sent
+
+ft_memcpy:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [NO CRASH] [OK] [OK] [OK]
+[no crash]: your memcpy does not segv with NULL on first params
+
+ft_memccpy:    [MISSING]
+ft_memmove:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [OK] [OK] [OK] [OK] [OK]
+[crash]: your memmove crash because it read too many bytes or attempt to read on dst !
+
+ft_strrchr:    [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [OK]
+[crash]: your strrchr crash because it read too many bytes or attempt to write on s !
+
+ft_atoi:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [KO] [KO] [OK] [OK] [OK] [OK]
+[KO]: your atoi does not work with over long max value
+[KO]: your atoi does not work with over long min value
+
+ft_calloc:     [TIMEOUT] [OK] [OK] [OK] [OK]
+[timeout]: see the log file for informations
+
+ft_strdup:     [OK] [OK] [OK] [OK] [OK] [OK] [NO CRASH]
+[no crash]: your strdup does not segv with NULL parameter
+
+ft_strjoin:    [OK] [OK] [OK] [OK] [OK] [💥 ]
+ft_strtrim:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [💥 ]
+ft_split:      [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [💥 ]
+ft_strmapi:    [OK] [OK] [OK] [OK] [OK] [💥 ]
+ft_putchar_fd: [OK] [OK]
+ft_putstr_fd:  [OK] [OK] [💥 ]
+ft_putendl_fd: [OK] [OK] [💥 ]
+ft_putnbr_fd:  [OK] [OK] [OK] [OK] [CRASH]
+[crash]: your putnbr_fd allocate memory, wtf ???
+
+ft_lstmap:     [OK] [💥 ]
+ft_striteri:   [OK] [OK] [💥 ]
+
+---------
+war-machine
+FUNCTION              NORME          COMPIL.     FORBIDDEN FUNC.  TESTS               RESULT
+ft_strtrim            ok             success     not clean        ✓✓✓✓✓               KO
+ft_putnbr_fd          ok             success     not clean        ✓✓✓✓✓✓✓✓✓           KO
+--------
+libftTester
+ft_memchr	: 1.OK 2.KO 3.KO 4.OK 5.KO
+ft_strchr	: 1.OK 2.OK 3.OK 4.OK 5.KO
+ft_substr	: 1.OK 2.MKO 3.OK 4.MOK 5.OK 6.MOK 7.OK 8.MOK 9.OK 10.MOK 11.OK 12.MOK 13.OK 14.MOK 15.OK 16.MOK
+ft_putnbr_fd	: 1.OK LEAKS.KO [0x600000610030 : 2] 2.OK LEAKS.KO [0x600000610050 : 3] 3.OK LEAKS.KO [0x600000610060 : 11] 4.OK LEAKS.KO [0x600000610070 : 12] 5.OK LEAKS.KO [0x600000610080 : 4]
+
