@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 13:31:01 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/27 14:53:34 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/29 17:45:56 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	}
 	ret = (unsigned char)s1[i] - (unsigned char)s2[i];
-	return (ret);
+	return ((int)ret);
 }

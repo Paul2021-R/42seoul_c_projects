@@ -6,12 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 12:27:08 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/23 17:06:35 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/29 16:32:15 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static char	*ft_write_str(char *str, char const *src1, char const *src2)
 {

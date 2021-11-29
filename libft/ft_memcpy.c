@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 20:00:36 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/12 22:56:45 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/29 14:08:19 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	*ft_memcpy(void *restrict dest, const void *restrict src, size_t n)
 	char	*tmp_src;
 
 	i = 0;
-	tmp_src = (char *)src;
-	if (!dest)
+	if (!dest && !src)
 		return (NULL);
+	tmp_src = (char *)src;
 	while (i < n)
 	{
 		*(char *)(dest + i) = *(tmp_src + i);

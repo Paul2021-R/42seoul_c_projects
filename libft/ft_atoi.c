@@ -6,12 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 23:12:29 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/13 00:14:10 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/29 17:37:41 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 int	ft_atoi(const char *str)
 {

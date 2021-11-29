@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 10:35:27 by wildwiser-r       #+#    #+#             */
-/*   Updated: 2021/11/28 23:22:14 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/29 16:06:19 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*ret;
+	char	*tmp;
 	size_t	i;
 
-	ret = NULL;
-	i = 0;
-	while (1)
+	tmp = (char *)s;
+	i = ft_strlen(tmp);
+	while (i > 0)
 	{
-		if (*(s + i) == (char)c)
-			ret = (char *)(s + i);
-		if (*(s + i) == '\0')
-			break ;
-		i++;
+		if (*(tmp + i) == c)
+			return (tmp + i);
+		i--;
 	}
-	return (ret);
+	if (*(tmp + i) == c)
+		return (tmp);
+	return (NULL);
 }

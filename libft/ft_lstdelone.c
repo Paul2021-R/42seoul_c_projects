@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:49:38 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/24 14:53:05 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/29 16:25:08 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	del(lst -> content);
+	del(lst->content);
 	free(lst);
 }
