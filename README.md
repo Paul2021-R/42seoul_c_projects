@@ -17,4 +17,4 @@ For that reason, It doesn't have any file which contains the intellectual proper
 * 2021-11-30 2nd try of Peer evaluation. ft_memcpy is not perfect with original one. Plus ft_memchr is not working well. 
 	- Solve ft_memcpy error. 
 	- Solve ft_memchr error. 
-	- Upgrade ft_atoi for limitation of LONG_MAX, LONG_min in original. 
+	- Upgrade ft_atoi for limitation of LONG_MAX, LONG_min like original one. 
