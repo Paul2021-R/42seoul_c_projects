@@ -1,4 +1,4 @@
-# Cadet-42_C
+#Cadet-42_C
 C project in Cadet course in 42 Seoul
 
 ## Outline
@@ -14,3 +14,7 @@ For that reason, It doesn't have any file which contains the intellectual proper
 		Result : 'cheating' -> Using internal funcs(calloc) except ft_calloc.
 * 2021-11-26 Discuss about team study method. Reschedule libft improvement ways. 
 * 2021-11-29 Check all funcs and improve evrey weak points. Prepare deffence.
+* 2021-11-30 2nd try of Peer evaluation. ft_memcpy is not perfect with original one. Plus ft_memchr is not working well. 
+	- Solve ft_memcpy error. 
+	- Solve ft_memchr error. 
+	- Upgrade ft_atoi for limitation of LONG_MAX, LONG_min in original. 
