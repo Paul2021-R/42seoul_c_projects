@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:31:05 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/29 11:36:28 by haryu            ###   ########.fr       */
+/*   Updated: 2021/11/30 19:25:42 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	unsigned char	*tmp_s;
 
 	tmp_s = (unsigned char *)s;
-	if (!*tmp_s)
-		return (NULL);
 	while (n--)
 	{
 		if (*(tmp_s) == (unsigned char)c)
