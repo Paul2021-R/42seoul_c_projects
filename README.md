@@ -18,3 +18,4 @@ For that reason, It doesn't have any file which contains the intellectual proper
 	- Solve ft_memcpy error. 
 	- Solve ft_memchr error. 
 	- Upgrade ft_atoi for limitation of LONG_MAX, LONG_min like original one. 
+* 2021-12-01 Fix Makefile to change commands actions (all, bonus) and change sentences wit a ifdef part.
