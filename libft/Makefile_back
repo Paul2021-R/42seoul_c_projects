@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 00:30:34 by haryu             #+#    #+#              #
-#    Updated: 2021/12/01 20:11:25 by haryu            ###   ########.fr        #
+#    Updated: 2021/12/01 19:48:27 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,12 +39,18 @@ CC				= gcc
 RM				= rm -f
 CFLAGS				= -Wall -Wextra -Werror
 
+ifdef BONUS_Part
+				OBJ_SWITCH = $(OBJS_BONUS)
+else
+				OBJ_SWITCH = $(OBJS)
+endif
+
 all:                            $(NAME)
 
 .c.o:
 				$(CC) $(CFLAGS) -c -o  $@ $<
 
-$(NAME):			$(OBJS)
+${NAME}:			$(OBJ_SWITCH)
 				ar rcus $@ $^
 
 clean:
@@ -55,7 +61,8 @@ fclean:				clean
 
 re:				fclean all
 
-bonus:				$(OBJS) $(OBJS_BONUS)
-				ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+bonus:
+				$(MAKE) BONUS_Part=1 $(NAME)
+
 
 .PHONY:				all clean fclean re bonus
