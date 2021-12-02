@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 22:50:41 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/27 15:05:48 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/02 17:38:51 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	ft_free_all(char **target, size_t height)
 	free (target);
 }
 
-int	ft_height_check(char const *s, char c)
+static int	ft_height_check(char const *s, char c)
 {
 	int	height;
 
@@ -56,7 +56,7 @@ int	ft_height_check(char const *s, char c)
 	return (height);
 }
 
-char	**ft_split_str(char **ret, char const *s, char c)
+static char	**ft_split_str(char **ret, char const *s, char c)
 {
 	size_t	start;
 	size_t	end;
