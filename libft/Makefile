@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 00:30:34 by haryu             #+#    #+#              #
-#    Updated: 2021/12/01 20:11:25 by haryu            ###   ########.fr        #
+#    Updated: 2021/12/02 12:21:29 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCNAME			= 	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c\
 				ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c\
 				ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c
 
-SRCNAME_BONUS		= 	ft_lstnew.c\
+SRCNAME_BONUS	= 	ft_lstnew.c\
 				ft_lstadd_front.c\
 				ft_lstsize.c\
 				ft_lstlast.c\
@@ -29,23 +29,25 @@ SRCNAME_BONUS		= 	ft_lstnew.c\
 				ft_lstiter.c\
 				ft_lstmap.c
 
-SRCS_DIR = ./
+SRCS_DIR 		= ./
 
-OBJS				= $(addprefix $(SRCS_DIR), $(SRCNAME:.c=.o))
-OBJS_BONUS			= $(addprefix $(SRCS_DIR), $(SRCNAME_BONUS:.c=.o))
+OBJS			= $(addprefix $(SRCS_DIR), $(SRCNAME:.c=.o))
+OBJS_BONUS		= $(addprefix $(SRCS_DIR), $(SRCNAME_BONUS:.c=.o))
 
-NAME				= libft.a
+NAME			= libft.a
 CC				= gcc
 RM				= rm -f
+AR				= ar
+ARFLAG			= rcs
 CFLAGS				= -Wall -Wextra -Werror
-
-all:                            $(NAME)
 
 .c.o:
 				$(CC) $(CFLAGS) -c -o  $@ $<
 
 $(NAME):			$(OBJS)
-				ar rcus $@ $^
+				$(AR) $(ARFLAG) $@ $^
+
+all:			$(NAME)
 
 clean:
 				$(RM) $(OBJS) $(OBJS_BONUS)
@@ -53,9 +55,9 @@ clean:
 fclean:				clean
 				$(RM) $(NAME)
 
-re:				fclean all
+re:					fclean all
 
 bonus:				$(OBJS) $(OBJS_BONUS)
-				ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+				$(AR) $(ARFLAG) $(NAME) $(OBJS) $(OBJS_BONUS)
 
 .PHONY:				all clean fclean re bonus
