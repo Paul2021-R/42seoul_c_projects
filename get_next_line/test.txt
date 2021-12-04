@@ -1,0 +1,3 @@
+hello everyone. Now I am testing this file for "get_next_line" programs. 
+this is for testing\
+How about this sentence? I need to make sure that it has alot of exception cases for preparing thie subject.			HaHaha is that okay? 
