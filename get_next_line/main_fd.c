@@ -21,6 +21,19 @@ int	main(int ac, char **av)
 	}
 	printf("%s\n", ret);
 	close(fd);
+	fd = open("test2.txt", O_RDWR, mode);
+	if (fd == -1)
+	{
+		perror("Fail\n");
+		exit(1);
+	}
+	for (int i = 0 ; i < atoi(av[1]) ; i++)
+	{
+		ret = get_next_line(fd);
+	}
+	printf("%s\n", ret);
+	close(fd);
+	
 	return (0);
 
 }
