@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:46:25 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/06 00:29:36 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/06 14:04:07 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,8 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5000
+#  define BUFFER_SIZE 43
 # endif
-
-typedef struct s_line
-{
-	char				*content;
-	unsigned int		end;
-	int					fd;
-	struct s_line	*next;
-}		t_line;
 
 char	*get_next_line(int fd);
 char	get_next_line_utils(int fd);
