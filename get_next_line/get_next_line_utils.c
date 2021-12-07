@@ -6,47 +6,12 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 22:15:57 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/04 22:18:35 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/07 17:36:10 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-char	*ft_strchr(const char *s, int c)
-{
-	char	*ret;
-
-	ret = (char *)s;
-	while (1)
-	{
-		if (*ret == c)
-			return (ret);
-		if (*ret == '\0')
-			return (NULL);
-		ret++;
-	}
-	return (NULL);
-}
-
-char	*ft_strndup(char const *s, size_t n)
-{
-	size_t	i;
-	size_t	limit;
-	char	*ret;
-
-	i = 0;
-	limit = n;
-	ret = (char *)malloc((n + 1) * sizeof(char));
-	if (!ret)
-		return (NULL);
-	while (i < limit)
-	{
-		*(ret + i) = *(s + i);
-		i++;
-	}
-	*(ret + i) = '\0';
-	return (ret);
-}
+#include <stdio.h>
 
 size_t	ft_strlen(const char *s)
 {
@@ -74,5 +39,51 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	if (dstsize != 0)
 		*(dst + i) = '\0';
+	return (ret);
+}
+
+char	*ft_write_str(char *str, char const *src1, char const *src2)
+{
+	size_t	i;
+	int	limit;
+	int	limit2;
+
+	i = 0;
+	if (!src1)
+		limit = 0;
+	else
+		limit = ft_strlen(src1);
+	while (i < limit)
+	{
+		*(str + i) = *(src1 + i);
+		i++;
+	}
+	while (i < limit + ft_strlen(src2) + 1)
+	{
+		str[i] = src2[i - limit];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+char	*ft_strjoin(char *s1, char const *s2)
+{
+	size_t	len1;
+	size_t	len2;
+	char	*ret;
+
+	if (!s1)
+		len1 = 0;
+	else
+		len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	ret = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	if (ret == NULL)
+	{
+		free(ret);
+		return (NULL);
+	}
+	ret = ft_write_str(ret, s1, s2);
 	return (ret);
 }
