@@ -6,14 +6,18 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 21:29:36 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/08 21:54:10 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/09 01:14:37 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-char	save_str(char *dst, char *src)
+char	*save_str(char *dst, char *src)
+{}
+
+char	*make_ret(char *str)
+{}
 
 char	*get_next_line(int fd)
 {
@@ -31,7 +35,11 @@ char	*get_next_line(int fd)
 			return (NULL);
 		buff[BUFFER_SIZE] = '\0';
 		backup = save_str(backup, buff);
+		if (get_next_newl(backup) != -1)
+			break ;
 	}
+	ret = make_ret(backup);
+
 }
 
 /*
