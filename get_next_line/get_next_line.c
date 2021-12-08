@@ -5,105 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 14:02:45 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/08 20:16:44 by haryu            ###   ########.fr       */
+/*   Created: 2021/12/08 21:29:36 by haryu             #+#    #+#             */
+/*   Updated: 2021/12/08 21:54:10 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-static char	*ft_strndup(char *str, size_t n)
-{
-	size_t	i;
-	size_t	limit;
-	char	*ret;
-
-	i = 0;
-	limit = n;
-	ret = (char *)malloc((n + 1) * sizeof(char));
-	if (!ret)
-	{
-		free(ret);
-		return (NULL);
-	}
-	while (i <= limit && str[i])
-	{
-		ret[i] = str[i];
-		i++;
-	}
-	ret[i] = '\0';
-	return (ret);
-}
-
-static char	*ft_write_str(char *str, char const *src1, char const *src2)
-{
-	size_t	i;
-	size_t	limit;
-
-	i = 0;
-	if (!src1)
-		limit = 0;
-	else
-		limit = ft_strlen(src1);
-	while (i < limit)
-	{
-		*(str + i) = *(src1 + i);
-		i++;
-	}
-	while (i < limit + ft_strlen(src2) + 1)
-	{
-		str[i] = src2[i - limit];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
-static char	*ft_strjoin(char *s1, char const *s2)
-{
-	size_t	len1;
-	size_t	len2;
-	char	*ret;
-
-	if (!s1)
-		len1 = 0;
-	else
-		len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	ret = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-	if (ret == NULL)
-	{
-		free(ret);
-		return (NULL);
-	}
-	ret = ft_write_str(ret, s1, s2);
-	free (s1);
-	return (ret);
-}
-
-char	*cut_str_newl(char *str)
-{
-	char	*temp;
-	int		size;
-
-	size = (int)ft_strlen(str) - get_next_newl(str);
-	temp = (char *)malloc(sizeof(char) * size);
-	temp = ft_strndup(str + get_next_newl(str) + 1, size);
-	if (!temp)
-		return (NULL);
-	free(str);
-	return (temp);
-}
+char	save_str(char *dst, char *src)
 
 char	*get_next_line(int fd)
 {
-	static char	*total;
-	char		buff[BUFFER_SIZE + 1];
+	static char	*backup;
+	char		*buff[BUFFER_SIZE + 1];
 	int			read_cnt;
 	char		*ret;
 
-	if ((fd < 0) || BUFFER_SIZE <= 0)
+	if (fd < 0 || !fd || BUFFER_SIZE <= 0)
 		return (NULL);
 	while (1)
 	{
@@ -111,17 +30,27 @@ char	*get_next_line(int fd)
 		if (read_cnt == -1)
 			return (NULL);
 		buff[BUFFER_SIZE] = '\0';
-		total = ft_strjoin(total, buff);
-		if (read_cnt < BUFFER_SIZE)
-			break ;
-		if (get_next_newl(total) != -1)
-			break ;
+		backup = save_str(backup, buff);
 	}
-	ret = ft_strndup(total, get_next_newl(total));
-	if (!ret || ret[0] == '\0')
-		return (NULL);
-	total = cut_str_newl(total);
-	if (!total)
-		return (NULL);
-	return (ret);
 }
+
+/*
+1. call gnl
+2. check error 
+3. start read(1) -> check \n
+3.1 \n O -> return from start point to \n point. 
+	//using malloc 1) ret -> dont need free
+3.1.1 backup remain part 
+	//using malloc 1) backup -> need to free earlier backup
+3.2 \n X -> backup buffer array and re read. 
+3.2.1 buffer data move to backup 
+	//using mlalloc 1) backup -> need to free earlier backup
+3.2.1 find more to find \n in lines
+	goto 3.1 or 3.2 
+
+for this... 
+need function 
+	(1) backup func (backup, buffer)
+	(2) ret func (backup)
+		it can be unified with cut array func to optimize backup array.
+*/
