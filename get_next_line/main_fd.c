@@ -21,8 +21,10 @@ int	main(int ac, char **av)
 	for (i = 0 ; i < atoi(av[1]) ; i++)
 	{
 		ret = get_next_line(fd);
+		
 	}
-	printf("%s\n", ret);
+	printf("%s", ret);
+	system("leaks a.out");
 	close(fd);
 	/*fd = open("test2.txt", O_RDWR, mode);
 	if (fd == -1)

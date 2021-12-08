@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:46:25 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/07 20:09:13 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/08 20:16:48 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,10 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# ifndef OPEN_MAX
-#  define OPEN_MAX 256
-# endif
-
 char	*get_next_line(int fd);
 char	get_next_line_utils(int fd);
-char	*ft_strjoin(char *s1, char const *s2);
 size_t	ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize);
+int		get_next_newl(char *str);
+char	*str_initialize(char *str);
 
 #endif	

@@ -6,23 +6,12 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:02:45 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/07 22:00:21 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/08 20:16:44 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
-
-static int	get_next_newl(char *findstr)
-{
-	int	i;
-
-	i = -1;
-	while (++i < ft_strlen(findstr))
-		if (findstr[i] == 10)
-			return (i);
-	return (0);
-}
 
 static char	*ft_strndup(char *str, size_t n)
 {
@@ -34,10 +23,11 @@ static char	*ft_strndup(char *str, size_t n)
 	limit = n;
 	ret = (char *)malloc((n + 1) * sizeof(char));
 	if (!ret)
-	{	free(ret);
+	{
+		free(ret);
 		return (NULL);
 	}
-	while (i < limit && str[i])
+	while (i <= limit && str[i])
 	{
 		ret[i] = str[i];
 		i++;
@@ -46,43 +36,92 @@ static char	*ft_strndup(char *str, size_t n)
 	return (ret);
 }
 
-static char *free_with_join2(char *back, char *buffer)
+static char	*ft_write_str(char *str, char const *src1, char const *src2)
+{
+	size_t	i;
+	size_t	limit;
+
+	i = 0;
+	if (!src1)
+		limit = 0;
+	else
+		limit = ft_strlen(src1);
+	while (i < limit)
+	{
+		*(str + i) = *(src1 + i);
+		i++;
+	}
+	while (i < limit + ft_strlen(src2) + 1)
+	{
+		str[i] = src2[i - limit];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+static char	*ft_strjoin(char *s1, char const *s2)
+{
+	size_t	len1;
+	size_t	len2;
+	char	*ret;
+
+	if (!s1)
+		len1 = 0;
+	else
+		len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	ret = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	if (ret == NULL)
+	{
+		free(ret);
+		return (NULL);
+	}
+	ret = ft_write_str(ret, s1, s2);
+	free (s1);
+	return (ret);
+}
+
+char	*cut_str_newl(char *str)
 {
 	char	*temp;
 	int		size;
 
-	size = ft_strlen(buffer + get_next_newl(buffer));
-	printf("<size>\n[%d]\n", size);
-	printf("\n[%s]\n", buffer + get_next_newl(buffer) + 1);
-	temp = ft_strndup(buffer + get_next_newl(buffer) + 1, BUFFER_SIZE);
-	printf("<back>\n[%s]\n", back);
-	printf("<buffer>\n[%s]\n", buffer);
-	printf("<temp>\n[%s]\n\n\n", temp);
-	free(back);
+	size = (int)ft_strlen(str) - get_next_newl(str);
+	temp = (char *)malloc(sizeof(char) * size);
+	temp = ft_strndup(str + get_next_newl(str) + 1, size);
+	if (!temp)
+		return (NULL);
+	free(str);
 	return (temp);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*back[OPEN_MAX];
+	static char	*total;
 	char		buff[BUFFER_SIZE + 1];
-	int		end_addr;
+	int			read_cnt;
 	char		*ret;
 
 	if ((fd < 0) || BUFFER_SIZE <= 0)
 		return (NULL);
-	end_addr = 1;
-	while (end_addr != 0)
+	while (1)
 	{
-		end_addr = read(fd, buff, BUFFER_SIZE);
+		read_cnt = read(fd, buff, BUFFER_SIZE);
+		if (read_cnt == -1)
+			return (NULL);
 		buff[BUFFER_SIZE] = '\0';
-		back[fd] = ft_strjoin(back[fd], buff);
-		if (end_addr == 0)
+		total = ft_strjoin(total, buff);
+		if (read_cnt < BUFFER_SIZE)
 			break ;
-		if (get_next_newl(back[fd]))
+		if (get_next_newl(total) != -1)
 			break ;
 	}
-	ret = ft_strndup(back[fd], get_next_newl(back[fd]));
-	back[fd] = free_with_join2(back[fd], buff);
+	ret = ft_strndup(total, get_next_newl(total));
+	if (!ret || ret[0] == '\0')
+		return (NULL);
+	total = cut_str_newl(total);
+	if (!total)
+		return (NULL);
 	return (ret);
 }
