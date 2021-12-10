@@ -6,47 +6,64 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 22:15:57 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/08 17:21:38 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/09 18:41:58 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+void	*ft_memmove(void *dst, void *src, size_t len)
 {
+	unsigned char	*tmp_dst;
+	unsigned char	*tmp_src;
+
+	tmp_dst = (unsigned char *)dst;
+	tmp_src = (unsigned char *)src;
+	if (!dst && !src)
+		return (NULL);
+	if (dst < src)
+		while (len-- > 0)
+			*tmp_dst++ = *tmp_src++;
+	else
+		while (len--)
+			*(tmp_dst + len) = *(tmp_src + len);
+	return (dst);
+}
+
+void	str_free(char *str)
+{
+	free(str);
+	str = NULL;
+}
+
+char	*ft_calloc(size_t size)
+{
+	char	*ret;
 	size_t	i;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-int	get_next_newl(char *str)
-{
-	int	i;
-	int	size;
-
-	i = 0;
-	size = (int)ft_strlen(str);
-	while (i < size)
+	ret = (char *)malloc(size + 1);
+	if (!ret)
 	{
-		if (str[i] == 10)
-			return (i);
+		str_free(ret);
+		return (NULL);
+	}
+	i = 0;
+	while (i < size + 1)
+	{
+		ret[i] = 0;
 		i++;
 	}
-	return (-1);
+	ret[i] = '\0';
+	return (ret);
 }
 
-char	*str_initialize(char *str)
+int	find_newl(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (i < BUFFER_SIZE + 1)
+	while (str[i])
 	{
-		str[i] = 0;
-		i++;
+		
 	}
-	return (str);
 }

@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 		
 	}
 	printf("%s", ret);
-	system("leaks a.out");
+	//system("leaks a.out");
 	close(fd);
 	/*fd = open("test2.txt", O_RDWR, mode);
 	if (fd == -1)
