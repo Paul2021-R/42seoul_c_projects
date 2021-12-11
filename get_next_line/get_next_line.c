@@ -5,44 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 14:02:45 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/09 15:16:13 by haryu            ###   ########.fr       */
+/*   Created: 2021/12/10 15:23:13 by haryu             #+#    #+#             */
+/*   Updated: 2021/12/10 17:52:57 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-static char	*ft_strndup(char *str, size_t n)
-{
-	char	*ret;
-
-	n = (int)n;
-	if (n == -1)
-		n = (int)ft_strlen(str);
-	ret = (char *)ft_calloc(n * sizeof(char));
-	if (!ret)
-	{
-		str_free(ret);
-		return (NULL);
-	}
-	ft_memmove(ret, str, n + 1);
-	str_free(str);
-	return (ret);
-}
-
-
-static char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strnjoin(char *s1, char *s2, size_t byte)
 {
 	size_t	len1;
 	size_t	len2;
@@ -56,49 +26,69 @@ static char	*ft_strjoin(char *s1, char *s2)
 		len2 = 0;
 	else
 		len2 = ft_strlen(s2);
-	ret = (char *)ft_calloc(len1 + len2);
+	ret = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
 	if (ret == NULL)
 	{
 		free(ret);
 		return (NULL);
 	}
-	ft_memmove(ret, s1, len1);
-	if (s1)
-		str_free(s1);
-	ft_memmove(ret + len1, s2, len2);
+	ft_memmove(ret, s1, byte);
+	if (byte > len1)
+		ft_memmove(ret + len1, s2, (byte - len1));
 	return (ret);
+}
+
+void	free_all(t_str *lst, int type)
+{}
+
+static t_str	ft_init_node(t_str **lst, int fd, t_str *list)
+{
+	if (!list)
+	{
+		list = malloc(sizeof(t_str));
+		if (list)
+			free(list);
+		list->next = NULL;
+		list->i_fd  = fd;
+	}
+	while (list)
+	{
+		if (list->i_fd == fd)
+			break ;
+		if (list->next == NULL)
+		{
+			list= malloc(sizeof(t_str));
+			if (!list)
+				free(list);
+			list = list->next;
+		}
+	}
+	return (list);
+}
+
+static char	*read_n_find(int fd, t_str *node)//읽기  + newl 찾기 +
+{
+	char *ret;
 }
 
 char	*get_next_line(int fd)
 {
-	static t_str	*backup;
-	char		buff[BUFFER_SIZE + 1];
-	int			read_cnt;
+	static t_str	**head;
+	t_str		*node;
 	char		*ret;
 
-	if ((fd < 0) || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	backup = (t_str *)malloc(sizeof(t_str) * 1);
-	if (!backup)
+	if (!head)
 	{
-		free(backup);
-		return (NULL);
-	}
-	if (!backup->read_cnt)
-		backup->read_cnt = BUFFER_SIZE;
-	while (1)
-	{
-		backup->read_cnt = read(fd, buff, BUFFER_SIZE);
-		if (backup->read_cnt == -1)
+		head = malloc(sizeof(t_str*));
+		if (!head)
 		{
-			free(backup);
-			backup = NULL;
+			free(head);
 			return (NULL);
 		}
-		buff[BUFFER_SIZE] = '\0';
-		backup->total = ft_strjoin(backup->total, buff);
-
-		
 	}
+	node = ft_init_node (head, fd, node);
+	
 	return (ret);
 }

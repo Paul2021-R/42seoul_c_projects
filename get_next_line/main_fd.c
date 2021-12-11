@@ -20,6 +20,7 @@ int	main(int ac, char **av)
 	}
 	for (i = 0 ; i < atoi(av[1]) ; i++)
 	{
+		printf("1");
 		ret = get_next_line(fd);
 		
 	}

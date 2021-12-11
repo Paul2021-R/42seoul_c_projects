@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:46:25 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/09 15:14:09 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/10 17:46:38 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,16 @@
 
 typedef struct s_str
 {
-	char	*total;
-	int	read_cnt;
+	char		*backup;
+	int		i_fd;
+	struct s_str	*next;
+
 }			t_str;
 
 char	*get_next_line(int fd);
 char	get_next_line_utils(int fd);
 size_t	ft_strlen(const char *s);
 void	*ft_memmove(void *dst, void *src, size_t len);
-void	str_free(char *str);
-char	*ft_calloc(size_t size);
+
 
 #endif	
