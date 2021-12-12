@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 15:23:40 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/10 16:33:08 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/12 19:08:11 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,40 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 		i++;
 	return (i);
 }
 
-//문장 전체를 지울 땐 head 부터싹 free
-//fd 단일만 정리 되었을 시 하나만 free
-//내부 일부만 프리가 필요할 때
+t_str	*find_node(t_str *head, t_str *list, int fd)
+{
+	if (list->i_fd == 0)
+	{
+		list = ft_new_list(head, fd);
+		if (!list)
+		{
+			free(list);
+			return (NULL);
+		}
+		head->next = list;
+	}
+	while (list)
+	{
+		if (list->i_fd == fd)
+			break ;
+		else
+			list = list->next;
+		if (list->next == NULL)
+		{
+			list->next=ft_new_list(head, fd);
+			if(!list->next)
+			{
+				free_all(head, fd);
+				return (NULL);
+			}	
+		}
+	}
+	return (list);
+}
