@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 18:50:00 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/13 20:03:54 by haryu            ###   ########.fr       */
+/*   Created: 2021/12/10 15:23:40 by haryu             #+#    #+#             */
+/*   Updated: 2021/12/13 16:38:37 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,40 +48,33 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-static char	*ft_write_str(char *str, char *src1, char const *src2, size_t byte)
+t_str	*find_node(t_str *head, t_str *list, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < ft_strlen(src1) && i < byte)
+	if (list->i_fd == 0)
 	{
-		if (!*src1)
-			break ;
-		*(str + i) = *(src1 + i);
-		i++;
+		list = ft_new_list(head, fd, 1);
+		if (!list)
+		{
+			free(list);
+			return (NULL);
+		}
+		head->next = list;
 	}
-	while (i < ft_strlen(src1) + ft_strlen(src2) && i < byte)
+	while (list)
 	{
-		if (!*src2)
+		if (list->i_fd == fd)
 			break ;
-		*(str + i) = *(src2 + (i - ft_strlen(src1)));
-		i++;
+		else
+			list = list->next;
+		if (list->next == NULL)
+	{
+			list->next=ft_new_list(head, fd, 1);
+			if(!list->next)
+			{
+				free_all(head, fd);
+				return (NULL);
+			}	
+		}
 	}
-	*(str + i) = '\0';
-	return (str);
-}
-
-char	*ft_strnjoin(char *s1, char const *s2, size_t byte)
-{
-	size_t	len1;
-	size_t	len2;
-	char	*ret;
-
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	ret = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-	if (ret == NULL)
-		return (NULL);
-	ret = ft_write_str(ret, s1, s2, byte);
-	return (ret);
+	return (list);
 }
