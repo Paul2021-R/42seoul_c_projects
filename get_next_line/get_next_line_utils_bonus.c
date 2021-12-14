@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 09:40:20 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/14 13:13:17 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/14 13:27:16 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	if (!s)
-		return(0);
+		return (0);
 	i = 0;
 	while (*s++)
 		i++;

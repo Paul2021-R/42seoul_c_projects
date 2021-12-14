@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:10:18 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/14 13:02:13 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/14 13:23:35 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	*read_buff(int fd, char *s)
 	return (s);
 }
 
-static char *make_ret(char *s)
+static char	*make_ret(char *s)
 {
 	char	*ret;
 	size_t	ret_len;
@@ -73,7 +73,7 @@ static char	*get_new_backup(char *s)
 	size_t	len;
 
 	i = 0;
-	while (s[i] && s[i] !='\n')
+	while (s[i] && s[i] != '\n')
 		i++;
 	if (!s[i])
 	{
@@ -97,7 +97,7 @@ char	*get_next_line(int fd)
 {
 	static char	*backup[OPEN_MAX];
 	char		*ret;
-	
+
 	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
 	backup[fd] = read_buff(fd, backup[fd]);
