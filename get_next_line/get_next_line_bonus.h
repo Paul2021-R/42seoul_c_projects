@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:46:25 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/14 15:51:40 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/14 18:22:01 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# ifndef OPEN_MAX
-#  define OPEN_MAX 1024
+# ifndef ARRAY_MAX
+#  define ARRAY_MAX 12800
 # endif
 
 char	*get_next_line(int fd);
