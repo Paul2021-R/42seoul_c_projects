@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:10:18 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/14 13:26:29 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/14 16:01:24 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,10 @@ static char	*get_new_backup(char *s)
 
 char	*get_next_line(int fd)
 {
-	static char	*backup[OPEN_MAX];
+	static char	*backup[OPEN_MAX + 1];
 	char		*ret;
 
-	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
 	backup[fd] = read_buff(fd, backup[fd]);
 	if (!backup[fd])

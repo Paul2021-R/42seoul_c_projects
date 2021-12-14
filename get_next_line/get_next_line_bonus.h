@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:46:25 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/14 13:45:14 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/14 15:51:40 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <limits.h>
 
 # ifdef _WIN32
