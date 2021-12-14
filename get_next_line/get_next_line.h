@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:46:25 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/14 11:58:28 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/14 13:44:53 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include <limits.h>
 
 # ifdef _WIN32
 
