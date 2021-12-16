@@ -20,3 +20,5 @@ For that reason, It doesn't have any file which contains the intellectual proper
 	- Upgrade ft_atoi for limitation of LONG_MAX, LONG_min like original one. 
 * 2021-12-01 Fix Makefile to change commands actions (all, bonus) and change sentences wit a ifdef part.
 * 2021-12-02 Make direcory of get_next_line and prepare program logic to build it. 
+* 2021-12-15 finally finish get_next_line with OPEN_MAX.
+* 2021-12-16 Translation subjects' instruction(born2beroot, printf). Make README.md.
