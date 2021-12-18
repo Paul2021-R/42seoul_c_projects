@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 15:06:40 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/28 23:36:42 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/18 23:58:23 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*ret;
 	size_t	slen;
 
+	if (!s1)
+		return (NULL);
 	while (*s1)
 	{
 		if (!(ft_strchr(set, *s1)))

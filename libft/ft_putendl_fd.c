@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 22:01:37 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/23 23:45:52 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/18 23:50:49 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putendl_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
+	if (!s || fd < 0)
+		return ;
 	while (*(s + i) != '\0')
 	{
 		write(fd, (s + i), 1);

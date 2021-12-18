@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 11:49:14 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/01 08:24:44 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/18 23:55:41 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
 
+	if (!s)
+		return (NULL);
 	if ((unsigned int)ft_strlen(s) < (unsigned int)start)
 		sub = ft_strndup((char *)(s), 0);
 	else

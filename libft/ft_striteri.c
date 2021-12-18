@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 20:53:39 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/29 17:03:22 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/18 23:43:51 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	int	i;
 
 	i = 0;
+	if (!s || !f)
+		return ;
 	while (*s)
 	{
 		f(i, s);

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 21:55:09 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/24 11:56:43 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/18 23:47:17 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (!*s || !fd)
+	if (!s || !fd)
 		return ;
 	while (*s)
 		write(fd, s++, 1);

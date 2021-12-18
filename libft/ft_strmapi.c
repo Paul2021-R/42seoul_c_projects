@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 18:18:15 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/22 19:14:30 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/18 23:51:37 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 	char			*ret;
 
+	if (!s || !f)
+		return (NULL);
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (ret == NULL)
 		return (NULL);
