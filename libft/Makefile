@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 00:30:34 by haryu             #+#    #+#              #
-#    Updated: 2021/12/02 12:21:29 by haryu            ###   ########.fr        #
+#    Updated: 2021/12/18 20:21:53 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,4 +60,8 @@ re:					fclean all
 bonus:				$(OBJS) $(OBJS_BONUS)
 				$(AR) $(ARFLAG) $(NAME) $(OBJS) $(OBJS_BONUS)
 
-.PHONY:				all clean fclean re bonus
+so:	
+				$(CC) -nostartfiles -fPIC $(CFLAGS) $(OBJS)
+				gcc -nostartfiles -shared -o libft.so $(NAME)
+
+.PHONY:				all clean fclean re bonus so
