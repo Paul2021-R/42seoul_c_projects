@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu </var/mail/root>                     +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/23 21:43:05 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/23 21:49:32 by haryu            ###   ########.fr       */
+/*   Created: 2021/12/02 01:46:25 by haryu             #+#    #+#             */
+/*   Updated: 2021/12/14 18:22:01 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
+# include <limits.h>
 
 # ifdef _WIN32
 
@@ -29,12 +30,9 @@
 #  define BUFFER_SIZE 42
 # endif
 
-typedef struct s_list
-{
-	char		*backup;
-	int		i_fd;
-	struct s_list	*next;
-}		t_list;
+# ifndef ARRAY_MAX
+#  define ARRAY_MAX 12800
+# endif
 
 char	*get_next_line(int fd);
 char	get_next_line_utils(int fd);
@@ -42,4 +40,4 @@ size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 
-#endif
+#endif	

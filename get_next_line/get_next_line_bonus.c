@@ -3,107 +3,91 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu </var/mail/root>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 10:10:18 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/14 18:22:28 by haryu            ###   ########.fr       */
+/*   Created: 2021/12/23 21:44:27 by haryu             #+#    #+#             */
+/*   Updated: 2021/12/23 23:39:00 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
-static char	*read_buff(int fd, char *s)
+static void	free_list(t_list *head, t_list *node, int fd)
+{}
+
+static	t_list	list_initialing(t_list *head, t_list *node, int fd, int *erro)
 {
-	char	*buff;
-	int		read_cnt;
-
-	buff = (char *)malloc(BUFFER_SIZE + 1);
-	if (!buff)
-		return (NULL);
-	read_cnt = 1;
-	while (!ft_strchr(s, '\n') && read_cnt)
+	if (!head->next)
 	{
-		read_cnt = read(fd, buff, BUFFER_SIZE);
-		if (read_cnt == -1)
+		node = (t_list)malloc(sizeof(t_list));
+		if (!node)
 		{
-			free(buff);
+			*erro = = -1;
 			return (NULL);
 		}
-		buff[read_cnt] = '\0';
-		s = ft_strjoin(s, buff);
+		node->i_fd = fd;
+		node->next = 0;
+		return (node);
 	}
-	free(buff);
-	return (s);
-}
-
-static char	*make_ret(char *s)
-{
-	char	*ret;
-	size_t	ret_len;
-	size_t	i;
-
-	if (!s[0])
-		return (NULL);
-	i = 0;
-	while (s[i] && s[i] != '\n')
-		i++;
-	ret_len = i + 1;
-	if (s[i] == '\n')
-		ret_len++;
-	ret = (char *)malloc(sizeof(char) * (ret_len));
-	if (!ret)
-		return (NULL);
-	i = 0;
-	while (s[i] && s[i] != '\n')
+	node = head->next;
+	while (node)
 	{
-		ret[i] = s[i];
-		i++;
+		if (node->i_fd == fd)
+			return (node);
+		node = node->next;
+		if (!node)
+		{
+			node = (t_list)malloc(sizeof(t_list));
+			if (!node)
+			{
+				*erro = -1;
+				return (NULL);
+			}
+			node->next = 0;
+			node->i_fd = fd;
+		}
 	}
-	if (s[i] == '\n')
-		ret[i++] = '\n';
-	ret[i] = '\0';
-	return (ret);
 }
 
-static char	*get_new_backup(char *s)
-{
-	char	*ret;
-	size_t	i;
-	size_t	j;
-	size_t	len;
+static char	*read_find(t_list *head, t_list *node)
+{}
 
-	i = 0;
-	while (s[i] && s[i] != '\n')
-		i++;
-	if (!s[i])
-	{
-		free(s);
-		return (NULL);
-	}
-	len = ft_strlen(s + i + 1);
-	ret = (char *)malloc(sizeof(char) * (len + 1));
-	if (!ret)
-		return (NULL);
-	i += 1;
-	j = 0;
-	while (s[i])
-		ret[j++] = s[i++];
-	ret[j] = '\0';
-	free(s);
-	return (ret);
-}
+static char	*return_renew(t_list *head, t_list *node)
+{}
 
 char	*get_next_line(int fd)
 {
-	static char	*backup[ARRAY_MAX + 1];
+	static t_list	*head;
+	t_list		*node;
+	int		errno;
 	char		*ret;
 
-	if (fd < 0 || fd > ARRAY_MAX || BUFFER_SIZE <= 0)
-		return (NULL);
-	backup[fd] = read_buff(fd, backup[fd]);
-	if (!backup[fd])
-		return (NULL);
-	ret = make_ret(backup[fd]);
-	backup[fd] = get_new_backup(backup[fd]);
+	if (!head)
+	{
+		head = (t_list)malloc(sizeof(t_list));
+		if (!head)
+			return (NULL);
+		head->next = 0;
+	}
+	node = list_initialing(head, node, fd, &errno);
+	if (node)
+	{
+		node->backup = read_find(head, node);
+		if (!node->backup)
+		{
+		}
+		ret = return_renew(head, node);
+		if (!ret)
+		{}
+	}
+	else
+	{
+		free_list(head, node, errno);
+		ret = NULL
+	}
 	return (ret);
 }
+
+/*
+ * fd == -1 
+ * */
