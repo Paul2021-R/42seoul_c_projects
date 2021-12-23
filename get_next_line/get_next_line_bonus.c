@@ -70,8 +70,13 @@ static char	*read_find(t_list *head, t_list *node, int fd)
 			return (NULL);
 		}
 		buffer[read_cnt] = '\0';
-		
+		node->backup = ft_strjoin(node->backup, buffer);
+		read_cnt = find_newl(node->backup, read_cnt);
+		if (read_cnt == 0)
+			break ;
 	}
+	free (buffer);
+	return (node->backup);
 }
 
 static char	*return_renew(t_list *head, t_list *node)
