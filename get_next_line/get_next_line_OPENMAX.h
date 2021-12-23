@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   get_next_line_OPENMAX.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:46:25 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/14 18:22:01 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/24 00:21:08 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# ifndef ARRAY_MAX
+# if OPEN_MAX > 12800
+#  define ARRAY_MAX OPEN_MAX
+# endif
+
+# if OPEN_MAX <= 12800
 #  define ARRAY_MAX 12800
 # endif
 
