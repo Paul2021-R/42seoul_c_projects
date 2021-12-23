@@ -6,7 +6,7 @@
 /*   By: haryu </var/mail/root>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 21:44:27 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/23 23:39:00 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/24 01:54:53 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,30 @@ static	t_list	list_initialing(t_list *head, t_list *node, int fd, int *erro)
 	}
 }
 
-static char	*read_find(t_list *head, t_list *node)
-{}
+static char	*read_find(t_list *head, t_list *node, int fd)
+{
+	char	*buffer;
+	int	read_cnt;
+
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+	{
+		//free 해야 할 까? 
+		return (NULL);
+	}
+	read_cnt = 1;
+	while (read_cnt)
+	{
+		read_cnt = read(fd, buffer, BUFFER_SIZE);
+		if (read_cnt = -1)
+		{
+			free(buffer);
+			return (NULL);
+		}
+		buffer[read_cnt] = '\0';
+		
+	}
+}
 
 static char	*return_renew(t_list *head, t_list *node)
 {}
@@ -72,7 +94,7 @@ char	*get_next_line(int fd)
 	node = list_initialing(head, node, fd, &errno);
 	if (node)
 	{
-		node->backup = read_find(head, node);
+		node->backup = read_find(head, node, fd);
 		if (!node->backup)
 		{
 		}
