@@ -6,12 +6,12 @@
 /*   By: haryu </var/mail/root>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 21:43:05 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/23 21:49:32 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/27 16:33:30 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 
@@ -40,6 +40,6 @@ char	*get_next_line(int fd);
 char	get_next_line_utils(int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
+void	free_all(t_list **head, t_list **node, int fd);
 
 #endif
