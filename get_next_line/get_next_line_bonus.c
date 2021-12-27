@@ -6,7 +6,7 @@
 /*   By: haryu </var/mail/root>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 21:44:27 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/27 16:32:25 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/27 22:32:32 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static t_list	*list_initialing(t_list *head, t_list *node, int fd, int *erro)
 		if (!node)
 		{
 			node = (t_list *)malloc(sizeof(t_list));
+			if (!node)
+				free_all_check(&head, &node, fd);
 			node->next = 0;
 			node->i_fd = fd;
 		}

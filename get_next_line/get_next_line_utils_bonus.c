@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:19:53 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/27 16:33:01 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/27 20:07:17 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,23 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	if (!s2)
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
+	len1 = 0;
+	while (s1[len1])
+		len1++;
+	len2 = 0;
+	while (s2[len2])
+		len++;
 	ret = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
 	if (ret == NULL)
 		return (NULL);
 	ret = ft_write_str(ret, s1, s2);
 	free(s1);
 	return (ret);
+}
+
+static void	free_all_check(t_list **head, t_list **node, int fd)
+{
+
 }
 
 void	free_all(t_list **head, t_list **node, int fd)
@@ -95,7 +104,9 @@ void	free_all(t_list **head, t_list **node, int fd)
 		else
 		{
 			free(*node);
+			(*node) = NULL;
 			tmp1->next = tmp2;
+			break ;
 		}
 	}
 	return ;
