@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:19:53 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/27 22:54:55 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/28 23:51:58 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,30 +82,28 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (ret);
 }
 
-void	free_all(t_list **head, t_list **node, int fd)
+void	free_all(t_list **node, int fd)
 {
 	t_list	*tmp1;
 	t_list	*tmp2;
 
 	(void)fd;
-	tmp1 = (*head);
+	tmp1 = (*node);
 	tmp2 = (*node)->next;
-	if (!tmp2)
+	if ((*node)->i_fd == fd)
 	{
+		tmp1 = tmp1->next;
 		free (*node);
-		*node = NULL;
+		*node = tmp1;
+		return ;
 	}
-	while (tmp1)
+	while (tmp1->next && tmp1->next->i_fd != fd)
+		tmp1 = tmp1->next;
+	tmp2 = tmp1->next;
+	if (tmp2->i_fd == fd)
 	{
-		if (tmp1->next != (*node))
-			tmp1 = tmp1->next;
-		else
-		{
-			free(*node);
-			(*node) = NULL;
-			tmp1->next = tmp2;
-			break ;
-		}
+		tmp1->next = tmp2->next;
+		free(tmp2);
+		return;
 	}
-	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: haryu </var/mail/root>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 21:44:27 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/28 13:23:56 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/29 00:07:06 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 static t_list	*list_initialing(t_list *head, t_list *node, int fd)
 {
+	t_list	*tmp;
+
 	if (!head->next)
 	{
 		node = (t_list *)malloc(sizeof(t_list));
+		node->backup = 0;
 		node->i_fd = fd;
 		node->next = 0;
 		head->next = node;
@@ -27,15 +30,18 @@ static t_list	*list_initialing(t_list *head, t_list *node, int fd)
 	{
 		if (node->i_fd == fd)
 			return (node);
+		tmp = node;
 		node = node->next;
-		if (!node)
+		if (node->next == 0)
 		{
 			node = (t_list *)malloc(sizeof(t_list));
 			if (!node)
 				return (NULL);
+			tmp->next = node;
 			node->backup = 0;
 			node->next = 0;
 			node->i_fd = fd;
+			head->next = node;
 		}
 	}
 	return (NULL);
@@ -71,10 +77,10 @@ static char	*return_renew(char *str)
 	int		i;
 	int		new_line_len;
 
-	if (!str)
+	if (!str[0])
 		return (NULL);
 	i = 0;
-	while (str && str[i] != '\n')
+	while (str[i] && str[i] != '\n')
 		i++;
 	new_line_len = i + 1;
 	if (str[i] == '\n')
@@ -83,7 +89,7 @@ static char	*return_renew(char *str)
 	if (!ret)
 		return (NULL);
 	i = 0;
-	while (str && str[i] != '\n')
+	while (str[i] && str[i] != '\n')
 	{
 		ret[i] = str[i];
 		i++;
@@ -94,29 +100,32 @@ static char	*return_renew(char *str)
 	return (ret);
 }
 
-static char	*new_back(char *str, int total)
+static char	*new_back(char *str)
 {
 	char	*ret;
 	int		i;
+	int		j;
 	int		new_line;
 
-	if (!str)
-		return (NULL);
 	i = 0;
-	while (str && str[i] != '\n')
+	while (str[i] && str[i] != '\n')
 		i++;
-	if (str[i] == '\n')
-		i++;
-	new_line = i + 1;
-	ret = (char *)malloc(sizeof(char *) * (new_line));
+	if (!str[i])
+	{
+		free(str);
+		return (NULL);
+	}
+	new_line = 0;
+	while ((str + i + 1)[new_line])
+		new_line++;
+	ret = (char *)malloc(sizeof(char *) * (new_line + 1));
 	if (!ret)
 		return (NULL);
-	i = 0;
-	while (str && new_line + i < total)
-	{
-		ret[i] = str[new_line - 1 + i];
-		i++;
-	}
+	i += 1;
+	j = 0;
+	while (str[i])
+		ret[j++] = str[i++];
+	ret[j] = '\0';
 	free(str);
 	return (ret);
 }
@@ -125,7 +134,6 @@ char	*get_next_line(int fd)
 {
 	static t_list	*head;
 	t_list			*node;
-	int				size;
 	char			*ret;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -142,11 +150,8 @@ char	*get_next_line(int fd)
 	node = list_initialing(head, node, fd);
 	node->backup = read_find(node->backup, fd);
 	ret = return_renew(node->backup);
-	size = 0;
-	while (node->backup[size])
-		size++;
-	node->backup = new_back(node->backup, size);
+	node->backup = new_back(node->backup);
 	if (!node->backup)
-		free_all(&head, &node, fd);
+		free_all(&node, fd);
 	return (ret);
 }
