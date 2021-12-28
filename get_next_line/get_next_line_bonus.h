@@ -6,7 +6,7 @@
 /*   By: haryu </var/mail/root>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 21:43:05 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/27 16:33:30 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/27 22:49:53 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_list
 
 char	*get_next_line(int fd);
 char	get_next_line_utils(int fd);
-size_t	ft_strlen(const char *s);
+char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strchr(const char *s, int c);
 void	free_all(t_list **head, t_list **node, int fd);
 

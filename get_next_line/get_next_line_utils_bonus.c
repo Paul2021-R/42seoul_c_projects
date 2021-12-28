@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:19:53 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/27 20:07:17 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/27 22:54:55 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ static char	*ft_write_str(char *str, char *src1, char *src2)
 	size_t	a;
 
 	i = 0;
-	a = ft_strlen(src1);
+	a = 0;
+	while (src1[a])
+		a++;
 	if (src1)
 	{
 		while (src1[i])
@@ -71,7 +73,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		len1++;
 	len2 = 0;
 	while (s2[len2])
-		len++;
+		len2++;
 	ret = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
 	if (ret == NULL)
 		return (NULL);
@@ -80,16 +82,12 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (ret);
 }
 
-static void	free_all_check(t_list **head, t_list **node, int fd)
-{
-
-}
-
 void	free_all(t_list **head, t_list **node, int fd)
 {
 	t_list	*tmp1;
 	t_list	*tmp2;
 
+	(void)fd;
 	tmp1 = (*head);
 	tmp2 = (*node)->next;
 	if (!tmp2)
