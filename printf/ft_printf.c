@@ -6,16 +6,18 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 22:23:25 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/30 22:40:43 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/31 16:59:48 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 int ft_printf(const char *str, ...)
 {
 	int	i;
-
+	va_list ap;
+	va_start(ap, str);
+	
 	i = 0;
 	while (str[i])
 	{
@@ -41,5 +43,6 @@ int ft_printf(const char *str, ...)
 			write(1, &str[i], 1);
 		i++;
 	}
+	va_end(ap);
 	return (10);
 }

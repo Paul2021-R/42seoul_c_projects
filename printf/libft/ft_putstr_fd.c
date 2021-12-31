@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 22:28:27 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/30 22:35:34 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/21 21:55:09 by haryu             #+#    #+#             */
+/*   Updated: 2021/12/18 23:47:17 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include <stdlib.h>
-
-#ifdef  _WIN32
-
-#	include <io.h>
-
-# else
-
-#	include <unistd.h>
-
-# endif
-
-int	ft_printf(const char *str, ...);
-
-#endif
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!s || !fd)
+		return ;
+	while (*s)
+		write(fd, s++, 1);
+}
