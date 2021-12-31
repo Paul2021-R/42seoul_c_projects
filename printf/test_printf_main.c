@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 00:32:44 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/30 22:23:01 by haryu            ###   ########.fr       */
+/*   Updated: 2021/12/31 23:12:31 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	main(void)
 {
+	/*
 	printf("------------------------------------------------------\n");
 	printf("* double quote : [\"]\n");
 	printf("* backslah : [\\]\n");
@@ -51,5 +52,29 @@ int	main(void)
 	printf("%%u : %u\n",0x7ffc3f);
 	printf("%%x(X) : %x  %X\n", 16, 016);
 	printf("%%ld : %ld\n", l_a);
+	*/
+
+	int	num1 = 1234;
+	int *ptr_i = &num1;
+	char char1 = 'a';
+	char *ptr_c = &char1;
+
+	printf ("포인터 체크_정수 : %ld\n",sizeof(ptr_i));
+	printf ("포인터 체크_문자 : %ld\n", sizeof(ptr_c));
+	printf ("포인터 위치_정수 : %p\n", ptr_i);
+	printf ("포인터 위치_문자 : %p\n", ptr_c);
+	printf ("포인터 위치_정수 : %x\n", *ptr_i);
+	printf ("포인터 위치_문자 : %x\n", *ptr_c);
+	printf ("포인터 위치_정수 : %p\n", &num1);
+	printf ("포인터 위치_문자 : %p\n", &char1);
+
+	unsigned int	u1 = 100;
+	unsigned int	u2 = 023;
+	unsigned int	u3 = 0xf1;
+	unsigned int	u4;
+
+	printf("unsigned int(10) : %u\n", u1);
+	printf("unsigned int(8) : %u\n", u2);
+	printf("unsigned int(16) : %u\n", u3);
 	return 0;
 }

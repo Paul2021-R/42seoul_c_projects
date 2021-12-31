@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 22:32:27 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/01 03:55:29 by haryu            ###   ########.fr       */
+/*   Created: 2022/01/01 03:16:49 by haryu             #+#    #+#             */
+/*   Updated: 2022/01/01 03:33:59 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-#include <stdio.h>
 
-int main(void)
+char	*ft_strrev(char *src)
 {
-	int a = 100;
-	long int b = -2147483649;
-	unsigned int c = 2147483659;
-	char *d = "test. hello world";
+	char	*ret;
+	char	temp;
+	int		limit;
+	int		i;
 
-
-	//printf("%d\n", INT_MIN);
-	int ret = ft_printf("%d %d %u %s",a , b, c, d);
-	printf ("%d", ret);
-	return (0);
+	ret = src;
+	limit = ft_strlen(src);
+	i = 0;
+	while (i < (int)ft_strlen(src) / 2)
+	{
+		temp = ret[i];
+		ret[i] = ret[limit - 1];
+		ret[limit - 1] = temp;
+		i++;
+		limit--;
+	}
+	return (ret);
 }

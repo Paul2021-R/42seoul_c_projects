@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 22:32:27 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/01 03:55:29 by haryu            ###   ########.fr       */
+/*   Created: 2021/09/20 20:04:41 by haryu             #+#    #+#             */
+/*   Updated: 2021/09/22 16:55:24 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
-#include <stdio.h>
+#include <unistd.h>
 
-int main(void)
+void	ft_putstr(char *str)
 {
-	int a = 100;
-	long int b = -2147483649;
-	unsigned int c = 2147483659;
-	char *d = "test. hello world";
+	int	i;
 
-
-	//printf("%d\n", INT_MIN);
-	int ret = ft_printf("%d %d %u %s",a , b, c, d);
-	printf ("%d", ret);
-	return (0);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
 }
