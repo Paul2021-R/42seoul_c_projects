@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 22:23:25 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/01 03:55:58 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/01 12:52:46 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int ft_printf(const char *str, ...)
 			else if (str[i] == 's')
 				err = ft_putstr_len (va_arg(ap, char *));
 			else if (str[i] == 'd' || str[i] == 'i' || str[i] == 'u')
-				err = switch_integer(va_arg(ap, long), str[i]);
-			//else if (str[i] == 'x' | str[i] == 'X')
-				//err = switch_integer_16(va_arg(ap, int), str[i]);
+				err = switch_integer(va_arg(ap, long long), str[i]);
+			else if (str[i] == 'x' | str[i] == 'X')
+				err = switch_integer_16(va_arg(ap, long long), str[i]);
 			else if (str[i] == 'p')
-				err = write(1, "pointer", 7);
+				err = switch_integer_16(va_arg(ap, long long), str[i]);
 			else
 			{
 				write(1, &str[i], 1);

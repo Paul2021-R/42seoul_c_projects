@@ -1,81 +1,67 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_16.c                                       :+:      :+:    :+:   */
+/*   ft_ltostr_16.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/21 17:22:09 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/01 11:27:39 by haryu            ###   ########.fr       */
+/*   Created: 2022/01/01 03:03:07 by haryu             #+#    #+#             */
+/*   Updated: 2022/01/01 12:43:22 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static int	ft_numlen(int n, int sign)
+static int	ft_numlen(long long n)
 {
-	int	ret;
+	long long	ret;
 
-	if (n == -2147483648)
-		return (11);
-	if (sign == 1)
-		n *= -1;
 	ret = 0;
 	while (n >= 0)
 	{
-		n /= 16;
+		n /= 10;
 		ret++;
 		if (n == 0)
 			break ;
 	}
-	return (ret + sign + 2);
+	return (ret + 2);
 }
 
-static char	*ft_putnbr(char *str, int n, int limit, int sign)
+static char	*ft_putnbr(char *str, long n, int limit)
 {
-	int			i;
-	int			except;
-	long long 	tmp;
+	int	i;
+	int	except;
 
 	i = -1;
-	tmp = (long long)n;
 	except = 0;
-	if (tmp == 0)
+	if (n == 0)
 	{
 		str[0] = 48;
 		str[1] = 'x';
 		str[2] = '0';
 	}
-	if (sign == 1)
-		tmp *= -1;
-	while (++i < limit - 2 && tmp > 0)
+	while (++i < limit && n > 0)
 	{
 		str[i] = (n % 16) + 48;
 		if (str[i] > 57)
 			str[i] += 39;
-		n /= 16;
+		n /= 10;
 	}
 	str[i++] = 'x';
 	str[i] = '0';
-	if (sign == 1)
-		str[i] = '-';
 	return (str);
 }
 
-char	*ft_itoa_16(int n)
+char	*ft_ltostr_16(long long n)
 {
 	char	*ret;
-	int		sign;
 	int		len;
 
-	sign = 0;
-	if (n < 0)
-		sign = 1;
-	len = ft_numlen(n, sign);
+	len = ft_numlen(n);
 	ret = (char *)ft_calloc((len + 1), sizeof(char));
 	if (ret == NULL)
 		return (NULL);
-	ret = ft_putnbr(ret, n, len, sign);
+	ret = ft_putnbr(ret, n, len);
 	ret = ft_strrev(ret);
 	return (ret);
 }

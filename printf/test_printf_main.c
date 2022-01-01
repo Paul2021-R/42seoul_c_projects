@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 00:32:44 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/31 23:12:31 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/01 10:58:03 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(void)
 	printf("%%x(X) : %x  %X\n", 16, 016);
 	printf("%%ld : %ld\n", l_a);
 	*/
-
+/*
 	int	num1 = 1234;
 	int *ptr_i = &num1;
 	char char1 = 'a';
@@ -76,5 +76,9 @@ int	main(void)
 	printf("unsigned int(10) : %u\n", u1);
 	printf("unsigned int(8) : %u\n", u2);
 	printf("unsigned int(16) : %u\n", u3);
+	*/
+
+	long int	i = -2147483649;
+	printf("%d\n", (int)i);
 	return 0;
 }
