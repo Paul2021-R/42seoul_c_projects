@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 03:03:07 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/01 12:43:22 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/02 19:12:55 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*ft_putnbr(char *str, long n, int limit)
 		str[i] = (n % 16) + 48;
 		if (str[i] > 57)
 			str[i] += 39;
-		n /= 10;
+		n /= 16;
 	}
 	str[i++] = 'x';
 	str[i] = '0';

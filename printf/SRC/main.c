@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 22:32:27 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/01 12:58:44 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/02 19:12:10 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,8 @@ int main(void)
 	int	e = 20;
 	int	*ptr = &e;
 
-
-	//printf("%d\n", INT_MIN);
 	int ret = ft_printf("자작한 것 : %d %d %u %s %x %X %p",a , b, c, d, e, e, ptr);
 	printf ("\nreturn : %d\n", ret);
 	printf("%p\n", ptr);
-	int i = 0;
-	while (ptr[i])
-	{
-		printf("%d ",ptr[i]);
-		i++;
-	}
 	return (0);
 }

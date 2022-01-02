@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 22:23:25 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/01 12:52:46 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/02 19:05:54 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int ft_printf(const char *str, ...)
 			else if (str[i] == 'x' | str[i] == 'X')
 				err = switch_integer_16(va_arg(ap, long long), str[i]);
 			else if (str[i] == 'p')
-				err = switch_integer_16(va_arg(ap, long long), str[i]);
+				err = switch_integer_16(va_arg(ap, unsigned long), str[i]);
 			else
 			{
 				write(1, &str[i], 1);
