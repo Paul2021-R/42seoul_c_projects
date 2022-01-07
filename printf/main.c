@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 #include <stdio.h>
 
 int main(void)
@@ -22,8 +22,7 @@ int main(void)
 	int	e = 20;
 	int	*ptr = &e;
 
-	int ret = ft_printf("자작한 것 : %d %d %u %s %x %X %p",a , b, c, d, e, e, ptr);
+	int ret = ft_printf("자작한 것 : %d %d %u %s %x %X %p 33%%",a , b, c, d, e, e, ptr);
 	printf ("\nreturn : %d\n", ret);
-	printf("%p\n", ptr);
 	return (0);
 }
