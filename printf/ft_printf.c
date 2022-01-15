@@ -6,82 +6,95 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 22:23:25 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/05 12:04:33 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/15 21:08:07 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*make_len(char *fmt, va_list ap);
+static int	make_len(char *str, va_list ap, t_list **head);
+static void	switch_to_flags(char *str, va_list ap, t_list **head);
+static void char_pointer_clear(void *str);
 
 int	ft_printf(const char *str, ...)
 {
-	int			i;
-	int			err;
-	int			ret;
-	char		*ret_str;
-	va_list		ap;
+	int 			ret_len;
+	t_list			*print_head;
+	va_list			ap;
 
+	if (!str)
+		return (0);
 	va_start(ap, str);
-	i = 0;
-	ret = 0;
-	while (str[i])
-	{
-		err = 1;
-		if (str[i] == '%')
-			ret_str = make_len((char)str[++i], ap, &err);
-		if (str[i] != '%')
-			res_str = make_len((char)str[i], 0, &err);
-		ret += err;
-		if (err == -1)
-			return (-1);
-		i++;
-	}
+	ret_len = 0;
+	print_head = ft_lstnew(0);
+	ret_len = make_len((char *)str, ap, &print_head);
+	if (ret_len < 0 )
+		return (0);
+	//print_str(print_head);
 	va_end(ap);
-	return (ret);
+	return (ret_len);
 }
 
-static char	*make_len(char fmt, va_list ap, int *err)
+static int	make_len(char *str, va_list ap, t_list **head)
 {
-	char		*temp;
-	static char	*str;
+	int		i;
+	int		last_pick;
+	t_list	*temp;
+	t_list	*now;
 
-	str = (char *)ft_calloc(1, sizeof(char));
-	if (!str)
+	i = 0;
+	last_pick = 0;
+	while (str[i])
 	{
-		err = -1;
-		return(NULL);
-	}
-	if (fmt == 'C')
-	else if (fmt == 's')
-	{
-		temp = ft_strdup(va_arg(ap, char *));
-		err = ft_strlen(temp); // need to modify
-	}
-	else if (fmt == 'd' || fmt == 'i' || fmt == 'u')
-	{
-		temp = switch_integer(va_arg(ap, long long), fmt, &err); // need to modify
-	}
-	else if (fmt == 'x' || fmt == 'X' || fmt == 'p')
-	{
-		temp = switch_integer_16(va_arg(ap, long long), fmt, &err); // need to modify
-	}
-	else 
-	{}
-	str = ft_strjoin(str, temp);
-	{
-		temp = (char *)ft_calloc (2, sizeof(char *));
-		if (!temp)
+		while (str[i] != '%' || !str[i])
 		{
-			err = -1;
-			return (NULL);
+			temp = ft_lstlast((*head));
+			if(str[i + 1] == '%' || str [i+1] == '\0')
+			{
+				now = ft_lstnew(0);
+				now->content = (void *)ft_strndup\
+							   (str + last_pick, i - last_pick + 1);
+				last_pick = i + 1;
+				ft_lstadd_back (&temp, now);
+				break ;
+			}
+			i++;
 		}
-		temp[0] = (va_arg(ap, int));
+		if (str[i] == '%')
+		{
+			switch_to_flags(str + i, ap, head);
+			last_pick = i + 2;
+			i++;
+		}
+		i++;
 	}
-	else if (str[i] == 's')
-		temp = (char *)ft_calloc (ft_strlen(sizseof)
-	else if (str[i] == 'd' || str[i] == 'i' || str[i] == 'u')
-		err = 
-	else if (str[i] == 'x' || str[i] == 'X' || str[i] == 'p')
-		err = switch_integer_16(va_arg(ap, long long), str[i]);
+	//return (ft_str_lst_len(head));
+}
+
+static void	switch_to_flags(char *str, va_list ap, t_list **head)
+{
+	
+	t_list	*temp;
+	t_list	*now;
+
+	temp = ft_lstlast(*head);
+	if (str[1] == 'c')
+	{}
+	else if (str[1] == 's')
+	{}
+	else if (str[1] == 'd' || str[1] == 'i' || str[1] == 'u')
+	{}
+	else if (str[1] == 'x' || str [1] == 'X' || str[1] == 'p')
+	{}
+	else
+	{}	
+	if (!now->content)
+		ft_lstclear(head, char_pointer_clear);
+}
+
+static void	char_pointer_clear(void *str)
+{
+	free(&str);
+	str = '\0';
+	return ;
 }
