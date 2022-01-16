@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_chartostr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 11:49:14 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/16 14:07:54 by haryu            ###   ########.fr       */
+/*   Created: 2022/01/16 13:35:30 by haryu             #+#    #+#             */
+/*   Updated: 2022/01/16 14:46:18 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_chartostr(char c)
 {
-	char	*sub;
+	char	*ret;
 
-	if (!s)
+	ret = (char *)ft_calloc(2, sizeof(char));
+	if (!ret || !c)
 		return (NULL);
-	if ((unsigned int)ft_strlen(s) < (unsigned int)start)
-		sub = ft_strndup((char *)(s), 0);
-	else
-		sub = ft_strndup((char *)(s + start), len);
-	if (!sub)
-		return (NULL);
-	return (sub);
+	ret[0] = c;
+	return (ret);
 }

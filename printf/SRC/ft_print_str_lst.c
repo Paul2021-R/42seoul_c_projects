@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_print_str_lst.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 11:49:14 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/16 14:07:54 by haryu            ###   ########.fr       */
+/*   Created: 2022/01/16 13:59:13 by haryu             #+#    #+#             */
+/*   Updated: 2022/01/16 14:37:17 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_print_str_lst(t_list *first)
 {
-	char	*sub;
-
-	if (!s)
-		return (NULL);
-	if ((unsigned int)ft_strlen(s) < (unsigned int)start)
-		sub = ft_strndup((char *)(s), 0);
-	else
-		sub = ft_strndup((char *)(s + start), len);
-	if (!sub)
-		return (NULL);
-	return (sub);
+	while (first->next)
+	{
+		ft_putstr((char *)first->content);
+		first = first->next;
+	}
+	return ;
 }

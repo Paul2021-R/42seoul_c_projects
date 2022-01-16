@@ -6,31 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 22:50:41 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/18 23:59:05 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/16 14:08:26 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static char	*ft_strndup(char const *s, size_t n)
-{
-	size_t	i;
-	size_t	limit;
-	char	*ret;
-
-	i = 0;
-	limit = n;
-	ret = (char *)ft_calloc((n + 1), sizeof(char));
-	if (!ret)
-		return (NULL);
-	while (i < limit)
-	{
-		*(ret + i) = *(s + i);
-		i++;
-	}
-	*(ret + i) = '\0';
-	return (ret);
-}
 
 static void	ft_free_all(char **target, size_t height)
 {

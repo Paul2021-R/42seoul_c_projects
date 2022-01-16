@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 17:22:09 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/01 11:27:39 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/16 15:28:39 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,10 @@ static int	ft_numlen(int n, int sign)
 static char	*ft_putnbr(char *str, int n, int limit, int sign)
 {
 	int			i;
-	int			except;
-	long long 	tmp;
+	long long	tmp;
 
 	i = -1;
 	tmp = (long long)n;
-	except = 0;
 	if (tmp == 0)
 	{
 		str[0] = 48;

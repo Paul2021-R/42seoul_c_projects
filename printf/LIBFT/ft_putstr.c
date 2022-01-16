@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 20:04:41 by haryu             #+#    #+#             */
-/*   Updated: 2021/09/22 16:55:24 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/16 14:03:22 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 void	ft_putstr(char *str)
 {
