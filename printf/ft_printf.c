@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 22:23:25 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/16 15:23:02 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/17 16:34:20 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,16 @@ static int	make_len(char *str, va_list ap, t_list **head)
 	t_list	*now;
 
 	i = -1;
+	last_pick = 0;
 	while (str[++i])
 	{
-		while (str[i] != '%' || !str[i])
+		if (str[i] != '%')
 		{
-			if (str[i + 1] == '%' || str[i + 1] == '\0')
-			{
-				now = ft_lstnew(ft_strndup(str + last_pick, i - last_pick + 1));
-				last_pick = i + 1;
-				ft_lstadd_back (head, now);
-				break ;
-			}
-			i++;
+			while (str[i] && str[i] != '%')
+				i++;
+			now = ft_lstnew(ft_strndup(str + last_pick, (i - last_pick)));
+			last_pick = i;
+			ft_lstadd_back (head, now);
 		}
 		if (str[i] == '%')
 		{
@@ -78,18 +76,17 @@ static void	switch_to_flags(char *str, va_list ap, t_list **head)
 		now = ft_lstnew(switch_integer(va_arg(ap, long long), str[1]));
 	else if (str[1] == 'x' || str [1] == 'X' || str[1] == 'p')
 		now = ft_lstnew(switch_integer_16(va_arg(ap, long long), str[1]));
-	else
+	else if (str[1] =='%')
 		now = ft_lstnew(ft_chartostr('%'));
 	if (!now->content)
 		ft_lstclear(head, char_pointer_clear);
 	ft_lstadd_back(head, now);
-	return ;
 }
 
 static void	char_pointer_clear(void *str)
 {
 	free(str);
-	str = '\0';
+	str = NULL;
 	return ;
 }
 
@@ -102,6 +99,8 @@ static int	ft_str_lst_len(t_list *first)
 		return (-1);
 	while (first->next)
 	{
+		if (first == NULL)
+			break;
 		total_length += ft_strlen((char *)(first->content));
 		first = first->next;
 	}

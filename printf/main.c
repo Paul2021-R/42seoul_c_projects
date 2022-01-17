@@ -6,12 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 22:32:27 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/16 14:49:23 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/17 16:29:56 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int main(void)
 {
@@ -22,8 +21,20 @@ int main(void)
 	int	e = 20;
 	int	*ptr = &e;
 
-	int ret = ft_printf("self_printf : %c %d %d %u %s %x %X %p 33%%", 'k' ,a , b, c, d, e, e, ptr);
+//	int ret = ft_printf("self_printf : %c %d %d %u %s %x %X %p 33%%", 'k' ,a , b, c, d, e, e, ptr);
+	//ft_printf("character : %c \n",'k');
+	//ft_printf("string : %s \n", d);
+	//ft_printf("integer d : %d \n", a);
+	//ft_printf("integer (nag)d : %d         ", b);
+	ft_printf("     test    ");
+	//ft_printf("integer u : %u \n", c);
+	//ft_printf("16base integer x : %x \n", e);
+	//ft_printf("16base integer X : %X \n", e);
+	//ft_printf("pointer P : %p \n", ptr);
+	//int ret = ft_printf("percentage : 33 %% \n");
+	//ft_printf("[\n]");
+	//ft_printf("",);
 
-	printf ("\nreturn : %d\n", ret);
+	//ft_printf ("return : %d", ret);
 	return (0);
 }
