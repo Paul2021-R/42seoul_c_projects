@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 22:23:25 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/17 16:34:20 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/19 00:35:43 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ static int	make_len(char *str, va_list ap, t_list **head)
 	int		i;
 	int		last_pick;
 	t_list	*now;
-
-	i = -1;
+	
+	i = 0;
 	last_pick = 0;
-	while (str[++i])
+	while (str[i])
 	{
 		if (str[i] != '%')
 		{
@@ -55,11 +55,12 @@ static int	make_len(char *str, va_list ap, t_list **head)
 			last_pick = i;
 			ft_lstadd_back (head, now);
 		}
-		if (str[i] == '%')
+		else if (str[i] == '%')
 		{
 			switch_to_flags(str + i, ap, head);
 			last_pick = 2 + i++;
 		}
+		i++;
 	}
 	return (ft_str_lst_len((*head)->next));
 }
@@ -93,16 +94,19 @@ static void	char_pointer_clear(void *str)
 static int	ft_str_lst_len(t_list *first)
 {
 	int	total_length;
+	t_list	*temp;
 
 	total_length = 0;
 	if (!first)
 		return (-1);
-	while (first->next)
+	temp = first->next;
+	while (temp)
 	{
-		if (first == NULL)
+		if (temp == NULL)
 			break;
-		total_length += ft_strlen((char *)(first->content));
-		first = first->next;
+		total_length += ft_strlen((char *)(temp->content));
+		temp = temp->next;
 	}
+	ft_lstclear(&first, char_pointer_clear);
 	return (total_length);
 }
