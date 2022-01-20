@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/31 16:31:46 by haryu             #+#    #+#              #
-#    Updated: 2022/01/20 14:50:49 by haryu            ###   ########.fr        #
+#    Updated: 2022/01/20 17:11:29 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ clean:
 					$(RM) $(OBJS_0) $(OBJS_1) $(OBJS_2)
 
 fclean:				clean
-					$(RM) $(NAME
+					$(RM) $(NAME)
 
 re:					fclean all
 
