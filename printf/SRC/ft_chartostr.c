@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 13:35:30 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/16 14:46:18 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/20 16:45:27 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ char	*ft_chartostr(char c)
 {
 	char	*ret;
 
-	ret = (char *)ft_calloc(2, sizeof(char));
-	if (!ret || !c)
-		return (NULL);
+	ret = (char *)malloc(sizeof(char *) * 2);
 	ret[0] = c;
+	ret[1] = '\0';
 	return (ret);
 }

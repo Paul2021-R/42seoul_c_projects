@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 03:03:07 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/01 03:33:24 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/20 14:30:48 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_numlen(unsigned int n)
 	unsigned int	ret;
 
 	ret = 0;
-	while (n >= 0)
+	while (n > 0)
 	{
 		n /= 10;
 		ret++;
@@ -30,10 +30,8 @@ static int	ft_numlen(unsigned int n)
 static char	*ft_putnbr(char *str, int n, int limit)
 {
 	int	i;
-	int	except;
 
 	i = -1;
-	except = 0;
 	if (n == 0)
 		str[0] = 48;
 	while (++i < limit && n > 0)

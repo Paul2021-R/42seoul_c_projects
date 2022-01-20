@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:57:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/19 13:12:43 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/20 16:48:45 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static int	switch_str(char *str, va_list ap)
 		print = switch_integer_16(va_arg(ap, long long), str[1]);
 	else 
 		print = ft_chartostr('%');
-	if (!print)
+	if (print == NULL)
 	{
 		free (print);
 		return (-1);

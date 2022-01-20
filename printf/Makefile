@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/31 16:31:46 by haryu             #+#    #+#              #
-#    Updated: 2022/01/19 13:24:27 by haryu            ###   ########.fr        #
+#    Updated: 2022/01/20 14:50:49 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,13 @@ CC					= gcc
 CFLAGS				= -Wall -Wextra -Werror
 RM					= rm -f
 AR					= ar
-ARFLAGS				= '-rcs'
+ARFLAGS				= rcs
 
 .c.o:
 					$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME):			$(OBJS_0) $(OBJS_1) $(OBJS_2)
-					$(AR) $(ARGLAGS) $@ $^
+					$(AR) $(ARFLAGS) $@ $^
 
 all:				$(NAME)
 

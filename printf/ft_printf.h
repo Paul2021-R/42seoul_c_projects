@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:54:23 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/16 15:24:28 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/20 14:34:17 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdarg.h>
 # include "./LIBFT/libft.h"
 # include <limits.h>
-# include <stdio.h>
 
 int		ft_printf(const char *str, ...);
 int		ft_putstr_len(const char *str);

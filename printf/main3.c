@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   main3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/21 21:55:09 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/18 23:47:17 by haryu            ###   ########.fr       */
+/*   Created: 2022/01/20 16:56:12 by haryu             #+#    #+#             */
+/*   Updated: 2022/01/20 17:00:08 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
+#include <stdio.h>
 
-void	ft_putstr_fd(char *s, int fd)
+int main(void)
 {
-	if (!s || !fd)
-		return ;
-	while (*s)
-		write(fd, s++, 1);
+	int ret = printf("%C%C%C*\n", '\0', '1', 1);
+	int ret2 = ft_printf("%c%c%c*\n", '\0', '1', 1);
+	printf("\n value => ret = %d, ret2 = %d\n", ret, ret2);
+	return (0);
 }
