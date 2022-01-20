@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:57:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/20 16:48:45 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/20 21:23:32 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,25 +64,31 @@ static int	switch_str(char *str, va_list ap)
 {
 	int 	ret;
 	char	*print;
+	char	temp;
 
 	ret = 0;
 	if (str[1] == 'c')
-		print = ft_chartostr(va_arg(ap, int));
+	{
+		temp = va_arg(ap, int);
+		write(1, &temp, 1);
+		return (1);
+	}
 	else if (str[1] == 's')
 		print = ft_strdup(va_arg(ap, char *));
 	else if (str[1] == 'd' || str[1] == 'i' || str[1] == 'u')
 		print = switch_integer(va_arg(ap, int), str[1]);
 	else if (str[1] == 'x' || str[1] == 'X' || str[1] == 'p')
 		print = switch_integer_16(va_arg(ap, long long), str[1]);
-	else 
-		print = ft_chartostr('%');
-	if (print == NULL)
-	{
-		free (print);
-		return (-1);
+	else
+	{	
+		write(1, "%", 1);
+		return (1);
 	}
-	ft_putstr(print);
-	ret = ft_strlen(print);
-	free (print);
+	if (print != NULL)
+	{
+		ft_putstr(print);
+		ret = ft_strlen(print);
+		free (print);
+	}
 	return (ret);
 }
