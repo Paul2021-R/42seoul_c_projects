@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 17:22:09 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/16 15:28:39 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/23 00:23:37 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_numlen(int n, int sign)
 		if (n == 0)
 			break ;
 	}
-	return (ret + sign + 2);
+	return (ret + sign);
 }
 
 static char	*ft_putnbr(char *str, int n, int limit, int sign)
@@ -41,8 +41,8 @@ static char	*ft_putnbr(char *str, int n, int limit, int sign)
 	if (tmp == 0)
 	{
 		str[0] = 48;
-		str[1] = 'x';
-		str[2] = '0';
+		//str[1] = 'x';
+		//str[2] = '0';
 	}
 	if (sign == 1)
 		tmp *= -1;
@@ -53,10 +53,10 @@ static char	*ft_putnbr(char *str, int n, int limit, int sign)
 			str[i] += 39;
 		n /= 16;
 	}
-	str[i++] = 'x';
-	str[i] = '0';
+	//str[i++] = 'x';
+	//str[i] = '0';
 	if (sign == 1)
-		str[i] = '-';
+		str[++i] = '-';
 	return (str);
 }
 

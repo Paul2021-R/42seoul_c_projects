@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:57:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/20 21:23:32 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/23 00:25:46 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,11 @@ static int	switch_str(char *str, va_list ap)
 	else if (str[1] == 'd' || str[1] == 'i' || str[1] == 'u')
 		print = switch_integer(va_arg(ap, int), str[1]);
 	else if (str[1] == 'x' || str[1] == 'X' || str[1] == 'p')
+	{
 		print = switch_integer_16(va_arg(ap, long long), str[1]);
+		if (str[1] == 'p')
+			ft_putstr("0x");
+	}
 	else
 	{	
 		write(1, "%", 1);
@@ -88,7 +92,14 @@ static int	switch_str(char *str, va_list ap)
 	{
 		ft_putstr(print);
 		ret = ft_strlen(print);
+		if (str[1] == 'p')
+			ret += 2;
 		free (print);
+	}
+	else
+	{
+		ft_putstr("(null)");
+		ret = 6;
 	}
 	return (ret);
 }
