@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 03:03:07 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/23 00:28:53 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/23 21:58:42 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,6 @@ static char	*ft_putnbr(char *str, long n, int limit)
 	int	i;
 
 	i = -1;
-	if (n == 0)
-	{
-		str[0] = 48;
-		//str[1] = 'x';
-		//str[2] = '0';
-	}
 	while (++i < limit && n > 0)
 	{
 		str[i] = (n % 16) + 48;
@@ -55,11 +49,14 @@ char	*ft_ltostr_16(long long n)
 	char	*ret;
 	int		len;
 
+	if (n == 0)
+		return ("(nil)");
 	len = ft_numlen(n);
 	ret = (char *)ft_calloc((len + 1), sizeof(char));
 	if (ret == NULL)
 		return (NULL);
 	ret = ft_putnbr(ret, n, len);
 	ret = ft_strrev(ret);
+	ft_putstr("0x");
 	return (ret);
 }

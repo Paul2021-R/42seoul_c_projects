@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:57:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/23 00:25:46 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/23 21:57:39 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ static int	switch_str(char *str, va_list ap)
 	else if (str[1] == 'x' || str[1] == 'X' || str[1] == 'p')
 	{
 		print = switch_integer_16(va_arg(ap, long long), str[1]);
-		if (str[1] == 'p')
-			ft_putstr("0x");
 	}
 	else
 	{	
