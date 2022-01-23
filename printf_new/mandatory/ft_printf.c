@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 22:02:46 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/23 23:29:41 by haryu            ###   ########.fr       */
+/*   Updated: 2022/01/23 23:58:55 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	switch_str(char *str, va_list ap);
 
 int	ft_printf(char const *str, ...)
 {
-	va_list 	ap;
+	va_list		ap;
 	int			ret_len;
 
 	if (!str)
@@ -34,14 +34,14 @@ int	ft_printf(char const *str, ...)
 static int	make_len(const char *str, va_list ap)
 {
 	int		len;
-	
+
 	len = 0;
 	while (*str)
 	{
 		if (*str == '%')
 		{
 			str++;
-			len +=switch_str((char *)str, ap);
+			len += switch_str((char *)str, ap);
 		}
 		else
 		{
@@ -53,9 +53,9 @@ static int	make_len(const char *str, va_list ap)
 	return (len);
 }
 
-static int switch_str(char *str, va_list ap)
+static int	switch_str(char *str, va_list ap)
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
 	if (*str == '%')
