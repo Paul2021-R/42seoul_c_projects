@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 22:02:37 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/24 00:01:15 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/03 17:29:45 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "../libft/libft.h"
+# include <unistd.h>
 
 void	ft_putchar(int c, int *len);
 void	ft_putstr(char *s, int *len);
