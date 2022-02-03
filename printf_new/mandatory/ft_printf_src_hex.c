@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 22:45:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/23 23:59:42 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/03 14:33:50 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_put_pointer_pre(unsigned long long n, int *len, char *ref)
 {
 	if (n == 0)
 	{
-		ft_putstr("(nil)", len);
+		ft_putstr("0x0", len);
 		return ;
 	}
 	ft_putstr("0x", len);
