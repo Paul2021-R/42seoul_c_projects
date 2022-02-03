@@ -22,3 +22,4 @@ For that reason, It doesn't have any file which contains the intellectual proper
 * 2021-12-02 Make direcory of get_next_line and prepare program logic to build it. 
 * 2021-12-15 finally finish get_next_line with OPEN_MAX.
 * 2021-12-16 Translation subjects' instruction(born2beroot, printf). Make README.md.
+* 2022-02-03 finish ft_printf mandatory part.
