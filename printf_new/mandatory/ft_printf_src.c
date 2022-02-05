@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 22:29:35 by haryu             #+#    #+#             */
-/*   Updated: 2022/01/23 23:33:01 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/05 23:12:19 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,16 @@
 
 void	ft_putchar(int c, int *len)
 {
-	write(1, &c, 1);
-	(*len)++;
+	int	temp;
+
+	temp = 0;
+	temp = write(1, &c, 1);
+	if (temp == -1)
+	{
+		(*len) = -1;
+		return ;
+	}
+	(*len) += temp;
 	return ;
 }
 
