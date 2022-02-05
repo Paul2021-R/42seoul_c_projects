@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 22:02:46 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/05 23:41:32 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/05 23:54:14 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	make_len(const char *str, va_list ap)
 		{
 			str++;
 			temp = switch_str((char *)str, ap);
-			if (temp == 0)
+			if (temp == -2)
 				str--;
 		}
 		else
@@ -75,7 +75,7 @@ static int	switch_str(char *str, va_list ap)
 	else if (*str == 'p')
 		ft_put_pointer_pre(va_arg(ap, unsigned long long), &ret, str);
 	else
-		return (0);
+		return (-2);
 	if (ret == -1)
 		return (-1);
 	return (ret);
