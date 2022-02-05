@@ -4,7 +4,7 @@
 
 int main(void)
 {
-	int len1 = ft_printf("%s\n", "");
+	int len1 = ft_printf("%s", "");
 	ft_printf("%d\n", len1);
 	return (0);
 }

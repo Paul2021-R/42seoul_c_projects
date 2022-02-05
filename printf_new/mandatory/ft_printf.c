@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 22:02:46 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/05 23:54:14 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/05 23:58:02 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ static int	make_len(const char *str, va_list ap)
 			str++;
 			temp = switch_str((char *)str, ap);
 			if (temp == -2)
+			{
+				temp = 0;
 				str--;
+			}
 		}
 		else
 			temp = write(1, str, 1);
