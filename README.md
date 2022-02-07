@@ -7,7 +7,7 @@ It is going to contain a lot of C projects and programs.
 However, I am required to respect the rule of 42 programs. 
 For that reason, It doesn't have any file which contains the intellectual property(Documents, Files and Etc...)
 I
-## time line
+11## time line
 I* 2021-11-08 Before start, prepare study of C.
 * 2021-11-09 Start Libft Subjects
 * 2021-11-25 Finish Libft Subjects and Peer evaluations. 
@@ -25,3 +25,4 @@ I* 2021-11-08 Before start, prepare study of C.
 * 2022-02-03 finish ft_printf mandatory part.
 * 2022-02-07 complete ft_printf mandatory evaluation.
 * 2022-02-07 Start new projects(rank 02 exam, So Long, pipex, push swap).
+* 	Please do not overlook every single word. Be patient and be carlm. 
