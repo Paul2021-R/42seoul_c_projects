@@ -2,7 +2,7 @@
 C project in Cadet course in 42 Seoul
 
 ## Outline
-This repository is for learning C in Cadet Course of 42 Seoul. 
+iThis repository is for learning C in Cadet Course of 42 Seoul. 
 It is going to contain a lot of C projects and programs.
 However, I am required to respect the rule of 42 programs. 
 For that reason, It doesn't have any file which contains the intellectual property(Documents, Files and Etc...)
@@ -25,4 +25,5 @@ I* 2021-11-08 Before start, prepare study of C.
 * 2022-02-03 finish ft_printf mandatory part.
 * 2022-02-07 complete ft_printf mandatory evaluation.
 * 2022-02-07 Start new projects(rank 02 exam, So Long, pipex, push swap).
-* 	Please do not overlook every single word. Be patient and be carlm. 
+* Please do not overlook every single word. Be patient and be carlm. 
+* 2022-02-08~09 translate subject of so_long and upload a translated one for a md file. 
