@@ -2,6 +2,7 @@
 C project in Cadet course in 42 Seoul
 
 ## Outline
+
 iThis repository is for learning C in Cadet Course of 42 Seoul. 
 It is going to contain a lot of C projects and programs.
 However, I am required to respect the rule of 42 programs. 
@@ -27,3 +28,5 @@ I* 2021-11-08 Before start, prepare study of C.
 * 2022-02-07 Start new projects(rank 02 exam, So Long, pipex, push swap).
 * Please do not overlook every single word. Be patient and be carlm. 
 * 2022-02-08~09 translate subject of so_long and upload a translated one for a md file. 
+* 2022-02-09 Study functions allowed for so_long project. Success compile minilibX 2021-06-21 ver.
+* 
