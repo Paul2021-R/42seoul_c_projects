@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 23:31:18 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/11 00:32:52 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/11 18:47:35 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	make_square_full(t_mlx *window, t_data *data, int width, int height, int co
 			mlx_put_image_to_window(window->mlx, window->mlx_win, data->img, 0, 0);
 			y++;
 		}
-		color++;
+		//color++;
 		x++;
 	}
 }
