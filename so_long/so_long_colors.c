@@ -6,9 +6,13 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 13:55:31 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/11 22:07:06 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/13 13:40:41 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+ * 색깔 관련 설정 정리. trgb 값구하기 및 구해진 값 분리. shade 처리, 보색 연산
+ */
+#include "so_long.h"
 
 int	create_trgb(int t, int r, int g, int b)
 {
