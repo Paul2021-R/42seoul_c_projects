@@ -13,9 +13,16 @@ int	main(void)
 	//event of buttons
 	mlx_hook(vars.mlx_win, 5, 1L<<3, buttons_press, &vars);	
 	//event of long
-	
+	mlx_key_hook(vars.mlx_win, key_hook_switch, &vars);
 	//event of mouse in & out
-	mlx_hook(vars.mlx_win, 6, 1L<<4, mouse_inout, &vars);
+	//mlx_hook(vars.mlx_win, 6, 1L<<4, mouse_inout, &vars);
+	mlx_hook(vars.mlx_win, 6, 1L<<5, mouse_inout, &vars);
+	//event of mouse scroll up & down
+	mlx_mouse_hook(vars.mlx_win, mouse_scroll, &vars);
+	//event of drag and out anlge
+	mlx_mouse_hook(vars.mlx_win, mouse_angle, &vars);
+	//event x button
+	mlx_hook(vars.mlx_win, 17, 1L<<3, press_close, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/13 19:13:20 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/16 22:47:40 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <stdio.h>
 # include <string.h>
 # include <time.h>
+
+// defines
 
 typedef struct s_data
 {
@@ -41,6 +43,7 @@ typedef struct s_mlx
 
 //usefull_functs
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		print_map(char *map, t_mlx *mlx);
 
 // colors
 int		create_trgb(int t, int r, int g, int b);
@@ -55,9 +58,16 @@ int		get_opposite(int trgb);
 int		key_hook_switch(int kecode, t_mlx *vars);
 int		mlx_close(int keycode, t_mlx *vars);
 int		window_resizing(t_mlx *mlx);
+int		press_close(void);
 int		buttons_press(int button, int x, int y, t_mlx *vars);
 int 	mouse_inout(int x, int y, t_mlx *vars);
 void	press_move_key(int keycode);
+int		mouse_scroll(int button, int x, int y, t_mlx *vars);
+int		mouse_scroll_down(int button, int x, int y, t_mlx *vars);
+int		mouse_angle(int button, int x, int y, t_mlx *vars);
+
+// loops 
+int		render_next_frame(void *yourstruct);
 
 //testcase_functs
 void	make_square(t_mlx *window, t_data *data, int width, int height, int color);
