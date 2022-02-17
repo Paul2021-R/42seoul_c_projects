@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/17 17:37:13 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/17 19:54:48 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int	map_print(t_mlx *vars, t_map *map, char *map_num)
 		map_dir = MAP_DIR_2;
 	else if (map_num[0] == '3')
 		map_dir = MAP_DIR_3;
+	else if (map_num[0] == '4')
+		map_dir = MAP_DIR_4;
 	fd = open(map_dir, O_RDONLY);
 	if (fd < 0)
 		exit (1);
@@ -82,7 +84,7 @@ int	map_print(t_mlx *vars, t_map *map, char *map_num)
 			break ;
 		free(map_dir);
 	}
-
+	close(fd);
 	return (0);
 }
 
@@ -104,7 +106,7 @@ int	map_line(char *line, t_mlx *vars, t_map *map)
 			map_put(vars->mlx, vars->mlx_win, map->exit, x, y);
 		else if (*line == 'P')
 			map_put(vars->mlx, vars->mlx_win, map->starting, x, y);
-		else if (*line == '\n')
+		else if (*line == '\n' || *line == '\0')
 			break ;
 		else
 			exit(1);
@@ -112,11 +114,5 @@ int	map_line(char *line, t_mlx *vars, t_map *map)
 		line++;
 	}
 	y += 50;
-	return (0);
-}
-
-int map_put(void *mlx, void *win, t_img *img, int x, int y)
-{
-	mlx_put_image_to_window(mlx, win, img->img, x, y);
 	return (0);
 }

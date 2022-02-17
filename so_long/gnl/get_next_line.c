@@ -21,7 +21,7 @@ static char	*read_buff(int fd, char *s)
 	if (!buff)
 		return (NULL);
 	read_cnt = 1;
-	while (!ft_strchr(s, '\n') && read_cnt)
+	while (!ft_strchr_r(s, '\n') && read_cnt)
 	{
 		read_cnt = read(fd, buff, BUFFER_SIZE);
 		if (read_cnt == -1)
@@ -30,7 +30,7 @@ static char	*read_buff(int fd, char *s)
 			return (NULL);
 		}
 		buff[read_cnt] = '\0';
-		s = ft_strjoin(s, buff);
+		s = ft_strjoin_r(s, buff);
 	}
 	free(buff);
 	return (s);
@@ -80,7 +80,7 @@ static char	*get_new_backup(char *s)
 		free(s);
 		return (NULL);
 	}
-	len = ft_strlen(s + i + 1);
+	len = ft_strlen_r(s + i + 1);
 	ret = (char *)malloc(sizeof(char) * (len + 1));
 	if (!ret)
 		return (NULL);

@@ -6,26 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:58:22 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/17 17:35:38 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/17 18:50:32 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int map_checker(char *map, int *x, int *y)
-{
-	if (map[0] == '1')
-	{
-		*y = 50 * 5;
-		*x = 50 * 13;
-	}
-	else if (map[0] == '2')
-	{
-		*y = 50 * 6;
-		*x = 50 * 34; 
-	}
-	return (0);
-}
 
 int main(int ac, char **av)
 {

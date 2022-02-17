@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/17 17:16:23 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/17 19:35:06 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 //header
 # include "./mlx/mlx.h"
-//# include "./libft/libft.h"
+# include "./libft/libft.h"
 # include "./gnl/get_next_line.h"
 # include <stdlib.h>
 # include <unistd.h>
@@ -35,6 +35,7 @@
 # define MAP_DIR_1 "./asset/ber/map_1.ber"
 # define MAP_DIR_2 "./asset/ber/map_2.ber"
 # define MAP_DIR_3 "./asset/ber/map_3.ber"
+# define MAP_DIR_4 "./asset/ber/custom.ber"
 
 //module
 typedef struct s_img
@@ -77,6 +78,8 @@ void	map_get_addr(t_img *pass, t_img *wall, t_img *collect, t_img *starting, t_i
 int 	map_print(t_mlx *vars, t_map *map, char *map_num);
 int		map_line(char *line, t_mlx *vars, t_map *map);
 int		map_put(void *mlx, void *win, t_img *img, int x, int y);
+int		map_checker(char *map, int *x, int *y);
+int		map_resolution(char *map, int *x, int *y);
 
 //usefull_functs
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);

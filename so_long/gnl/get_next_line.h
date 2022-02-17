@@ -32,8 +32,8 @@
 
 char	*get_next_line(int fd);
 char	get_next_line_utils(int fd);
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
+size_t	ft_strlen_r(const char *s);
+char	*ft_strchr_r(const char *s, int c);
+char	*ft_strjoin_r(char *s1, char *s2);
 
 #endif	

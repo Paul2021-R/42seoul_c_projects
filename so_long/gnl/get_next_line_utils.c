@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen_r(const char *s)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr_r(const char *s, int c)
 {
 	char	*ret;
 
@@ -46,7 +46,7 @@ static char	*ft_write_str(char *str, char *src1, char *src2)
 	size_t	a;
 
 	i = 0;
-	a = ft_strlen(src1);
+	a = ft_strlen_r(src1);
 	if (src1)
 	{
 		while (src1[i])
@@ -65,7 +65,7 @@ static char	*ft_write_str(char *str, char *src1, char *src2)
 	return (str);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_r(char *s1, char *s2)
 {
 	size_t	len1;
 	size_t	len2;
@@ -78,8 +78,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	if (!s2)
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
+	len1 = ft_strlen_r(s1);
+	len2 = ft_strlen_r(s2);
 	ret = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
 	if (ret == NULL)
 		return (NULL);
