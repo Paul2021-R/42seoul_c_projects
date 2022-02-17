@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 23:31:18 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/13 13:41:25 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/17 15:31:03 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -15,7 +15,7 @@
 
 #include "so_long.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
 	char *dst;
 
@@ -23,7 +23,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	make_square(t_mlx *window, t_data *data, int width, int height, int color)
+void	make_square(t_mlx *window, t_img *data, int width, int height, int color)
 {
 	int x;
 	int y;
@@ -55,7 +55,7 @@ void	make_square(t_mlx *window, t_data *data, int width, int height, int color)
 
 }
 
-void	make_circle(t_mlx *window, t_data *data, int radius, int color)
+void	make_circle(t_mlx *window, t_img *data, int radius, int color)
 {
 	int i;
 	int j;
@@ -85,7 +85,7 @@ void	make_circle(t_mlx *window, t_data *data, int radius, int color)
 	}
 }
 
-void	make_square_full(t_mlx *window, t_data *data, int width, int height, int color)
+void	make_square_full(t_mlx *window, t_img *data, int width, int height, int color)
 {
 	int x;
 	int y;

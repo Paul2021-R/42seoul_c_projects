@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/16 22:47:40 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/17 17:16:23 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 //header
 # include "./mlx/mlx.h"
+//# include "./libft/libft.h"
+# include "./gnl/get_next_line.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -22,18 +24,29 @@
 # include <sys/stat.h>
 # include <stdio.h>
 # include <string.h>
-# include <time.h>
 
 // defines
 
-typedef struct s_data
+# define WALL "./asset/map/wall_xpm.xpm"
+# define PASS "./asset/map/pass_xpm.xpm"
+# define COLLECT "./asset/map/collect_xpm.xpm"
+# define STARTING "./asset/map/starting_xpm.xpm"
+# define EXIT "./asset/map/exit_xpm.xpm"
+# define MAP_DIR_1 "./asset/ber/map_1.ber"
+# define MAP_DIR_2 "./asset/ber/map_2.ber"
+# define MAP_DIR_3 "./asset/ber/map_3.ber"
+
+//module
+typedef struct s_img
 {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_leng;
 	int		endian;
-}				t_data;
+	int		width;
+	int		height;
+}				t_img;
 
 typedef struct s_mlx
 {
@@ -41,9 +54,32 @@ typedef struct s_mlx
 	void	*mlx_win;
 }				t_mlx;
 
+typedef struct s_map
+{
+	t_img	*pass;
+	t_img	*wall;
+	t_img	*collect;
+	t_img	*exit;
+	t_img	*starting;
+}				t_map;
+
+typedef struct s_module
+{
+	t_mlx	vars;
+	t_map	*map;	
+}				t_module;
+
+// map load & print
+
+int		map_load(t_mlx *vars, t_map *data, char *map_num);
+int		map_initialize(t_mlx *vars, t_map *data);
+void	map_get_addr(t_img *pass, t_img *wall, t_img *collect, t_img *starting, t_img *exit);
+int 	map_print(t_mlx *vars, t_map *map, char *map_num);
+int		map_line(char *line, t_mlx *vars, t_map *map);
+int		map_put(void *mlx, void *win, t_img *img, int x, int y);
+
 //usefull_functs
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		print_map(char *map, t_mlx *mlx);
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 
 // colors
 int		create_trgb(int t, int r, int g, int b);
@@ -70,8 +106,8 @@ int		mouse_angle(int button, int x, int y, t_mlx *vars);
 int		render_next_frame(void *yourstruct);
 
 //testcase_functs
-void	make_square(t_mlx *window, t_data *data, int width, int height, int color);
-void	make_circle(t_mlx *window, t_data *data, int radius, int color);
-void	make_square_full(t_mlx *window, t_data *data, int width, int height, int color);
+//void	make_square(t_mlx *window, t_data *data, int width, int height, int color);
+//void	make_circle(t_mlx *window, t_data *data, int radius, int color);
+//void	make_square_full(t_mlx *window, t_data *data, int width, int height, int color);
 
 #endif
