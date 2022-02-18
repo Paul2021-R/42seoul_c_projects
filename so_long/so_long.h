@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/17 19:35:06 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/18 23:33:34 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,13 @@ int		map_line(char *line, t_mlx *vars, t_map *map);
 int		map_put(void *mlx, void *win, t_img *img, int x, int y);
 int		map_checker(char *map, int *x, int *y);
 int		map_resolution(char *map, int *x, int *y);
+
+//map error check
+
+int		map_error(int fd);
+int		map_width_check(int *arr, int height, int width);
+int		map_wall_check(char *map, int *arr, int height, int width);
+int		map_rule_check(char *map, int height, int width);
 
 //usefull_functs
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);

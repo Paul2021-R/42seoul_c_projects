@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_image.c                                    :+:      :+:    :+:   */
+/*   so_long_map_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/17 19:54:48 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/18 23:10:21 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,8 @@ int map_initialize(t_mlx *vars, t_map *data)
 	data->collect->img = mlx_xpm_file_to_image(vars->mlx, COLLECT, &data->collect->width, &data->collect->height);
 	data->starting->img = mlx_xpm_file_to_image(vars->mlx, STARTING, &data->starting->width, &data->starting->height);
 	data->exit->img = mlx_xpm_file_to_image(vars->mlx, EXIT, &data->exit->width, &data->exit->height);
-	map_get_addr(data->pass, data->wall, data->collect, data->starting, data->exit);
 
 	return (0);	
-}
-void	map_get_addr(t_img *pass, t_img *wall, t_img *collect, t_img *starting, t_img *exit)
-{
-	pass->addr = mlx_get_data_addr\
-				 (pass->img, &pass->bits_per_pixel, &pass->line_leng, &pass->endian);
-	wall->addr = mlx_get_data_addr\
-				 (wall->img, &wall->bits_per_pixel, &wall->line_leng, &wall->endian);
-	collect->addr = mlx_get_data_addr\
-					(collect->img, &collect->bits_per_pixel, &collect->line_leng, &collect->endian);
-	starting->addr = mlx_get_data_addr\
-					 (starting->img, &starting->bits_per_pixel, &starting->line_leng, &starting->endian);
-	exit->addr = mlx_get_data_addr\
-				 (exit->img, &exit->bits_per_pixel, &exit->line_leng, &exit->endian);
 }
 
 int	map_print(t_mlx *vars, t_map *map, char *map_num)
