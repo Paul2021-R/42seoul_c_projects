@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/18 23:33:34 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/20 00:33:47 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,13 @@ typedef struct s_module
 	t_map	*map;	
 }				t_module;
 
+typedef struct s_rule
+{
+	int		starting;
+	int		collect;
+	int		exit;
+}				t_rule;
+
 // map load & print
 
 int		map_load(t_mlx *vars, t_map *data, char *map_num);
@@ -83,10 +90,11 @@ int		map_resolution(char *map, int *x, int *y);
 
 //map error check
 
-int		map_error(int fd);
-int		map_width_check(int *arr, int height, int width);
-int		map_wall_check(char *map, int *arr, int height, int width);
-int		map_rule_check(char *map, int height, int width);
+int		map_error(int fd, int *width, int *height);
+void	find_target(char *str, t_rule *target);
+void	initialize_rules(t_rule *rules);
+int		width_check(int height, int width, int current);
+int		wall_check(char *str, int height, int width, int *open);
 
 //usefull_functs
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);

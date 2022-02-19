@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 18:45:24 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/18 23:31:36 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/20 00:00:16 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,13 @@ int	map_resolution(char *map, int *x, int *y)
 	fd = open(map_dir, O_RDONLY);
    	if (fd < 0)
 		exit (1);
-	height = 0;
-	width = 0;
-	if (map_error(fd))
-		exit(1); // 에러 출력 수정 필요 
-	while(1)
+	if (map_error(fd, x, y))
 	{
-		map_dir = get_next_line(fd);
-		if (!map_dir)
-			break ;
-		width = (int)ft_strlen(map_dir);
-		free (map_dir);
-		height += 1;
+		printf("Error\n");
+		exit(1);
 	}
-	*x = 50 * (width - 1);
-	*y = 50 * height;
+	*x = 50 * (*x - 1);
+	*y = 50 * (*y - 1);
 	close(fd);
 	return (0);
 }
