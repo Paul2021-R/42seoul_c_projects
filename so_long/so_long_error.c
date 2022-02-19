@@ -6,20 +6,18 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:27:32 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/20 01:04:53 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/20 01:28:08 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int map_error(int fd, int *width, int *height)
+int	map_error(int fd, int *width, int *height)
 {
 	t_rule	rules;
 	char	*check;
 	int		wall_open;
-	
-	*width = 0;
-	*height = 1;
+
 	wall_open = 0;
 	initialize_rules(&rules);
 	while (1)
@@ -37,19 +35,19 @@ int map_error(int fd, int *width, int *height)
 		free (check);
 		(*height)++;
 	}
-	printf("p:%d c:%d e:%d wall:%d\n",rules.starting, rules.collect, rules.exit, wall_open);
-	if ((rules.starting < 1 || rules.collect < 1 || rules.exit < 1) || wall_open != 0)
+	if ((rules.starting < 1 || rules.collect < 1 || rules.exit < 1) \
+			|| wall_open != 0)
 		return (1);
 	return (0);
 }
 
-int		wall_check(char *str, int height, int width, int *open)
+int	wall_check(char *str, int height, int width, int *open)
 {
 	int	i;
 
 	i = 0;
 	*open = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (height == 1 && i < width - 1 && str[i] != '1')
 			return (1);
@@ -61,12 +59,12 @@ int		wall_check(char *str, int height, int width, int *open)
 	}
 	if (*open != width)
 		*open = 1;
-	else 
+	else
 		*open = 0;
 	return (0);
 }
 
-int		width_check(int height, int width, int current)
+int	width_check(int height, int width, int current)
 {
 	if (height > 1)
 		if (width != current)

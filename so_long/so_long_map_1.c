@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/18 23:10:21 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/20 01:22:03 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	map_load(t_mlx *vars, t_map *data, char *map_num)
 	data = malloc(sizeof(t_map) * 1);
 	if (!data)
 		return (-1);
-	if(map_initialize(vars, data))
+	if (map_initialize(vars, data))
 	{
 		printf("error!\n");
 		exit(1);
@@ -26,22 +26,27 @@ int	map_load(t_mlx *vars, t_map *data, char *map_num)
 	return (0);
 }
 
-int map_initialize(t_mlx *vars, t_map *data)
+int	map_initialize(t_mlx *vars, t_map *data)
 {
 	data->pass = malloc(sizeof(t_img) * 1);
 	data->wall = malloc(sizeof(t_img) * 1);
 	data->collect = malloc(sizeof(t_img) * 1);
 	data->starting = malloc(sizeof(t_img) * 1);
 	data->exit = malloc(sizeof(t_img) * 1);
-	if (!(data->pass || data->wall || data->collect || data->starting || data->exit))
+	if (!(data->pass || data->wall \
+				|| data->collect || data->starting || data->exit))
 		return (1);
-	data->pass->img = mlx_xpm_file_to_image(vars->mlx, PASS, &data->pass->width, &data->pass->height);
-	data->wall->img = mlx_xpm_file_to_image(vars->mlx, WALL, &data->wall->width, &data->wall->height);
-	data->collect->img = mlx_xpm_file_to_image(vars->mlx, COLLECT, &data->collect->width, &data->collect->height);
-	data->starting->img = mlx_xpm_file_to_image(vars->mlx, STARTING, &data->starting->width, &data->starting->height);
-	data->exit->img = mlx_xpm_file_to_image(vars->mlx, EXIT, &data->exit->width, &data->exit->height);
-
-	return (0);	
+	data->pass->img = mlx_xpm_file_to_image(vars->mlx, \
+			PASS, &data->pass->width, &data->pass->height);
+	data->wall->img = mlx_xpm_file_to_image(vars->mlx, \
+			WALL, &data->wall->width, &data->wall->height);
+	data->collect->img = mlx_xpm_file_to_image(vars->mlx, \
+			COLLECT, &data->collect->width, &data->collect->height);
+	data->starting->img = mlx_xpm_file_to_image(vars->mlx, \
+			STARTING, &data->starting->width, &data->starting->height);
+	data->exit->img = mlx_xpm_file_to_image(vars->mlx, \
+			EXIT, &data->exit->width, &data->exit->height);
+	return (0);
 }
 
 int	map_print(t_mlx *vars, t_map *map, char *map_num)
@@ -49,8 +54,6 @@ int	map_print(t_mlx *vars, t_map *map, char *map_num)
 	int		fd;
 	char	*map_dir;
 
-	if (map_num[1] != '\0')
-		exit (1);
 	if (map_num[0] == '1')
 		map_dir = MAP_DIR_1;
 	else if (map_num[0] == '2')
@@ -83,15 +86,15 @@ int	map_line(char *line, t_mlx *vars, t_map *map)
 	while (line)
 	{
 		if (*line == '0')
-			map_put(vars->mlx, vars->mlx_win, map->pass, x, y);
+			map_put(vars, map->pass, x, y);
 		else if (*line == '1')
-			map_put(vars->mlx, vars->mlx_win, map->wall, x, y);
+			map_put(vars, map->wall, x, y);
 		else if (*line == 'C')
-			map_put(vars->mlx, vars->mlx_win, map->collect, x, y);
+			map_put(vars, map->collect, x, y);
 		else if (*line == 'E')
-			map_put(vars->mlx, vars->mlx_win, map->exit, x, y);
+			map_put(vars, map->exit, x, y);
 		else if (*line == 'P')
-			map_put(vars->mlx, vars->mlx_win, map->starting, x, y);
+			map_put(vars, map->starting, x, y);
 		else if (*line == '\n' || *line == '\0')
 			break ;
 		else

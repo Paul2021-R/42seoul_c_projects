@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/20 00:33:47 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/20 01:20:29 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		map_initialize(t_mlx *vars, t_map *data);
 void	map_get_addr(t_img *pass, t_img *wall, t_img *collect, t_img *starting, t_img *exit);
 int 	map_print(t_mlx *vars, t_map *map, char *map_num);
 int		map_line(char *line, t_mlx *vars, t_map *map);
-int		map_put(void *mlx, void *win, t_img *img, int x, int y);
+int		map_put(t_mlx *vars, t_img *img, int x, int y);
 int		map_checker(char *map, int *x, int *y);
 int		map_resolution(char *map, int *x, int *y);
 
