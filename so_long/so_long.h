@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/20 01:20:29 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/21 22:16:02 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,14 +111,14 @@ int		get_opposite(int trgb);
 // hook & events 
 int		key_hook_switch(int kecode, t_mlx *vars);
 int		mlx_close(int keycode, t_mlx *vars);
-int		window_resizing(t_mlx *mlx);
-int		press_close(void);
-int		buttons_press(int button, int x, int y, t_mlx *vars);
-int 	mouse_inout(int x, int y, t_mlx *vars);
+//int		window_resizing(t_mlx *mlx);
+int		press_close(t_mlx *vars);
+//int		buttons_press(int button, int x, int y, t_mlx *vars);
+//int 	mouse_inout(int x, int y, t_mlx *vars);
 void	press_move_key(int keycode);
-int		mouse_scroll(int button, int x, int y, t_mlx *vars);
-int		mouse_scroll_down(int button, int x, int y, t_mlx *vars);
-int		mouse_angle(int button, int x, int y, t_mlx *vars);
+//int		mouse_scroll(int button, int x, int y, t_mlx *vars);
+//int		mouse_scroll_down(int button, int x, int y, t_mlx *vars);
+//int		mouse_angle(int button, int x, int y, t_mlx *vars);
 
 // loops 
 int		render_next_frame(void *yourstruct);
