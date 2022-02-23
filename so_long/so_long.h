@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/23 21:43:13 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/24 00:27:09 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,15 +120,13 @@ typedef struct s_rule
 	int		exit;
 }				t_rule;
 
-// game Intro
+// game main menu
 void	game_main(t_module **init);
 int		intro_load(t_mlx *vars, t_intro *data);
 int		intro_initialize(t_mlx *vars, t_intro *intro);
 int		intro_print(t_mlx *vars, t_intro *intro, int keycode);
 
-// map load & print
-
-
+// map load & image print
 void	game_map(t_module **init, int map_num);
 int		map_load(t_mlx *vars, t_map *data, char *map_num);
 int		map_initialize(t_mlx *vars, t_map *data);
@@ -142,43 +140,18 @@ void	enemy_print(t_mlx *vars, t_enemy *en);
 void	enemy_load(t_mlx *vars, t_enemy *enemy);
 
 //map error check
-
 int		map_error(int fd, int *width, int *height);
 void	find_target(char *str, t_rule *target);
 void	initialize_rules(t_rule *rules);
 int		width_check(int height, int width, int current);
 int		wall_check(char *str, int height, int width, int *open);
 
-//usefull_functs
-void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
-
-// colors
-int		create_trgb(int t, int r, int g, int b);
-int		get_t(int trgb);
-int		get_r(int trgb);
-int		get_g(int trgb);
-int		get_b(int trgb);
-int		add_shade(double shader, int trgb);
-int		get_opposite(int trgb);
-
 // hook & events 
 int		key_hook_switch(int kecode, t_module **init);
 int		mlx_close(int keycode, t_mlx *vars);
-//int		window_resizing(t_mlx *mlx);
 int		press_close(t_mlx *vars);
-//int		buttons_press(int button, int x, int y, t_mlx *vars);
-//int 	mouse_inout(int x, int y, t_mlx *vars);
 void	press_move_key(int keycode);
-//int		mouse_scroll(int button, int x, int y, t_mlx *vars);
-//int		mouse_scroll_down(int button, int x, int y, t_mlx *vars);
-//int		mouse_angle(int button, int x, int y, t_mlx *vars);
 
-// loops 
-int		render_next_frame(void *yourstruct);
-
-//testcase_functs
-//void	make_square(t_mlx *window, t_data *data, int width, int height, int color);
-//void	make_circle(t_mlx *window, t_data *data, int radius, int color);
-//void	make_square_full(t_mlx *window, t_data *data, int width, int height, int color);
-
+// utills
+char	*mapnum_out(int map_num);
 #endif

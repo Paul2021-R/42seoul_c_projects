@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:58:22 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/23 21:54:01 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/24 00:26:31 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,7 @@ void	game_map(t_module **init, int map_num)
 {
 	char	*map;
 
-	if (map_num == 18)
-		map = "1";
-	else if (map_num == 19)
-		map = "2";
-	else if (map_num == 20)
-		map = "3";
-	else
-		map = "4";
+	map = mapnum_out(map_num);
 	(*init)->system = 3;
 	mlx_destroy_window((*init)->vars.mlx, (*init)->vars.mlx_win);
 	map_checker(map, &(*init)->map.x, &(*init)->map.y);
@@ -41,6 +34,8 @@ void	game_map(t_module **init, int map_num)
 	mlx_key_hook((*init)->vars.mlx_win, key_hook_switch, &(*init));
 	mlx_hook((*init)->vars.mlx_win, 17, 1L<<3, press_close, &(*init)->vars);
 }
+
+void	game_last(t_module **init);
 
 int main(void)
 {
