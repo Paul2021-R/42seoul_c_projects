@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/20 01:22:03 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/23 13:34:08 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	map_load(t_mlx *vars, t_map *data, char *map_num)
 {
-	data = malloc(sizeof(t_map) * 1);
-	if (!data)
-		return (-1);
+	//data = malloc(sizeof(t_map) * 1);
+	//if (!data)
+	//	return (-1);
 	if (map_initialize(vars, data))
 	{
 		printf("error!\n");

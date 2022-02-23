@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/21 22:16:02 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/23 17:45:20 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@
 # define MAP_DIR_2 "./asset/ber/map_2.ber"
 # define MAP_DIR_3 "./asset/ber/map_3.ber"
 # define MAP_DIR_4 "./asset/ber/custom.ber"
+# define INTRO_1 "./asset/new/intro_1.xpm"
+# define INTRO_2 "./asset/new/intro_2.xpm"
+# define INTRO_3 "./asset/new/intro_3.xpm"
 
 //module
 typedef struct s_img
@@ -62,12 +65,48 @@ typedef struct s_map
 	t_img	*collect;
 	t_img	*exit;
 	t_img	*starting;
+	int		x;
+	int		y;
+	char	**map_data;
 }				t_map;
+
+typedef struct s_intro
+{
+	t_img	*intro_1;
+	t_img	*intro_2;
+	t_img	*intro_3;
+}				t_intro;
+
+typedef struct s_last
+{
+	t_img	*gclear;
+	t_img	*gover;
+}				t_last;
+
+typedef struct s_player
+{
+	t_img	*sprite_0;
+	t_img	*sprite_1;
+	t_img	*sprite_2;
+	t_img	*sprite_3;
+}				t_player;
+
+typedef struct s_enemy
+{
+	t_img	*sprite_0;
+	t_img	*sprite_1;
+	t_img	*sprite_2;
+	t_img	*sprite_3;
+}				t_enemy;
 
 typedef struct s_module
 {
-	t_mlx	vars;
-	t_map	*map;	
+	t_mlx		vars;
+	t_intro		intro;
+	t_map		map;
+	int			map_number;
+	t_enemy		*enemies;
+	t_player	player;
 }				t_module;
 
 typedef struct s_rule
@@ -76,6 +115,11 @@ typedef struct s_rule
 	int		collect;
 	int		exit;
 }				t_rule;
+
+// game Intro
+int		intro_load(t_mlx *vars, t_intro *data);
+int		intro_initialize(t_mlx *vars, t_intro *intro);
+int		intro_print(t_mlx *vars, t_intro *intro, int keycode);
 
 // map load & print
 

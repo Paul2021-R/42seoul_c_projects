@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 21:16:50 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/21 22:52:40 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/23 14:44:31 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,13 @@ int	key_hook_switch(int keycode, t_mlx *vars)
 			|| (keycode >= 123 && keycode <= 126))
 		press_move_key(keycode);
 	else if (keycode == 36)
+	{
 		printf("엔터 누름!\n");
+	}
 	else if (keycode == 44)
 		printf("도움말 누름\n");
+	else
+		printf("%d\n",keycode);
 	return (0);
 }
 
