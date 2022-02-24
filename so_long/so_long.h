@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/24 00:27:09 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/24 17:04:45 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,16 +128,20 @@ int		intro_print(t_mlx *vars, t_intro *intro, int keycode);
 
 // map load & image print
 void	game_map(t_module **init, int map_num);
+void	map_save(t_map *map, char *line, int y);
 int		map_load(t_mlx *vars, t_map *data, char *map_num);
 int		map_initialize(t_mlx *vars, t_map *data);
-void	map_get_addr(t_img *pass, t_img *wall, t_img *collect, t_img *starting, t_img *exit);
 int 	map_print(t_mlx *vars, t_map *map, char *map_num);
 int		map_line(char *line, t_mlx *vars, t_map *map);
 int		map_put(t_mlx *vars, t_img *img, int x, int y);
 int		map_checker(char *map, int *x, int *y);
 int		map_resolution(char *map, int *x, int *y);
-void	enemy_print(t_mlx *vars, t_enemy *en);
-void	enemy_load(t_mlx *vars, t_enemy *enemy);
+
+// elements respawn
+void	elements_call(t_module **init);
+void	enemy_print(t_mlx *vars, t_enemy *en, int x, int y);
+void	enemy_load(t_mlx *vars, t_enemy *enemy, int x, int y);
+void	enemy_cal(char **map ,t_mlx *vars, t_enemy *en, int resolution);
 
 //map error check
 int		map_error(int fd, int *width, int *height);
@@ -154,4 +158,5 @@ void	press_move_key(int keycode);
 
 // utills
 char	*mapnum_out(int map_num);
+void	print_current_system(t_module **init);
 #endif

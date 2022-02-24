@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_ver0.2.c                                   :+:      :+:    :+:   */
+/*   ver0.4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:58:22 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/24 00:26:31 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/24 16:56:03 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ void	game_map(t_module **init, int map_num)
 	map_checker(map, &(*init)->map.x, &(*init)->map.y);
 	(*init)->vars.mlx_win = mlx_new_window((*init)->vars.mlx, (*init)->map.x, (*init)->map.y, "SO_LONG");
 	map_load(&(*init)->vars, &(*init)->map, map);
-	(*init)->enemies = malloc(sizeof(t_enemy) * 1);
-	enemy_load(&(*init)->vars, (*init)->enemies);
+	elements_call(init);
 	mlx_key_hook((*init)->vars.mlx_win, key_hook_switch, &(*init));
 	mlx_hook((*init)->vars.mlx_win, 17, 1L<<3, press_close, &(*init)->vars);
 }

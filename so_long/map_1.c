@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/23 22:05:41 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/24 16:37:41 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int	map_line(char *line, t_mlx *vars, t_map *map)
 	static int	y;
 
 	x = 0;
+	map_save(map, line, y);
 	while (line)
 	{
 		if (*line == '0')
@@ -101,4 +102,23 @@ int	map_line(char *line, t_mlx *vars, t_map *map)
 	}
 	y += 50;
 	return (0);
+}
+
+void	map_save(t_map *map, char *line, int y)
+{
+	if (ft_strlen(line) == 0)
+		return ;
+	if (y == 0)
+	{
+		map->map_data = malloc(sizeof(char *) * (map->y / 50));
+		if (!map->map_data)
+		{
+			printf("error!\n");
+			exit(1);
+		}
+	}
+	if (y == 0)
+		map->map_data[0] = ft_strdup(line);
+	else
+		map->map_data[y/50] = ft_strdup(line);	
 }

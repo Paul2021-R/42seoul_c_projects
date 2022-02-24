@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 21:16:50 by haryu             #+#    #+#           :q  */
-/*   Updated: 2022/02/23 21:15:10 by haryu            ###   ########.fr       */
+/*   Updated: 2022/02/24 15:45:04 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	key_hook_switch(int keycode, t_module **init)
 	}
 	else if (keycode > 17 && keycode < 22 && (*init)->system == 2)
 		game_map(init, keycode);
+	else if (keycode == 35)
+		print_current_system(init);
 	else
 		printf("%d\n",keycode);
 	return (0);
