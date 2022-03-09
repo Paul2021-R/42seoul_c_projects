@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/24 17:04:45 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/09 20:28:46 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@
 # define EN_1 "./asset/enemy/enemy_2.xpm"
 # define EN_2 "./asset/enemy/enemy_3.xpm"
 # define EN_3 "./asset/enemy/enemy_4.xpm"
-
+# define PLAYER_0 "./asset/player/plaer_1.xpm"
+# define PLAYER_1 "./asset/player/plaer_2.xpm"
+# define PLAYER_2 "./asset/player/plaer_3.xpm"
+# define PLAYER_3 "./asset/player/plaer_4.xpm"
 
 //module
 typedef struct s_img
@@ -88,10 +91,7 @@ typedef struct s_intro
 
 typedef struct s_player
 {
-	t_img	*sprite_0;
-	t_img	*sprite_1;
-	t_img	*sprite_2;
-	t_img	*sprite_3;
+	t_img	**sprite;
 }				t_player;
 
 typedef struct s_enemy
@@ -109,7 +109,7 @@ typedef struct s_module
 	t_map		map;
 	int			map_number;
 	t_enemy		*enemies;
-	t_player	player;
+	t_player	*player;
 	int			system;
 }				t_module;
 
@@ -142,6 +142,7 @@ void	elements_call(t_module **init);
 void	enemy_print(t_mlx *vars, t_enemy *en, int x, int y);
 void	enemy_load(t_mlx *vars, t_enemy *enemy, int x, int y);
 void	enemy_cal(char **map ,t_mlx *vars, t_enemy *en, int resolution);
+void	player_call(t_map *map,t_mlx *vars, t_player *player);
 
 //map error check
 int		map_error(int fd, int *width, int *height);

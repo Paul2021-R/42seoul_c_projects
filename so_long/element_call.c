@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:51:34 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/24 17:06:45 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/09 20:11:28 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 void	elements_call(t_module **init)
 {
-	(*init)->enemies = malloc(sizeof(t_enemy) * 1);
-	enemy_load(&(*init)->vars, (*init)->enemies, 0, 0);
-	enemy_cal((*init)->map.map_data, &(*init)->vars, (*init)->enemies, (*init)->map.y);
+	//(*init)->enemies = malloc(sizeof(t_enemy) * 1);
+	//enemy_load(&(*init)->vars, (*init)->enemies, 0, 0);
+	//enemy_cal((*init)->map.map_data, &(*init)->vars, (*init)->enemies, (*init)->map.y);
+	(*init)->player = malloc(sizeof(t_player) * 1);
+	player_call(&(*init)->map, &(*init)->vars, (*init)->player);
 	return ;
 }
 // enemy 숫자 맞춰서 호출 해야함

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_map_1.c                                    :+:      :+:    :+:   */
+/*   map_1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/24 16:37:41 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/09 13:47:14 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	map_initialize(t_mlx *vars, t_map *data)
 	data->wall = malloc(sizeof(t_img) * 1);
 	data->collect = malloc(sizeof(t_img) * 1);
 	data->starting = malloc(sizeof(t_img) * 1);
-	data->exit = malloc(sizeof(t_img) * 1);
+	data->exit = malloc(sizeof(t_img) * 1);//map data 에러 검출 필요
 	if (!(data->pass || data->wall \
 				|| data->collect || data->starting || data->exit))
 		return (1);
@@ -68,7 +68,6 @@ int	map_print(t_mlx *vars, t_map *map, char *map_num)
 		map_line(map_dir, vars, map);
 		if (!map_dir)
 			break ;
-		free(map_dir);
 	}
 	close(fd);
 	return (0);
@@ -88,7 +87,7 @@ int	map_line(char *line, t_mlx *vars, t_map *map)
 		else if (*line == '1')
 			map_put(vars, map->wall, x, y);
 		else if (*line == 'C')
-			map_put(vars, map->collect, x, y);
+			map_put(vars, map->pass, x, y);
 		else if (*line == 'E')
 			map_put(vars, map->exit, x, y);
 		else if (*line == 'P')

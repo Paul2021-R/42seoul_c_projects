@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:58:22 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/24 16:56:03 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/09 13:35:46 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int main(void)
 
 	init = malloc(sizeof(t_module) * 1);
 	if (!init)
-		exit(1);
+		exit(1);//에러 대응 필요
 	init->vars.mlx = mlx_init();
 	game_main(&init);
 	mlx_key_hook(init->vars.mlx_win, key_hook_switch, &init);
