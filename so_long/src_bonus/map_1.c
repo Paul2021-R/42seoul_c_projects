@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/10 16:19:55 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/11 17:31:43 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../includes/so_long.h"
 
 int	map_load(t_mlx *vars, t_map *data, char *map_num)
 {

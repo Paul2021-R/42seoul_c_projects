@@ -6,14 +6,14 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 23:31:18 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/10 16:19:07 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/11 17:30:40 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
  * 기본 윈도우 생성, 도형 렌더링 관련 함수 
  */
 
-#include "../include/so_long.h"
+#include "../includes/so_long.h"
 
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {

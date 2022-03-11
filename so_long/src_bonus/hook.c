@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 21:16:50 by haryu             #+#    #+#           :q  */
-/*   Updated: 2022/03/10 16:19:23 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/11 17:31:55 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../includes/so_long.h"
 
 void	press_move_key(int keycode)
 {

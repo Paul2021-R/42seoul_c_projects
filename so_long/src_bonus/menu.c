@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 12:31:01 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/10 16:18:20 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/11 17:31:14 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../includes/so_long.h"
 
 int intro_load(t_mlx *vars, t_intro *data)
 {

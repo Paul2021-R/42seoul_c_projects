@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 00:17:32 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/10 16:19:39 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/11 18:18:04 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../includes/so_long.h"
 
 char	*mapnum_out(int map_num)
 {

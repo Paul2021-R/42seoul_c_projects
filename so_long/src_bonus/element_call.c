@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:51:34 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/10 16:18:02 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/11 17:32:16 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../includes/so_long.h"
 
 void	elements_call(t_module **init)
 {

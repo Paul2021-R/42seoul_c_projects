@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 21:18:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/10 16:18:32 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/11 18:17:45 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../includes/so_long.h"
 
 void	enemy_print(t_mlx *vars, t_enemy *en, int x, int y)
 {

@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:27:32 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/10 16:18:56 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/11 17:32:06 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../includes/so_long.h"
 
 int	map_error(int fd, int *width, int *height)
 {

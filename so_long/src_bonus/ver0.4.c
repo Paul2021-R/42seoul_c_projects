@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:58:22 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/10 16:17:50 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/11 17:30:26 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../includes/so_long.h"
 
 void	game_main(t_module **init)
 {
