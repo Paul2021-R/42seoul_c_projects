@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/16 16:19:59 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/16 17:03:28 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	map_print(t_mlx *vars, t_map *map, char *map_num)
 	return (0);
 }
 
-int	map_line(char *line, t_mlx *vars, t_map *map)
+int	map_line(char *line, t_mlx *game, t_map *map)
 {
 	int			x;
 	static int	y;
@@ -83,15 +83,15 @@ int	map_line(char *line, t_mlx *vars, t_map *map)
 	while (line)
 	{
 		if (*line == '0')
-			map_put(vars, map->pass, x, y);
+			map_put(game, map->pass, x, y);
 		else if (*line == '1')
-			map_put(vars, map->wall, x, y);
+			map_put(game, map->wall, x, y);
 		else if (*line == 'C')
-			map_put(vars, map->pass, x, y);
+			map_put(game, map->pass, x, y);
 		else if (*line == 'E')
-			map_put(vars, map->exit, x, y);
+			map_put(game, map->exit, x, y);
 		else if (*line == 'P')
-			map_put(vars, map->starting, x, y);
+			map_put(game, map->starting, x, y);
 		else if (*line == '\n' || *line == '\0')
 			break ;
 		else
@@ -109,15 +109,15 @@ void	map_save(t_map *map, char *line, int y)
 		return ;
 	if (y == 0)
 	{
-		map->rule.map_data = malloc(sizeof(char *) * (map->y / 50));
-		if (!map->map_data)
+		map->rule.map_data = malloc(sizeof(char *) * (map->position.y / 50));
+		if (!map->rule.map_data)
 		{
 			printf("error!\n");
 			exit(1);
 		}
 	}
 	if (y == 0)
-		map->map_data[0] = ft_strdup(line);
+		map->rule.map_data[0] = ft_strdup(line);
 	else
-		map->map_data[y/50] = ft_strdup(line);	
+		map->rule.map_data[y/50] = ft_strdup(line);	
 }
