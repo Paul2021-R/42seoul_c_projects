@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 18:45:24 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/11 17:31:31 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/16 20:18:26 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	map_put(t_mlx *vars, t_img *img, int x, int y)
 	return (0);
 }
 
-int	map_checker(char *map, int *x, int *y)
+int	map_checker(char *map, unsigned int *x, unsigned int *y)
 {
 	if (map[0] == '1')
 		map_resolution(MAP_DIR_1, x, y);
@@ -33,7 +33,7 @@ int	map_checker(char *map, int *x, int *y)
 	return (0);
 }
 
-int	map_resolution(char *map, int *x, int *y)
+int	map_resolution(char *map, unsigned int *x, unsigned int *y)
 {
 	int		fd;
 	int		width;
@@ -51,8 +51,8 @@ int	map_resolution(char *map, int *x, int *y)
 		printf("Error\n");
 		exit(1);
 	}
-	*x = 50 * (*x - 1);
-	*y = 50 * (*y - 1);
+	*x = SIZE * (*x - 1);
+	*y = SIZE * (*y - 1);
 	close(fd);
 	return (0);
 }

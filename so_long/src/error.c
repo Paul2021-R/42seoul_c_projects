@@ -6,13 +6,13 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:27:32 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/11 17:32:06 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/16 20:22:00 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	map_error(int fd, int *width, int *height)
+int	map_error(int fd, unsigned int *width, unsigned int *height)
 {
 	t_rule	rules;
 	char	*check;
@@ -93,4 +93,5 @@ void	initialize_rules(t_rule *rules)
 	rules->starting = 0;
 	rules->collect = 0;
 	rules->exit = 0;
+	rules->map_data = NULL;
 }

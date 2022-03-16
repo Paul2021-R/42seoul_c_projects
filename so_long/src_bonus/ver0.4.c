@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:58:22 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/11 17:30:26 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/16 17:00:38 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	game_map(t_module **init, int map_num)
 	char	*map;
 
 	map = mapnum_out(map_num);
-	(*init)->system = 3;
+	(*init)->sys_status = GAME_PLAYING;
 	mlx_destroy_window((*init)->vars.mlx, (*init)->vars.mlx_win);
 	map_checker(map, &(*init)->map.x, &(*init)->map.y);
 	(*init)->vars.mlx_win = mlx_new_window((*init)->vars.mlx, (*init)->map.x, (*init)->map.y, "SO_LONG");

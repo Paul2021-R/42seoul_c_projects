@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:16:12 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/16 17:05:22 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/16 21:02:19 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,21 @@ void	game_intro(t_module *init)
 	intro_load(&init->game, &init->intro);
 	init->map_number = 0;
 	init->sys_status = GAME_LOGO;
+}
+
+void	game_play(t_module *init, int map_num)
+{
+	char	*map;
+
+	map = mapnum_out(map_num);
+	init->map_number = map_num;
+	init->sys_status = GAME_PLAYING;
+	mlx_destroy_window(init->game.mlx, init->game.mlx_win);
+	map_checker(map, &init->map.position.x, &init->map.position.y);
+	init->game.mlx_win = mlx_new_window(init->game.mlx, init->map.position.x, init->map.position.y, "SO_LONG_ver.1.0.");
+	map_load(&init->game, &init->map, map);
+	mlx_key_hook(init->game.mlx_win, key_hook_switch, init);
+	mlx_hook(init->game.mlx_win, 17, 1L<<3, press_close, init->game.mlx);
 }
 
 int main(void)

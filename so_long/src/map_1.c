@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/16 17:03:28 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/16 20:33:23 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	map_initialize(t_mlx *vars, t_map *data)
 	data->wall = malloc(sizeof(t_img) * 1);
 	data->collect = malloc(sizeof(t_img) * 1);
 	data->starting = malloc(sizeof(t_img) * 1);
-	data->exit = malloc(sizeof(t_img) * 1);//map data 에러 검출 필요
+	data->exit = malloc(sizeof(t_img) * 1);
 	if (!(data->pass || data->wall \
 				|| data->collect || data->starting || data->exit))
-		return (1);
+	 return (1);
 	data->pass->img = mlx_xpm_file_to_image(vars->mlx, \
 			PASS, &data->pass->width, &data->pass->height);
 	data->wall->img = mlx_xpm_file_to_image(vars->mlx, \
@@ -109,7 +109,7 @@ void	map_save(t_map *map, char *line, int y)
 		return ;
 	if (y == 0)
 	{
-		map->rule.map_data = malloc(sizeof(char *) * (map->position.y / 50));
+		map->rule.map_data = malloc(sizeof(char *) * (map->position.y / SIZE));
 		if (!map->rule.map_data)
 		{
 			printf("error!\n");
@@ -119,5 +119,5 @@ void	map_save(t_map *map, char *line, int y)
 	if (y == 0)
 		map->rule.map_data[0] = ft_strdup(line);
 	else
-		map->rule.map_data[y/50] = ft_strdup(line);	
+		map->rule.map_data[y/SIZE] = ft_strdup(line);	
 }

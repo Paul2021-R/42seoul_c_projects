@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 21:16:50 by haryu             #+#    #+#           :q  */
-/*   Updated: 2022/03/16 16:49:09 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/16 21:06:21 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,21 @@ int	key_hook_switch(int keycode, t_module **init)
 		(*init)->sys_status = GAME_MAIN_1;
 		intro_print(&(*init)->game, &(*init)->intro, GAME_MAIN_1);
 	}
-	else if ((keycode == KEY_ENTER || keycode == 83 || keycode == KEY_1) && (*init)->sys_status == GAME_MAIN_1)
+	else if ((keycode == KEY_ENTER || keycode == KEY_1) && (*init)->sys_status == GAME_MAIN_1)
 	{
 		(*init)->sys_status = GAME_MAIN_2;
 		intro_print(&(*init)->game, &(*init)->intro, GAME_MAIN_2);
 	}
-	else if (keycode == 53 || ((keycode == KEY_2 || keycode == 84) && (*init)->sys_status == GAME_MAIN_1))
+	else if (((keycode == KEY_2 || keycode == 84) && (*init)->sys_status == GAME_MAIN_1))
 		mlx_close(keycode, &(*init)->game);
 	else if ((keycode == 51 && (*init)->sys_status == GAME_MAIN_2))
 	{
 		(*init)->sys_status--;
-		intro_print(&(*init)->game, &(*init)->intro, 1);	
+		intro_print(&(*init)->game, &(*init)->intro, 1);
 	}
 	else if (keycode > 17 && keycode < 22 && (*init)->sys_status == GAME_MAIN_2)
-		game_map(init, keycode);
-	else if (keycode == 35)
+		game_play((*init), keycode - 17);
+	else if (keycode == KEY_P)
 		print_current_system(init);
 	else
 		printf("%d\n",keycode);

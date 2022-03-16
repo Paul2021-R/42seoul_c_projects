@@ -6,14 +6,14 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:33:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/16 16:26:57 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/16 16:48:18 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
-# include "./meta_data.h"
+# include "meta_data.h"
 
 typedef struct s_map
 {

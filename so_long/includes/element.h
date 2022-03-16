@@ -6,12 +6,14 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:50 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/16 16:26:55 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/16 16:48:03 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ELEMENT_H
 # define ELEMENT_H
+
+# include "meta_data.h"
 
 typedef struct s_player
 {
@@ -22,14 +24,12 @@ typedef struct s_player
 	unsigned int	steps : 1;
 }				t_player;
 
-typedef struct s_enemy;
+typedef struct s_enemy
 {
 	t_img			*sprite;
 	t_position		position;
 	unsigned int	random;
-	unsigned int	enc_player;
-	
-	
+	unsigned int	enc_player;	
 }				t_enemy;
 
 typedef struct s_coin

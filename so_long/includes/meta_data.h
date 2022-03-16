@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:55:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/16 16:26:53 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/16 20:57:26 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ typedef struct s_mlx
 
 typedef struct s_position
 {
-	unsigned int	x : 1;
-	unsigned int	y : 1;
+	unsigned int	x;
+	unsigned int	y;
 }			t_position;
 
 typedef struct s_rule
@@ -96,18 +96,19 @@ typedef struct s_rule
 # define KEY_2 19
 # define KEY_3 20
 # define KEY_4 21
+# define KEY_P 35
 
 /* Sprite */
-# define SIZE 32
+# define SIZE 50
 
 # define BYTE_MAX 255
 
 /* Game Scene Status */
-# define GAME_LOGO 0;
-# define GAME_MAIN_1 1;
-# define GAME_MAIN_2 2;
-# define GAME_PLAYING 3;
-# define GAME_CLEAR 4;
-# define GAME_OVER 5;
+# define GAME_LOGO 0
+# define GAME_MAIN_1 1
+# define GAME_MAIN_2 2
+# define GAME_PLAYING 3
+# define GAME_CLEAR 4
+# define GAME_OVER 5
 
 #endif

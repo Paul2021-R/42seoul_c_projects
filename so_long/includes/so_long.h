@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/16 16:26:59 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/16 20:48:55 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include "../library/mlx/mlx.h"
 # include "../library/libft/libft.h"
 # include "../library/gnl/get_next_line.h"
-# include "./meta_data.h"
-# include "./map.h"
-# include "./element.h"
+# include "meta_data.h"
+# include "map.h"
+# include "element.h"
 
 // defines
 
@@ -87,8 +87,8 @@ typedef struct s_module
 	t_mlx		game;
 	t_intro		intro;
 	t_map		map;
-	int			map_number : 1;
-	int			sys_status : 1;
+	int			map_number;
+	int			sys_status;
 	t_player	player;
 	t_list		coin;
 	t_position	starting;
@@ -112,25 +112,25 @@ int		intro_initialize(t_mlx *vars, t_intro *intro);
 int		intro_print(t_mlx *vars, t_intro *intro, int keycode);
 
 // map load & image print
-void	game_map(t_module **init, int map_num);
+void	game_play(t_module *init, int map_num);
 void	map_save(t_map *map, char *line, int y);
 int		map_load(t_mlx *vars, t_map *data, char *map_num);
 int		map_initialize(t_mlx *vars, t_map *data);
 int 	map_print(t_mlx *vars, t_map *map, char *map_num);
 int		map_line(char *line, t_mlx *vars, t_map *map);
 int		map_put(t_mlx *vars, t_img *img, int x, int y);
-int		map_checker(char *map, int *x, int *y);
-int		map_resolution(char *map, int *x, int *y);
-
+int		map_checker(char *map, unsigned int *x, unsigned int *y);
+int		map_resolution(char *map, unsigned int *x, unsigned int *y);
+/*
 // elements respawn
 void	elements_call(t_module **init);
 void	enemy_print(t_mlx *vars, t_enemy *en, int x, int y);
 void	enemy_load(t_mlx *vars, t_enemy *enemy, int x, int y);
 void	enemy_cal(char **map ,t_mlx *vars, t_enemy *en, int resolution);
 void	player_call(t_map *map,t_mlx *vars, t_player *player);
-
+*/
 //map error check
-int		map_error(int fd, int *width, int *height);
+int		map_error(int fd, unsigned int *width, unsigned int *height);
 void	find_target(char *str, t_rule *target);
 void	initialize_rules(t_rule *rules);
 int		width_check(int height, int width, int current);
