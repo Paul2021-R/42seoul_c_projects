@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/10 16:26:29 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/16 14:52:45 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,12 @@
 # include "../library/mlx/mlx.h"
 # include "../library/libft/libft.h"
 # include "../library/gnl/get_next_line.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <string.h>
+# include "./meta_data.h"
+# include "./map.h"
+# include "./element.h"
 
 // defines
 
-# define WALL "./asset/map/wall_xpm.xpm"
-# define PASS "./asset/map/pass_xpm.xpm"
-# define COLLECT "./asset/map/collect_xpm.xpm"
-# define STARTING "./asset/map/starting_xpm.xpm"
-# define EXIT "./asset/map/exit_xpm.xpm"
-# define MAP_DIR_1 "./asset/ber/map_1.ber"
-# define MAP_DIR_2 "./asset/ber/map_2.ber"
-# define MAP_DIR_3 "./asset/ber/map_3.ber"
-# define MAP_DIR_4 "./asset/ber/custom.ber"
-# define OVER "./asset/menu/gameover.xpm"
-# define CLEAR "./asset/menu/gameclear.xpm"
-# define LOGO "./asset/menu/logo.xpm"
-# define MAIN_1 "./asset/menu/main_1.xpm"
-# define MAIN_2 "./asset/menu/main_2.xpm"
 # define EN_0 "./asset/enemy/enemy_1.xpm"
 # define EN_1 "./asset/enemy/enemy_2.xpm"
 # define EN_2 "./asset/enemy/enemy_3.xpm"
@@ -50,24 +32,7 @@
 # define PLAYER_2 "./asset/player/plaer_3.xpm"
 # define PLAYER_3 "./asset/player/plaer_4.xpm"
 
-//module
-typedef struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_leng;
-	int		endian;
-	int		width;
-	int		height;
-}				t_img;
-
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*mlx_win;
-}				t_mlx;
-
+/* 삭제 예정
 typedef struct s_map
 {
 	t_img	*pass;
@@ -80,6 +45,7 @@ typedef struct s_map
 	char	**map_data;
 }				t_map;
 
+
 typedef struct s_intro
 {
 	t_img	*logo;
@@ -89,9 +55,10 @@ typedef struct s_intro
 	t_img	*gameclear;
 }				t_intro;
 
+
 typedef struct s_player
 {
-	t_img	**sprite;
+	t_img	*sprite;
 }				t_player;
 
 typedef struct s_enemy
@@ -113,12 +80,30 @@ typedef struct s_module
 	int			system;
 }				t_module;
 
+*/
+
+typedef struct s_module
+{
+	t_mlx		game;
+	t_intro		intro;
+	t_map		map;
+	int			map_number : 1;
+	int			sys_status : 1;
+	t_player	player;
+	t_list		coin;
+	t_position	starting;
+	t_position	exit;
+}  			t_module;
+
+/*
 typedef struct s_rule
 {
 	int		starting;
 	int		collect;
 	int		exit;
 }				t_rule;
+*/
+
 
 // game main menu
 void	game_main(t_module **init);
