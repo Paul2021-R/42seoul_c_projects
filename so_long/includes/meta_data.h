@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:55:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/16 20:57:26 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/17 02:04:57 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,11 @@
 # define MAP_DIR_2 "./asset/ber/map_2.ber"
 # define MAP_DIR_3 "./asset/ber/map_3.ber"
 # define MAP_DIR_4 "./asset/ber/custom.ber"
-# define OVER "./asset/menu/gameover.xpm"
-# define CLEAR "./asset/menu/gameclear.xpm"
 # define LOGO "./asset/menu/logo.xpm"
 # define MAIN_1 "./asset/menu/main_1.xpm"
 # define MAIN_2 "./asset/menu/main_2.xpm"
-
+# define OVER "./asset/menu/gameover.xpm"
+# define CLEAR "./asset/menu/gameclear.xpm"
 /*
  * module base
  */
@@ -68,9 +67,9 @@ typedef struct s_position
 
 typedef struct s_rule
 {
-	unsigned int	starting : 1;
-	unsigned int	collect : 2;
-	unsigned int	exit : 1;
+	unsigned int	starting;
+	unsigned int	collect;
+	unsigned int	exit;
 	char			**map_data;
 }			t_rule;
 
@@ -79,7 +78,7 @@ typedef struct s_rule
  * Game meta Data
  */
 
-# define TURE 1
+# define TRUE 1
 # define FALSE 0
 
 # define KEY_UP 126

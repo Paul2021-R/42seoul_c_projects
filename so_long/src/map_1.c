@@ -6,20 +6,20 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/16 20:33:23 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/17 00:31:36 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	map_load(t_mlx *vars, t_map *data, char *map_num)
+int	map_load(t_mlx *game, t_map *data, char *map_num)
 {
-	if (map_initialize(vars, data))
+	if (map_initialize(game, data))
 	{
 		printf("error!\n");
 		exit(1);
 	}
-	map_print(vars, data, map_num);
+	map_print(game, data, map_num);
 	return (0);
 }
 

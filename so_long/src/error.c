@@ -6,38 +6,36 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:27:32 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/16 20:22:00 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/17 02:07:35 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	map_error(int fd, unsigned int *width, unsigned int *height)
+int	map_error(int fd, t_rule *rules, unsigned int *width, unsigned int *height)
 {
-	t_rule	rules;
 	char	*check;
 	int		wall_open;
 
 	wall_open = 0;
-	initialize_rules(&rules);
+	initialize_rules(rules);
 	while (1)
 	{
 		check = get_next_line(fd);
 		if (!check)
 			break ;
-		find_target(check, &rules);
+		find_target(check, rules);
 		if (*height == 1)
-			*width = (int)ft_strlen(check);
-		if (width_check(*height, *width, (int)ft_strlen(check)))
-			return (1);
+			*width = (unsigned int)ft_strlen(check);
+		if (width_check(*height, *width, (unsigned int)ft_strlen(check)))
+			return (TRUE);
 		if (wall_check(check, *height, *width, &wall_open))
-			return (1);
+			return (TRUE);
 		free (check);
 		(*height)++;
 	}
-	if ((rules.starting < 1 || rules.collect < 1 || rules.exit < 1) \
-			|| wall_open != 0)
-		return (1);
+	if (rules->starting < 1 || rules->exit < 1 || wall_open != 0)
+		return (TRUE);
 	return (0);
 }
 
@@ -50,9 +48,9 @@ int	wall_check(char *str, int height, int width, int *open)
 	while (str[i])
 	{
 		if (height == 1 && i < width - 1 && str[i] != '1')
-			return (1);
+			return (TRUE);
 		else if (height > 1 && (str[0] != '1' || str[width - 2] != '1'))
-			return (1);
+			return (TRUE);
 		if (str[i] == '1' || str[i] == '\n')
 			(*open)++;
 		i++;
@@ -64,11 +62,11 @@ int	wall_check(char *str, int height, int width, int *open)
 	return (0);
 }
 
-int	width_check(int height, int width, int current)
+int	width_check(unsigned int height, unsigned int width, unsigned int current)
 {
 	if (height > 1)
 		if (width != current)
-			return (1);
+			return (TRUE);
 	return (0);
 }
 

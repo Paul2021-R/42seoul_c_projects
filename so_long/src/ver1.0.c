@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:16:12 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/16 21:02:19 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/17 01:43:23 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ void	game_intro(t_module *init)
 
 void	game_play(t_module *init, int map_num)
 {
-	char	*map;
+	char	map[2];
 
-	map = mapnum_out(map_num);
+	map[0] = map_num + '0';
+	map[1] = '\0';
 	init->map_number = map_num;
 	init->sys_status = GAME_PLAYING;
 	mlx_destroy_window(init->game.mlx, init->game.mlx_win);
-	map_checker(map, &init->map.position.x, &init->map.position.y);
+	map_checker(map, &init);
 	init->game.mlx_win = mlx_new_window(init->game.mlx, init->map.position.x, init->map.position.y, "SO_LONG_ver.1.0.");
 	map_load(&init->game, &init->map, map);
 	mlx_key_hook(init->game.mlx_win, key_hook_switch, init);

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:33:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/16 16:48:18 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/17 02:00:34 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_intro
 	t_img		*gameclear;
 }				t_intro;
 
-# define MAX_WIDTH 2560
-# define MAX_HEIGHT 1440
+# define MAX_WIDTH 1920
+# define MAX_HEIGHT 1080
 
 
 #endif
