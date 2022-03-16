@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:55:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/16 15:40:33 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/16 16:26:53 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_rule
 	unsigned int	starting : 1;
 	unsigned int	collect : 2;
 	unsigned int	exit : 1;
-	char			**map_data
+	char			**map_data;
 }			t_rule;
 
 
@@ -90,6 +90,12 @@ typedef struct s_rule
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define KEY_ENTER 36
+# define KEY_ESC 53
+# define KEY_1 18
+# define KEY_2 19
+# define KEY_3 20
+# define KEY_4 21
 
 /* Sprite */
 # define SIZE 32
