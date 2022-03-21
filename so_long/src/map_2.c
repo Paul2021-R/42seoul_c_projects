@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 18:45:24 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/17 02:05:27 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/21 22:52:17 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	map_checker(char *map, t_module **init)
 	unsigned int	*y;
 	char			*map_dir;
 
-	x = &(*init)->map.position.x;
-	y = &(*init)->map.position.y;
 	if (map[0] == '1')
 		map_dir = MAP_DIR_1;
 	else if (map[0] == '2')
@@ -34,7 +32,7 @@ int	map_checker(char *map, t_module **init)
 		map_dir = MAP_DIR_3;
 	else if (map[0] == '4')
 		map_dir = MAP_DIR_4;
-	map_resolution(map_dir, init, x, y);
+	map_resolution(map_dir, init, &(*init)->map.position.x, &(*init)->map.position.y);
 	return (0);
 }
 
@@ -64,6 +62,5 @@ int	map_resolution(char *map, t_module **init, unsigned int *x, unsigned int *y)
 		printf("The resolution of a current map file is too big.\n");
 		exit (1);
 	}
-	printf("%d %d %d\n", rules->starting, rules->collect, rules->exit);
 	return (0);
 }

@@ -1,0 +1,18 @@
+{
+  "files.associations": {
+    "ios": "c",
+    "random": "c",
+    "*.tcc": "c",
+    "so_long.h": "c"
+  },
+  "editor.fontSize": 13,
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorStyle": "block",
+"editor.detectIndentation": false,
+"editor.formatOnType": true,
+"files.autoSave": "afterDelay",
+"42header.email": "haryu@student.42seoul.co.kr",
+"42header.username": "haryu",
+"codam-norminette-3.highlight-color": "rgba(255,186,168,0.2)"
+}

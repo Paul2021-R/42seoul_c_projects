@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   meta_data.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:55:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/17 02:04:57 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/21 22:42:20 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
  * module base
  */
 
-typedef struct s_img 
+typedef struct s_img
 {
 	void	*img;
 	char	*addr;
@@ -53,7 +53,7 @@ typedef struct s_img
 	int		height;
 }			t_img;
 
-typedef struct s_mlx 
+typedef struct s_mlx
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -72,7 +72,6 @@ typedef struct s_rule
 	unsigned int	exit;
 	char			**map_data;
 }			t_rule;
-
 
 /*
  * Game meta Data
@@ -96,9 +95,10 @@ typedef struct s_rule
 # define KEY_3 20
 # define KEY_4 21
 # define KEY_P 35
+# define KEY_BACK 51
 
 /* Sprite */
-# define SIZE 50
+# define SIZE 32
 
 # define BYTE_MAX 255
 

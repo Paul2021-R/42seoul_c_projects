@@ -3,26 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 12:31:01 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/17 01:24:01 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/21 22:52:48 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int intro_load(t_mlx *game, t_intro *data)
+int	intro_load(t_module *init)
 {
-	int i;
+	int	i;
 
-	if (intro_initialize(game, data))
+	if (intro_initialize(&(*init).game, &(*init).intro))
 	{
 		printf("error\n");
 		exit(1);
 	}
-	intro_print(game, data, GAME_LOGO);
-
+	intro_print(&(*init).game, &(*init).intro, GAME_LOGO);
+	(*init).map_number = 0;
+	(*init).sys_status = GAME_LOGO;
 	return (0);
 }
 
@@ -40,7 +41,7 @@ int	intro_malloc(t_intro *intro)
 	return (FALSE);
 }
 
-int intro_initialize(t_mlx *game, t_intro *intro)
+int	intro_initialize(t_mlx *game, t_intro *intro)
 {
 	if (intro_malloc(intro))
 	{

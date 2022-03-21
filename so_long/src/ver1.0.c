@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ver1.0.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:16:12 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/17 01:43:23 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/21 22:53:49 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	game_intro(t_module *init)
 {
 	init->game.mlx_win = mlx_new_window(init->game.mlx, 400, 300, "SO_LONG");
-	intro_load(&init->game, &init->intro);
+	intro_load(init);
 	init->map_number = 0;
 	init->sys_status = GAME_LOGO;
 }
@@ -32,22 +32,22 @@ void	game_play(t_module *init, int map_num)
 	map_checker(map, &init);
 	init->game.mlx_win = mlx_new_window(init->game.mlx, init->map.position.x, init->map.position.y, "SO_LONG_ver.1.0.");
 	map_load(&init->game, &init->map, map);
+	elemet_load(init);
 	mlx_key_hook(init->game.mlx_win, key_hook_switch, init);
-	mlx_hook(init->game.mlx_win, 17, 1L<<3, press_close, init->game.mlx);
+	mlx_hook(init->game.mlx_win, 17, 0, press_close, init->game.mlx);
 }
 
 int main(void)
 {
-	t_module	*init;
+    t_module *init;
 
-	init = malloc(sizeof(t_module) * 1);
-	if (!init)
-		exit(1);
-	init->game.mlx = mlx_init();
-	game_intro(init);
-	mlx_key_hook(init->game.mlx_win, key_hook_switch, &init);
-	mlx_hook(init->game.mlx_win, 17, 1L<<3, press_close, &init->game);
-	mlx_loop(init->game.mlx);
-	return (0);
-
+    init = malloc(sizeof(t_module) * 1);
+    if (!init)
+        exit(1);
+    init->game.mlx = mlx_init();
+    game_intro(init);
+    mlx_key_hook(init->game.mlx_win, key_hook_switch, init);
+    mlx_hook(init->game.mlx_win, 17, 0, press_close, &init->game);
+    mlx_loop(init->game.mlx);
+    return (0);
 }
