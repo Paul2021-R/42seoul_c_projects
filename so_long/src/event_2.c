@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   graphic.c                                          :+:      :+:    :+:   */
+/*   event_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 13:08:47 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/23 18:27:04 by haryu            ###   ########.fr       */
+/*   Created: 2022/03/23 23:52:47 by haryu             #+#    #+#             */
+/*   Updated: 2022/03/24 00:55:07 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-
-void	p_image_load(t_img *sprite, t_mlx *vars)
+int	key_hook_switch_2(int keycode, t_module *init)
 {
-	int	width;
-	int	height;
-
-	sprite->img = mlx_xpm_file_to_image(vars->mlx, P_RIGHT, &sprite->width, &sprite->height);
-}
-
-int	c_image_load(t_img *sprite, t_mlx *vars)
-{
-	return (0);
-}
-
-int	graphic_init(t_module *init, char code)
-{
-	if (code == 'P')
-		p_image_load(init->player.sprite, &init->game);
-
-	else if (code == 'C')
-		// c_image_load(init->coin, vars);
+	if (keycode == KEY_1)
+	{
+		game_play(init, init->map_number);
+	}
+	if (keycode == KEY_2)
+	{
+		init->sys_status = GAME_MAIN_1;
+		intro_print(&init->game, &init->intro, init->sys_status);
+	}
+	if (keycode == KEY_3)
+		mlx_close(keycode, &init->game);
 	return (0);
 }

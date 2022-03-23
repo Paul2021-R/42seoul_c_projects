@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/23 17:29:15 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 00:42:13 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,12 @@ int map_initialize(t_mlx *vars, t_map *data)
 	data->pass = malloc(sizeof(t_img) * 1);
 	data->wall = malloc(sizeof(t_img) * 1);
 	data->collect = malloc(sizeof(t_img) * 1);
-	data->starting = malloc(sizeof(t_img) * 1);
 	data->exit = malloc(sizeof(t_img) * 1);
 	if (!(data->pass || data->wall || data->collect || data->starting || data->exit))
 		return (1);
 	data->pass->img = mlx_xpm_file_to_image(vars->mlx, PASS, &data->pass->width, &data->pass->height);
 	data->wall->img = mlx_xpm_file_to_image(vars->mlx, WALL, &data->wall->width, &data->wall->height);
 	data->collect->img = mlx_xpm_file_to_image(vars->mlx, COLLECT, &data->collect->width, &data->collect->height);
-	data->starting->img = mlx_xpm_file_to_image(vars->mlx, STARTING, &data->starting->width, &data->starting->height);
 	data->exit->img = mlx_xpm_file_to_image(vars->mlx, EXIT, &data->exit->width, &data->exit->height);
 	return (0);
 }
@@ -59,9 +57,9 @@ int	map_print(t_mlx *vars, t_map *map, char *map_num)
 	while (1)
 	{
 		map_dir = get_next_line(fd);
-		map_line(map_dir, vars, map);
 		if (!map_dir)
 			break ;
+		map_line(map_dir, vars, map);
 	}
 	close(fd);
 	return (0);
@@ -80,10 +78,8 @@ int	map_line(char *line, t_mlx *game, t_map *map)
 			map_put(game, map->pass, x, y);
 		else if (*line == '1')
 			map_put(game, map->wall, x, y);
-		else if (*line == 'E')
+		else if (*line == 'E' || *line == 'P')
 			map_put(game, map->exit, x, y);
-		else if (*line == 'P')
-			map_put(game, map->starting, x, y);
 		else if (*line == '\n' || *line == '\0')
 			break ;
 		else
@@ -92,6 +88,8 @@ int	map_line(char *line, t_mlx *game, t_map *map)
 		line++;
 	}
 	y += SIZE;
+	if (y == map->position.y)
+		y = 0;
 	return (0);
 }
 

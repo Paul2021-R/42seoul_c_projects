@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/23 18:27:11 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 00:50:00 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ typedef struct s_module
 	int			map_number;
 	int			sys_status;
 	t_player	player;
-	t_		coin;
+	t_img		*coin;
 	t_position	starting;
 	t_position	exit;
 }				t_module;
 
 // game main menu
-void	game_main(t_module **init);
+void	game_intro(t_module *init, int status);
 int		intro_load(t_module *init);
 int		intro_malloc(t_intro *intro);
 int		intro_initialize(t_mlx *game, t_intro *intro);
@@ -61,8 +61,8 @@ int		player_position_init(t_position *position, t_module *init);
 int		check_x_y(char **map, unsigned int *x, unsigned int *y, char checker);
 int		graphic_init(t_module *init, char code);
 void	p_image_load(t_img *sprite, t_mlx *vars);
-int		c_image_load(t_img *sprite, t_mlx *vars);
-int		coint_load(t_module *init);
+void	c_image_load(t_img *sprite, t_mlx *vars);
+int		coin_load(t_module *init);
 
 // map error check
 int		map_error(int fd, t_rule *rules, unsigned int *width, unsigned int *height);
@@ -73,10 +73,14 @@ int		wall_check(char *str, int height, int width, int *open);
 
 // hook & events
 int		key_hook_switch(int kecode, t_module *init);
+int		key_hook_switch_2(int kecode, t_module *init);
 int		mlx_close(int keycode, t_mlx *vars);
 int		press_close(t_mlx *vars);
-void	press_move_key(int keycode);
+void	press_move_key(int keycode, t_module *init);
 int		status_control(int keycode, t_module *init, int game_status);
+
+int		move(int arrow, t_module *init);
+int		check_move_ok(char **map, unsigned int *x, unsigned int *y, int arrow);
 
 // utills
 char	*mapnum_out(int map_num);

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:50 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/23 14:38:12 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 00:50:17 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define P_DOWN "./asset/player/pac_open_down.xpm"
 # define P_RIGHT "./asset/player/pac_open_right.xpm"
 # define P_LEFT "./asset/player/pac_open_left.xpm"
+# define COIN "./asset/map/collect_xpm.xpm"
 
 typedef struct s_player
 {
@@ -37,12 +38,5 @@ typedef struct s_enemy
 	unsigned int	random;
 	unsigned int	enc_player;
 }				t_enemy;
-
-typedef struct s_coin
-{
-	t_img			*sprite;
-	unsigned int	enc_player;
-	t_position		position;
-}				t_coin;
 
 #endif

@@ -29,11 +29,17 @@ void	print_current_system(t_module *init)
 	int	i;
 
 	i = 0;
-	printf("\n<so_long proejct system check>\n");
+	printf("----------------------------------\n");
+	printf("< SO_LONG proejct system checker >\n");
 	printf("1. system current : %d\n", init->sys_status);
 	printf("2. map number : %d\n", init->map_number);
 	printf("3. map size X : %d  Y : %d\n", init->map.position.x, init->map.position.y);
 	printf("4. map data : \n");
 	while (init->sys_status == GAME_PLAYING && i < init->map.position.y / SIZE)
-		printf("   %s", init->map.rule.map_data[i++]);
+		printf("    %s", init->map.rule.map_data[i++]);
+	printf("5. left coin  : %d\n", init->map.rule.collect);
+	printf("6. Player Position X : %d Y : %d\n", init->player.position.x, init->player.position.y);
+	printf("7. player STEPs : %d\n", init->player.steps);
+	printf("----------------------------------\n");
+
 }

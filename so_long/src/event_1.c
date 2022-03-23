@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   event_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 21:16:50 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/21 22:48:53 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 00:01:26 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	press_move_key(int keycode)
+void	press_move_key(int keycode, t_module *init)
 {
 	if (keycode == KEY_UP || keycode == KEY_W)
-		printf("up\n");
+		move(UP, init);
 	else if (keycode == KEY_DOWN || keycode == KEY_S)
-		printf("down\n");
+		move(DOWN, init);
 	else if (keycode == KEY_LEFT || keycode == KEY_A)
-		printf("left\n");
+		move(LEFT, init);
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
-		printf("right\n");
+		move(RIGHT, init);
 	return ;
 }
 
@@ -65,7 +65,10 @@ int	key_hook_switch(int keycode, t_module *init)
 	if (keycode == KEY_ESC)
 		mlx_close(keycode, &init->game);
 	if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S || keycode == KEY_D || (keycode >= KEY_LEFT && keycode <= KEY_UP))
-		press_move_key(keycode);
+	{
+		if (init->sys_status == GAME_PLAYING)
+			press_move_key(keycode, init);
+	}
 	else if ((keycode == KEY_BACK && init->sys_status == GAME_MAIN_2))
 	{
 		init->sys_status = GAME_MAIN_1;
@@ -73,7 +76,7 @@ int	key_hook_switch(int keycode, t_module *init)
 	}
 	else if (keycode == KEY_P)
 		print_current_system(init);
-	else
-		printf("%d\n", keycode);
+	else if (init->sys_status == GAME_CLEAR || init->sys_status == GAME_OVER)
+		key_hook_switch_2(keycode, init);
 	return (0);
 }

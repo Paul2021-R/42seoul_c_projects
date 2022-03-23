@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   meta_data.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:55:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/23 16:01:43 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 00:49:47 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,15 @@ typedef struct s_rule
 # define KEY_4 21
 # define KEY_P 35
 # define KEY_BACK 51
+
+/*
+ * key shortcut 
+ */
+
+# define UP 1
+# define DOWN 2
+# define RIGHT 3
+# define LEFT 4
 
 /* Sprite */
 # define SIZE 32
