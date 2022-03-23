@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   element_call.c                                     :+:      :+:    :+:   */
+/*   graphic.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 16:51:34 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/23 18:01:27 by haryu            ###   ########.fr       */
+/*   Created: 2022/03/23 13:08:47 by haryu             #+#    #+#             */
+/*   Updated: 2022/03/23 18:27:04 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void element_put(t_mlx *vars, t_img *img, int x, int y)
+
+void	p_image_load(t_img *sprite, t_mlx *vars)
 {
-	printf("check pointer\nmlx pointer : %p player :  %p\n", vars, img);
-	printf("position : x =  %d y = %d\n", x, y);
-	mlx_put_image_to_window(vars->mlx, vars->mlx_win, img->img, x, y);
+	int	width;
+	int	height;
+
+	sprite->img = mlx_xpm_file_to_image(vars->mlx, P_RIGHT, &sprite->width, &sprite->height);
 }
 
-int	elements_call(t_module *init)
+int	c_image_load(t_img *sprite, t_mlx *vars)
 {
-	player_load(init);
-	printf("tell me the pointer ! %p\n", init->player.sprite);
-	//coin_load(init);
 	return (0);
 }
-// enemy 숫자 맞춰서 호출 해야함
+
+int	graphic_init(t_module *init, char code)
+{
+	if (code == 'P')
+		p_image_load(init->player.sprite, &init->game);
+
+	else if (code == 'C')
+		// c_image_load(init->coin, vars);
+	return (0);
+}

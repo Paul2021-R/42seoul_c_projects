@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/21 22:45:32 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/23 18:27:11 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,6 @@
 # include "map.h"
 # include "element.h"
 
-// defines
-
-# define EN_0 "./asset/enemy/enemy_1.xpm"
-# define EN_1 "./asset/enemy/enemy_2.xpm"
-# define EN_2 "./asset/enemy/enemy_3.xpm"
-# define EN_3 "./asset/enemy/enemy_4.xpm"
-# define PLAYER_0 "./asset/player/plaer_1.xpm"
-# define PLAYER_1 "./asset/player/plaer_2.xpm"
-# define PLAYER_2 "./asset/player/plaer_3.xpm"
-# define PLAYER_3 "./asset/player/plaer_4.xpm"
-
 typedef struct s_module
 {
 	t_mlx		game;
@@ -40,7 +29,7 @@ typedef struct s_module
 	int			map_number;
 	int			sys_status;
 	t_player	player;
-	t_list		coin;
+	t_		coin;
 	t_position	starting;
 	t_position	exit;
 }				t_module;
@@ -64,8 +53,15 @@ int		map_checker(char *map, t_module **init);
 int		map_resolution(char *map, t_module **init, unsigned int *x, unsigned int *y);
 
 // element load & image print
-int		element_load(t_module *init);
+int		elements_call(t_module *init);
+void	element_put(t_mlx *vars, t_img *img, int x, int y);
 int		player_load(t_module *init);
+int		player_initialize(t_player *me, t_module *init);
+int		player_position_init(t_position *position, t_module *init);
+int		check_x_y(char **map, unsigned int *x, unsigned int *y, char checker);
+int		graphic_init(t_module *init, char code);
+void	p_image_load(t_img *sprite, t_mlx *vars);
+int		c_image_load(t_img *sprite, t_mlx *vars);
 int		coint_load(t_module *init);
 
 // map error check

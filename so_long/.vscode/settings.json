@@ -1,10 +1,11 @@
 {
   "files.associations": {
-    "ios": "c",
-    "random": "c",
-    "*.tcc": "c",
-    "so_long.h": "c"
-  },
+	"ios": "c",
+	"random": "c",
+	"*.tcc": "c",
+	"so_long.h": "c",
+	"__locale": "c"
+},
   "editor.fontSize": 13,
   "editor.cursorSmoothCaretAnimation": true,
   "editor.cursorBlinking": "smooth",

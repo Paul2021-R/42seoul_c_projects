@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   meta_data.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:55:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/21 22:42:20 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/23 16:01:43 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,6 @@
 typedef struct s_img
 {
 	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_leng;
-	int		endian;
 	int		width;
 	int		height;
 }			t_img;

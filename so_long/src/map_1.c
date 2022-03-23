@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/21 22:51:58 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/23 17:29:15 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ int	map_line(char *line, t_mlx *game, t_map *map)
 	while (line)
 	{
 		if (*line == '0' || *line == 'C')
-			map_put(game, map->pass, x, y);
-		else if (*line == '0' || *line == 'C')
 			map_put(game, map->pass, x, y);
 		else if (*line == '1')
 			map_put(game, map->wall, x, y);
