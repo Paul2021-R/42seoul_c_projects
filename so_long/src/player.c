@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 22:08:52 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 14:01:20 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 20:54:50 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,16 @@ int	player_position_init(t_position *position, t_module *init)
 
 int	player_initialize(t_player *me, t_module *init)
 {
-	me->collected = 0;
-	me->enc_exit = FALSE;
 	me->steps = 0;
 	if (player_position_init(&me->position, init))
 	{
-		printf("<sys> Setting player is failed!\n");
+		printf("<sys>\nSetting player is failed!\n");
 		exit(1);
 	}
 	me->sprite = malloc(sizeof(t_img) * 1);
 	if (!me->sprite)
 	{
-		printf("<sys> Player malloc is failed\n");
+		printf("<sys>\nPlayer malloc is failed\n%s\nError\n", strerror(errno));
 		exit(1);
 	}
 	p_image_load(me->sprite, &init->game);

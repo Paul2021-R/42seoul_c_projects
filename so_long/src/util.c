@@ -1,12 +1,12 @@
-/************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 00:17:32 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/21 19:46:54 by haryu            ###   ########.fr       */
+/*   Created: 2022/03/24 16:47:21 by haryu             #+#    #+#             */
+/*   Updated: 2022/03/24 16:47:29 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,16 @@ void	print_current_system(t_module *init)
 	i = 0;
 	printf("----------------------------------\n");
 	printf("< SO_LONG proejct system checker >\n");
-	printf("1. system current : %d\n", init->sys_status);
-	printf("2. map number : %d\n", init->map_number);
-	printf("3. map size X : %d  Y : %d\n", init->map.position.x, init->map.position.y);
-	printf("4. map data : \n");
+	printf("1. Current system status : %d\n", init->sys_status);
+	printf("2. Map number : %d\n", init->map_number);
+	printf("3. Map size X : %d  Y : %d\n", \
+	init->map.position.x, init->map.position.y);
+	printf("4. Map data : \n");
 	while (init->sys_status == GAME_PLAYING && i < init->map.position.y / SIZE)
 		printf("    %s", init->map.rule.map_data[i++]);
-	printf("5. left coin  : %d\n", init->map.rule.collect);
-	printf("6. Player Position X : %d Y : %d\n", init->player.position.x, init->player.position.y);
+	printf("5. Left coin  : %d\n", init->map.rule.collect);
+	printf("6. Player Position X : %d Y : %d\n", \
+	init->player.position.x, init->player.position.y);
 	printf("7. player STEPs : %d\n", init->player.steps);
 	printf("----------------------------------\n");
-
 }

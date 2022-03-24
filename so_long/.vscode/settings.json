@@ -4,7 +4,9 @@
 	"random": "c",
 	"*.tcc": "c",
 	"so_long.h": "c",
-	"__locale": "c"
+	"__locale": "c",
+	"cerrno": "c",
+	"system_error": "c"
 },
   "editor.fontSize": 13,
   "editor.cursorSmoothCaretAnimation": true,

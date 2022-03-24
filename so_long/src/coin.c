@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:46:10 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/23 23:26:25 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 20:55:30 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	coin_load(t_module *init)
 	init->coin = malloc(sizeof(t_img) * 1);
 	if (!init->coin)
 	{
-		printf("<sys> Coin malloc is failed\n");
+		printf("<sys>\nCoin malloc is failed\n%s\nError\n", strerror(errno));
 		exit(1);
 	}
 	graphic_init(init, 'C');

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ver0.8.c                                           :+:      :+:    :+:   */
+/*   ver1.3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 14:16:12 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 00:56:02 by haryu            ###   ########.fr       */
+/*   Created: 2022/03/24 16:48:39 by haryu             #+#    #+#             */
+/*   Updated: 2022/03/24 21:00:13 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 void	game_intro(t_module *init, int status)
 {
-	init->game.mlx_win = mlx_new_window(init->game.mlx, 400, 300, "SO_LONG_ver.1.0.");
+	init->game.mlx_win = mlx_new_window(init->game.mlx, \
+	400, 300, "SO_LONG_ver.1.3.");
 	if (status == GAME_LOGO)
 	{
 		intro_load(init);
-		init->map_number = 0;	
+		init->map_number = 0;
 		init->sys_status = GAME_LOGO;
 	}
 	else
@@ -39,9 +40,10 @@ void	game_play(t_module *init, int map_num)
 	init->map_number = map_num;
 	init->sys_status = GAME_PLAYING;
 	mlx_destroy_window(init->game.mlx, init->game.mlx_win);
-	printf("Current game status is [%d].\n", GAME_PLAYING);
+	printf("<sys>\nCurrent game status is [%d].\n", GAME_PLAYING);
 	map_checker(map, &init);
-	init->game.mlx_win = mlx_new_window(init->game.mlx, init->map.position.x, init->map.position.y, "SO_LONG_ver.1.0.");
+	init->game.mlx_win = mlx_new_window(init->game.mlx, \
+	init->map.position.x, init->map.position.y, "SO_LONG_ver.1.3.");
 	map_load(&init->game, &init->map, map);
 	elements_call(init);
 	mlx_key_hook(init->game.mlx_win, key_hook_switch, init);

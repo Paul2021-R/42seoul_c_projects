@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:27:32 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/21 22:49:06 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 20:47:59 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,15 @@ int	wall_check(char *str, int height, int width, int *open)
 	while (str[i])
 	{
 		if (height == 1 && i < width - 1 && str[i] != '1')
+		{
+			printf("<sys>\nYour Wall has a problem.\n");
 			return (TRUE);
+		}
 		else if (height > 1 && (str[0] != '1' || str[width - 2] != '1'))
+		{
+			printf("<sys>\nYour Wall has a problem.\n");
 			return (TRUE);
+		}
 		if (str[i] == '1' || str[i] == '\n')
 			(*open)++;
 		i++;
@@ -65,8 +71,13 @@ int	wall_check(char *str, int height, int width, int *open)
 int	width_check(unsigned int height, unsigned int width, unsigned int current)
 {
 	if (height > 1)
+	{
 		if (width != current)
+		{
+			printf("<sys>\nYour map is not a square.\n");
 			return (TRUE);
+		}
+	}
 	return (0);
 }
 
@@ -82,6 +93,16 @@ void	find_target(char *str, t_rule *target)
 			target->exit += 1;
 		else if (*str == 'P')
 			target->starting += 1;
+		else if (*str == '1' || *str == '0' || *str == '\n')
+		{
+			str++;
+			continue ;
+		}
+		else
+		{
+			printf("<sys>\nYour map has a wrong component of map!\nError\n");
+			exit(1);
+		}
 		str++;
 	}
 }

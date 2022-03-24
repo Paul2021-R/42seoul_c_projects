@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:40:38 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 14:01:12 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 20:47:29 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,11 @@ void	map_switch_put(t_module *init, t_map *map, t_position old)
 	x = old.x;
 	y = old.y;
 	if (map->rule.map_data[y][x] == '0' || map->rule.map_data[y][x] == 'C')
-		map_put(&init->game, init->map.pass, x * SIZE, y * SIZE);
+		mlx_put_image_to_window(init->game.mlx, \
+		init->game.mlx_win, map->pass->img, x * SIZE, y * SIZE);
 	else if (map->rule.map_data[y][x] == 'P' || map->rule.map_data[y][x] == 'E')
-		map_put(&init->game, init->map.exit, x * SIZE, y * SIZE);
+		mlx_put_image_to_window(init->game.mlx, \
+		init->game.mlx_win, map->exit->img, x * SIZE, y * SIZE);
 	return ;
 }
 
@@ -56,8 +58,6 @@ void	player_switch_put(t_module *init, int arrow)
 	element_put(&init->game, init->player.sprite, \
 	init->player.position.x * SIZE, init->player.position.y * SIZE);
 }
-
-// 움직임 합쳐서 만들어야 할지도?
 
 void	render_every_thing(t_module *init, \
 t_position old, t_position new, int arrow)

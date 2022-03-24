@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 15:06:40 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/18 23:58:23 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 17:03:36 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	if (*s1 == '\0')
 	{
-		ret = (char *)ft_calloc(2, sizeof(char));
-		if (!ret)
-			return (NULL);
+		ret = (char *)ft_calloc(1, sizeof(char));
 		return (ret);
 	}
 	slen = ft_strlen(s1);

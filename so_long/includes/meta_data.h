@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   meta_data.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:55:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 00:49:47 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 20:16:26 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/types.h>
 # include <stdio.h>
 # include <string.h>
+# include <errno.h>
 
 /*
  * graphic data

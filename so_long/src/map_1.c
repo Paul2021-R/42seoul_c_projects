@@ -6,38 +6,35 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 14:00:17 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 20:41:43 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int map_load(t_mlx *game, t_map *data, char *map_num)
+int	map_load(t_mlx *game, t_map *data, char *map_num)
 {
 	if (map_initialize(game, data))
 	{
-		printf("error!\n");
+		printf("<sys>\nMap initialization is failed\nError!\n");
 		exit(1);
 	}
 	map_print(game, data, map_num);
 	return (0);
 }
 
-int map_initialize(t_mlx *vars, t_map *data)
+int	map_initialize(t_mlx *vars, t_map *data)
 {
 	data->pass = malloc(sizeof(t_img) * 1);
 	data->wall = malloc(sizeof(t_img) * 1);
-	data->collect = malloc(sizeof(t_img) * 1);
 	data->exit = malloc(sizeof(t_img) * 1);
 	if (!(data->pass || data->wall || \
-	data->collect || data->starting || data->exit))
+	data->starting || data->exit))
 		return (1);
 	data->pass->img = mlx_xpm_file_to_image(vars->mlx, \
 	PASS, &data->pass->width, &data->pass->height);
 	data->wall->img = mlx_xpm_file_to_image(vars->mlx, \
 	WALL, &data->wall->width, &data->wall->height);
-	data->collect->img = mlx_xpm_file_to_image(vars->mlx, \
-	COLLECT, &data->collect->width, &data->collect->height);
 	data->exit->img = mlx_xpm_file_to_image(vars->mlx, \
 	EXIT, &data->exit->width, &data->exit->height);
 	return (0);
@@ -80,15 +77,16 @@ int	map_line(char *line, t_mlx *game, t_map *map)
 	while (line)
 	{
 		if (*line == '0' || *line == 'C')
-			map_put(game, map->pass, x, y);
+			mlx_put_image_to_window(game->mlx, game->mlx_win, \
+			map->pass->img, x, y);
 		else if (*line == '1')
-			map_put(game, map->wall, x, y);
+			mlx_put_image_to_window(game->mlx, game->mlx_win, \
+			map->wall->img, x, y);
 		else if (*line == 'E' || *line == 'P')
-			map_put(game, map->exit, x, y);
+			mlx_put_image_to_window(game->mlx, game->mlx_win, \
+			map->exit->img, x, y);
 		else if (*line == '\n' || *line == '\0')
 			break ;
-		else
-			exit(1);
 		x += SIZE;
 		line++;
 	}
@@ -107,7 +105,7 @@ void	map_save(t_map *map, char *line, int y)
 		map->rule.map_data = malloc(sizeof(char *) * (map->position.y / SIZE));
 		if (!map->rule.map_data)
 		{
-			printf("error!\n");
+			printf("<sys>\nMap Data saving is failed.\nError\n");
 			exit(1);
 		}
 	}
@@ -115,5 +113,10 @@ void	map_save(t_map *map, char *line, int y)
 		map->rule.map_data[0] = ft_strdup(line);
 	else
 		map->rule.map_data[y / SIZE] = ft_strdup(line);
+	if (map->rule.map_data[y / SIZE] == NULL)
+	{
+		printf("<sys>\nMap data passing is failed.\nError\n");
+		exit(1);
+	}
 	return ;
 }

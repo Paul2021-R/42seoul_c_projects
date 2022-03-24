@@ -6,17 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 18:45:24 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 14:00:25 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 20:41:51 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-int	map_put(t_mlx *vars, t_img *img, int x, int y)
-{
-	mlx_put_image_to_window(vars->mlx, vars->mlx_win, img->img, x, y);
-	return (0);
-}
 
 int	map_checker(char *map, t_module **init)
 {
@@ -49,19 +43,32 @@ int	map_resolution(char *map, t_module **init, unsigned int *x, unsigned int *y)
 	rules = &(*init)->map.rule;
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
-		exit (1);
-	if (map_error(fd, rules, x, y))
 	{
-		printf("Error\n");
+		printf("<sys>\nMap file open is failed.\n");
 		exit(1);
 	}
+	if (map_error(fd, rules, x, y))
+		error_noti(init);
 	*x = SIZE * (*x - 1);
 	*y = SIZE * (*y - 1);
 	close(fd);
 	if (*x > MAX_WIDTH || *y > MAX_HEIGHT)
 	{
-		printf("The resolution of a current map file is too big.\n");
+		printf("<sys>\nThe resolution of a current map file is too big.\n");
 		exit (1);
 	}
 	return (0);
+}
+
+void	error_noti(t_module **init)
+{
+	printf("<sys>\n");
+	if ((*init)->map.rule.collect < 1)
+		printf("Your map has at least one coin.\n");
+	if ((*init)->map.rule.starting < 1)
+		printf("Your map has at least one starting point.\n");
+	if ((*init)->map.rule.exit < 1)
+		printf("Your map has at least one exit point.\n");
+	printf("Error\n");
+	exit(1);
 }

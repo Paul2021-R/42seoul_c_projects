@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 00:50:00 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 20:41:56 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int		map_load(t_mlx *game, t_map *data, char *map_num);
 int		map_initialize(t_mlx *vars, t_map *data);
 int		map_print(t_mlx *vars, t_map *map, char *map_num);
 int		map_line(char *line, t_mlx *vars, t_map *map);
-int		map_put(t_mlx *vars, t_img *img, int x, int y);
 int		map_checker(char *map, t_module **init);
 int		map_resolution(char *map, t_module **init, unsigned int *x, unsigned int *y);
 
@@ -70,6 +69,8 @@ void	find_target(char *str, t_rule *target);
 void	initialize_rules(t_rule *rules);
 int		width_check(unsigned int height, unsigned int width, unsigned int current);
 int		wall_check(char *str, int height, int width, int *open);
+void	error_noti(t_module **init);
+void	check_img_pointer_intro(t_intro *intro);
 
 // hook & events
 int		key_hook_switch(int kecode, t_module *init);

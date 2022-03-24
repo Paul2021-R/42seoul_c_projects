@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 21:16:50 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 13:59:55 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 20:27:29 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void	press_move_key(int keycode, t_module *init)
 
 int	mlx_close(int keycode, t_mlx *vars)
 {
-	printf("So_long is turned off.\n");
+	printf("<sys>\nSo_long is turned off properly.\n");
 	mlx_destroy_window(vars->mlx, vars->mlx_win);
 	exit(0);
 }
 
 int	press_close(t_mlx *vars)
 {
-	printf("Pressed 'X' button. So_long is turned off.\n");
+	printf("<sys>\nYou pressed 'X' button.\nSo_long is turned off properly.\n");
 	mlx_destroy_window(vars->mlx, vars->mlx_win);
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 12:31:01 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 14:00:43 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 20:31:37 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	intro_load(t_module *init)
 
 	if (intro_initialize(&(*init).game, &(*init).intro))
 	{
-		printf("error\n");
+		printf("Error\n");
 		exit(1);
 	}
 	intro_print(&(*init).game, &(*init).intro, GAME_LOGO);
@@ -45,7 +45,7 @@ int	intro_initialize(t_mlx *game, t_intro *intro)
 {
 	if (intro_malloc(intro))
 	{
-		printf("error\n");
+		printf("<sys>\nMain load is failed\n[%s]\nError\n", strerror(errno));
 		exit(1);
 	}
 	intro->logo->img = mlx_xpm_file_to_image(game->mlx, \
@@ -58,6 +58,7 @@ int	intro_initialize(t_mlx *game, t_intro *intro)
 	OVER, &intro->gameover->width, &intro->gameover->height);
 	intro->gameclear->img = mlx_xpm_file_to_image(game->mlx, \
 	CLEAR, &intro->gameclear->width, &intro->gameclear->height);
+	check_img_pointer_intro(intro);
 	return (0);
 }
 
@@ -76,6 +77,6 @@ int	intro_print(t_mlx *game, t_intro *intro, int game_status)
 	else if (game_status == GAME_OVER)
 		current = intro->gameover->img;
 	mlx_put_image_to_window(game->mlx, game->mlx_win, current, 0, 0);
-	printf("Current game status is [%d].\n", game_status);
+	printf("<sys>\nCurrent game status is [%d].\n", game_status);
 	return (0);
 }
