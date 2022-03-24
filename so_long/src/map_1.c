@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 00:42:13 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 14:00:17 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,17 @@ int map_initialize(t_mlx *vars, t_map *data)
 	data->wall = malloc(sizeof(t_img) * 1);
 	data->collect = malloc(sizeof(t_img) * 1);
 	data->exit = malloc(sizeof(t_img) * 1);
-	if (!(data->pass || data->wall || data->collect || data->starting || data->exit))
+	if (!(data->pass || data->wall || \
+	data->collect || data->starting || data->exit))
 		return (1);
-	data->pass->img = mlx_xpm_file_to_image(vars->mlx, PASS, &data->pass->width, &data->pass->height);
-	data->wall->img = mlx_xpm_file_to_image(vars->mlx, WALL, &data->wall->width, &data->wall->height);
-	data->collect->img = mlx_xpm_file_to_image(vars->mlx, COLLECT, &data->collect->width, &data->collect->height);
-	data->exit->img = mlx_xpm_file_to_image(vars->mlx, EXIT, &data->exit->width, &data->exit->height);
+	data->pass->img = mlx_xpm_file_to_image(vars->mlx, \
+	PASS, &data->pass->width, &data->pass->height);
+	data->wall->img = mlx_xpm_file_to_image(vars->mlx, \
+	WALL, &data->wall->width, &data->wall->height);
+	data->collect->img = mlx_xpm_file_to_image(vars->mlx, \
+	COLLECT, &data->collect->width, &data->collect->height);
+	data->exit->img = mlx_xpm_file_to_image(vars->mlx, \
+	EXIT, &data->exit->width, &data->exit->height);
 	return (0);
 }
 

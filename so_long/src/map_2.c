@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 18:45:24 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/23 15:36:15 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 14:00:25 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	map_checker(char *map, t_module **init)
 		map_dir = MAP_DIR_3;
 	else if (map[0] == '4')
 		map_dir = MAP_DIR_4;
-	map_resolution(map_dir, init, &(*init)->map.position.x, &(*init)->map.position.y);
+	map_resolution(map_dir, init, \
+	&(*init)->map.position.x, &(*init)->map.position.y);
 	return (0);
 }
 

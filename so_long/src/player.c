@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 22:08:52 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 00:48:40 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 14:01:20 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	player_initialize(t_player *me, t_module *init)
 int	player_load(t_module *init)
 {
 	player_initialize(&init->player, init);
-	element_put(&init->game, init->player.sprite, init->player.position.x * SIZE, init->player.position.y * SIZE);
+	element_put(&init->game, init->player.sprite, \
+	init->player.position.x * SIZE, init->player.position.y * SIZE);
 	return (0);
 }

@@ -6,15 +6,15 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:51:34 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/23 23:04:02 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 13:59:31 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void element_put(t_mlx *vars, t_img *img, int x, int y)
+void	element_put(t_mlx *vars, t_img *img, int x, int y)
 {
-		mlx_put_image_to_window(vars->mlx, vars->mlx_win, img->img, x, y);
+	mlx_put_image_to_window(vars->mlx, vars->mlx_win, img->img, x, y);
 }
 
 int	elements_call(t_module *init)
@@ -29,7 +29,8 @@ void	p_image_load(t_img *sprite, t_mlx *vars)
 	int	width;
 	int	height;
 
-	sprite->img = mlx_xpm_file_to_image(vars->mlx, P_RIGHT, &sprite->width, &sprite->height);
+	sprite->img = mlx_xpm_file_to_image(vars->mlx, \
+	P_RIGHT, &sprite->width, &sprite->height);
 }
 
 void	c_image_load(t_img *sprite, t_mlx *vars)
@@ -37,7 +38,8 @@ void	c_image_load(t_img *sprite, t_mlx *vars)
 	int	width;
 	int	height;
 
-	sprite->img = mlx_xpm_file_to_image(vars->mlx, COIN, &sprite->width, &sprite->height);
+	sprite->img = mlx_xpm_file_to_image(vars->mlx, \
+	COIN, &sprite->width, &sprite->height);
 }
 
 int	graphic_init(t_module *init, char code)
@@ -48,4 +50,3 @@ int	graphic_init(t_module *init, char code)
 		c_image_load(init->coin, &init->game);
 	return (0);
 }
-// enemy 숫자 맞춰서 호출 해야함

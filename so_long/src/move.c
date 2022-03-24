@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:40:38 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 00:57:21 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 14:01:12 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	check_move_ok(char **map, unsigned int *x, unsigned int *y, int arrow)
 		new_x--;
 	else
 		new_x++;
-	if (map[new_y][new_x] == 'C' || map[new_y][new_x] == '0' || map[new_y][new_x] == 'E' || map[new_y][new_x] == 'P')
+	if (map[new_y][new_x] == 'C' || map[new_y][new_x] == '0' \
+	|| map[new_y][new_x] == 'E' || map[new_y][new_x] == 'P')
 	{
 		*x = new_x;
 		*y = new_y;
@@ -52,10 +53,14 @@ void	map_switch_put(t_module *init, t_map *map, t_position old)
 
 void	player_switch_put(t_module *init, int arrow)
 {
-	element_put(&init->game, init->player.sprite, init->player.position.x * SIZE, init->player.position.y * SIZE);
+	element_put(&init->game, init->player.sprite, \
+	init->player.position.x * SIZE, init->player.position.y * SIZE);
 }
 
-void	render_every_thing(t_module *init, t_position old, t_position new, int arrow)
+// 움직임 합쳐서 만들어야 할지도?
+
+void	render_every_thing(t_module *init, \
+t_position old, t_position new, int arrow)
 {
 	unsigned int	x;
 	unsigned int	y;
@@ -64,6 +69,7 @@ void	render_every_thing(t_module *init, t_position old, t_position new, int arro
 	y = init->player.position.y;
 	map_switch_put(init, &init->map, old);
 	player_switch_put(init, arrow);
+	printf("<sys> Your Step : %d\n", init->player.steps + 1);
 	if (init->map.rule.map_data[y][x] == 'C')
 	{
 		init->map.rule.collect--;
@@ -71,7 +77,7 @@ void	render_every_thing(t_module *init, t_position old, t_position new, int arro
 	}
 	if (init->map.rule.map_data[y][x] == 'E' && init->map.rule.collect <= 0)
 	{
-		printf("You Win!\n");
+		printf("<sys> You Win!\n");
 		print_current_system(init);
 		mlx_destroy_window(init->game.mlx, init->game.mlx_win);
 		game_intro(init, GAME_CLEAR);
@@ -92,16 +98,16 @@ int	move(int arrow, t_module *init)
 	{
 		render_every_thing(init, old, *new, arrow);
 		init->player.steps += 1;
-		if (init->player.steps == 255)
+		if (init->player.steps == 254)
 		{
-			printf("Your steps is overwhelming upto 255.\n");
-			printf("You lose (ㅠ ㅠ)\n");
+			printf("<sys> Your steps is overwhelming upto 255.\n");
+			printf("<sys> You lose (ㅠ ㅠ)\n");
 			print_current_system(init);
 			mlx_destroy_window(init->game.mlx, init->game.mlx_win);
 			game_intro(init, GAME_OVER);
 		}
 		return (0);
 	}
-	printf("you can't go there\n");
+	printf("<sys> you can't go there\n");
 	return (0);
 }

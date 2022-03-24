@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 12:31:01 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/21 22:52:48 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 14:00:43 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,16 @@ int	intro_initialize(t_mlx *game, t_intro *intro)
 		printf("error\n");
 		exit(1);
 	}
-	intro->logo->img = mlx_xpm_file_to_image(game->mlx, LOGO, &intro->logo->width, &intro->logo->height);
-	intro->intro_1->img = mlx_xpm_file_to_image(game->mlx, MAIN_1, &intro->intro_1->width, &intro->intro_1->height);
-	intro->intro_2->img = mlx_xpm_file_to_image(game->mlx, MAIN_2, &intro->intro_2->width, &intro->intro_2->height);
-	intro->gameover->img = mlx_xpm_file_to_image(game->mlx, OVER, &intro->gameover->width, &intro->gameover->height);
-	intro->gameclear->img = mlx_xpm_file_to_image(game->mlx, CLEAR, &intro->gameclear->width, &intro->gameclear->height);
+	intro->logo->img = mlx_xpm_file_to_image(game->mlx, \
+	LOGO, &intro->logo->width, &intro->logo->height);
+	intro->intro_1->img = mlx_xpm_file_to_image(game->mlx, \
+	MAIN_1, &intro->intro_1->width, &intro->intro_1->height);
+	intro->intro_2->img = mlx_xpm_file_to_image(game->mlx, \
+	MAIN_2, &intro->intro_2->width, &intro->intro_2->height);
+	intro->gameover->img = mlx_xpm_file_to_image(game->mlx, \
+	OVER, &intro->gameover->width, &intro->gameover->height);
+	intro->gameclear->img = mlx_xpm_file_to_image(game->mlx, \
+	CLEAR, &intro->gameclear->width, &intro->gameclear->height);
 	return (0);
 }
 
