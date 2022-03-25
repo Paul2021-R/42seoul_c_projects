@@ -1,0 +1,87 @@
+NAME = so_long
+
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+
+SRCS = src/main.c \
+	src/input.c src/states.c src/print_shell.c \
+	src/map.c src/map_vaildate.c src/map_vaildate2.c \
+	src/map_utils.c \
+	src/graphic_init.c 
+SRCS_MANDATORY = src/graphic_draw.c
+SRCS_BONUS = src/graphic_draw_bonus.c \
+			src/graphic_util_bonus.c
+OBJS = $(SRCS:.c=.o)
+OBJS_MANDATORY = $(SRCS_MANDATORY:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
+LIBFT = libft
+LIBFT_FLAGS = -L libs/libft -lft
+
+SRCS_GNL = libs/get_next_line/get_next_line_utils.c \
+		   libs/get_next_line/get_next_line.c
+OBJS_GNL = $(SRCS_GNL:.c=.o)
+GNL = get_next_line
+
+MLX = mlx
+MLX_FLAGS = -L libs/mlx -lmlx
+
+INC_FLAGS = -I includes/so_long \
+	-I includes -I libs/$(LIBFT) -I libs/$(GNL) -I libs/$(MLX) 
+
+green:=$(shell tput setaf 2)
+reset:=$(shell tput sgr0)
+
+all:  $(LIBFT) $(MLX) $(NAME)
+	$(info $(green)<MAKE> all$(reset))
+
+test: all bonus
+	$(info $(green)<MAKE> test$(reset))
+	./$(NAME) maps/10x10.ber
+
+debug: $(SRCS) $(SRCS_MANDATORY) $(SRCS_GNL)
+	$(info $(green)<MAKE> debug$(reset))
+	$(CC) $(CFLAGS) -g $^ -o $(NAME) $(LIBFT_FLAGS) $(MLX_FLAGS) $(INC_FLAGS)
+	install_name_tool -change libmlx.dylib $(CURDIR)/libs/mlx/libmlx.dylib so_long
+
+$(LIBFT):
+	@make bonus --silent --directory=libs/$(LIBFT)
+	$(info $(green)<MAKE>	Libft - make bonus$(reset))
+
+$(MLX):
+	@make --silent --directory=libs/$(MLX)
+	$(info $(green)<MAKE>	MinilibX - make$(reset))
+
+$(NAME): $(OBJS) $(OBJS_GNL) $(OBJS_MANDATORY) 
+	$(info $(green)<MAKE> NAME$(reset))
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_FLAGS) $(MLX_FLAGS)
+	install_name_tool -change libmlx.dylib $(CURDIR)/libs/mlx/libmlx.dylib so_long
+
+%.o: %.c
+	$(info $(green)******** $(@) $(<) ********$(reset))
+	$(CC) $(CFLAGS) -c $< -o $@ $(INC_FLAGS)
+
+bonus: $(OBJS) $(OBJS_GNL) $(OBJS_BONUS)
+	$(info $(green)******** bonus ********$(reset))
+	$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBFT_FLAGS) $(MLX_FLAGS)
+	install_name_tool -change libmlx.dylib $(CURDIR)/libs/mlx/libmlx.dylib so_long
+
+clean:
+	$(info $(green)******** clean ********$(reset))
+	@make clean --directory=libs/$(LIBFT)
+	$(info $(green)*** Libft - clean ***$(reset))
+	@make clean --directory=libs/$(MLX)
+	$(info $(green)*** MinilibX - clean ***$(reset))
+	rm -f $(OBJS) $(OBJS_GNL) $(OBJS_MANDATORY) $(OBJS_BONUS) 
+ 
+fclean: clean
+	$(info $(green)******** fclean ********$(reset))
+	make fclean --directory=libs/$(LIBFT)
+	$(info $(green)*** Libft - fclean $(reset))
+	rm -f $(NAME)
+	rm -rf $(NAME).dSYM
+
+re: fclean all
+	$(info $(red)******** re ********$(reset))
+
+.PHONY: all clean fclean re bonus $(LIBFT) $(MLX) $(NAME)
