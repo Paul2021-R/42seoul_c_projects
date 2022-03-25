@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mandatory/so_long.h"
+#include "../includes/so_long.h"
 
 char	*mapnum_out(int map_num)
 {

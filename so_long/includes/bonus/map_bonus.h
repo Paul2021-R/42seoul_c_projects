@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_2.c                                          :+:      :+:    :+:   */
+/*   map_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 23:52:47 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:44:48 by haryu            ###   ########.fr       */
+/*   Created: 2022/03/16 13:33:11 by haryu             #+#    #+#             */
+/*   Updated: 2022/03/25 16:47:47 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mandatory/so_long.h"
+#ifndef MAP_BONU_H
+# define MAP_BONU_H
 
-int	key_hook_switch_2(int keycode, t_module *init)
+# include "meta_data.h"
+
+typedef struct s_map
 {
-	if (keycode == KEY_1)
-	{
-		game_play(init, init->map_number);
-	}
-	if (keycode == KEY_2)
-	{
-		init->sys_status = GAME_MAIN_1;
-		intro_print(&init->game, &init->intro, init->sys_status);
-	}
-	if (keycode == KEY_3)
-		mlx_close(&init->game);
-	return (0);
-}
+	t_img		*pass;
+	t_img		*wall;
+	t_img		*exit;
+	t_img		*starting;
+	t_position	position;
+	t_rule		rule;
+}			t_map;
+
+typedef struct s_intro
+{
+	t_img	*logo;
+	t_img	*intro_1;
+	t_img	*intro_2;
+	t_img	*gameover;
+	t_img	*gameclear;
+}			t_intro;
+
+# define MAX_WIDTH 1920
+# define MAX_HEIGHT 1080
+
+#endif

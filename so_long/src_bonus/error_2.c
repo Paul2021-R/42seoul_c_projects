@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 20:21:24 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:44:50 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 20:48:11 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mandatory/so_long.h"
+#include "../includes/so_long.h"
 
 void	check_img_pointer_intro(t_intro *intro)
 {

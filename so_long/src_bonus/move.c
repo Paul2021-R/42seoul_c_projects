@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:40:38 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:44:43 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 16:17:04 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mandatory/so_long.h"
+#include "../includes/so_long.h"
 
 int	check_move_ok(char **map, unsigned int *x, unsigned int *y, int arrow)
 {

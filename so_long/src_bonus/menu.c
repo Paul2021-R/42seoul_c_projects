@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 12:31:01 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:44:44 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 16:12:52 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mandatory/so_long.h"
+#include "../includes/so_long.h"
 
 int	intro_load(t_module *init)
 {

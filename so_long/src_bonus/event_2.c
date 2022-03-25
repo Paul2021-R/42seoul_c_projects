@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:52:47 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:44:48 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 16:10:56 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mandatory/so_long.h"
+#include "../includes/so_long.h"
 
 int	key_hook_switch_2(int keycode, t_module *init)
 {

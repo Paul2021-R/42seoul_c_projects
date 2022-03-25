@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:46:10 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:45:52 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 16:06:07 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mandatory/so_long.h"
+#include "../includes/so_long.h"
 
 int	check_x_y_coin(t_module *init, char **map)
 {

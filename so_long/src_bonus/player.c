@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 22:08:52 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:44:43 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/24 20:54:50 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mandatory/so_long.h"
+#include "../includes/so_long.h"
 
 int	check_x_y(char **map, unsigned int *x, unsigned int *y, char checker)
 {
