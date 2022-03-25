@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_2.c                                          :+:      :+:    :+:   */
+/*   event_2_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:52:47 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:10:56 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 20:16:11 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/bonus/so_long_bonus.h"
 
 int	key_hook_switch_2(int keycode, t_module *init)
 {

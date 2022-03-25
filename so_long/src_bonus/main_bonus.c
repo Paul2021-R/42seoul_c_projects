@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ver1.3.c                                           :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:48:39 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 21:00:13 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 23:00:29 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/bonus/so_long_bonus.h"
 
 void	game_intro(t_module *init, int status)
 {
 	init->game.mlx_win = mlx_new_window(init->game.mlx, \
-	400, 300, "SO_LONG_ver.1.3.");
+	400, 300, "SO_LONG_BONUS_ver.1.3.");
 	if (status == GAME_LOGO)
 	{
 		intro_load(init);
@@ -43,7 +43,7 @@ void	game_play(t_module *init, int map_num)
 	printf("<sys>\nCurrent game status is [%d].\n", GAME_PLAYING);
 	map_checker(map, &init);
 	init->game.mlx_win = mlx_new_window(init->game.mlx, \
-	init->map.position.x, init->map.position.y, "SO_LONG_ver.1.3.");
+	init->map.position.x, init->map.position.y, "SO_LONG_BONUS_ver.1.3.");
 	map_load(&init->game, &init->map, map);
 	elements_call(init);
 	mlx_key_hook(init->game.mlx_win, key_hook_switch, init);

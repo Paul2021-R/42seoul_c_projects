@@ -6,12 +6,12 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:55:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:47:56 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 21:26:27 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef META_DATA_BONU_H
-# define META_DATA_BONU_H
+#ifndef META_DATA_BONUS_H
+# define META_DATA_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>

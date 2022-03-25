@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   meta_data.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:55:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 20:16:26 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 21:10:12 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@
 # include <stdio.h>
 # include <string.h>
 # include <errno.h>
-
-/*
- * graphic data
- */
 
 # define WALL "./asset/map/wall_xpm.xpm"
 # define PASS "./asset/map/pass_xpm.xpm"
@@ -39,9 +35,6 @@
 # define MAIN_2 "./asset/menu/main_2.xpm"
 # define OVER "./asset/menu/gameover.xpm"
 # define CLEAR "./asset/menu/gameclear.xpm"
-/*
- * module base
- */
 
 typedef struct s_img
 {
@@ -70,10 +63,6 @@ typedef struct s_rule
 	char			**map_data;
 }			t_rule;
 
-/*
- * Game meta Data
- */
-
 # define TRUE 1
 # define FALSE 0
 
@@ -94,21 +83,15 @@ typedef struct s_rule
 # define KEY_P 35
 # define KEY_BACK 51
 
-/*
- * key shortcut 
- */
-
 # define UP 1
 # define DOWN 2
 # define RIGHT 3
 # define LEFT 4
 
-/* Sprite */
 # define SIZE 32
 
 # define BYTE_MAX 255
 
-/* Game Scene Status */
 # define GAME_LOGO 0
 # define GAME_MAIN_1 1
 # define GAME_MAIN_2 2

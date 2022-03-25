@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_1.c                                          :+:      :+:    :+:   */
+/*   error_1_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:27:32 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 20:47:59 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 20:15:54 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/bonus/so_long_bonus.h"
 
 int	map_error(int fd, t_rule *rules, unsigned int *width, unsigned int *height)
 {

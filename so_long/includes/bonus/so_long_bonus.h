@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:48:10 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/26 00:37:36 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "meta_data_bonus.h"
 # include "map_bonus.h"
 # include "element_bonus.h"
+# include <sys/time.h>
 
 typedef struct s_module
 {
@@ -34,8 +35,15 @@ typedef struct s_module
 	t_position	exit;
 }				t_module;
 
+typedef struct s_frame
+{
+	struct timeval	tv;
+	struct timeval	tv2;
+}				t_frame;
+
 // game main menu
-void	game_intro(t_module *init, int status);
+void
+game_intro(t_module *init, int status);
 int		intro_load(t_module *init);
 int		intro_malloc(t_intro *intro);
 int		intro_initialize(t_mlx *game, t_intro *intro);
@@ -59,8 +67,7 @@ int		player_load(t_module *init);
 int		player_initialize(t_player *me, t_module *init);
 int		player_position_init(t_position *position, t_module *init);
 int		check_x_y(char **map, unsigned int *x, unsigned int *y, char checker);
-int		graphic_init(t_module *init, char code);
-void	p_image_load(t_img *sprite, t_mlx *vars);
+void	p_image_load(t_img *sprite, t_mlx *vars, int arrow);
 void	c_image_load(t_img *sprite, t_mlx *vars);
 int		coin_load(t_module *init);
 
@@ -74,6 +81,7 @@ unsigned int width, unsigned int current);
 int		wall_check(char *str, int height, int width, int *open);
 void	error_noti(t_module **init);
 void	check_img_pointer_intro(t_intro *intro);
+void	malloc_error(char *str);
 
 // hook & events
 int		key_hook_switch(int kecode, t_module *init);
@@ -85,9 +93,13 @@ int		status_control(int keycode, t_module *init, int game_status);
 
 int		move(int arrow, t_module *init);
 int		check_move_ok(char **map, unsigned int *x, unsigned int *y, int arrow);
-void	player_switch_put(t_module *init);
+void	player_switch_put(t_module *init, t_position old, int arrow, int i);
+t_img	*choose_direction(t_player *player, int arrow);
+void	player_move_put(t_module *init, t_player *player, int arrow);
 
 // utills
 char	*mapnum_out(int map_num);
 void	print_current_system(t_module *init);
+char	*print_directory(int arrow);
+void	*frame_init(int *value, int arrow);
 #endif

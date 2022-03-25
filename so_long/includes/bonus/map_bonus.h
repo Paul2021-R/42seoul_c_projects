@@ -6,14 +6,14 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:33:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:47:47 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 22:05:52 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_BONU_H
-# define MAP_BONU_H
+#ifndef MAP_BONUS_H
+# define MAP_BONUS_H
 
-# include "meta_data.h"
+# include "meta_data_bonus.h"
 
 typedef struct s_map
 {

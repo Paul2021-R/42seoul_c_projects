@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   element.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:50 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 20:52:39 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 20:10:54 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "meta_data.h"
 
-/*Define sprite*/
 # define P_UP "./asset/player/pac_open_up.xpm"
 # define P_DOWN "./asset/player/pac_open_down.xpm"
 # define P_RIGHT "./asset/player/pac_open_right.xpm"

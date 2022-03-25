@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_2.c                                          :+:      :+:    :+:   */
+/*   error_2_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 20:21:24 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 20:48:11 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 21:51:41 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/bonus/so_long_bonus.h"
 
 void	check_img_pointer_intro(t_intro *intro)
 {
@@ -50,4 +50,10 @@ void	check_img_pointer_map(t_map *data)
 		printf("<sys>\nYour image load is failed.\nTarget : Map\nError\n");
 		exit(1);
 	}
+}
+
+void	malloc_error(char *str)
+{
+	printf("<sys>\nYour malloc is failed.\n%s\nError", str);
+	exit(1);
 }

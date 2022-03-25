@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   move_1_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:40:38 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:17:04 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/26 00:39:58 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/bonus/so_long_bonus.h"
 
 int	check_move_ok(char **map, unsigned int *x, unsigned int *y, int arrow)
 {
@@ -53,21 +53,24 @@ void	map_switch_put(t_module *init, t_map *map, t_position old)
 	return ;
 }
 
-void	player_switch_put(t_module *init)
+void	player_switch_put(t_module *init, t_position old, int arrow, int i)
 {
-	element_put(&init->game, init->player.sprite, \
+	t_img	*current;
+
+	current = choose_direction(&init->player, arrow);
+	map_switch_put(init, &init->map, old);
+	element_put(&init->game, &current[i], \
 	init->player.position.x * SIZE, init->player.position.y * SIZE);
 }
 
-void	render_every_thing(t_module *init, t_position old)
+void	render_every_thing(t_module *init, t_position old, int arrow)
 {
 	unsigned int	x;
 	unsigned int	y;
 
 	x = init->player.position.x;
 	y = init->player.position.y;
-	map_switch_put(init, &init->map, old);
-	player_switch_put(init);
+	// player_switch_put(init, old, arrow); //바꿔야함 . 
 	printf("<sys> Your Step : %d\n", init->player.steps + 1);
 	if (init->map.rule.map_data[y][x] == 'C')
 	{
@@ -94,7 +97,7 @@ int	move(int arrow, t_module *init)
 	map[0] += init->map_number;
 	if (check_move_ok(init->map.rule.map_data, &new->x, &new->y, arrow))
 	{
-		render_every_thing(init, old);
+		render_every_thing(init, old, arrow);
 		init->player.steps += 1;
 		if (init->player.steps == 254)
 		{

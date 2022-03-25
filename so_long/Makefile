@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 21:04:10 by haryu             #+#    #+#              #
-#    Updated: 2022/03/25 16:43:33 by haryu            ###   ########.fr        #
+#    Updated: 2022/03/25 20:02:52 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ ${MLX}			:
 ${NAME}			: ${OBJS} ${OBJS_GNL}
 				${info ${sky}3. make so_long${reset}}
 				${CC} ${CFLAGS} -o $@ $^ ${LIBFT_FLAGS} ${MLX_FLAGS}
+				cp library/mlx/libmlx.dylib ${CURDIR}/
 
 .c.o			:
 				${info ${sky}========== $(<) $(@) ==========${reset}}

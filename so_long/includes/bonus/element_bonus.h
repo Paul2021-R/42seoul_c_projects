@@ -6,25 +6,28 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:50 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:47:43 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 22:21:56 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ELEMENT_BONUS_H
-# define ELEMENT_BONU_H
+# define ELEMENT_BONUS_H
 
-# include "meta_data.h"
+# include "meta_data_bonus.h"
 
-/*Define sprite*/
-# define P_UP "./asset/player/pac_open_up.xpm"
-# define P_DOWN "./asset/player/pac_open_down.xpm"
-# define P_RIGHT "./asset/player/pac_open_right.xpm"
-# define P_LEFT "./asset/player/pac_open_left.xpm"
+# define P_SEMI "./asset/player/pac_semi"
+# define P_OPEN "./asset/player/pac_open"
+
+# define P_DEFAULT "./asset/player/pac_closed.xpm"
+
 # define COIN "./asset/map/collect_xpm.xpm"
 
 typedef struct s_player
 {
-	t_img			*sprite;
+	t_img			*sprite_up;
+	t_img			*sprite_down;
+	t_img			*sprite_right;
+	t_img			*sprite_left;
 	t_position		position;
 	unsigned int	steps;
 }				t_player;
@@ -34,7 +37,6 @@ typedef struct s_enemy
 	t_img			*sprite;
 	t_position		position;
 	unsigned int	random;
-	unsigned int	enc_player;
 }				t_enemy;
 
 #endif

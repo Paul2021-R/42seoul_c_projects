@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/bonus/so_long_bonus.h"
 
 char	*mapnum_out(int map_num)
 {
@@ -44,4 +44,40 @@ void	print_current_system(t_module *init)
 	init->player.position.x, init->player.position.y);
 	printf("7. player STEPs : %d\n", init->player.steps);
 	printf("----------------------------------\n");
+}
+
+char	*print_directory(int arrow)
+{
+	char	*dir;
+
+	if (arrow == UP)
+		dir = "_up.xpm";
+	else if (arrow == DOWN)
+		dir = "_down.xpm";
+	else if (arrow == LEFT)
+		dir = "_left.xpm";
+	else
+		dir = "_right.xpm";
+	return (dir);
+}
+
+void	*frame_init(int *value, int arrow)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 3 && arrow == 0)
+		value[i] = 0;
+	if (arrow == UP || arrow == LEFT)
+	{
+		value[0] = 22;
+		value[1] = 10;
+		value[2] = 0;
+	}
+	if (arrow == DOWN || arrow == RIGHT)
+	{
+		value[0] = -22;
+		value[1] = -10;
+		value[2] = 0;
+	}
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   coin.c                                             :+:      :+:    :+:   */
+/*   coin_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:46:10 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:06:07 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 22:42:11 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/bonus/so_long_bonus.h"
 
 int	check_x_y_coin(t_module *init, char **map)
 {
@@ -43,7 +43,7 @@ int	coin_load(t_module *init)
 		printf("<sys>\nCoin malloc is failed\n%s\nError\n", strerror(errno));
 		exit(1);
 	}
-	graphic_init(init, 'C');
+	c_image_load(init->coin, &init->game);
 	check_x_y_coin(init, map);
 	return (0);
 }
