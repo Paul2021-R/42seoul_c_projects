@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:51:34 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 20:51:27 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 16:07:06 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ int	elements_call(t_module *init)
 
 void	p_image_load(t_img *sprite, t_mlx *vars)
 {
-	int	width;
-	int	height;
-
 	sprite->img = mlx_xpm_file_to_image(vars->mlx, \
 	P_RIGHT, &sprite->width, &sprite->height);
 	if (sprite->img == NULL)
@@ -40,9 +37,6 @@ void	p_image_load(t_img *sprite, t_mlx *vars)
 
 void	c_image_load(t_img *sprite, t_mlx *vars)
 {
-	int	width;
-	int	height;
-
 	sprite->img = mlx_xpm_file_to_image(vars->mlx, \
 	COIN, &sprite->width, &sprite->height);
 	if (sprite->img == NULL)

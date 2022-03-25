@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 21:16:50 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 20:27:29 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 16:08:22 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	press_move_key(int keycode, t_module *init)
 	return ;
 }
 
-int	mlx_close(int keycode, t_mlx *vars)
+int	mlx_close(t_mlx *vars)
 {
 	printf("<sys>\nSo_long is turned off properly.\n");
 	mlx_destroy_window(vars->mlx, vars->mlx_win);
@@ -47,7 +47,7 @@ int	status_control(int keycode, t_module *init, int game_status)
 		intro_print(&init->game, &init->intro, init->sys_status);
 	}
 	else if (game_status == GAME_MAIN_1 && keycode == KEY_2)
-		mlx_close(keycode, &init->game);
+		mlx_close(&init->game);
 	else if (game_status == GAME_MAIN_1 && \
 	(keycode == KEY_ENTER || keycode == KEY_1))
 	{
@@ -64,7 +64,7 @@ int	key_hook_switch(int keycode, t_module *init)
 	if ((init->sys_status != GAME_PLAYING))
 		status_control(keycode, init, init->sys_status);
 	if (keycode == KEY_ESC)
-		mlx_close(keycode, &init->game);
+		mlx_close(&init->game);
 	if (keycode == KEY_W || keycode == KEY_A || \
 	keycode == KEY_S || keycode == KEY_D || \
 	(keycode >= KEY_LEFT && keycode <= KEY_UP))

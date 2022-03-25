@@ -6,21 +6,21 @@
 #    By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 21:04:10 by haryu             #+#    #+#              #
-#    Updated: 2022/03/25 16:00:08 by haryu            ###   ########.fr        #
+#    Updated: 2022/03/25 16:19:04 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ## gcc ./src/*.c ./library/gnl/*.c ./library/libft/libft.a libmlx.dylibls
-SRCNAME			= coin.c elment_call.c error_1.c error_2.c event_1.c event_2.c map_1.c map_2.c menu.c move.c player.c util.c main.c
+SRCNAME			= coin.c element_call.c error_1.c error_2.c event_1.c event_2.c map_1.c map_2.c menu.c move.c player.c util.c main.c
 
-SRCS_DIR = ./src/
-SRCS_B_DIR = ./src_bonus/
+SRCS_DIR = src/
+SRCS_B_DIR = src_bonus/
 
 OBJS			= ${addprefix ${SRCS_DIR}, ${SRCNAME: .c=.o}}
 OBJS_BONUS		= ${addprefix ${SRCS_B_DIR}, ${SRCNAME: .c=.o}}
 
 LIBFT			= libft
-LIBFT_FLAGS		= -L libary/libft -lft
+LIBFT_FLAGS		= -L library/libft
 
 SRC_GNL			= library/gnl/get_next_line.c\
 				library/gnl/get_next_line_utils.c
@@ -35,8 +35,8 @@ INC_FLAGS		= -I inlcudes/so_long\
 NAME			= so_long
 CC				= gcc 
 RM				= rm -f
-AR				= ar
-ARFLAG			= rcs
+# AR				= ar -rcs
+# ARFLAG			= rcs
 CFLAGS			= -Wall -Wextra -Werror
 
 sky:=${shell tput setaf 6}
@@ -59,7 +59,7 @@ ${MLX}			:
 
 ${NAME}			:${OBJS} ${OBJS_GNL}
 				${info ${sky}3. make so_long${reset}}
-				${CC} ${CFLAGS} ${AR} ${ARFLAG} -o $@ $^ ${LIBFT_FLAGS} ${MLX_FLAGS}
+				${CC} ${CFLAGS}  -o $@ $^ ${LIBFT_FLAGS} ${MLX_FLAGS}
 
 %.o				:%.c
 				${info ${sky}========== $(@) $(<) ==========${reset}}

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:34:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 20:41:43 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 16:08:58 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	map_line(char *line, t_mlx *game, t_map *map)
 		line++;
 	}
 	y += SIZE;
-	if (y == map->position.y)
+	if (y == (int)map->position.y)
 		y = 0;
 	return (0);
 }

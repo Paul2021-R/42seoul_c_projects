@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:52:47 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 16:54:33 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 16:10:56 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int	key_hook_switch_2(int keycode, t_module *init)
 		intro_print(&init->game, &init->intro, init->sys_status);
 	}
 	if (keycode == KEY_3)
-		mlx_close(keycode, &init->game);
+		mlx_close(&init->game);
 	return (0);
 }

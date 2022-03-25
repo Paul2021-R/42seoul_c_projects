@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:40:38 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 20:47:29 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 16:17:04 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,13 @@ void	map_switch_put(t_module *init, t_map *map, t_position old)
 	return ;
 }
 
-void	player_switch_put(t_module *init, int arrow)
+void	player_switch_put(t_module *init)
 {
 	element_put(&init->game, init->player.sprite, \
 	init->player.position.x * SIZE, init->player.position.y * SIZE);
 }
 
-void	render_every_thing(t_module *init, \
-t_position old, t_position new, int arrow)
+void	render_every_thing(t_module *init, t_position old)
 {
 	unsigned int	x;
 	unsigned int	y;
@@ -68,7 +67,7 @@ t_position old, t_position new, int arrow)
 	x = init->player.position.x;
 	y = init->player.position.y;
 	map_switch_put(init, &init->map, old);
-	player_switch_put(init, arrow);
+	player_switch_put(init);
 	printf("<sys> Your Step : %d\n", init->player.steps + 1);
 	if (init->map.rule.map_data[y][x] == 'C')
 	{
@@ -88,7 +87,6 @@ int	move(int arrow, t_module *init)
 {
 	t_position		old;
 	t_position		*new;
-	int				check;
 	char			map[1];
 
 	old = init->player.position;
@@ -96,7 +94,7 @@ int	move(int arrow, t_module *init)
 	map[0] += init->map_number;
 	if (check_move_ok(init->map.rule.map_data, &new->x, &new->y, arrow))
 	{
-		render_every_thing(init, old, *new, arrow);
+		render_every_thing(init, old);
 		init->player.steps += 1;
 		if (init->player.steps == 254)
 		{

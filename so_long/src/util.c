@@ -36,7 +36,8 @@ void	print_current_system(t_module *init)
 	printf("3. Map size X : %d  Y : %d\n", \
 	init->map.position.x, init->map.position.y);
 	printf("4. Map data : \n");
-	while (init->sys_status == GAME_PLAYING && i < init->map.position.y / SIZE)
+	while (init->sys_status == GAME_PLAYING && \
+	i < (int)init->map.position.y / SIZE)
 		printf("    %s", init->map.rule.map_data[i++]);
 	printf("5. Left coin  : %d\n", init->map.rule.collect);
 	printf("6. Player Position X : %d Y : %d\n", \

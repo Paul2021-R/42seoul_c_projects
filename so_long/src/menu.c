@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 12:31:01 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 20:31:37 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 16:12:52 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	intro_load(t_module *init)
 {
-	int	i;
-
 	if (intro_initialize(&(*init).game, &(*init).intro))
 	{
 		printf("Error\n");
@@ -74,7 +72,7 @@ int	intro_print(t_mlx *game, t_intro *intro, int game_status)
 		current = intro->intro_2->img;
 	else if (game_status == GAME_CLEAR)
 		current = intro->gameclear->img;
-	else if (game_status == GAME_OVER)
+	else
 		current = intro->gameover->img;
 	mlx_put_image_to_window(game->mlx, game->mlx_win, current, 0, 0);
 	printf("<sys>\nCurrent game status is [%d].\n", game_status);

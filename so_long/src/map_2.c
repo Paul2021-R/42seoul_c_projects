@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 18:45:24 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 20:41:51 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 16:12:09 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	map_checker(char *map, t_module **init)
 {
-	unsigned int	*x;
-	unsigned int	*y;
 	char			*map_dir;
 
 	if (map[0] == '1')
@@ -24,7 +22,7 @@ int	map_checker(char *map, t_module **init)
 		map_dir = MAP_DIR_2;
 	else if (map[0] == '3')
 		map_dir = MAP_DIR_3;
-	else if (map[0] == '4')
+	else
 		map_dir = MAP_DIR_4;
 	map_resolution(map_dir, init, \
 	&(*init)->map.position.x, &(*init)->map.position.y);
@@ -34,8 +32,7 @@ int	map_checker(char *map, t_module **init)
 int	map_resolution(char *map, t_module **init, unsigned int *x, unsigned int *y)
 {
 	int		fd;
-	int		width;
-	int		height;
+
 	t_rule	*rules;
 
 	*x = 0;

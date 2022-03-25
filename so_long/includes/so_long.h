@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/24 20:41:56 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/25 16:16:29 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int		map_initialize(t_mlx *vars, t_map *data);
 int		map_print(t_mlx *vars, t_map *map, char *map_num);
 int		map_line(char *line, t_mlx *vars, t_map *map);
 int		map_checker(char *map, t_module **init);
-int		map_resolution(char *map, t_module **init, unsigned int *x, unsigned int *y);
+int		map_resolution(char *map, \
+t_module **init, unsigned int *x, unsigned int *y);
 
 // element load & image print
 int		elements_call(t_module *init);
@@ -64,10 +65,12 @@ void	c_image_load(t_img *sprite, t_mlx *vars);
 int		coin_load(t_module *init);
 
 // map error check
-int		map_error(int fd, t_rule *rules, unsigned int *width, unsigned int *height);
+int		map_error(int fd, t_rule *rules, \
+unsigned int *width, unsigned int *height);
 void	find_target(char *str, t_rule *target);
 void	initialize_rules(t_rule *rules);
-int		width_check(unsigned int height, unsigned int width, unsigned int current);
+int		width_check(unsigned int height, \
+unsigned int width, unsigned int current);
 int		wall_check(char *str, int height, int width, int *open);
 void	error_noti(t_module **init);
 void	check_img_pointer_intro(t_intro *intro);
@@ -75,13 +78,14 @@ void	check_img_pointer_intro(t_intro *intro);
 // hook & events
 int		key_hook_switch(int kecode, t_module *init);
 int		key_hook_switch_2(int kecode, t_module *init);
-int		mlx_close(int keycode, t_mlx *vars);
+int		mlx_close(t_mlx *vars);
 int		press_close(t_mlx *vars);
 void	press_move_key(int keycode, t_module *init);
 int		status_control(int keycode, t_module *init, int game_status);
 
 int		move(int arrow, t_module *init);
 int		check_move_ok(char **map, unsigned int *x, unsigned int *y, int arrow);
+void	player_switch_put(t_module *init);
 
 // utills
 char	*mapnum_out(int map_num);
