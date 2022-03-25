@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 21:04:10 by haryu             #+#    #+#              #
-#    Updated: 2022/03/25 16:19:04 by haryu            ###   ########.fr        #
+#    Updated: 2022/03/25 16:28:40 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJS			= ${addprefix ${SRCS_DIR}, ${SRCNAME: .c=.o}}
 OBJS_BONUS		= ${addprefix ${SRCS_B_DIR}, ${SRCNAME: .c=.o}}
 
 LIBFT			= libft
-LIBFT_FLAGS		= -L library/libft
+LIBFT_FLAGS		= -L library/libft -lft
 
 SRC_GNL			= library/gnl/get_next_line.c\
 				library/gnl/get_next_line_utils.c
@@ -30,13 +30,11 @@ MLX				= mlx
 MLX_FLAGS		= -L library/mlx -lmlx
 
 INC_FLAGS		= -I inlcudes/so_long\
-				-I library/${LIBFT} -I library/gnl/ -I library/mlx/${mlx}
+				-I library/${LIBFT} -I library/gnl -I library/mlx/${mlx}
 
 NAME			= so_long
 CC				= gcc 
 RM				= rm -f
-# AR				= ar -rcs
-# ARFLAG			= rcs
 CFLAGS			= -Wall -Wextra -Werror
 
 sky:=${shell tput setaf 6}
@@ -61,10 +59,9 @@ ${NAME}			:${OBJS} ${OBJS_GNL}
 				${info ${sky}3. make so_long${reset}}
 				${CC} ${CFLAGS}  -o $@ $^ ${LIBFT_FLAGS} ${MLX_FLAGS}
 
-%.o				:%.c
+.c.o			:
 				${info ${sky}========== $(@) $(<) ==========${reset}}
 				${CC} ${CFLAGS} -c $< -o $@ $(INC_FLAGS)
-				${info ${sky}==============================${reset}}
 
 clean			:
 				${info ${sky}========== clean ==========${reset}}
