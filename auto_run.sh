@@ -43,5 +43,6 @@ sleep 1 && clear
 echo "----------------------------------------"
 
 sleep 1 && echo "모든 작업이 마무리 되었습니다."
-echo "git 로그를 확인하여 주십시오. "
+git status
+sleep 1 && echo "git 로그를 확인하여 주십시오. "
 git log -3
