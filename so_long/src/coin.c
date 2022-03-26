@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:46:10 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:45:52 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/27 01:42:44 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	coin_load(t_module *init)
 		printf("<sys>\nCoin malloc is failed\n%s\nError\n", strerror(errno));
 		exit(1);
 	}
-	graphic_init(init, 'C');
+	c_image_load(init->coin, &init->game);
 	check_x_y_coin(init, map);
 	return (0);
 }

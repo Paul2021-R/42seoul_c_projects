@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:47:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 21:14:57 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/27 01:45:09 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int			player_initialize(t_player *me, t_module *init);
 int			player_position_init(t_position *position, t_module *init);
 int			check_x_y(char **map, \
 unsigned int *x, unsigned int *y, char checker);
-int			graphic_init(t_module *init, char code);
 void		p_image_load(t_img *sprite, t_mlx *vars);
 void		c_image_load(t_img *sprite, t_mlx *vars);
 int			coin_load(t_module *init);

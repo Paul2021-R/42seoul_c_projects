@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:50 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 20:10:54 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/27 01:45:45 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,5 @@ typedef struct s_player
 	t_position		position;
 	unsigned int	steps;
 }				t_player;
-
-typedef struct s_enemy
-{
-	t_img			*sprite;
-	t_position		position;
-	unsigned int	random;
-	unsigned int	enc_player;
-}				t_enemy;
 
 #endif

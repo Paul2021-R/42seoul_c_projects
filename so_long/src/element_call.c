@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:51:34 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:45:25 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/27 01:44:54 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,4 @@ void	c_image_load(t_img *sprite, t_mlx *vars)
 		printf("<sys>\nPlayer file load is failed\n");
 		exit(1);
 	}
-}
-
-int	graphic_init(t_module *init, char code)
-{
-	if (code == 'P')
-		p_image_load(init->player.sprite, &init->game);
-	else if (code == 'C')
-		c_image_load(init->coin, &init->game);
-	return (0);
 }
