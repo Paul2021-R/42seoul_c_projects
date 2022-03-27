@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 18:45:24 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:44:45 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/27 22:05:47 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,13 @@ int	map_resolution(char *map, t_module **init, unsigned int *x, unsigned int *y)
 
 void	error_noti(t_module **init)
 {
+	printf("%d %d %d\n", (*init)->map.rule.collect, (*init)->map.rule.starting, (*init)->map.rule.exit);
 	printf("<sys>\n");
 	if ((*init)->map.rule.collect < 1)
 		printf("Your map has at least one coin.\n");
-	if ((*init)->map.rule.starting < 1)
+	if ((*init)->map.rule.starting != 1)
 		printf("Your map has at least one starting point.\n");
-	if ((*init)->map.rule.exit < 1)
+	if ((*init)->map.rule.exit != 1)
 		printf("Your map has at least one exit point.\n");
 	printf("Error\n");
 	exit(1);

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:27:32 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/25 16:44:51 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/27 22:14:23 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,18 @@ int	map_error(int fd, t_rule *rules, unsigned int *width, unsigned int *height)
 	while (1)
 	{
 		check = get_next_line(fd);
-		if (!check)
+		if (!check && ft_strlen(check) < 2)
 			break ;
 		find_target(check, rules);
 		if (*height == 1)
 			*width = (unsigned int)ft_strlen(check);
 		if (width_check(*height, *width, (unsigned int)ft_strlen(check)))
 			return (TRUE);
-		if (wall_check(check, *height, *width, &wall_open))
-			return (TRUE);
-		free (check);
+		wall_check(check, *height, *width, &wall_open);
+		free(check);
 		(*height)++;
 	}
-	if (rules->starting < 1 || rules->exit < 1 || wall_open != 0)
+	if (rules->starting != 1 || rules->exit != 1 || rules->collect == 0)
 		return (TRUE);
 	return (0);
 }
@@ -45,17 +44,17 @@ int	wall_check(char *str, int height, int width, int *open)
 
 	i = 0;
 	*open = 0;
-	while (str[i])
+	while (str[i] != '\n')
 	{
 		if (height == 1 && i < width - 1 && str[i] != '1')
 		{
 			printf("<sys>\nYour Wall has a problem.\n");
-			return (TRUE);
+			exit(1);
 		}
 		else if (height > 1 && (str[0] != '1' || str[width - 2] != '1'))
 		{
 			printf("<sys>\nYour Wall has a problem.\n");
-			return (TRUE);
+			exit(1);
 		}
 		if (str[i] == '1' || str[i] == '\n')
 			(*open)++;
@@ -75,7 +74,7 @@ int	width_check(unsigned int height, unsigned int width, unsigned int current)
 		if (width != current)
 		{
 			printf("<sys>\nYour map is not a square.\n");
-			return (TRUE);
+			exit(1);
 		}
 	}
 	return (0);
