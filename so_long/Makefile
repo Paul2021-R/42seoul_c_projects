@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.co.kr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 21:04:10 by haryu             #+#    #+#              #
-#    Updated: 2022/03/25 20:02:52 by haryu            ###   ########.fr        #
+#    Updated: 2022/03/29 00:21:06 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ all				: ${LIBFT} ${MLX} ${NAME}
 
 debug			:${SRCS} ${SRC_GNL}
 				${info ${sky}make debug - complete${reset}}
-				${CC} ${CFLAGS} ${AR} ${ARFLAG} -g -fsanitze=address $^ -o ${NAME} ${LIBFT_FLAGS} ${MLX_FLAGS} ${INC_FLAGS}
+				${CC} ${CFLAGS} -g -fsanitize=address $^ -o ${NAME} ${LIBFT_FLAGS} ${MLX_FLAGS} ${INC_FLAGS}
 
 ${LIBFT}		:
 				@make --silent --directory=library/${LIBFT}
