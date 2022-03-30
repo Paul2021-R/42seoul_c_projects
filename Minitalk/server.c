@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 21:57:57 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/31 00:50:47 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/31 01:21:19 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,28 @@ void	signal_print(char c)
 
 void	sighandler1(int signo)
 {
-	static int				i;
-	static char				bit;
-	static char				*result;
-	char					bitchar[2];
-
+	static int		i;
+	static char		ret_bit;
 
 	if (signo == SIGUSR1)
 	{
-		bit = bit << 1;
-		bit = bit | 1;
+		if (i == 0)
+			ret_bit = 1;
+		ret_bit = ret_bit << 1;
+		ret_bit = ret_bit | 1;
 	}
 	else if (signo == SIGUSR2)
 	{
-		bit = bit << 1;
+		if (i == 0)
+			ret_bit = 0;
+		ret_bit = ret_bit << 1;
 	}
 	i++;
 	if (i == 8)
 	{
 		i = 0;
-		signal_print(bit);
+		signal_print(ret_bit);
+		ret_bit = 0;
 	}
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 21:58:00 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/31 00:53:32 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/31 01:11:50 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	binary_print_out(char c, int pid, int code)
 			ft_printf("0");
 			kill (pid, SIGUSR2);
 		}
-		usleep(300);
+		usleep(600);
 	}
 	return ;
 }
@@ -41,19 +41,25 @@ void	binary_print_out(char c, int pid, int code)
 int	main(int ac, char **av)
 {
 	int	i;
+	int	j;
 
 	if (ac < 2)
 	{
-		ft_printf("사용법: ./a.out [프로세스 ID]\n");
+		ft_printf("사용법: ./a.out [프로세스 ID] [문장들] ... \n");
 	}
-	i = 0;
-	while (i < ft_strlen(av[2]))
+	j = 1;
+	while (++j < ac)
 	{
-		binary_print_out(av[2][i], ft_atoi(av[1]), 1);
+		i = 0;
+		while (i < ft_strlen(av[j]))
+		{
+			binary_print_out(av[j][i], ft_atoi(av[1]), 1);
+			usleep(1000);
+			ft_printf("  ");
+			i++;
+		}
+		binary_print_out(0, ft_atoi(av[1]), 0);
 		usleep(1000);
-		ft_printf("  ");
-		i++;
 	}
-	binary_print_out(0, ft_atoi(av[1]), 0);
 	return (0);
 }
