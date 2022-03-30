@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 13:33:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/30 14:24:29 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/12 13:31:01 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/29 17:45:56 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#include "libft.h"
 
-# include "meta_data.h"
-
-typedef struct s_map
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_img		*pass;
-	t_img		*wall;
-	t_img		*exit;
-	t_img		*starting;
-	t_position	position;
-	t_rule		rule;
-}			t_map;
+	size_t	i;
+	int		ret;
 
-typedef struct s_intro
-{
-	t_img	*logo;
-	t_img	*intro_1;
-	t_img	*intro_2;
-	t_img	*gameover;
-	t_img	*gameclear;
-}			t_intro;
-
-# define MAX_WIDTH 1921
-# define MAX_HEIGHT 1081
-
-#endif
+	i = 0;
+	if (n > 0)
+		n = (n - 1);
+	else
+		return (0);
+	while (i <= n)
+	{
+		if (s1[i] != s2[i])
+			break ;
+		if (!s1[i] || !s2[i])
+			break ;
+		if (i == n)
+			break ;
+		i++;
+	}
+	ret = (unsigned char)s1[i] - (unsigned char)s2[i];
+	return ((int)ret);
+}

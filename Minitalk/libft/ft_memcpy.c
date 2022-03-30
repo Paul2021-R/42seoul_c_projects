@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 13:33:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/30 14:24:29 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/12 20:00:36 by haryu             #+#    #+#             */
+/*   Updated: 2021/12/02 13:06:34 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#include "libft.h"
 
-# include "meta_data.h"
-
-typedef struct s_map
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	t_img		*pass;
-	t_img		*wall;
-	t_img		*exit;
-	t_img		*starting;
-	t_position	position;
-	t_rule		rule;
-}			t_map;
+	size_t			i;
+	unsigned char	*tmp_src;
 
-typedef struct s_intro
-{
-	t_img	*logo;
-	t_img	*intro_1;
-	t_img	*intro_2;
-	t_img	*gameover;
-	t_img	*gameclear;
-}			t_intro;
-
-# define MAX_WIDTH 1921
-# define MAX_HEIGHT 1081
-
-#endif
+	i = 0;
+	if (!dest && !src)
+		return (NULL);
+	tmp_src = (unsigned char *)src;
+	while (i < n)
+	{
+		*(unsigned char *)(dest + i) = *(tmp_src + i);
+		if (i + 1 < n)
+			*(unsigned char *)(dest + i + 1) = *(tmp_src + i + 1);
+		i += 2;
+	}
+	return (dest);
+}

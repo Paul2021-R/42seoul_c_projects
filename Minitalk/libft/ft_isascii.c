@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 13:33:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/30 14:24:29 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/10 11:34:40 by haryu             #+#    #+#             */
+/*   Updated: 2021/11/10 12:47:47 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#include "libft.h"
 
-# include "meta_data.h"
-
-typedef struct s_map
+int	ft_isascii(int c)
 {
-	t_img		*pass;
-	t_img		*wall;
-	t_img		*exit;
-	t_img		*starting;
-	t_position	position;
-	t_rule		rule;
-}			t_map;
+	int	ret;
 
-typedef struct s_intro
-{
-	t_img	*logo;
-	t_img	*intro_1;
-	t_img	*intro_2;
-	t_img	*gameover;
-	t_img	*gameclear;
-}			t_intro;
-
-# define MAX_WIDTH 1921
-# define MAX_HEIGHT 1081
-
-#endif
+	ret = 0;
+	if (0 <= c && c <= 127)
+		ret = 1;
+	return (ret);
+}

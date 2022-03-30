@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 13:33:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/30 14:24:29 by haryu            ###   ########.fr       */
+/*   Created: 2021/11/11 10:35:27 by wildwiser-r       #+#    #+#             */
+/*   Updated: 2021/11/29 16:06:19 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#include "libft.h"
 
-# include "meta_data.h"
-
-typedef struct s_map
+char	*ft_strrchr(const char *s, int c)
 {
-	t_img		*pass;
-	t_img		*wall;
-	t_img		*exit;
-	t_img		*starting;
-	t_position	position;
-	t_rule		rule;
-}			t_map;
+	char	*tmp;
+	size_t	i;
 
-typedef struct s_intro
-{
-	t_img	*logo;
-	t_img	*intro_1;
-	t_img	*intro_2;
-	t_img	*gameover;
-	t_img	*gameclear;
-}			t_intro;
-
-# define MAX_WIDTH 1921
-# define MAX_HEIGHT 1081
-
-#endif
+	tmp = (char *)s;
+	i = ft_strlen(tmp);
+	while (i > 0)
+	{
+		if (*(tmp + i) == c)
+			return (tmp + i);
+		i--;
+	}
+	if (*(tmp + i) == c)
+		return (tmp);
+	return (NULL);
+}

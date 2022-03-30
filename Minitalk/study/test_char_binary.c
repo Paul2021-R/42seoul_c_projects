@@ -1,40 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   test_char_binary.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 13:33:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/30 14:24:29 by haryu            ###   ########.fr       */
+/*   Created: 2022/03/30 23:25:00 by haryu             #+#    #+#             */
+/*   Updated: 2022/03/30 23:35:57 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#include <string.h>
+#include <stdio.h>
 
-# include "meta_data.h"
-
-typedef struct s_map
+void	binary_print_out(char c)
 {
-	t_img		*pass;
-	t_img		*wall;
-	t_img		*exit;
-	t_img		*starting;
-	t_position	position;
-	t_rule		rule;
-}			t_map;
+	int	i;
+	int	signal;
 
-typedef struct s_intro
+	i = 8;
+	while (--i >= 0)
+	{
+		signal = c >> i & 1;
+		printf("%d", signal);
+	}
+}
+
+int main(int ac, char **av)
 {
-	t_img	*logo;
-	t_img	*intro_1;
-	t_img	*intro_2;
-	t_img	*gameover;
-	t_img	*gameclear;
-}			t_intro;
+	int i;
+	int c;
 
-# define MAX_WIDTH 1921
-# define MAX_HEIGHT 1081
-
-#endif
+	i = 0;
+	while (i < strlen(av[1]))
+	{
+		binary_print_out(av[1][i]);
+		printf(" ");
+		i++;
+	}
+	printf("\n");
+	return (0);
+}
