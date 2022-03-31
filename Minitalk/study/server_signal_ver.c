@@ -6,20 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 21:57:57 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/01 00:42:41 by haryu            ###   ########.fr       */
+/*   Updated: 2022/03/31 21:22:30 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-t_protocol	sig;
-
-void	reset_signal(void)
-{
-	sig.index = 0;
-	sig.p = 0;
-	sig.received_pid = 0;
-}
 
 void	signal_print(char c)
 {
@@ -37,54 +28,43 @@ void	signal_print(char c)
 	}
 }
 
-void	sending_protocol(siginfo_t *info, int code)
+void	sighandler1(int signo)
 {
-	int	ret;
+	static int		i;
+	static char		ret_bit;
 
-	if (code == 1)
-		ret = kill(info->si_pid, SIGUSR2);
-	if (code == 0)
+	if (signo == SIGUSR1)
 	{
-		reset_signal();
-		ret = kill(info->si_pid, SIGUSR1);
+		if (i == 0)
+			ret_bit = 1;
+		ret_bit = ret_bit << 1;
+		ret_bit = ret_bit | 1;
 	}
-	if (ret)
-		error_print(ret);
-	return ;
-}
-
-void	sighandler(int signo, siginfo_t *info, void *data)
-{
-	(void)data;
-	kill(info->si_pid, SIGUSR1);
-	signo -= SIGUSR1;
-	if (sig.received_pid != info->si_pid)
-		reset_signal();
-	sig.p = sig.p << 1 | signo;
-	sig.index++;
-	if (sig.index == 8)
+	else if (signo == SIGUSR2)
 	{
-		signal_print(sig.p);
-		reset_signal();
+		if (i == 0)
+			ret_bit = 0;
+		ret_bit = ret_bit << 1;
 	}
-	kill(info->si_pid, SIGUSR2);
-	sig.received_pid = info->si_pid;
+	i++;
+	if (i == 8)
+	{
+		i = 0;
+		signal_print(ret_bit);
+		ret_bit = 0;
+	}
 	return ;
 }
 
 int	main(void)
 {
-	struct sigaction	sa;
+	pid_t	mypid;
+	int		i;
 
-	reset_signal();
-	ft_printf("Server is activated. Server's PID : %d\n", getpid());
-	sa.sa_sigaction = sighandler;
-	sa.sa_flags = SA_SIGINFO;
-	sigemptyset(&sa.sa_mask);
-	sigaddset(&sa.sa_mask, SIGUSR1);
-	sigaddset(&sa.sa_mask, SIGUSR2);
-	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL);
+	mypid = getpid();
+	ft_printf("Server is activated. Server's PID : %d\n", mypid);
+	signal(SIGUSR1, sighandler1);
+	signal(SIGUSR2, sighandler1);
 	while (1)
 		pause();
 	return (0);

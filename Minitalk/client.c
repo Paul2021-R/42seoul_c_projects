@@ -6,47 +6,49 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 21:58:00 by haryu             #+#    #+#             */
-/*   Updated: 2022/03/31 01:11:50 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/01 00:43:33 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+void	sighandler_client(int signo)
+{
+	signal(SIGUSR2, sighandler_client);
+	if (signo == SIGUSR1)
+		pause();
+	return ;
+}
+
 void	binary_print_out(char c, int pid, int code)
 {
-	int	i;
-	unsigned int	signal;
+	int				i;
+	int				ret;
+	unsigned int	sig;
 
 	i = 8;
 	if (code == 0)
 		c = 0;
+	
+	signal(SIGUSR1, sighandler_client);
 	while (--i >= 0)
 	{
-		signal = c >> i & 1;
-		if (signal == 1)
-		{	
-			ft_printf("1");
-			kill (pid, SIGUSR1);
-		}
-		else
-		{
-			ft_printf("0");
-			kill (pid, SIGUSR2);
-		}
-		usleep(600);
+		sig = c >> i & 1;
+		ft_printf("%d", sig);
+		ret = kill (pid, 30 + sig);
+		pause();
+		if (ret)
+			error_print(ret);
 	}
 	return ;
 }
 
 int	main(int ac, char **av)
 {
-	int	i;
-	int	j;
+	int					i;
+	int					j;
 
-	if (ac < 2)
-	{
-		ft_printf("사용법: ./a.out [프로세스 ID] [문장들] ... \n");
-	}
+	print_intro(ac);
 	j = 1;
 	while (++j < ac)
 	{
@@ -54,12 +56,10 @@ int	main(int ac, char **av)
 		while (i < ft_strlen(av[j]))
 		{
 			binary_print_out(av[j][i], ft_atoi(av[1]), 1);
-			usleep(1000);
 			ft_printf("  ");
 			i++;
 		}
 		binary_print_out(0, ft_atoi(av[1]), 0);
-		usleep(1000);
 	}
 	return (0);
 }
