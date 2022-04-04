@@ -3,6 +3,11 @@
 	"signal.h": "c",
 	"chrono": "c",
 	"variant": "c",
-	"ft_printf.h": "c"
+	"ft_printf.h": "c",
+	"cerrno": "c",
+	"minitalk.h": "c",
+	"server.h": "c",
+	"meta.h": "c",
+	"stdlib.h": "c"
 }
 }
