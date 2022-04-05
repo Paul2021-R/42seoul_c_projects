@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/05 13:40:55 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/06 00:33:36 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ NAME				= client
 NAME_BONUS			= client_bonus
 CC					= gcc
 CFLAGS				= -Wall -Wextra -Werror
-AR					= ar rcs
 RM					= rm -f
 
 sky					:=$(shell tput setaf 6)
@@ -62,6 +61,6 @@ re					:fclean all
 					$(info $(shell tput setaf 1)========== re ==========$(reset))
 
 bonus				:$(NAME_BONUS)
-					$(info $(sky)<make> bonus$(reset))
+					$(info $(sky)========== make bonus ===========$(reset))
 
 .PHONY				: all clean fclean re bonus
