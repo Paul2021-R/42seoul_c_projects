@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/05 00:24:11 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/05 13:39:50 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,33 +22,33 @@ LIBFT_FLAGS			= -L ../ -lft
 FT_PRINTF			= libftprintf
 FT_PRINTF_FLAGS		= -L ../ -lftprintf
 
-INC_FLAGS 			= -I ../includes/server/mandatory
-INC_BONUS_FLAGS		= -I ../includes/server/bonus
+INC_FLAGS 			= -I ../includes/mandatory
+INC_BONUS_FLAGS		= -I ../includes/bonus
 
 NAME				= server
 NAME_BONUS			= server_bonus
 CC					= gcc
 CFLAGS				= -Wall -Wextra -Werror
-AR					= ar rcs
 RM					= rm -f
+AR					= ar -rcs
 
 sky					:=$(shell tput setaf 6)
 reset				:=$(shell tput sgr0)
 
-.c.o				:
-					$(info $(sky)========== $(<) $(@) ==========$(reset))
-					$(CC) $(CFLAGS) -c -o $@ $< $(INC_FLAGS) $(INC_BONUS_FLAGS)
+all					:$(NAME)
+					$(info $(sky)========== all ===========$(reset))
 
 $(NAME)				: $(OBJS)
 					$(info $(sky)========== make Server ==========$(reset))
-					$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS)
+					$(CC) $(CFLAGS) $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) $^ -o $@
 
 $(NAME_BONUS)		: $(OBJS_BONUS)
 					$(info $(sky)========== make Server_bonus ==========$(reset))
 					$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS)
 
-all					:$(NAME)
-					$(info $(sky)<make> all$(reset))
+.c.o				:
+					$(info $(sky)========== $(<) $(@) ==========$(reset))
+					$(CC) $(CFLAGS) $< -c -o $@ 
 
 clean				:
 					$(info $(sky)========== clean ==========$(reset))
@@ -62,6 +62,6 @@ re					:fclean all
 					$(info $(shell tput setaf 1)========== re ==========$(reset))
 
 bonus				:$(NAME_BONUS)
-					$(info $(sky)<make> bonus$(reset))
+					$(info $(sky)========== make bonus ===========$(reset))
 
-.PHONY				: all clean fclean re bonus  $(LIBFT) $(FT_PRINTF) $(NAME) $(NAME_BONUS)
+.PHONY				: all clean fclean re bonus 

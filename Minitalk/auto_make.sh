@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:21:13 by haryu             #+#    #+#              #
-#    Updated: 2022/04/05 00:36:18 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/05 12:57:49 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ get_underbar()
 	done
 }
 
+# make_new($dir, $)
+
 SavedDIR=$PWD
 get_underbar
 tput setaf 6; 
@@ -31,6 +33,11 @@ echo "Made by Haryu"
 get_underbar
 
 sleep 1 && clear
+
+# echo "What your task?"
+# echo "1. make all 2. make bonus 3. make re 4. make clean 5. make fclean"
+# read answer
+# if [$answer -eq '1']
 
 get_underbar
 tput setaf 6; 

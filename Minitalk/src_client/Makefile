@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/05 00:28:43 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/05 13:40:55 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,4 +64,4 @@ re					:fclean all
 bonus				:$(NAME_BONUS)
 					$(info $(sky)<make> bonus$(reset))
 
-.PHONY				: all clean fclean re bonus  $(LIBFT) $(FT_PRINTF) $(NAME) $(NAME_BONUS)
+.PHONY				: all clean fclean re bonus

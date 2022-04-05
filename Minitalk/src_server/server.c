@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:05:59 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/05 00:16:06 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/05 13:01:23 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	main(void)
 		ser_initialize_signal(&g_server);
 		ser_connection_ready();
 		ser_receiving_char();
+		ft_printf("\n");
 		ft_printf("\n");
 	}
 	return (0);
