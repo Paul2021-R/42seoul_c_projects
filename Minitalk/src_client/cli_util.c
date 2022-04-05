@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 22:18:48 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/05 00:25:03 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/05 19:07:23 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	cli_send_char(char c)
 		sig = c >> g_client.index & 1;
 		ft_printf("%d", sig);
 		kill(g_client.received_pid, sig + 30);
+		pause();
 		usleep(1000);
 	}
 	ft_printf("    ");
