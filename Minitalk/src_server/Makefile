@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/05 13:39:50 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/06 00:34:42 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ NAME				= server
 NAME_BONUS			= server_bonus
 CC					= gcc
 CFLAGS				= -Wall -Wextra -Werror
-RM					= rm -f
 AR					= ar -rcs
 
 sky					:=$(shell tput setaf 6)

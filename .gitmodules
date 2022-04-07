@@ -1,3 +1,6 @@
 [submodule "get_next_line/gnlTester"]
 	path = get_next_line/gnlTester
 	url = https://github.com/Tripouille/gnlTester.git
+[submodule "push_swap/push_swap_visualizer"]
+	path = push_swap/push_swap_visualizer
+	url = https://github.com/o-reo/push_swap_visualizer.git
