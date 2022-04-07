@@ -7,9 +7,9 @@ iThis repository is for learning C in Cadet Course of 42 Seoul.
 It is going to contain a lot of C projects and programs.
 However, I am required to respect the rule of 42 programs. 
 For that reason, It doesn't have any file which contains the intellectual property(Documents, Files and Etc...)
-I
-11## time line
-I* 2021-11-08 Before start, prepare study of C.
+
+## time line
+* 2021-11-08 Before start, prepare study of C.
 * 2021-11-09 Start Libft Subjects
 * 2021-11-25 Finish Libft Subjects and Peer evaluations. 
 		Result : 'cheating' -> Using internal funcs(calloc) except ft_calloc.
@@ -29,4 +29,7 @@ I* 2021-11-08 Before start, prepare study of C.
 * Please do not overlook every single word. Be patient and be carlm. 
 * 2022-02-08~09 translate subject of so_long and upload a translated one for a md file. 
 * 2022-02-09 Study functions allowed for so_long project. Success compile minilibX 2021-06-21 ver.
-* 
+* 2022-03-27 finished so_long project.
+* 2022-03-28 Start minitalk project. 
+* 2022-04-06 finished minitalk project.
+* 2022-04-07 start push_swap project. 
