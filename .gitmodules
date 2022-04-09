@@ -4,3 +4,6 @@
 [submodule "push_swap/push_swap_visualizer"]
 	path = push_swap/push_swap_visualizer
 	url = https://github.com/o-reo/push_swap_visualizer.git
+[submodule "push_swap/push_swap_speed_tester"]
+	path = push_swap/push_swap_speed_tester
+	url = https://github.com/mikysett/push_swap_speed_tester.git
