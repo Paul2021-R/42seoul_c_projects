@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 22:57:57 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/14 01:02:26 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/14 01:30:28 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,16 @@ void	lst_print(t_pushlist **stack, t_pushlist **stack_b)
 	ft_printf("max_len : %d\n", (*stack)->max_len);
 	ft_printf("----------------------\n");
 	i = 0;
-	while (i < (*stack)->max_len)
+	while (i < (*stack)->max_len + 1)
 	{
-		printf("%-10d   %-10d\n", tmp->content, tmp2->content);
+		printf("%-10d   ", tmp->content);
+		if (i < (*stack_b)->max_len)
+		{
+			printf("%-10d", tmp2->content);
+			tmp2 = tmp2->next;
+		}
+		printf("\n");
 		tmp = tmp->next;
-		tmp2 = tmp2->next;
 		i++;
 	}
 	printf("%-10s   %-10s\n","-", "-");
