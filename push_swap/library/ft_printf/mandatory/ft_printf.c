@@ -6,14 +6,14 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 22:02:46 by haryu             #+#    #+#             */
-/*   Updated: 2022/02/05 23:58:02 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/14 00:40:35 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static int	make_len(const char *str, va_list ap);
-static int	switch_str(char *str, va_list ap);
+static int	switch_str(char *str, va_list *ap);
 
 int	ft_printf(char const *str, ...)
 {
@@ -41,7 +41,7 @@ static int	make_len(const char *str, va_list ap)
 		if (*str == '%')
 		{
 			str++;
-			temp = switch_str((char *)str, ap);
+			temp = switch_str((char *)str, &ap);
 			if (temp == -2)
 			{
 				temp = 0;
@@ -58,7 +58,7 @@ static int	make_len(const char *str, va_list ap)
 	return (len);
 }
 
-static int	switch_str(char *str, va_list ap)
+static int	switch_str(char *str, va_list *ap)
 {
 	int	ret;
 
@@ -66,17 +66,17 @@ static int	switch_str(char *str, va_list ap)
 	if (*str == '%')
 		ft_putchar('%', &ret);
 	else if (*str == 'c')
-		ft_putchar(va_arg(ap, int), &ret);
+		ft_putchar(va_arg(*ap, int), &ret);
 	else if (*str == 's')
-		ft_putstr(va_arg(ap, char *), &ret);
+		ft_putstr(va_arg(*ap, char *), &ret);
 	else if (*str == 'd' || *str == 'i')
-		ft_put_integer(va_arg(ap, int), &ret);
+		ft_put_integer(va_arg(*ap, int), &ret);
 	else if (*str == 'u')
-		ft_put_unsigned(va_arg(ap, unsigned), &ret);
+		ft_put_unsigned(va_arg(*ap, unsigned), &ret);
 	else if (*str == 'x' || *str == 'X')
-		ft_put_hex(va_arg(ap, unsigned), &ret, str);
+		ft_put_hex(va_arg(*ap, unsigned), &ret, str);
 	else if (*str == 'p')
-		ft_put_pointer_pre(va_arg(ap, unsigned long long), &ret, str);
+		ft_put_pointer_pre(va_arg(*ap, unsigned long long), &ret, str);
 	else
 		return (-2);
 	if (ret == -1)

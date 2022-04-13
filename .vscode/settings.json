@@ -8,6 +8,11 @@
 	"minitalk.h": "c",
 	"server.h": "c",
 	"meta.h": "c",
-	"stdlib.h": "c"
-}
+	"stdlib.h": "c",
+	"get_next_line.h": "c",
+	"pushswap.h": "c",
+	"__tuple": "c",
+	"array": "c"
+},
+  "cmake.configureOnOpen": false
 }

@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 00:30:34 by haryu             #+#    #+#              #
-#    Updated: 2021/12/18 20:21:53 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/13 23:09:46 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,8 @@ SRCNAME			= 	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c\
 				ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c\
 				ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c\
 				ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c\
-				ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c
-
-SRCNAME_BONUS	= 	ft_lstnew.c\
+				ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c \
+				ft_lstnew.c\
 				ft_lstadd_front.c\
 				ft_lstsize.c\
 				ft_lstlast.c\

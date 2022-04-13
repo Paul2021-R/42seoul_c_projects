@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:32:38 by haryu             #+#    #+#             */
-/*   Updated: 2021/11/24 14:42:01 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/14 00:14:37 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
+	t_list	*last;
+
 	if (!*lst)
 		*lst = new;
 	else
-		ft_lstlast(*lst)->next = new;
+	{
+		last = ft_lstlast(*lst);
+		last->next = new;
+	}
 }

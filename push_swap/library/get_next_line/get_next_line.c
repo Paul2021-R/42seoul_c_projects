@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:10:18 by haryu             #+#    #+#             */
-/*   Updated: 2021/12/14 18:10:23 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/13 21:46:31 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*read_buff(int fd, char *s)
 			return (NULL);
 		}
 		buff[read_cnt] = '\0';
-		s = ft_strjoin(s, buff);
+		s = ft_gnl_strjoin(s, buff);
 	}
 	free(buff);
 	return (s);
