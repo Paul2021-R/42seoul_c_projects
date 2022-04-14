@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: haryu <haryu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/13 23:08:08 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/14 15:44:55 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ INC_BONUS_FLAGS		= -I ../includes
 NAME				= push_swap
 NAME_BONUS			= checker
 CC					= gcc
-CFLAGS				= 
+CFLAGS				= -Wall -Werror -Wextra
 
 sky					:=$(shell tput setaf 6)
 reset				:=$(shell tput sgr0)
@@ -62,7 +62,7 @@ $(NAME_BONUS)		: $(OBJS_BONUS)
 
 .c.o				:
 					$(info $(sky)========== $(<) $(@) ==========$(reset))
-					$(CC) $(CFLAGS) $< -c -o $@ 
+					$(CC) $(CFLAGS) $< -c -o $@ -g
 
 clean				:
 					$(info $(sky)============= clean libft.a =============$(reset))

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 22:02:46 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/14 00:40:35 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/14 14:54:16 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	make_len(const char *str, va_list ap);
+static int	make_len(const char *str, va_list *ap);
 static int	switch_str(char *str, va_list *ap);
 
 int	ft_printf(char const *str, ...)
@@ -24,12 +24,12 @@ int	ft_printf(char const *str, ...)
 		return (-1);
 	va_start(ap, str);
 	ret_len = 0;
-	ret_len = make_len(str, ap);
+	ret_len = make_len(str, &ap);
 	va_end(ap);
 	return (ret_len);
 }
 
-static int	make_len(const char *str, va_list ap)
+static int	make_len(const char *str, va_list *ap)
 {
 	int		len;
 	int		temp;
@@ -41,7 +41,7 @@ static int	make_len(const char *str, va_list ap)
 		if (*str == '%')
 		{
 			str++;
-			temp = switch_str((char *)str, &ap);
+			temp = switch_str((char *)str, ap);
 			if (temp == -2)
 			{
 				temp = 0;

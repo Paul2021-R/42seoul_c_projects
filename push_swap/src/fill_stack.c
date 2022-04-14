@@ -3,38 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   fill_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:51 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/14 01:30:20 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/14 17:02:28 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-void	fill_stack(int *array, t_pushlist *stack_a, int ac)
+void	fill_stack(t_pushlist **push, int ac)
 {
 	int		i;
+	t_list	*tmp_a;
 	t_list	*tmp;
-	t_list	*temp_a;
 
-	stack_a->integer = ft_lstnew(0);
-	temp_a = stack_a->integer;
+	tmp_a = (*push)->stack_a;
 	i = 0;
 	while (i < ac)
 	{
-		tmp = ft_lstnew(array[i]);
-		ft_lstadd_back(&temp_a, tmp);
-		temp_a = temp_a->next;
+		tmp = ft_lstnew(&(*push)->array[i]);
+		ft_lstadd_back(&tmp_a, tmp);
+		tmp_a = tmp_a->next;
 		i++;
 	}
-	stack_a->max_len = ac - 1;
 	return ;
 }
 
-void	fill_stack_empty(int code, t_pushlist *stack_b, int ac)
-{
-	stack_b->integer = ft_lstnew(code);
-	stack_b->max_len = 1;
-	return ;
-}
+// void	fill_stack_empty(int code, t_pushlist *stack_b, int ac)
+// {
+// 	(void)ac;
+// 	(void)code;
+// 	stack_b->integer = ft_lstnew(0);
+// 	stack_b->max_len = 1;
+// 	return ;
+// }
+
+// void	fill_stack_old(int **array, t_pushlist *stack_a, int ac)
+// {
+// 	int		i;
+// 	t_list	*tmp;
+// 	t_list	*temp_a;
+
+// 	stack_a->integer = ft_lstnew(0);
+// 	temp_a = stack_a->integer;
+// 	i = 0;
+// 	while (i < ac)
+// 	{
+// 		tmp = ft_lstnew(&array[i]);
+// 		ft_lstadd_back(&temp_a, tmp);
+// 		temp_a = temp_a->next;
+// 		i++;
+// 	}
+// 	stack_a->max_len = ac - 1;
+// 	return ;
+// }
