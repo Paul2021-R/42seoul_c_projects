@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:35:49 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/15 23:17:44 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/16 02:17:51 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,7 @@ void	get_lis(t_pushlist **push)
 	int	i;
 	int	pivot;
 
-	pivot = find_minimun((*push)->array, (*push)->max_len);
-	i = -1;
-	while (++i < (*push)->max_len)
-		if ((*push)->array[i] == pivot)
-			break ;
+	pivot = find_minimun((*push)->array, (*push)->max_len, &i);
 	pivot = (*push)->max_len - i;
 	lis_arr = array_malloc_to_zero(pivot);
 	(*push)->lis_len = pivot;

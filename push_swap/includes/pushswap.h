@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:10:22 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/16 00:18:11 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/16 02:15:57 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ int		lower_bound(int *array, int value, int s, int e);
 void	make_lis(int *array, int **ret, int ref_i, int max_len);
 /* LIS 리스트 길이 확인 */
 int		find_lis_len(int *array, int max_len);
-/* LIS 최솟값 찾기 */
-int		find_minimun(int *array, int max_len);
+/* LIS 최솟값과 해당 인덱스 찾기 */
+int		find_minimun(int *array, int max_len, int *index);
 
 /* t_node 자료용 함수  */
 t_node	*ft_push_lstnew(int value);
