@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_stack.c                                       :+:      :+:    :+:   */
+/*   utils_linked_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 21:31:51 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/15 08:51:46 by haryu            ###   ########.fr       */
+/*   Created: 2022/04/15 09:01:32 by haryu             #+#    #+#             */
+/*   Updated: 2022/04/15 09:01:51 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-void	fill_stack(t_pushlist **push, int ac)
+
+void	ft_push_lstdelone(t_node *lst)
 {
-	int		i;
-	t_node	*tmp;
-	t_node	*tmp_a;
-
-
-	i = 0;
-	(*push)->stack_a = ft_push_lstnew((*push)->array[i]);
-	tmp_a = (*push)->stack_a;
-	while (++i < ac - 1)
-	{
-		tmp = ft_push_lstnew((*push)->array[i]);
-		ft_push_lstadd_back(&tmp_a, tmp);
-		tmp_a = tmp_a->next;
-	}
-	(*push)->len_b = 0;
+	lst->data = 0;
+	lst->next = 0;
+	free(lst);
 	return ;
+}
+
+int	ft_push_lstsize(t_node *lst)
+{
+	int		ret;
+
+	ret = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		ret++;
+	}
+	return (ret);
 }

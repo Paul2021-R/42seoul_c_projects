@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: haryu <haryu@student.42.fr>                +#+  +:+       +#+         #
+#    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/14 15:44:55 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/15 09:02:12 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCNAME				= main.c fill_stack.c errch_integer.c utils.c
+SRCNAME				= main.c fill_stack.c errch_integer.c utils.c utils_linked_1.c utils_linked_2.c
 SRCNAME_BONUS		= 
 
 DIR					= ./src/
