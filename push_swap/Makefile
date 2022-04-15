@@ -6,11 +6,12 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/15 09:02:12 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/15 23:11:34 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCNAME				= main.c fill_stack.c errch_integer.c utils.c utils_linked_1.c utils_linked_2.c
+SRCNAME				= main.c fill_stack.c errch_integer.c utils_forbidden.c utils_linked_1.c utils_linked_2.c get_lis.c utils_array.c series_s.c series_p.c series_r.c series_rr.c
+
 SRCNAME_BONUS		= 
 
 DIR					= ./src/

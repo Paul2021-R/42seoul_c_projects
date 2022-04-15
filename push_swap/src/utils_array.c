@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils_array.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 16:14:33 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/16 00:21:01 by haryu            ###   ########.fr       */
+/*   Created: 2022/04/15 18:22:54 by haryu             #+#    #+#             */
+/*   Updated: 2022/04/15 18:35:20 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-int	main(int ac, char **av)
+int	find_minimun(int *array, int max_len)
 {
-	t_pushlist	*push_swaper;
+	int	ret;
+	int	i;
 
-	if (ac < 2)
+	i = 0;
+	ret = array[i];
+	while (++i < max_len)
+		if (array[i] < ret)
+			ret = array[i];
+	return (ret);
+}
+
+int	*array_malloc_to_zero(int length)
+{
+	int	*ret;
+	int	i;
+
+	ret = malloc(sizeof(int) * length);
+	if (!ret)
 		put_error();
-	push_swaper = malloc(sizeof(t_pushlist) * 1);
-	if (!push_swaper)
-		put_error();
-	push_swaper->max_len = ac - 1;
-	push_swaper->array = error_check(ac, av);
-	fill_stack(&push_swaper, ac);
-	get_lis(&push_swaper);
-	lis_print(&push_swaper);
-	return (0);
+	i = 0;
+	while (i < length)
+		ret[i++] = 0;
+	return (ret);
 }

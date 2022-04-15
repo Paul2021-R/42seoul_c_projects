@@ -1,36 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_forbidden.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 22:57:57 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/15 09:00:36 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/16 00:18:59 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 #include <stdio.h>
-
-void	lst_stack_print(t_node *stack_a, t_node *stack_b, int len_a, int len_b)
-{
-	int	i;
-
-	i = 0;
-	while (i < len_a)
-	{
-		printf("          %-10d   ", stack_a->data);
-		if (i < len_b)
-		{
-			printf("          %-10d", stack_b->data);
-			stack_b = stack_b->next;
-		}
-		printf("\n");
-		stack_a = stack_a->next;
-		i++;
-	}
-}
 
 void	lst_print(t_pushlist **push)
 {
@@ -41,16 +22,39 @@ void	lst_print(t_pushlist **push)
 
 	tmpa = (*push)->stack_a;
 	tmpb = (*push)->stack_b;
-	len_a = ft_push_lstsize((*push)->stack_a);
-	len_b = 0;
-	if ((*push)->len_b)
-		len_b = ft_push_lstsize((*push)->stack_b);
-	ft_printf("--------------------------------------------\n\
-max_len : \
-%d\n--------------------\
-------------------------\n", (*push)->max_len);
-	lst_stack_print(tmpa, tmpb, len_a, len_b);
-	printf("--------------------------------------------\n          %-10s \
-            %-10s\n          %-10s             %-10s\n", "-", "-", "A", "B");
+	len_a = (*push)->max_len;
+	len_b = (*push)->len_b;
+	printf("\nlen a : %d          len b : %d\n", len_a, len_b);
+	while (len_a + len_b)
+	{
+		if (!len_a)
+			printf("           ");
+		if (len_a)
+		{
+			printf("%-10d ", tmpa->data);
+			if (len_b == 0)
+				printf("\n");
+			tmpa = tmpa->next;
+			len_a--;
+		}
+		if (len_b)
+		{
+			printf("          %-10d\n", tmpb->data);
+			tmpb = tmpb->next;
+			len_b--;
+		}
+	}
+	ft_printf("%s          ", "stack A");
+	ft_printf("%s\n\n", "stack B");
+	return ;
+}
+
+void	lis_print(t_pushlist **push)
+{
+	for (int i = 0; i < (*push)->lis_len; i++)
+	{
+		ft_printf("lis_arr[%d] : %d\n", i, (*push)->array[i]);
+	}
+	ft_printf("lis len = %d\n", (*push)->lis_len);
 	return ;
 }
