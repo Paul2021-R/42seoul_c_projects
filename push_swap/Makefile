@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/17 18:51:09 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/17 22:08:33 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,15 +55,15 @@ $(NAME)				: $(OBJS)
 					make -C $(FTPRINTF_DIR)
 					@cp ./library/ft_printf/libftprintf.a ./
 					$(info $(sky)========== make push_swap ==========$(reset))
-					$(CC) $(CFLAGS) $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -o $@ -g -fsanitize=address
+					$(CC) $(CFLAGS) $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -o $@ -O -g -fsanitize=address
 
 $(NAME_BONUS)		: $(OBJS_BONUS)
 					$(info $(sky)========== make Server_bonus ==========$(reset))
-					$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS)
+					$(CC) $(CFLAGS) -o  $@ $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS)
 
 .c.o				:
 					$(info $(sky)========== $(<) $(@) ==========$(reset))
-					$(CC) $(CFLAGS) $< -c -o $@ -g
+					$(CC) $(CFLAGS) $< -c -o $@ -g -O1
 
 clean				:
 					$(info $(sky)============= clean libft.a =============$(reset))
