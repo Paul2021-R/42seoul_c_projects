@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/15 23:11:34 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/17 18:51:09 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,11 +29,11 @@ LIBFT_FLAGS			= -L ./ -lft
 FT_PRINTF			= libftprintf
 FT_PRINTF_FLAGS		= -L ./ -lftprintf
 
-LIBFT_DIR				= ./library/libft
-FTPRINTF_DIR			= ./library/ft_printf
+LIBFT_DIR			= ./library/libft
+FTPRINTF_DIR		= ./library/ft_printf
 
-INC_FLAGS 			= -I ../includes
-INC_BONUS_FLAGS		= -I ../includes
+INC_FLAGS 			= -I ./includes
+INC_BONUS_FLAGS		= -I ./includes
 
 NAME				= push_swap
 NAME_BONUS			= checker
@@ -55,7 +55,7 @@ $(NAME)				: $(OBJS)
 					make -C $(FTPRINTF_DIR)
 					@cp ./library/ft_printf/libftprintf.a ./
 					$(info $(sky)========== make push_swap ==========$(reset))
-					$(CC) $(CFLAGS) $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) $^ -o $@ -g -fsanitize=address
+					$(CC) $(CFLAGS) $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -o $@ -g -fsanitize=address
 
 $(NAME_BONUS)		: $(OBJS_BONUS)
 					$(info $(sky)========== make Server_bonus ==========$(reset))
