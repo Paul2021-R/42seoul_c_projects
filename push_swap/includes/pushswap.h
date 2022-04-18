@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:10:22 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/16 02:15:57 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/18 20:24:08 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ void	make_lis(int *array, int **ret, int ref_i, int max_len);
 int		find_lis_len(int *array, int max_len);
 /* LIS 최솟값과 해당 인덱스 찾기 */
 int		find_minimun(int *array, int max_len, int *index);
+/* LIS 정렬 */
+void	align_stack_a(t_pushlist **push, int min_value, int min_pos);
+/* LIS 맞추기 위한 정렬  */
+void	make_new_array(t_pushlist **push, int pivot);
 
 /* t_node 자료용 함수  */
 t_node	*ft_push_lstnew(int value);

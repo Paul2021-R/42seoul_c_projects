@@ -6,42 +6,37 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 16:14:33 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/18 04:46:50 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/18 20:37:36 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-void	make_stack_a_to_lis_up(t_pushlist **push)
+void	make_stack_a_to_lis_ra(t_pushlist **push)
 {
 	int	i;
 	int	j;
-	int check;
+	int	check;
 
 	i = 0;
-	while (i < (*push)->lis_len)
+	while (i < (*push)->max_len)
 	{
 		check = 0;
 		j = 0;
-		while(j < (*push)->lis_len)
+		while (j < (*push)->lis_len)
 		{
-			if ((*push)->stack_a->data == (*push)->array[j])
+			if ((*push)->stack_a->data == (*push)->array[j++])
 			{
 				i++;
+				ra(push, 0);
 				check = 1;
 			}
-			j++;
 		}
 		if (check == 0)
-		{
 			pb(push);
-			//lst_print(push);
-			continue ;
-		}
-		ra(push, 0);
-		//lst_print(push);
+		if (ft_push_lstsize((*push)->stack_a) == (*push)->lis_len)
+			break ;
 	}
-	return ;
 }
 
 int	main(int ac, char **av)
@@ -57,10 +52,10 @@ int	main(int ac, char **av)
 	push_swaper->array = error_check(ac, av);
 	fill_stack(&push_swaper, ac);
 	get_lis(&push_swaper);
+	make_stack_a_to_lis_ra(&push_swaper);
+	lst_print(&push_swaper);
 	lis_print(&push_swaper);
-	lst_print(&push_swaper);
-	make_stack_a_to_lis_up(&push_swaper);
-	//where_is_lis_a(&push_swaper);
-	lst_print(&push_swaper);
 	return (0);
 }
+
+	//ft_printf ("compare : %d  --  %d\n", (*push)->stack_a->data, (*push)->array[j]);

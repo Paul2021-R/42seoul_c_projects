@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:23:53 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/14 00:58:05 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/18 19:06:15 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	put_error(void)
 {
 	ft_printf("Error");
-	exit(0);
+	exit(1);
 }
 
 void	error_no_integer(int i, char *str)
