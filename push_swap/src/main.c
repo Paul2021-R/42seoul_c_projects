@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 16:14:33 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/20 23:45:35 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/21 01:05:02 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	main(int ac, char **av)
 	min_value = ft_push_min((push_swaper)->stack_a);
 	min_pos = where_is_node((push_swaper)->stack_a, min_value);
 	align_stack_a(&push_swaper, min_value, min_pos);
+	//lst_print(&push_swaper);
 	return (0);
 }
 

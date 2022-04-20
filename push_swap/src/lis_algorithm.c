@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 22:05:24 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/20 23:46:34 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/21 01:04:13 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,11 @@ void	lis_algorithm(t_pushlist **push, int value)
 
 	i = 0;
 	tmpb = (*push)->stack_b;
-	while(i++ <= value && (*push)->len_b > 1)
+	while(i < value)
+	{
 		tmpb = tmpb->next;
+		i++;
+	}
 	action_a = check_score_a((*push)->stack_a, tmpb->data);
 	action_b = check_score_b((*push)->stack_b, tmpb->data, (*push)->len_b);
 	same = action_same(&action_a, &action_b);
