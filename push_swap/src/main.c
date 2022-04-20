@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 16:14:33 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/18 20:37:36 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/20 23:45:35 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	make_stack_a_to_lis_ra(t_pushlist **push)
 int	main(int ac, char **av)
 {
 	t_pushlist	*push_swaper;
+	int			min_pos;
+	int			min_value;
 
 	if (ac < 2)
 		put_error();
@@ -53,9 +55,10 @@ int	main(int ac, char **av)
 	fill_stack(&push_swaper, ac);
 	get_lis(&push_swaper);
 	make_stack_a_to_lis_ra(&push_swaper);
-	lst_print(&push_swaper);
-	lis_print(&push_swaper);
+	check_best_choice(&push_swaper);
+	min_value = ft_push_min((push_swaper)->stack_a);
+	min_pos = where_is_node((push_swaper)->stack_a, min_value);
+	align_stack_a(&push_swaper, min_value, min_pos);
 	return (0);
 }
 
-	//ft_printf ("compare : %d  --  %d\n", (*push)->stack_a->data, (*push)->array[j]);

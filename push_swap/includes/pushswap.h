@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:10:22 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/18 20:24:08 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/20 23:18:59 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../library/libft/libft.h"
 # include "../library/get_next_line/get_next_line.h"
 # include "../library/ft_printf/mandatory/ft_printf.h"
+# include <stdio.h>
 
 /* 함수용 매크로 */
 # define ALL 1
@@ -68,8 +69,12 @@ int		find_lis_len(int *array, int max_len);
 int		find_minimun(int *array, int max_len, int *index);
 /* LIS 정렬 */
 void	align_stack_a(t_pushlist **push, int min_value, int min_pos);
-/* LIS 맞추기 위한 정렬  */
-void	make_new_array(t_pushlist **push, int pivot);
+/* LIS 배열 스택 재정렬시 재 초기화 용 */
+void	array_copy_from_stack(t_pushlist **push);
+/* LIS 정렬 알고리즘 코어  */
+void	lis_algorithm(t_pushlist **push, int value);
+int 	check_score_a(t_node *stack, int value);
+int		check_score_b(t_node *stack, int value, int len_b);
 
 /* t_node 자료용 함수  */
 t_node	*ft_push_lstnew(int value);
@@ -81,6 +86,9 @@ void	ft_push_lstdelone(t_node *lst);
 int		ft_push_lstsize(t_node *lst);
 /* 마지막 직전 노드 확인용 */
 t_node	*ft_push_lstlast_early(t_node *lst);
+/* node 최솟값 */
+int		ft_push_min(t_node *stack);
+int		where_is_node(t_node *stack, int target);
 
 /* sortting actions */
 void	pb(t_pushlist **push);
@@ -94,5 +102,9 @@ void	rr(t_pushlist **push);
 void	rra(t_pushlist **push, int code);
 void	rrb(t_pushlist **push, int code);
 void	rrr(t_pushlist **push);
+
+/* sorting algorithm */
+/* 스택 B 최선의 선택 스위쳐 */
+void	check_best_choice(t_pushlist **push);
 
 #endif 

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 23:07:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/16 00:13:37 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/20 23:44:31 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	rrb(t_pushlist **push, int code)
 	(*push)->stack_b = tmp_end;
 	tmp_before_end->next = NULL;
 	if (code == 0)
-		ft_printf("rra\n");
+		ft_printf("rrb\n");
 	return ;
 }
 
