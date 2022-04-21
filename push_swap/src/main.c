@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 16:14:33 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/21 01:05:02 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/21 12:26:00 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,27 +39,59 @@ void	make_stack_a_to_lis_ra(t_pushlist **push)
 	}
 }
 
+int	check_height(char **target)
+{
+	int i;
+
+	i = 0;
+	while(target[i])
+		i++;
+	return (i);
+}
+
+char	**make_target(int ac, char **av, t_pushlist **push)
+{
+	char	**ret;
+	char	*tmp;
+	char	*tmp2;
+
+	if (ac != 2)
+	{
+		(*push)->max_len = ac - 1;
+		ret = av;
+	}
+	if (ac == 2)
+	{
+		tmp = ft_strjoin(av[0], " ");
+		tmp2 = ft_strjoin(tmp, av[1]);
+		free(tmp);
+		ret = ft_split(tmp2, ' ');
+		(*push)->max_len = check_height(ret) - 1;	
+	}
+	return (ret);
+}
+
 int	main(int ac, char **av)
 {
 	t_pushlist	*push_swaper;
 	int			min_pos;
 	int			min_value;
+	char		**target;
 
 	if (ac < 2)
 		put_error();
 	push_swaper = malloc(sizeof(t_pushlist) * 1);
 	if (!push_swaper)
 		put_error();
-	push_swaper->max_len = ac - 1;
-	push_swaper->array = error_check(ac, av);
-	fill_stack(&push_swaper, ac);
+	target = make_target(ac, av, &push_swaper);
+	push_swaper->array = error_check(push_swaper->max_len + 1, target);
+	fill_stack(&push_swaper, push_swaper->max_len + 1);
 	get_lis(&push_swaper);
 	make_stack_a_to_lis_ra(&push_swaper);
 	check_best_choice(&push_swaper);
 	min_value = ft_push_min((push_swaper)->stack_a);
 	min_pos = where_is_node((push_swaper)->stack_a, min_value);
 	align_stack_a(&push_swaper, min_value, min_pos);
-	//lst_print(&push_swaper);
 	return (0);
 }
 
