@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 22:05:24 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/21 17:57:08 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/21 21:22:27 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	action_same(int *action_a, int *action_b)
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
 	while ((*action_a) > 0 && (*action_b) > 0)
@@ -54,12 +54,12 @@ void	do_a(int action_a, t_pushlist **push)
 {
 	if (action_a == 0)
 		return ;
-	while(action_a > 0)
+	while (action_a > 0)
 	{
 		ra(push, 0);
 		action_a--;
 	}
-	while(action_a < 0)
+	while (action_a < 0)
 	{
 		rra(push, 0);
 		action_a++;
@@ -71,12 +71,12 @@ void	do_b(int action_b, t_pushlist **push)
 {
 	if (action_b == 0)
 		return ;
-	while(action_b > 0)
+	while (action_b > 0)
 	{
 		rb(push, 0);
 		action_b--;
 	}
-	while(action_b < 0)
+	while (action_b < 0)
 	{
 		rrb(push, 0);
 		action_b++;
@@ -90,11 +90,11 @@ void	lis_algorithm(t_pushlist **push, int value)
 	int		action_b;
 	int		same;
 	int		i;
-	t_node *tmpb;
+	t_node	*tmpb;
 
 	i = 0;
 	tmpb = (*push)->stack_b;
-	while(i < value)
+	while (i < value)
 	{
 		tmpb = tmpb->next;
 		i++;
@@ -106,6 +106,5 @@ void	lis_algorithm(t_pushlist **push, int value)
 	do_a(action_a, push);
 	do_b(action_b, push);
 	pa(push);
-	lst_print(push);
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:35:49 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/21 18:07:50 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/21 21:47:57 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	final_lis(int *array, int **record, int **ret, int max_len)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	j = 0;
-	while(++i < max_len)
+	while (++i < max_len)
 	{
 		if (j < (*record)[i])
 			j = (*record)[i];
@@ -34,8 +34,7 @@ void	final_lis(int *array, int **record, int **ret, int max_len)
 			j--;
 		}
 	}
-	for(int i = 0; i < max_len; i++)
-		printf("[%d] %d\n", i, (*ret)[i]);
+	(*ret)[0] = array[0];
 }
 
 int	lower_bound(int *array, int value, int s, int e)
@@ -78,8 +77,6 @@ void	make_lis(int *array, int **ret, int ref_i, int max_len)
 			record[i] = pos;
 		}
 	}
-	for(int i = 0; i < max_len; i++)
-		printf("record[%d]: %d\n", i, record[i]);
 	final_lis(array, &record, ret, max_len);
 	free(record);
 }
@@ -108,14 +105,13 @@ void	get_lis(t_pushlist **push)
 
 	pivot = find_minimun((*push)->array, (*push)->max_len, &i);
 	align_stack_a(push, pivot, i);
-	lst_print(push);
 	array_copy_from_stack(push);
 	(*push)->lis_len = (*push)->max_len;
 	lis_arr = array_malloc_to_zero((*push)->max_len);
 	make_lis((*push)->array, &lis_arr, 0, (*push)->max_len);
-	lis_print(push);
 	free((*push)->array);
 	(*push)->array = lis_arr;
 	(*push)->lis_len = find_lis_len((*push)->array, (*push)->lis_len);
+	check_already_done(push);
 	return ;
 }

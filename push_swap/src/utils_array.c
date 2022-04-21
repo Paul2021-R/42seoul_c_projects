@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:22:54 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/21 17:59:58 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/21 19:41:25 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ void	align_stack_a(t_pushlist **push, int min_value, int min_pos)
 
 int	where_is_node(t_node *stack, int target)
 {
-	t_node *tmp;
+	t_node	*tmp;
 	int		i;
 
 	tmp = stack;
 	i = 0;
-	while(tmp)
+	while (tmp)
 	{
 		if (tmp->data == target)
 			break ;

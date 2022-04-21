@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 16:14:33 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/21 18:05:50 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/21 21:48:05 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ void	make_stack_a_to_lis_ra(t_pushlist **push)
 
 int	check_height(char **target)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(target[i])
+	while (target[i])
 		i++;
 	return (i);
 }
@@ -71,6 +71,17 @@ char	**make_target(int ac, char **av, t_pushlist **push)
 	return (ret);
 }
 
+void	exception_lis(t_pushlist **push)
+{
+	int	min;
+	int	i;
+
+	i = 0;
+	min = find_minimun((*push)->array, (*push)->max_len, &i);
+	align_stack_a(push, min, i);
+	exit (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_pushlist	*push_swaper;
@@ -86,7 +97,10 @@ int	main(int ac, char **av)
 	target = make_target(ac, av, &push_swaper);
 	push_swaper->array = error_check(push_swaper->max_len + 1, target);
 	fill_stack(&push_swaper, push_swaper->max_len + 1);
+	if (ft_push_lstsize(push_swaper->stack_a) == 2)
+		exception_lis(&push_swaper);
 	get_lis(&push_swaper);
+	check_already_done(&push_swaper);
 	make_stack_a_to_lis_ra(&push_swaper);
 	check_best_choice(&push_swaper);
 	min_value = ft_push_min((push_swaper)->stack_a);
@@ -94,4 +108,3 @@ int	main(int ac, char **av)
 	align_stack_a(&push_swaper, min_value, min_pos);
 	return (0);
 }
-

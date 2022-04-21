@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 20:13:19 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/21 01:04:43 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/21 21:56:54 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	check_score_a(t_node *stack, int value)
 {
-	int i;
-	int stack_min;
-	int mid;
+	int	i;
+	int	stack_min;
+	int	mid;
 	int	stack_len;
 
 	i = 1;
@@ -27,17 +27,15 @@ int	check_score_a(t_node *stack, int value)
 	{
 		if (stack->data < value)
 		{
-			if (stack->next->data > value)
-			{
+			if (stack->next == NULL)
 				break ;
-			}
+			else if (stack->next->data > value)
+				break ;
 			else if (stack->next->data == stack_min)
 				break ;
 		}
 		stack = stack->next;
 		i++;
-		if (i == stack_len - 1)
-			break ;
 	}
 	if (i > mid)
 		i = (stack_len - i - 1) * -1;
@@ -67,10 +65,10 @@ int	check_score_b(t_node *stack, int value, int len_b)
 
 int	check_score_siwtcher(t_pushlist **push, int value)
 {
-	int score_a;
-	int score_b;
-	int ret;
-	int i;
+	int	score_a;
+	int	score_b;
+	int	ret;
+	int	i;
 
 	score_a = check_score_a((*push)->stack_a, value);
 	score_b = check_score_b((*push)->stack_b, value, (*push)->len_b);
@@ -81,7 +79,7 @@ int	check_score_siwtcher(t_pushlist **push, int value)
 			i++;	
 		ret = score_a + score_b - i;
 	}
-	else if (score_a <0 && score_b < 0)
+	else if (score_a < 0 && score_b < 0)
 	{
 		while (i > score_a && i > score_b)
 			i--;
@@ -109,11 +107,11 @@ void	check_best_choice(t_pushlist **push)
 	length_b = (*push)->len_b;
 	score_b = array_malloc_to_zero(length_b);
 	i = 0;
-	while(i < length_b)
+	while (i < length_b)
 	{
 		score_b[i] = check_score_siwtcher(push, tmpb->data);
 		tmpb = tmpb->next;
-		i++;	
+		i++;
 	}
 	find_minimun(score_b, length_b, &i);
 	lis_algorithm(push, i);
@@ -123,4 +121,3 @@ void	check_best_choice(t_pushlist **push)
 	else
 		return ;
 }
-

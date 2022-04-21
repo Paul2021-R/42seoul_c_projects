@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 22:30:51 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/16 00:14:00 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/21 21:12:03 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ void	ra(t_pushlist **push, int code)
 {
 	t_node	*tmp_1;
 	t_node	*tmp_last;
+	int		stack;
 
+	stack = ft_push_lstsize((*push)->stack_a);
+	if (stack == 1)
+		return ;
 	tmp_1 = (*push)->stack_a;
 	(*push)->stack_a = tmp_1->next;
 	tmp_last = ft_push_lstlast((*push)->stack_a);

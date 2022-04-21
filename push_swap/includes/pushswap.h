@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:10:22 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/20 23:18:59 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/21 21:31:31 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	lis_print(t_pushlist **push);
 void	put_error(void);
 /* 예외 조건 점검 */
 int		*error_check(int limit, char **array);
+/* 예외 조건 점검 - LIS를 위해 정리중 이미 정렬이 마무리 되었을 때. */
+void	check_already_done(t_pushlist **push);
+
 /* 최초 스택 정렬용 */
 void	fill_stack(t_pushlist **push, int ac);
 /*lis array 작성*/
