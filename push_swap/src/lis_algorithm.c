@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 22:05:24 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/21 01:04:13 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/21 17:57:08 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,6 @@ void	lis_algorithm(t_pushlist **push, int value)
 	do_a(action_a, push);
 	do_b(action_b, push);
 	pa(push);
+	lst_print(push);
 	return ;
 }
