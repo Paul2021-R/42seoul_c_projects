@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:22:54 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/21 19:41:25 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/23 02:53:03 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ int	*array_malloc_to_zero(int length)
 
 void	align_stack_a(t_pushlist **push, int min_value, int min_pos)
 {
-	if (min_pos < (*push)->max_len / 2)
+	t_node	*tmpa;
+
+	if (min_pos <= (*push)->max_len / 2)
 	{
 		while ((*push)->stack_a)
 		{
@@ -61,8 +63,11 @@ void	align_stack_a(t_pushlist **push, int min_value, int min_pos)
 	{
 		while ((*push)->stack_a)
 		{
+			tmpa = (*push)->stack_a;
 			if ((*push)->stack_a->data == min_value)
 				return ;
+			if (tmpa->data > tmpa->next->data)
+				sa(push, 0);
 			rra(push, 0);
 		}
 	}	

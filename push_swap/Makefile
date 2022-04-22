@@ -6,14 +6,15 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/21 21:32:17 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/23 02:09:11 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCNAME				= main.c fill_stack.c errch_integer.c utils_forbidden.c \
 					  utils_linked_1.c utils_linked_2.c get_lis.c utils_array.c \
 					  series_s.c series_p.c series_r.c series_rr.c utils_array_2.c \
-					  check_best_choice.c lis_algorithm.c check_already_done.c
+					  check_best_choice.c lis_algorithm.c check_already_done.c \
+					  get_score.c exception_lis.c exception_lis_2.c
 
 SRCNAME_BONUS		= 
 

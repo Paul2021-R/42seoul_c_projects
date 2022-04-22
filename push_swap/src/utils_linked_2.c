@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 09:01:32 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/21 21:37:31 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/23 01:17:18 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ t_node	*ft_push_lstlast_early(t_node *lst)
 	return (lst);
 }
 
-int ft_push_min(t_node *stack)
+int	ft_push_min(t_node *stack)
 {
-	int ret;
+	int	ret;
 
-	ret = stack->data; 
+	ret = stack->data;
 	while (stack)
 	{
 		if (ret > stack->data)

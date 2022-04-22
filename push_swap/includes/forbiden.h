@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_array_2.c                                    :+:      :+:    :+:   */
+/*   forbiden.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 18:44:18 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 01:23:57 by haryu            ###   ########.fr       */
+/*   Created: 2022/04/23 01:24:53 by haryu             #+#    #+#             */
+/*   Updated: 2022/04/23 01:26:07 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#ifndef FORBIDEN_H
+# define FORBIDEN_H
 
-void	array_copy_from_stack(t_pushlist **push)
-{
-	t_node	*tmpa;
-	int		i;
+# include "pushswap.h"
+# include <stdio.h>
 
-	tmpa = (*push)->stack_a;
-	i = 0;
-	while (tmpa)
-	{
-		(*push)->array[i] = tmpa->data;
-		tmpa = tmpa->next;
-		i++;
-	}
-	return ;
-}
+/* Forbidden utils */
+/* 현재 스텍 확인용 */
+void	lst_print(t_pushlist **push);
+/* LIS array 확인용 */
+void	lis_print(t_pushlist **push);
+
+#endif

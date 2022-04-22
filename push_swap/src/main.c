@@ -6,11 +6,12 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 16:14:33 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/21 21:48:05 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/23 04:23:21 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
+#include "../includes/forbiden.h"
 
 void	make_stack_a_to_lis_ra(t_pushlist **push)
 {
@@ -66,20 +67,9 @@ char	**make_target(int ac, char **av, t_pushlist **push)
 		tmp2 = ft_strjoin(tmp, av[1]);
 		free(tmp);
 		ret = ft_split(tmp2, ' ');
-		(*push)->max_len = check_height(ret) - 1;	
+		(*push)->max_len = check_height(ret) - 1;
 	}
 	return (ret);
-}
-
-void	exception_lis(t_pushlist **push)
-{
-	int	min;
-	int	i;
-
-	i = 0;
-	min = find_minimun((*push)->array, (*push)->max_len, &i);
-	align_stack_a(push, min, i);
-	exit (0);
 }
 
 int	main(int ac, char **av)
@@ -97,10 +87,12 @@ int	main(int ac, char **av)
 	target = make_target(ac, av, &push_swaper);
 	push_swaper->array = error_check(push_swaper->max_len + 1, target);
 	fill_stack(&push_swaper, push_swaper->max_len + 1);
-	if (ft_push_lstsize(push_swaper->stack_a) == 2)
-		exception_lis(&push_swaper);
-	get_lis(&push_swaper);
 	check_already_done(&push_swaper);
+	if (ft_push_lstsize(push_swaper->stack_a) <= 3)
+		exception_lis(&push_swaper);
+	if (push_swaper->lis_len <= 2 && push_swaper->max_len == 5)
+		exception_lis_2(&push_swaper);
+	get_lis(&push_swaper);
 	make_stack_a_to_lis_ra(&push_swaper);
 	check_best_choice(&push_swaper);
 	min_value = ft_push_min((push_swaper)->stack_a);
