@@ -6,12 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 22:05:24 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/21 21:22:27 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/23 12:16:24 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
-#include <stdio.h>
 
 int	action_same(int *action_a, int *action_b)
 {

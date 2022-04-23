@@ -6,12 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:35:49 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 02:45:36 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/23 12:10:44 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
-#include "../includes/forbiden.h"
 
 void	final_lis(int *array, int **record, int **ret, int max_len)
 {
@@ -35,7 +34,6 @@ void	final_lis(int *array, int **record, int **ret, int max_len)
 			j--;
 		}
 	}
-	// check_lis_alot_zero(array, record, ret, max_len);
 	(*ret)[0] = array[0];
 }
 

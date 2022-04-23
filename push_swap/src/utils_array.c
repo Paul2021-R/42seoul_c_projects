@@ -6,12 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:22:54 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 02:53:03 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/23 12:13:28 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
-#include <stdio.h>
 
 int	find_minimun(int *array, int max_len, int *index)
 {
@@ -88,4 +87,20 @@ int	where_is_node(t_node *stack, int target)
 		i++;
 	}
 	return (i);
+}
+
+void	array_copy_from_stack(t_pushlist **push)
+{
+	t_node	*tmpa;
+	int		i;
+
+	tmpa = (*push)->stack_a;
+	i = 0;
+	while (tmpa)
+	{
+		(*push)->array[i] = tmpa->data;
+		tmpa = tmpa->next;
+		i++;
+	}
+	return ;
 }

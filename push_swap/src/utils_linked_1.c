@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 00:45:15 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/15 09:01:53 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/23 12:12:22 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,5 @@ void	ft_push_lstadd_front(t_node **lst, t_node *new)
 {
 	new->next = *lst;
 	*lst = new;
-	return ;
-}
-
-void	ft_push_lstclear(t_node **lst)
-{
-	t_node	*tmp;
-
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		free(*lst);
-		*lst = tmp;
-	}
-	*lst = 0;
 	return ;
 }

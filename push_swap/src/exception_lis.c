@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 20:41:26 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 02:02:03 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/23 12:17:26 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,22 @@ void	sort_stack_3(t_pushlist **push, int code, t_node *tmpa)
 	{
 		if (tmpa->next->data > tmpa->next->next->data)
 		{
-			rra(push, 0);
-			sa(push, 0);
+			rra(push, SPE);
+			sa(push, SPE);
 		}
 	}
 	else if (code == 1)
 	{
 		if (tmpa->data > tmpa->next->next->data)
-			ra(push, 0);
+			ra(push, SPE);
 		else
-			sa(push, 0);
+			sa(push, SPE);
 	}
 	else
 	{
 		if (tmpa->data > tmpa->next->data)
-			sa(push, 0);
-		rra(push, 0);
+			sa(push, SPE);
+		rra(push, SPE);
 	}
 	exit(0);
 }
