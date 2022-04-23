@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:28:51 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 13:54:09 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/23 17:31:49 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,10 @@ int	main(int ac, char **av)
 	while (1)
 	{
 		command = get_next_line(0);
-		error_commands(command);
 		if (command == NULL)
 			break ;
+		error_commands((char *)command);
 		ft_lstadd_back(&commands, ft_lstnew (command));
 	}
+	do_pre_commands(&push, commands->next);
 }

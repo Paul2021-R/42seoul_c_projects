@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 13:43:07 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 13:55:20 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/23 16:49:52 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	error_commands(char *str)
 	if (!ft_strncmp(str, "sa\n", 3))
 		return ;
 	if (!ft_strncmp(str, "sb\n", 3))
-		return ;
-	if (!ft_strncmp(str, "sa\n", 3))
 		return ;
 	if (!ft_strncmp(str, "ss\n", 3))
 		return ;

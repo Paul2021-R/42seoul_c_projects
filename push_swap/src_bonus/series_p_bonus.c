@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   series_p.c                                         :+:      :+:    :+:   */
+/*   series_p_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:46:02 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 01:18:39 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/23 17:22:47 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	pb(t_pushlist **push)
 		(*push)->stack_b->next = tmp_b;
 	(*push)->max_len--;
 	(*push)->len_b++;
-	ft_printf("pb\n");
 	return ;
 }
 
@@ -46,6 +45,5 @@ void	pa(t_pushlist **push)
 		(*push)->stack_a->next = tmp_a;
 	(*push)->max_len++;
 	(*push)->len_b--;
-	ft_printf("pa\n");
 	return ;
 }

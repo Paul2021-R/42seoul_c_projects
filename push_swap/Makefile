@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/23 13:51:25 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/23 17:31:49 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,10 @@ SRCNAME				= main.c fill_stack.c errch_integer.c \
 					  check_best_choice.c lis_algorithm.c check_already_done.c \
 					  get_score.c exception_lis.c exception_lis_2.c
 
-SRCNAME_BONUS		= main_bonus.c fill_stack.c errch_integer.c utils_forbidden.c \
-					  utils_linked_1.c utils_linked_2.c series_s.c series_p.c series_r.c series_rr.c \
-					  errch_commands.c
+SRCNAME_BONUS		= main_bonus.c fill_stack_bonus.c errch_integer_bonus.c \
+					  utils_linked_1_bonus.c utils_linked_2_bonus.c \
+					  series_s_bonus.c series_p_bonus.c series_r_bonus.c series_rr_bonus.c \
+					  errch_commands_bonus.c check_already_done_bonus.c checker_core_bonus.c
 
 DIR					= ./src/
 DIR_BONUS			= ./src_bonus/
@@ -75,7 +76,7 @@ $(NAME_BONUS)		: $(OBJS_BONUS)
 					@make -C $(GNL_DIR)
 					cp ./library/get_next_line/libftgnl.a ./
 					$(info $(sky)========== make push_swap_checker ==========$(reset))
-					$(CC) $(CFLAGS) -o  $@ $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) $(LIBFT_GNL_FLAGS) 
+					$(CC) $(CFLAGS) -o  $@ $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) $(LIBFT_GNL_FLAGS) -g -fsanitize=address
 
 .c.o				:
 					$(info $(sky)========== $(<) $(@) ==========$(reset))
