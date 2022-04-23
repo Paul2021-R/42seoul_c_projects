@@ -16,7 +16,9 @@
 	"queue": "c",
 	"vector": "c",
 	"string": "c",
-	"string_view": "c"
+	"string_view": "c",
+	"forbiden.h": "c",
+	"pushswap_bonus.h": "c"
 },
   "cmake.configureOnOpen": false
 }

@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/23 12:27:39 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/23 13:51:25 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ SRCNAME				= main.c fill_stack.c errch_integer.c \
 					  check_best_choice.c lis_algorithm.c check_already_done.c \
 					  get_score.c exception_lis.c exception_lis_2.c
 
-SRCNAME_BONUS		= 
+SRCNAME_BONUS		= main_bonus.c fill_stack.c errch_integer.c utils_forbidden.c \
+					  utils_linked_1.c utils_linked_2.c series_s.c series_p.c series_r.c series_rr.c \
+					  errch_commands.c
 
 DIR					= ./src/
 DIR_BONUS			= ./src_bonus/
@@ -24,18 +26,18 @@ DIR_BONUS			= ./src_bonus/
 OBJS 				= $(addprefix $(DIR), $(SRCNAME:.c=.o))
 OBJS_BONUS			= $(addprefix $(DIR_BONUS), $(SRCNAME_BONUS:.c=.o))
 
-GNL_DIR				= ./library/ 
-GNL_SRC				= get_next_line.c get_next_line_utils.c
-GNL 				= $(addprefix $(GNL_DIR), $(GNL_SRC:.c=.o))
-
 LIBFT				= libft
 LIBFT_FLAGS			= -L ./ -lft
 
 FT_PRINTF			= libftprintf
 FT_PRINTF_FLAGS		= -L ./ -lftprintf
 
+LIBFT_GNL			= libftgnl
+LIBFT_GNL_FLAGS 	= -L ./ -lftgnl
+
 LIBFT_DIR			= ./library/libft
 FTPRINTF_DIR		= ./library/ft_printf
+GNL_DIR				= ./library/get_next_line
 
 INC_FLAGS 			= -I ./includes
 INC_BONUS_FLAGS		= -I ./includes
@@ -63,12 +65,21 @@ $(NAME)				: $(OBJS)
 					$(CC) $(CFLAGS) $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -o $@ -O -g -fsanitize=address
 
 $(NAME_BONUS)		: $(OBJS_BONUS)
-					$(info $(sky)========== make Server_bonus ==========$(reset))
-					$(CC) $(CFLAGS) -o  $@ $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS)
+					$(info $(sky)============= libft.a =============$(reset))
+					make -C $(LIBFT_DIR)
+					@cp ./library/libft/libft.a ./
+					$(info $(sky)========== libftpritnf.a ==========$(reset))
+					make -C $(FTPRINTF_DIR)
+					@cp ./library/ft_printf/libftprintf.a ./
+					$(info $(sky)========== libftgnl.a ==========$(reset))
+					@make -C $(GNL_DIR)
+					cp ./library/get_next_line/libftgnl.a ./
+					$(info $(sky)========== make push_swap_checker ==========$(reset))
+					$(CC) $(CFLAGS) -o  $@ $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) $(LIBFT_GNL_FLAGS) 
 
 .c.o				:
 					$(info $(sky)========== $(<) $(@) ==========$(reset))
-					$(CC) $(CFLAGS) $< -c -o $@ -g -O1
+					$(CC) $(CFLAGS) $< -c -o $@ -g -O2
 
 clean				:
 					$(info $(sky)============= clean libft.a =============$(reset))
