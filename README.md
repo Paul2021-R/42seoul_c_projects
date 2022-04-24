@@ -29,7 +29,9 @@ For that reason, It doesn't have any file which contains the intellectual proper
 * Please do not overlook every single word. Be patient and be carlm. 
 * 2022-02-08~09 translate subject of so_long and upload a translated one for a md file. 
 * 2022-02-09 Study functions allowed for so_long project. Success compile minilibX 2021-06-21 ver.
-* 2022-03-27 finished so_long project.
+* 2022-03-27 finished so_long project(mandatory).
 * 2022-03-28 Start minitalk project. 
-* 2022-04-06 finished minitalk project.
-* 2022-04-07 start push_swap project. 
+* 2022-04-06 finished minitalk project(mandatory, bonus).
+* 2022-04-07 start push_swap project.
+* 2022-04-23 finished push_swap project(mandatory, bonus);
+* 2022-04-25 Peer evaluation got faild because of error handling.
