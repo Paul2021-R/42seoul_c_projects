@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   series_p_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:46:02 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 17:22:47 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/24 19:15:50 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "../includes/pushswap_bonus.h"
 
 void	pb(t_pushlist **push)
 {
 	t_node	*tmp_a;
 	t_node	*tmp_b;
 
+	if ((*push)->max_len == 0)
+		return ;
 	tmp_a = (*push)->stack_a->next;
 	tmp_b = (*push)->stack_b;
 	(*push)->stack_b = (*push)->stack_a;
@@ -35,6 +37,8 @@ void	pa(t_pushlist **push)
 	t_node	*tmp_a;
 	t_node	*tmp_b;
 
+	if ((*push)->len_b == 0)
+		return ;
 	tmp_a = (*push)->stack_a;
 	tmp_b = (*push)->stack_b->next;
 	(*push)->stack_a = (*push)->stack_b;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: haryu <haryu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/23 17:31:49 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/24 16:46:12 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ $(NAME)				: $(OBJS)
 					make -C $(FTPRINTF_DIR)
 					@cp ./library/ft_printf/libftprintf.a ./
 					$(info $(sky)========== make push_swap ==========$(reset))
-					$(CC) $(CFLAGS) $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -o $@ -O -g -fsanitize=address
+					$(CC) $(CFLAGS) $^ $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -o $@ -g -fsanitize=address
 
 $(NAME_BONUS)		: $(OBJS_BONUS)
 					$(info $(sky)============= libft.a =============$(reset))
@@ -80,13 +80,15 @@ $(NAME_BONUS)		: $(OBJS_BONUS)
 
 .c.o				:
 					$(info $(sky)========== $(<) $(@) ==========$(reset))
-					$(CC) $(CFLAGS) $< -c -o $@ -g -O2
+					$(CC) $(CFLAGS) $< -c -o $@ -g
 
 clean				:
 					$(info $(sky)============= clean libft.a =============$(reset))
 					make clean -C $(LIBFT_DIR)
 					$(info $(sky)========== clean libftpritnf.a ==========$(reset))
 					make clean -C $(FTPRINTF_DIR)
+					$(info $(sky)========== clean libftgnl.a ==========$(reset))
+					@make clean -C $(GNL_DIR)
 					$(info $(sky)========== clean ==========$(reset))
 					$(RM) $(OBJS) $(OBJS_BONUS)
 
@@ -95,10 +97,13 @@ fclean				: clean
 					make fclean -C $(LIBFT_DIR)
 					$(info $(sky)========== fclean libftpritnf.a ==========$(reset))
 					make fclean -C $(FTPRINTF_DIR)
+					$(info $(sky)========== fclean libftgnl.a ==========$(reset))
+					@make fclean -C $(GNL_DIR)
 					$(info $(sky)========== fclean ==========$(reset))
 					$(RM) $(NAME) $(NAME_BONUS)
 					@rm -rf libft.a
 					@rm -rf libftprintf.a
+					@rm -rf libftgnl.a
 
 re					:fclean all
 					$(info $(shell tput setaf 1)========== re ==========$(reset))

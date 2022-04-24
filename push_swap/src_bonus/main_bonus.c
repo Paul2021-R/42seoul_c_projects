@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:28:51 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 17:31:49 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/24 19:01:54 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap_bonus.h"
-#include "../includes/forbiden.h"
 
 int	check_height(char **target)
 {
@@ -52,8 +51,6 @@ int	main(int ac, char **av)
 	t_list		*commands;
 	char		**target;
 
-	if (ac < 2)
-		put_error();
 	push = malloc(sizeof(t_pushlist) * 1);
 	if (!push)
 		put_error();

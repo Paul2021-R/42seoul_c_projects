@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_linked_2.c                                   :+:      :+:    :+:   */
+/*   utils_linked_2_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 09:01:32 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 12:10:18 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/24 16:55:40 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "../includes/pushswap_bonus.h"
 
 int	ft_push_lstsize(t_node *lst)
 {

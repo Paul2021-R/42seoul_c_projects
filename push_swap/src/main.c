@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 16:14:33 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 04:23:21 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/24 18:56:54 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
-#include "../includes/forbiden.h"
 
 void	make_stack_a_to_lis_ra(t_pushlist **push)
 {
@@ -79,8 +78,6 @@ int	main(int ac, char **av)
 	int			min_value;
 	char		**target;
 
-	if (ac < 2)
-		put_error();
 	push_swaper = malloc(sizeof(t_pushlist) * 1);
 	if (!push_swaper)
 		put_error();

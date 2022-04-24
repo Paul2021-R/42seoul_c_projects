@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   errch_integer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:23:53 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 13:54:52 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/24 19:03:15 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
+#include <stdio.h>
 
 void	put_error(void)
 {
@@ -51,6 +52,35 @@ void	error_no_duplicates(int *arr, int len)
 	return ;
 }
 
+void	int_over_error_check(char *str)
+{
+	long long	ret;
+	int			i;
+	int			minus;
+
+	ret = 0;
+	i = 0;
+	minus = 1;
+	if (str[i] == '-')
+	{
+		i = 1;
+		minus = -1;
+	}
+	while (str[i])
+	{
+		ret *= 10;
+		ret += (str[i] - '0');
+		if ((str[i] - '0') > 9)
+			put_error();
+		i++;
+	}
+	ret *= minus;
+	if (ret < -2147483648 || ret > 2147483647)
+		put_error();
+	else
+		return ;
+}
+
 int	*error_check(int limit, char **array)
 {
 	int	*ret;
@@ -61,6 +91,7 @@ int	*error_check(int limit, char **array)
 	while (i < limit - 1)
 	{
 		ret[i] = ft_atoi(array[i + 1]);
+		int_over_error_check(array[i + 1]);
 		error_no_integer(ret[i], array[i + 1]);
 		i++;
 	}

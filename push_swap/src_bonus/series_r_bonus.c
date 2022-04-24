@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   series_r_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 22:30:51 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 17:22:46 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/24 19:06:58 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "../includes/pushswap_bonus.h"
 
 void	ra(t_pushlist **push, int code)
 {
@@ -36,6 +36,8 @@ void	rb(t_pushlist **push, int code)
 	t_node	*tmp_1;
 	t_node	*tmp_last;
 
+	if ((*push)->len_b <= 1)
+		return ;
 	tmp_1 = (*push)->stack_b;
 	(*push)->stack_b = tmp_1->next;
 	tmp_last = ft_push_lstlast((*push)->stack_b);

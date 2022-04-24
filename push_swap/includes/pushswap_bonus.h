@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:32:30 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 17:31:50 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/24 16:56:38 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	check_already_done_bonus(t_pushlist **push);
 /* 정렬 3단계 : 정렬 상태 확인 */
 void	check_already_done_bonus(t_pushlist **push);
 /* 정렬 3-2단계 : 내부 정렬 상태 점검 */
-int	check_score_already_done(t_node *tmpa, int max_len);
+int		check_score_already_done(t_node *tmpa, int max_len);
 
 #endif

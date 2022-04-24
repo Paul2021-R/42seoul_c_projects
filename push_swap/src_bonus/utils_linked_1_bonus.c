@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_linked_1_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 00:45:15 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 17:22:42 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/24 16:55:36 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "../includes/pushswap_bonus.h"
 
 t_node	*ft_push_lstnew(int value)
 {

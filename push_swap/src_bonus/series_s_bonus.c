@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   series_s_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 22:16:39 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 17:22:45 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/24 19:07:05 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "../includes/pushswap_bonus.h"
 
 void	sa(t_pushlist **push, int code)
 {
@@ -29,6 +29,8 @@ void	sb(t_pushlist **push, int code)
 {
 	t_node	*tmp;
 
+	if ((*push)->len_b <= 1)
+		return ;
 	tmp = (*push)->stack_b->next;
 	(*push)->stack_b->next = tmp->next;
 	tmp->next = (*push)->stack_b;

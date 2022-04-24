@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_array_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:22:54 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/23 17:22:44 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/24 16:55:25 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "../includes/pushswap_bonus.h"
 
 int	find_minimun(int *array, int max_len, int *index)
 {
