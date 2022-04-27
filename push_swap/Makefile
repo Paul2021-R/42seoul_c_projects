@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 23:43:42 by haryu             #+#    #+#              #
-#    Updated: 2022/04/24 16:46:12 by haryu            ###   ########.fr        #
+#    Updated: 2022/04/27 16:25:53 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRCNAME				= main.c fill_stack.c errch_integer.c \
 					  utils_linked_1.c utils_linked_2.c get_lis.c utils_array.c \
 					  series_s.c series_p.c series_r.c series_rr.c \
 					  check_best_choice.c lis_algorithm.c check_already_done.c \
-					  get_score.c exception_lis.c exception_lis_2.c
+					  get_score.c exception_lis.c exception_lis_2.c utils_forbidden.c
 
 SRCNAME_BONUS		= main_bonus.c fill_stack_bonus.c errch_integer_bonus.c \
 					  utils_linked_1_bonus.c utils_linked_2_bonus.c \

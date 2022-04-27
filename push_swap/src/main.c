@@ -6,11 +6,12 @@
 /*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 16:14:33 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/24 18:56:54 by haryu            ###   ########.fr       */
+/*   Updated: 2022/04/27 16:24:54 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
+#include "../includes/forbiden.h"
 
 void	make_stack_a_to_lis_ra(t_pushlist **push)
 {
@@ -95,5 +96,6 @@ int	main(int ac, char **av)
 	min_value = ft_push_min((push_swaper)->stack_a);
 	min_pos = where_is_node((push_swaper)->stack_a, min_value);
 	align_stack_a(&push_swaper, min_value, min_pos);
+	lst_print(&push_swaper);
 	return (0);
 }

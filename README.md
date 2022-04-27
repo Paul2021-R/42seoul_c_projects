@@ -35,3 +35,5 @@ For that reason, It doesn't have any file which contains the intellectual proper
 * 2022-04-07 start push_swap project.
 * 2022-04-23 finished push_swap project(mandatory, bonus);
 * 2022-04-25 Peer evaluation got faild because of error handling.
+* 2022-04-27 Passed push_swap project.
+* 2022-04-27 start Phlosopher project.
