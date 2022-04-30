@@ -19,7 +19,8 @@
     "string_view": "c",
     "forbiden.h": "c",
     "pushswap_bonus.h": "c",
-    "pthread.h": "c"
+    "pthread.h": "c",
+    "numbers": "c"
   },
   "cmake.configureOnOpen": false
 }
