@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 15:10:26 by haryu             #+#    #+#             */
-/*   Updated: 2022/05/06 05:38:38 by haryu            ###   ########.fr       */
+/*   Updated: 2022/05/06 06:10:10 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	*test(void	*data)
 	id = pptr->id;
 	current = malloc(sizeof(struct timeval));
 	printf("%d thread is on.\n", id);
-	sleep(3);
+	sleep(10);
 	gettimeofday(current, NULL);
 	printf("%ld %d thread is off.\n", get_ms(current->tv_usec) ,id);
 	return ((void *)current);
@@ -76,20 +76,23 @@ void	*monitor(void *data)
 	pptr = data;
 	i = 1;
 	limit = pptr->public->global->num_philo;
+	status = 0;
 	while (1)
 	{
-		status = 0;
 		pthread_join(pptr->public->threads[i], (void **)&status);
 		if (status)
 		{
 			gettimeofday(&current, NULL);
 			printf("%ld %d thread is dead.\n", get_ms(current.tv_usec), i);
-			break ;
+			if (i == limit - 1)
+				break ;
+		//	break ;
 		}
 		i++;
-		usleep(300);
-		if (i == limit)
+		usleep(100);
+		if (i == limit - 1 && !status)
 			i = 1;
+		status = 0;
 	}
 	return (NULL);
 }
