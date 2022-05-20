@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 01:23:14 by haryu             #+#    #+#             */
-/*   Updated: 2022/05/06 03:25:48 by haryu            ###   ########.fr       */
+/*   Updated: 2022/05/20 01:11:23 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_error(int ac, char **av)
 
 	if (ac != 6 && ac != 5)
 	{
-		printf("There is input Error\n");
+		printf("%sThere is input Error\n", RED);
 		return (TRUE);
 	}
 	if (check_specific_arg(1, av[1]))
@@ -36,7 +36,7 @@ int	check_error(int ac, char **av)
 	if (ac == 6)
 		if (check_specific_arg(5, av[5]))
 			return (TRUE);
-	return (0);
+	return (FALSE);
 }
 
 int	check_specific_arg(int index, char *num)
@@ -53,12 +53,12 @@ int	check_specific_arg(int index, char *num)
 	if (err == 0)
 	{
 		if (index == 1)
-			printf("argv[%d] :Philosopher needs more than 0.\n", index);
+			printf("%sargv[%d]%s : Philosopher needs more than 0.\n", RED, index, WHITE);
 		else
-			printf("argv[%d] : It needs value more than 0\n", index);
+			printf("%sargv[%d]%s : It needs value more than 0\n", RED, index, WHITE);
 		return (TRUE);
 	}
-	return (0);
+	return (FALSE);
 }
 
 int	is_number(int index, char	*num)
@@ -70,11 +70,11 @@ int	is_number(int index, char	*num)
 	{
 		if (num[i] < 48 || num[i] > 57)
 		{
-			printf("argv[%d] : It has wrong character.\n", index);
-			return (1);
+			printf("%sargv[%d]%s : It has wrong character.\n", RED, index, WHITE);
+			return (TRUE);
 		}		
 	}
-	return (0);
+	return (FALSE);
 }
 
 int	is_less_60(int index, char *num)
@@ -91,10 +91,10 @@ int	is_less_60(int index, char *num)
 	}
 	if (value <= 60)
 	{
-		printf("argv[%d] : It hae more than 60ms.\n", index);
-		return (1);
+		printf("%sargv[%d]%s : It hae more than 60ms.\n", RED, index, WHITE);
+		return (TRUE);
 	}
-	return (0);
+	return (FALSE);
 }
 
 int	is_over_long(int index, char *num, int code)
@@ -111,10 +111,10 @@ int	is_over_long(int index, char *num, int code)
 	}
 	if (ret > LMAX)
 	{
-		printf("argv[%d] : It is out of range.\n", index);
-		return (1);
+		printf("%sargv[%d]%s : It is out of range.\n", RED, index, WHITE);
+		return (TRUE);
 	}
 	if (code == 1)
 		return (ret);
-	return (0);
+	return (FALSE);
 }

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 01:26:00 by haryu             #+#    #+#             */
-/*   Updated: 2022/05/06 04:19:59 by haryu            ###   ########.fr       */
+/*   Updated: 2022/05/20 01:16:35 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ long	get_ms(long current)
 	return (ret);
 }
 
-void	printf_main(t_philo *data)
+void	printf_main(t_common *data)
 {
 	int	i;
 	int	limit;
 
-	limit = data->global->num_philo;
-	printf("1. Philosopher 🧓 : %d\n", data->global->num_philo);
-	printf("2. time_to_die(ms) ⏰ : %ld\n", data->global->die_ms);
-	printf("3. time_to_eat(ms) ⏰ : %ld\n", data->global->eat_ms);
-	printf("4. time_to_sleep(ms) ⏰ : %ld\n", data->global->sleep_ms);
-	printf("5. must_eat(times) ✅ : %d\n", data->global->must_eat);
+	limit = data->init->num_philo;
+	printf("1. Philosopher 🧓 : %d\n", data->init->num_philo);
+	printf("2. time_to_die(ms) ⏰ : %ld\n", data->init->die_ms);
+	printf("3. time_to_eat(ms) ⏰ : %ld\n", data->init->eat_ms);
+	printf("4. time_to_sleep(ms) ⏰ : %ld\n", data->init->sleep_ms);
+	printf("5. must_eat(times) ✅ : %d\n", data->init->must_eat);
 	printf("6. fork🍴 : %d\n", limit);
 	i = 0;
 	while (i < limit)

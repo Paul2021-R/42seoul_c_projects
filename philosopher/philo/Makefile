@@ -6,17 +6,17 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/30 15:10:23 by haryu             #+#    #+#              #
-#    Updated: 2022/05/06 01:55:04 by haryu            ###   ########.fr        #
+#    Updated: 2022/05/20 09:31:44 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCNAME				= philo.c util_philo.c error_philo.c
+SRCNAME				= philo.c util_philo.c error_philo.c util_philo.c pthread.c
 
 OBJS 				= $(SRCNAME:.c=.o)
 
 NAME				= philo
 CC					= gcc
-CFLAGS				= -Wall -Wextra -Werror -O3 -g -fsanitize=address
+CFLAGS				= -Wall -Wextra -Werror -g -fsanitize=address
 RM					= rm -f
 
 sky					:=$(shell tput setaf 6)
@@ -39,7 +39,7 @@ clean				:
 
 fclean				: clean
 					$(info $(sky)========== fclean ==========$(reset))
-					$(RM) $(NAME)
+					$(RM) $(NAME) philo
 
 re					:fclean all
 					$(info $(shell tput setaf 1)========== re ==========$(reset))
