@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 15:05:30 by haryu             #+#    #+#             */
-/*   Updated: 2022/05/20 02:02:08 by haryu            ###   ########.fr       */
+/*   Updated: 2022/05/20 21:23:07 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ typedef enum e_status
 {
 	EATING,
 	SLEEPING,
-	THINKING
+	THINKING,
+	READY
 }				t_status;
 
 /**
@@ -96,6 +97,7 @@ typedef struct s_person
 	long			die_ms;
 	long			eat_ms;
 	long			sleep_ms;
+	long			init;
 	t_common		*public;
 }				t_person;
 
@@ -114,11 +116,36 @@ int		is_less_60(int index, char *num);
 int		is_over_long(int index, char *num, int code);
 int		check_specific_arg(int index, char *num);
 
-void	init_phread(t_common **data);
+void	*around_table(void *data);
+void	init_pthread(t_common **data, t_person **philos);
 void	init_mutex(t_common **data);
 
 /* utils */
 int		ft_strlen(char *s);
-long	get_ms(long current);
+/**
+ * @brief check with initialized time. it needs to set the init time of the philosopher.
+ * 
+ * @param philo 
+ * @return long 
+ */
+long	now_time(t_person *philo);
+/**
+ * @brief Get the ms object
+ * 
+ * @param tiktok 
+ * @return long 
+ */
+long	get_ms(struct timeval *tiktok);
+/**
+ * @brief Get the ms2 object
+ * 
+ * @return long 
+ */
+long	get_ms2(void);
+/**
+ * @brief check initializing of main data and print the data.
+ * 
+ * @param data common data.
+ */
 void	printf_main(t_common *data);
 #endif

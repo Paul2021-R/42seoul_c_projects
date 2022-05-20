@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 01:26:00 by haryu             #+#    #+#             */
-/*   Updated: 2022/05/20 01:16:35 by haryu            ###   ########.fr       */
+/*   Updated: 2022/05/20 21:21:59 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,31 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-long	get_ms(long current)
+long	now_time(t_person *philo)
+{
+	struct timeval	now;
+	long			now2;
+
+	gettimeofday(&now, NULL);
+	now2 = get_ms(&now);
+	return (now2 - philo->init);
+}
+
+long	get_ms(struct timeval  *tiktok)
 {
 	long	ret;
 
-	ret = current / 1000;
+	ret = tiktok->tv_sec * 1000 + tiktok->tv_usec / 1000;
+	return (ret);
+}
+
+long	get_ms2(void)
+{
+	struct timeval	tiktok;
+	long			ret;
+
+	gettimeofday(&tiktok, NULL);
+	ret = tiktok.tv_sec * 1000 + tiktok.tv_usec / 1000;
 	return (ret);
 }
 

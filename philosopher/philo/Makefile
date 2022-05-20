@@ -6,7 +6,7 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/30 15:10:23 by haryu             #+#    #+#              #
-#    Updated: 2022/05/20 09:31:44 by haryu            ###   ########.fr        #
+#    Updated: 2022/05/20 21:23:25 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ clean				:
 
 fclean				: clean
 					$(info $(sky)========== fclean ==========$(reset))
-					$(RM) $(NAME) philo
+					$(RM) $(NAME) $(OBJS)
 
 re					:fclean all
 					$(info $(shell tput setaf 1)========== re ==========$(reset))

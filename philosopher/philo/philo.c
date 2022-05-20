@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 00:33:01 by haryu             #+#    #+#             */
-/*   Updated: 2022/05/20 09:23:58 by haryu            ###   ########.fr       */
+/*   Updated: 2022/05/20 17:43:07 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,7 @@ int	main(int ac, char **av)
 	philos = init_philos(&data);
 	put_common_to_philos(&data, &philos);
 	init_mutex(&data);
-	// init_pthread(&data);
-	
+	init_pthread(&data, &philos);
 	// for (int i = 0; i < data->init->num_philo; i++)
 	// {
 	// 	printf("check : %p\n", philos[0].public->m_fork[i]);
