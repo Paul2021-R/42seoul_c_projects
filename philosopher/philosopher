@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-06-23T01:11:12.018Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36" etag="onarBYETKRJQUUizNZFs" version="20.0.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-06-23T05:37:37.658Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36" etag="X1ucRsIY-m97gDNKLN_C" version="20.0.1" type="github" pages="2">
   <diagram id="vp3eEJC1ooQmi3Tdlvl2" name="Page-1">
     <mxGraphModel dx="1248" dy="566" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -25,8 +25,93 @@
         <mxCell id="IqQ0IIo6DjlI-_bbhryw-10" value="fork2" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="130" y="630" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="IqQ0IIo6DjlI-_bbhryw-11" value="핵심 주요 사항&lt;br&gt;1. 시작을 순차적으로 진행하게 하되, 포크를 먼저 잡는 쪽만 시작을 시키고 그 외에 나머지는 대기 시키는 방법 고안하기&amp;nbsp;&lt;br&gt;2. 출력 시, 대기하도록 만들기&lt;br&gt;3. 포크를 잡는 알고리즘 다시 만들기&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;3-1. 한쪽 잡기 시도&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;3-2. 잡기 성공? -&amp;gt; 다른 한쪽 잡기 시도 -&amp;gt; 이 역시 성공시 식사 아니면 반환&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;3-3. 잡기 실패 -&amp;gt; 반환&lt;br&gt;4. 모니터링 방식 고안할 것" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
-          <mxGeometry x="510" y="40" width="440" height="240" as="geometry" />
+        <mxCell id="IqQ0IIo6DjlI-_bbhryw-11" value="핵심 주요 사항&lt;br&gt;- 철학자의 상태 : 먹기, 생각하기, 잠자기&amp;nbsp;&lt;br&gt;- 포크는 철학자의 수만큼 존재한다.&amp;nbsp;&lt;br&gt;- 처음 받는 인자는 아래와 같다.&amp;nbsp;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;1. 철학자(포크) 수&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;2. 죽는 시간 : 식사 해야 하는 시간&amp;nbsp;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;3. 먹는 시간&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;4. 자는 시간&amp;nbsp;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;5. (선택) 철학자가 먹어야 하는 식사 횟수&lt;br&gt;- 시작을 순차적으로 진행하게 하되, 포크를 먼저 잡는 쪽만 시작을 시키고 그 외에 나머지는 대기 시키는 방법 고안하기&amp;nbsp;&lt;br&gt;- 출력 시, 대기하도록 만들기&lt;br&gt;- 포크를 잡는 알고리즘 다시 만들기&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;1. 한쪽 잡기 시도&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;2. 잡기 성공? -&amp;gt; 다른 한쪽 잡기 시도 -&amp;gt; 이 역시 성공시 식사 아니면 반환&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;3. 잡기 실패 -&amp;gt; 반환&lt;br&gt;- 모니터링 방식 고안할 것&amp;nbsp;&lt;br&gt;- 주요 메모 사항 :&amp;nbsp;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;1. 출력된 상태 메시지가 다른 것과 섞여서는 안된다 -&amp;gt; 출력하는 순간에는 뮤텍스가 걸려서 유일하게 출력해야 하고, 나머지가 그 직후에 출력 해야 한다.&amp;nbsp;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;2. 철학자의 죽음을 감지하는데 걸리는 시간이 10ms 이하로 되어야 한다.&amp;nbsp;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;3. 이상한 케이스를 제외하곤 죽지 않아야 한다.&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="700" y="40" width="580" height="380" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="jctt4I4Lvi8fTusjnoC5" name="old logic">
+    <mxGraphModel dx="1977" dy="897" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UTYfdNg5v2T4EvfQWlyB-1" target="UTYfdNg5v2T4EvfQWlyB-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-1" value="int main(int ac, char **av)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UTYfdNg5v2T4EvfQWlyB-4" target="UTYfdNg5v2T4EvfQWlyB-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-4" value="int check_error(ac, av)&lt;br&gt;1. 숫자 여부 판단&amp;nbsp;&lt;br&gt;2. 60ms 보다 작은지 판단&amp;nbsp;&lt;br&gt;3. long Max 보다 작은지 여부 판단" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-6" value="음수 체크 빠진듯?&lt;br&gt;wrong character로 &lt;br&gt;체크함 이거 괜찮?" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="230" y="110" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UTYfdNg5v2T4EvfQWlyB-7" target="UTYfdNg5v2T4EvfQWlyB-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-7" value="int init_data(int ac, char **av, t_common **data)&lt;br&gt;1. data 전체 할당 1&lt;br&gt;2. 내부의 init 항목 할당(t_init)&lt;br&gt;3. init 내부의 데이터 전체 할당&lt;br&gt;3-1) 철학자 수&lt;br&gt;3-2) 죽는 시간&amp;nbsp;&lt;br&gt;3-3) 먹는 시간&amp;nbsp;&lt;br&gt;3-4) 자는 시간&lt;br&gt;3-5) 먹는 횟수&lt;br&gt;3-6) 포크 개수 할당 및 0으로 초기화&lt;br&gt;3-7) 죽음 플래그" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="320" width="370" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-9" value="void * malloc_wrap(char *type, size_t size);&lt;br&gt;만들어 에러 처리하자" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="310" y="220" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-10" value="void print_main(t_common **data);&lt;br&gt;data structure print util" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="40" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UTYfdNg5v2T4EvfQWlyB-11" target="UTYfdNg5v2T4EvfQWlyB-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-11" value="t_person *init_philos(t_common **data)&lt;br&gt;&amp;nbsp;쓰레드 포인터 할당&lt;br&gt;각 철학자 포인터 할당&lt;br&gt;=&amp;gt; 최종적으로 philos 명단 포인터 배열로 받음&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="590" width="370" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UTYfdNg5v2T4EvfQWlyB-13" target="UTYfdNg5v2T4EvfQWlyB-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-13" value="void put_common_to_philos(t_common **data, t_person **philos)&lt;br&gt;&lt;br&gt;각 철학자 별로 공통 데이터를 최적화해줌&lt;br&gt;전체 공유 data 변수도 접근 가능하게 만들어줌.&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="760" width="370" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UTYfdNg5v2T4EvfQWlyB-15" target="UTYfdNg5v2T4EvfQWlyB-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-15" value="init_mutex(t_common **data)&lt;br&gt;&lt;br&gt;뮤텍스 락 설정&lt;br&gt;1. 출력 뮤텍스&lt;br&gt;2. 대기 뮤텍스(출발 뮤텍스)&lt;br&gt;3. 죽음 뮤텍스&amp;nbsp;&lt;br&gt;4. 뮤텍스 포크 할당 &amp;amp; 뮤텍스 설정" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="930" width="370" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UTYfdNg5v2T4EvfQWlyB-17" target="UTYfdNg5v2T4EvfQWlyB-19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="1120" />
+              <mxPoint x="530" y="870" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UTYfdNg5v2T4EvfQWlyB-17" target="UTYfdNg5v2T4EvfQWlyB-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-17" value="void init_pthread(t_common **Data, t_person **philos)&lt;br&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1100" width="370" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UTYfdNg5v2T4EvfQWlyB-19" target="UTYfdNg5v2T4EvfQWlyB-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-19" value="대기 뮤텍스 락" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fixedSize=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="860" width="290" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UTYfdNg5v2T4EvfQWlyB-21" target="UTYfdNg5v2T4EvfQWlyB-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-21" value="pthrea 작성(반복문) - around table 함수 호출" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fixedSize=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="900" width="290" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-23" value="대기 뮤텍스 언락&amp;nbsp;" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fixedSize=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="940" width="290" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="UTYfdNg5v2T4EvfQWlyB-25" value="void *around_table(void *data)&lt;br&gt;1. 각 필로소퍼 변수&amp;nbsp; = data&lt;br&gt;2. 해당 필로소퍼의 인덱스를 지정해주기&lt;br&gt;3. 대기 뮤텍스 락 쥐려고 테스트&amp;nbsp;&lt;br&gt;4. 현재 시간 받기&amp;nbsp;&lt;br&gt;5. 포크 양쪽 지정해주기&lt;br&gt;6. 철학자 상태 지정해주기&amp;nbsp;&lt;br&gt;7. 시간 다시 지정해주기(?)&amp;nbsp;&lt;br&gt;8. 대기 뮤텍스 언락&amp;nbsp;&lt;br&gt;9. 그 뒤 내용 상태 개판임...&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1220" width="370" height="170" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
