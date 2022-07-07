@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 01:23:14 by haryu             #+#    #+#             */
-/*   Updated: 2022/05/20 01:11:23 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/07 14:23:37 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,21 @@ int	check_specific_arg(int index, char *num)
 {
 	int	err;
 
-	err = 0;
+	err = FALSE;
 	if (is_number(index, num))
 		return (TRUE);
 	err = is_over_long(index, num, 0);
-	if (err)
+	if (err == TRUE)
 		return (TRUE);
 	err = is_over_long(index, num, 1);
-	if (err == 0)
+	if (err == FALSE)
 	{
 		if (index == 1)
-			printf("%sargv[%d]%s : Philosopher needs more than 0.\n", RED, index, WHITE);
+			printf("%sargv[%d]%s : Philosopher needs more than 0.\n", \
+RED, index, WHITE);
 		else
-			printf("%sargv[%d]%s : It needs value more than 0\n", RED, index, WHITE);
+			printf("%sargv[%d]%s : It needs value more than 0\n", \
+RED, index, WHITE);
 		return (TRUE);
 	}
 	return (FALSE);
@@ -70,7 +72,8 @@ int	is_number(int index, char	*num)
 	{
 		if (num[i] < 48 || num[i] > 57)
 		{
-			printf("%sargv[%d]%s : It has wrong character.\n", RED, index, WHITE);
+			printf("%sargv[%d]%s : It has wrong character.\n", \
+RED, index, WHITE);
 			return (TRUE);
 		}		
 	}
