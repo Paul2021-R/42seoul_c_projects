@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:53:27 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 23:16:38 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/08 00:29:05 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,17 @@ static void	*dining_session(t_person *man, int *fork)
 			break ;
 		man->must_eat--;
 		if (man->must_eat == 0)
-			return (NULL);
+		{
+			man->public->death_flag = -1;
+			break ;
+		}
 		if (take_sleep(man, fork))
 			break ;
-		usleep(100);
 	}
 	pthread_mutex_lock(man->public->death);
-	// printf_action(4, get_ms() - man->public->dining_time, \
-// man->id, man->public->print);
+	if (man->public->death_flag == man->id)
+		printf_action(4, get_ms() - man->public->dining_time, \
+man, man->public->print);
 	pthread_mutex_unlock(man->public->death);
 	return (NULL);
 }
@@ -63,7 +66,8 @@ man->public->init->num_philo;
 man->public->init->num_philo;
 	pthread_mutex_lock(&(man->public->fork_mutex[id]));
 	change_fork(id, fork);
-	man->prev_eat_ms = get_ms();
 	pthread_mutex_unlock(&(man->public->fork_mutex[id]));
-	return (dining_session(man, fork));
+	man->prev_eat_ms = get_ms();
+	dining_session(man, fork);
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 15:05:30 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 23:08:17 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/07 23:50:31 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void		*ft_malloc_wrapper(size_t size, char *error);
 void		printf_philos(t_common *data, t_person *philos);
 int			return_error(char *error, int value);
 int			printf_action(int code, long time, \
-int target, pthread_mutex_t *key);
+t_person *man, pthread_mutex_t *key);
 int			check_death(t_common *pub, t_person *man, long now, int *fork);
 
 /* error */

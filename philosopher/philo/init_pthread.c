@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:52:39 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 20:15:41 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/08 00:29:03 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ around_table, (void *)(temp + i));
 			return (return_error("Ptrhead creation is failed.", TRUE));
 		i++;
 	}
+	(*data)->dining_time = get_ms();
 	return (FALSE);
 }
