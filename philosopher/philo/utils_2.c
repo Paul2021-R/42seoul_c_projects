@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:11:01 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 20:42:15 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/07 23:09:18 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*which_color(int code)
 	else if (code == 3)
 		return (CYAN);
 	else
-		return (DEATH);
+		return (RED);
 }
 
 int	printf_action(int code, long time, int target, pthread_mutex_t *key)
@@ -49,6 +49,29 @@ int	printf_action(int code, long time, int target, pthread_mutex_t *key)
 		str = THOUGHT;
 	else
 		str = DEATH;
-	printf("%s%ld %d %s%s\n", color, time, target, WHITE);
+	printf("%s%ld %d %s%s\n", color, time, target, str, WHITE);
 	pthread_mutex_unlock(key);
+	return (FALSE);
+}
+
+int	check_death(t_common *pub, t_person *man, long now, int *fork)
+{
+	long	interval;
+
+	if (pub->death_flag != 0)
+	{
+		pub->fork_array[fork[0]] = 0;
+		pub->fork_array[fork[1]] = 0;
+		pthread_mutex_unlock(&pub->fork_mutex[fork[1]]);
+		pthread_mutex_unlock(&pub->fork_mutex[fork[0]]);
+		return (TRUE);
+	}
+	interval = now - man->prev_eat_ms;
+	if (interval < man->die_ms)
+		return (FALSE);
+	else
+	{
+		pub->death_flag = man->id;
+		return (TRUE);
+	}
 }

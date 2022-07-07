@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 01:26:00 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 20:10:52 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/07 22:19:50 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void	printf_philos(t_common *data, t_person *philos)
 		printf("4. die limit : %ld\n", philos[i].die_ms);
 		printf("5. eating time : %ld\n", philos[i].eat_ms);
 		printf("6. sleep time : %ld\n", philos[i].sleep_ms);
-		printf("7. status : %d\n", philos[i].status);
 		i++;
 		if (i == limit)
 			printf("=========================================\n");

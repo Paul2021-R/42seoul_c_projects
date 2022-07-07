@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 15:05:30 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 20:36:41 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/07 23:08:17 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,6 @@
 # define PURPLE "\033[0;35m"
 # define CYAN "\033[0;36m"
 # define WHITE "\033[0;37m"
-
-/**
- * @brief status datas
- * 
- */
-typedef enum e_status
-{
-	EATING,
-	SLEEPING,
-	THINKING,
-	READY
-}				t_status;
 
 /**
  * @brief variables for initializing
@@ -95,7 +83,6 @@ typedef struct s_person
 {
 	int				id;
 	int				must_eat;
-	t_status		status;
 	long			die_ms;
 	long			eat_ms;
 	long			sleep_ms;
@@ -135,6 +122,7 @@ void		printf_philos(t_common *data, t_person *philos);
 int			return_error(char *error, int value);
 int			printf_action(int code, long time, \
 int target, pthread_mutex_t *key);
+int			check_death(t_common *pub, t_person *man, long now, int *fork);
 
 /* error */
 
@@ -167,5 +155,9 @@ void		pthread_mutex_unlock_fork(pthread_mutex_t *key, t_common *data);
 
 /* dining philosopher */
 void		*around_table(void *data);
+int			try_fork(t_person *man, int *fork);
+int			take_meal(t_person *man, int *fork);
+int			put_down_forks(t_person *man, int *fork);
+int			take_sleep(t_person *man, int *fork);
 
 #endif

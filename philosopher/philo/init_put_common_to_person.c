@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_common_to_person.c                             :+:      :+:    :+:   */
+/*   init_put_common_to_person.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:17:01 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 16:27:29 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/07 22:18:36 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	put_common_to_philos(t_common **data, t_person **philos)
 	{
 		(*philos)[i].id = i + 1;
 		(*philos)[i].must_eat = (*data)->init->must_eat;
-		(*philos)[i].status = 0;
 		(*philos)[i].die_ms = (*data)->init->die_ms;
 		(*philos)[i].eat_ms = (*data)->init->eat_ms;
 		(*philos)[i].sleep_ms = (*data)->init->sleep_ms;
