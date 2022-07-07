@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:53:27 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 23:01:24 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/07 23:16:38 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ static void	*dining_session(t_person *man, int *fork)
 	{
 		if (try_fork(man, fork))
 			break ;
-		if (take_meal(man))
+		if (take_meal(man, fork))
 			break ;
 		if (put_down_forks(man, fork))
 			break ;
 		man->must_eat--;
 		if (man->must_eat == 0)
 			return (NULL);
-		if (take_sleep(man))
+		if (take_sleep(man, fork))
 			break ;
 		usleep(100);
 	}
