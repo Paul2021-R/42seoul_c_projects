@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:54:22 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 23:23:21 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/08 01:00:37 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	pthread_mutex_unlock_fork(pthread_mutex_t *key, t_common *data)
 	}
 	while (i >= 0)
 	{
-		if (i % 2 != 0)
+		if (i % 2 != 0 && i != data->init->num_philo)
 		{
 			pthread_mutex_unlock(&key[i]);
 		}

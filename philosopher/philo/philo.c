@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:23:54 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 23:45:10 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/08 01:02:24 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	main(int argc, char **argv)
 		return (TRUE);
 	if (init_monitor(common))
 		return (TRUE);
-	atexit(ft_exit);
+	// atexit(ft_exit);
 	// start_dining();
 	//printf_philos(common, philos);
-	//return (FALSE);
+	return (FALSE);
 }
