@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:53:27 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/08 00:29:05 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/08 12:32:26 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ void	*around_table(void *data)
 man->public->init->num_philo;
 	fork[1] = (man->id + man->public->init->num_philo) % \
 man->public->init->num_philo;
-	pthread_mutex_lock(&(man->public->fork_mutex[id]));
-	change_fork(id, fork);
-	pthread_mutex_unlock(&(man->public->fork_mutex[id]));
+	pthread_mutex_lock(&(man->public->fork_mutex[fork[0]]));
+	pthread_mutex_unlock(&(man->public->fork_mutex[fork[0]]));
 	man->prev_eat_ms = get_ms();
+	change_fork(id, fork);
 	dining_session(man, fork);
 	return (NULL);
 }
