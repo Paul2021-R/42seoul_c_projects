@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:01:31 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/08 01:01:09 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/11 21:20:56 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,20 @@ void	*monitor_thread(void *data)
 	{
 		if (common->death_flag != 0)
 		{
-			pthread_mutex_lock(common->print);
+			if (common->death_flag != -1)
+			{
+				usleep(20);
+				pthread_mutex_lock(common->print);
+			}
 			pthread_mutex_lock(common->death);
 			break ;
 		}
 		usleep(100);
 	}
+	usleep(100);
 	pthread_mutex_unlock(common->death);
+	pthread_mutex_unlock(common->print);
 	waiting_die(common);
-	//pthread_mutex_unlock(common->print);
 	return (NULL);
 }
 

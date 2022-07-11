@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:18:05 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 23:09:10 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/11 17:31:33 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	put_down_forks(t_person *man, int *fork)
 		return (TRUE);
 	pub->fork_array[fork[0]] = 0;
 	pub->fork_array[fork[1]] = 0;
-	pthread_mutex_unlock(&pub->fork_mutex[fork[1]]);
 	pthread_mutex_unlock(&pub->fork_mutex[fork[0]]);
+	pthread_mutex_unlock(&pub->fork_mutex[fork[1]]);
 	return (FALSE);
 }

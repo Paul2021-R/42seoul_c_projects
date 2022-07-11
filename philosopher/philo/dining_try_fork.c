@@ -6,24 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:18:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/08 00:00:23 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/11 20:46:38 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static int	try_thought(t_common *pub, t_person *man, int *fork)
-{
-	if (printf_action(3, get_ms() - pub->dining_time, man, pub->print))
-		return (TRUE);
-	while (TRUE)
-	{
-		if (pub->fork_array[fork[0]] == 0 && (get_ms() - \
-man->prev_eat_ms) * 2 > man->die_ms)
-			break ;
-	}
-	return (FALSE);
-}
 
 static int	try_fork_another(t_person *man, int *fork)
 {
@@ -53,8 +40,7 @@ int	try_fork(t_person *man, int *fork)
 	{
 		if (check_death(pub, man, get_ms(), fork))
 			return (TRUE);
-		if (pub->fork_array[fork[0]] == 0 && (get_ms() - \
-man->prev_eat_ms) * 2 > man->die_ms)
+		if (pub->fork_array[fork[0]] == 0)
 		{
 			pthread_mutex_lock(&pub->fork_mutex[fork[0]]);
 			pub->fork_array[fork[0]] = 1;
@@ -66,7 +52,5 @@ man->prev_eat_ms) * 2 > man->die_ms)
 				pthread_mutex_unlock(&pub->fork_mutex[fork[0]]);
 			}
 		}
-		if (try_thought(pub, man, fork))
-			return (TRUE);
 	}
 }
