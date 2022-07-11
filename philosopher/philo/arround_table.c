@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:53:27 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/11 21:22:44 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/12 00:24:49 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static int	try_thought(t_common *pub, t_person *man, int *fork)
 {
+	if (pub->death_flag != 0 && pub->death_flag != -1)
+		return (TRUE);
 	if (check_death(pub, man, get_ms(), fork))
 		return (TRUE);
 	if (printf_action(3, get_ms() - pub->dining_time, man, pub->print))
@@ -30,12 +32,6 @@ man->prev_eat_ms) * 2 > man->die_ms)
 
 static void	*dining_session(t_person *man, int *fork)
 {
-	int	is_first;
-
-	if (man->id == 1)
-		is_first = 1;
-	else
-		is_first = 0;
 	while (TRUE && man->must_eat)
 	{
 		if (try_fork(man, fork))
@@ -47,16 +43,13 @@ static void	*dining_session(t_person *man, int *fork)
 		man->must_eat--;
 		if (take_sleep(man, fork))
 			break ;
-		if (is_first)
-			usleep(man->eat_ms);
 		if (man->must_eat == 0)
 			man->public->death_flag = -1;
-		try_thought(man->public, man, fork);
+		if (try_thought(man->public, man, fork))
+			break ;
 	}
+	check_death(man->public, man, get_ms(), fork);
 	pthread_mutex_lock(man->public->death);
-	if (man->public->death_flag == man->id)
-		printf_action(4, get_ms() - man->public->dining_time, \
-man, man->public->print);
 	pthread_mutex_unlock(man->public->death);
 	return (NULL);
 }

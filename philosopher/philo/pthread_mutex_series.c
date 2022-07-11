@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:54:22 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/11 21:24:38 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/12 00:15:40 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,12 @@ void	pthread_mutex_unlock_fork(pthread_mutex_t *key, t_common *data)
 	{
 		if (i % 2 == 0)
 			pthread_mutex_unlock(&key[i]);
-		//usleep(data->init->eat_ms % 10);
 		i++;
 	}
 	while (i >= 0)
 	{
 		if (i % 2 != 0)
 			pthread_mutex_unlock(&key[i]);
-		//usleep(data->init->eat_ms % 10);
 		i--;
 	}
 }

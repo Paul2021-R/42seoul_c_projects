@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:18:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/11 20:46:38 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/12 00:26:26 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	try_fork_another(t_person *man, int *fork)
 	t_common	*pub;
 
 	pub = man->public;
+	if (pub->death_flag != 0 && pub->death_flag != -1)
+		return (FALSE);
 	if (check_death(pub, man, get_ms(), fork))
 		return (FALSE);
 	if (pub->fork_array[fork[1]] == 0)
@@ -38,6 +40,8 @@ int	try_fork(t_person *man, int *fork)
 	pub = man->public;
 	while (TRUE)
 	{
+		if (pub->death_flag != 0 && pub->death_flag != -1)
+			return (TRUE);
 		if (check_death(pub, man, get_ms(), fork))
 			return (TRUE);
 		if (pub->fork_array[fork[0]] == 0)

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:01:31 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/11 21:20:56 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/12 00:13:31 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,14 @@ void	*monitor_thread(void *data)
 			{
 				usleep(20);
 				pthread_mutex_lock(common->print);
+				printf("%s%ld %d %s%s\n", RED, \
+						get_ms() - common->dining_time, \
+						common->death_flag, DEATH, WHITE);
 			}
 			pthread_mutex_lock(common->death);
 			break ;
 		}
-		usleep(100);
+		usleep(10);
 	}
 	usleep(100);
 	pthread_mutex_unlock(common->death);

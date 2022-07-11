@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:23:54 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/08 01:02:24 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/12 00:15:10 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,15 @@ int	main(int argc, char **argv)
 		return (TRUE);
 	if (init_data(argc, argv, &common))
 		return (TRUE);
-	printf_main(common);
 	philos = init_philos(&common);
 	if (!philos)
 		return (TRUE);
 	put_common_to_philos(&common, &philos);
 	if (init_mutex(&common))
 		return (TRUE);
-	printf_philos(common, philos);
 	if (init_pthread(&common, &philos))
 		return (TRUE);
 	if (init_monitor(common))
 		return (TRUE);
-	// atexit(ft_exit);
-	// start_dining();
-	//printf_philos(common, philos);
 	return (FALSE);
 }

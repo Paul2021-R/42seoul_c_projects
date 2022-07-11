@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:18:02 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/08 00:35:36 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/12 00:25:49 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	take_sleep(t_person *man, int *fork)
 	long		point;
 
 	pub = man->public;
+	if (pub->death_flag != 0 && pub->death_flag != -1)
+		return (TRUE);
 	if (check_death(pub, man, get_ms(), fork))
 		return (TRUE);
 	if (printf_action(2, get_ms() - pub->dining_time, \
@@ -30,6 +32,8 @@ man, pub->print))
 		enjoy_time = get_ms() - point;
 		if (enjoy_time >= man->sleep_ms)
 			break ;
+		if (pub->death_flag != 0 && pub->death_flag != -1)
+			return (FALSE);
 	}
 	return (FALSE);
 }
