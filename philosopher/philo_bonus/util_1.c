@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 01:26:00 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/12 00:57:13 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/12 02:18:55 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ long	get_ms(void)
 
 void	printf_main(t_common *data)
 {
-	int	i;
 	int	limit;
 
 	limit = data->init->num_philo;
@@ -44,19 +43,9 @@ void	printf_main(t_common *data)
 	printf("4. time_to_sleep(ms) ⏰ : %ld\n", data->init->sleep_ms);
 	printf("5. must_eat(times) ✅ : %d\n", data->init->must_eat);
 	printf("6. fork🍴 : %d\n", limit);
-	i = 0;
-	while (i < limit)
-	{
-		printf("[%d] : %d] ", i + 1, data->fork_array[i]);
-		if (i + 1 < limit)
-			printf("[%d] : %d] ", i + 2, data->fork_array[i + 1]);
-		if (i + 2 < limit)
-			printf("[%d] : %d] ", i + 3, data->fork_array[i + 2]);
-		if (i + 3 < limit)
-			printf("[%d] : %d] ", i + 4, data->fork_array[i + 3]);
-		i += 4;
-		printf("\n");
-	}
+	printf("7. semaphore_fork_ptr : %p\n", data->fork_sem);
+	printf("8. semaphore_death_ptr : %p\n", data->death_sem);
+	printf("9. semaphore_print_ptr : %p\n", data->print_sem);
 }
 
 void	printf_philos(t_common *data, t_person *philos)
