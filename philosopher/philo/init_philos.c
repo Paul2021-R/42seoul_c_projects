@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   init_philos.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 14:23:54 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/12 00:15:10 by haryu            ###   ########.fr       */
+/*   Created: 2022/07/07 15:59:50 by haryu             #+#    #+#             */
+/*   Updated: 2022/07/07 16:10:55 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_exit(void)
+t_person	*init_philos(t_common **data)
 {
-	system("leaks philo");
-	return ;
-}
-
-int	main(int argc, char **argv)
-{
-	t_common	*common;
+	pthread_t	*threads;
 	t_person	*philos;
+	int			num;
 
-	if (check_error(argc, argv))
-		return (TRUE);
-	if (init_data(argc, argv, &common))
-		return (TRUE);
-	philos = init_philos(&common);
+	num = (*data)->init->num_philo;
+	threads = ft_malloc_wrapper(sizeof(pthread_t) * num, \
+"Threads initialzing is failed.");
+	if (!threads)
+		return (NULL);
+	(*data)->threads = threads;
+	philos = ft_malloc_wrapper(sizeof(t_person) * num, \
+"Pilosophers allocation is failed.");
 	if (!philos)
-		return (TRUE);
-	put_common_to_philos(&common, &philos);
-	if (init_mutex(&common))
-		return (TRUE);
-	if (init_pthread(&common, &philos))
-		return (TRUE);
-	if (init_monitor(common))
-		return (TRUE);
-	return (FALSE);
+		return (NULL);
+	return (philos);
 }

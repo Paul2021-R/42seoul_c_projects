@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   dining_put_down_fork.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 14:23:54 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/12 00:15:10 by haryu            ###   ########.fr       */
+/*   Created: 2022/07/07 21:18:05 by haryu             #+#    #+#             */
+/*   Updated: 2022/07/12 00:25:05 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_exit(void)
+int	put_down_forks(t_person *man, int *fork)
 {
-	system("leaks philo");
-	return ;
-}
+	t_common	*pub;
 
-int	main(int argc, char **argv)
-{
-	t_common	*common;
-	t_person	*philos;
-
-	if (check_error(argc, argv))
+	pub = man->public;
+	if (pub->death_flag != 0 && pub->death_flag != -1)
 		return (TRUE);
-	if (init_data(argc, argv, &common))
+	if (check_death(pub, man, get_ms(), fork))
 		return (TRUE);
-	philos = init_philos(&common);
-	if (!philos)
-		return (TRUE);
-	put_common_to_philos(&common, &philos);
-	if (init_mutex(&common))
-		return (TRUE);
-	if (init_pthread(&common, &philos))
-		return (TRUE);
-	if (init_monitor(common))
-		return (TRUE);
+	pub->fork_array[fork[0]] = 0;
+	pub->fork_array[fork[1]] = 0;
+	pthread_mutex_unlock(&pub->fork_mutex[fork[0]]);
+	pthread_mutex_unlock(&pub->fork_mutex[fork[1]]);
 	return (FALSE);
 }

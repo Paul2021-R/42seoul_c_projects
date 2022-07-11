@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 15:05:30 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 23:50:31 by haryu            ###   ########.fr       */
+/*   Updated: 2022/05/20 21:23:07 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,103 +61,91 @@ typedef struct s_init
 typedef struct s_common
 {
 	t_init			*init;
-	int				*fork_array;
-	int				death_flag;
-	long			dining_time;
+	int				*fork;
+	int				d_flag;
 	pthread_t		*threads;
-	pthread_mutex_t	*fork_mutex;
-	pthread_mutex_t	*print;
-	pthread_mutex_t	*death;
+	pthread_mutex_t	ready;
+	pthread_mutex_t	*m_fork;
+	pthread_mutex_t	print;
+	pthread_mutex_t	death;
 }				t_common;
+
+/**
+ * @brief status datas
+ * 
+ */
+typedef enum e_status
+{
+	EATING,
+	SLEEPING,
+	THINKING,
+	READY
+}				t_status;
 
 /**
  * @brief philosophers data
  * @id index of philosophers
  * @must_eat the maximum number of meals
  * @status status of philosophers
- * @prev_eat_ms	For evaluating die or not.
  * @public data of initialization and mutexes
  */
-
 typedef struct s_person
 {
 	int				id;
 	int				must_eat;
+	t_status		status;
 	long			die_ms;
 	long			eat_ms;
 	long			sleep_ms;
-	long			prev_eat_ms;
+	long			init;
 	t_common		*public;
 }				t_person;
 
-/* Utils */
-
-int			ft_strlen(char *s);
+/* functs, 'action_target' */
+/* error handller */
 /**
- * @brief get millisec now.
- * 
- */
-long		get_ms(void);
-/**
- * @brief print common datas.
- * 
- */
-void		printf_main(t_common *data);
-/**
- * @brief malloc wrapper. malloc and error handler. 
- * If it is succed, you can get variable initialized zero.
- * 
- * @param size size of allocation
- * @param error what error handling strings
- * @return void* pointer of allocated var.
- */
-void		*ft_malloc_wrapper(size_t size, char *error);
-/**
- * @brief print whole philosopher(initialized)
- * 
- * @param data 
- * @param philos 
- */
-void		printf_philos(t_common *data, t_person *philos);
-int			return_error(char *error, int value);
-int			printf_action(int code, long time, \
-t_person *man, pthread_mutex_t *key);
-int			check_death(t_common *pub, t_person *man, long now, int *fork);
-
-/* error */
-
-/**
- * @brief error check
- * 
+ * @brief Check errors about under casess
+ * (1) not numbers, (2) minimum values, (3) over values
  * @param ac 
  * @param av 
- * @return int True or False 
+ * @return True or False
  */
-int			check_error(int ac, char **av);
-int			check_specific_arg(int index, char *num);
-int			is_number(int index, char	*num);
-int			is_less_60(int index, char *num);
-int			is_over_long(int index, char *num, int code);
-int			init_mutex(t_common **data);
+int		check_error(int ac, char **av);
+int		is_number(int index, char *num);
+int		is_less_60(int index, char *num);
+int		is_over_long(int index, char *num, int code);
+int		check_specific_arg(int index, char *num);
 
-/* Initialize tools */
+void	*around_table(void *data);
+void	init_pthread(t_common **data, t_person **philos);
+void	init_mutex(t_common **data);
 
-int			init_data(int ac, char **av, t_common **data);
-t_person	*init_philos(t_common **data);
-void		put_common_to_philos(t_common **data, t_person **philos);
-int			init_pthread(t_common **data, t_person **philos);
-int			init_monitor(t_common *common);
-
-/* mutex utils */
-
-void		pthread_mutex_lock_fork(pthread_mutex_t *key, t_common	*data);
-void		pthread_mutex_unlock_fork(pthread_mutex_t *key, t_common *data);
-
-/* dining philosopher */
-void		*around_table(void *data);
-int			try_fork(t_person *man, int *fork);
-int			take_meal(t_person *man, int *fork);
-int			put_down_forks(t_person *man, int *fork);
-int			take_sleep(t_person *man, int *fork);
-
+/* utils */
+int		ft_strlen(char *s);
+/**
+ * @brief check with initialized time. it needs to set the init time of the philosopher.
+ * 
+ * @param philo 
+ * @return long 
+ */
+long	now_time(t_person *philo);
+/**
+ * @brief Get the ms object
+ * 
+ * @param tiktok 
+ * @return long 
+ */
+long	get_ms(struct timeval *tiktok);
+/**
+ * @brief Get the ms2 object
+ * 
+ * @return long 
+ */
+long	get_ms2(void);
+/**
+ * @brief check initializing of main data and print the data.
+ * 
+ * @param data common data.
+ */
+void	printf_main(t_common *data);
 #endif

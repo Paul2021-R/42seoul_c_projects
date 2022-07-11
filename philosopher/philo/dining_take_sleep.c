@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   dining_take_sleep.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 14:23:54 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/12 00:15:10 by haryu            ###   ########.fr       */
+/*   Created: 2022/07/07 21:18:02 by haryu             #+#    #+#             */
+/*   Updated: 2022/07/12 00:25:49 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_exit(void)
+int	take_sleep(t_person *man, int *fork)
 {
-	system("leaks philo");
-	return ;
-}
+	t_common	*pub;
+	long		enjoy_time;
+	long		point;
 
-int	main(int argc, char **argv)
-{
-	t_common	*common;
-	t_person	*philos;
-
-	if (check_error(argc, argv))
+	pub = man->public;
+	if (pub->death_flag != 0 && pub->death_flag != -1)
 		return (TRUE);
-	if (init_data(argc, argv, &common))
+	if (check_death(pub, man, get_ms(), fork))
 		return (TRUE);
-	philos = init_philos(&common);
-	if (!philos)
+	if (printf_action(2, get_ms() - pub->dining_time, \
+man, pub->print))
 		return (TRUE);
-	put_common_to_philos(&common, &philos);
-	if (init_mutex(&common))
-		return (TRUE);
-	if (init_pthread(&common, &philos))
-		return (TRUE);
-	if (init_monitor(common))
-		return (TRUE);
+	point = get_ms();
+	while (TRUE)
+	{
+		enjoy_time = get_ms() - point;
+		if (enjoy_time >= man->sleep_ms)
+			break ;
+		if (pub->death_flag != 0 && pub->death_flag != -1)
+			return (FALSE);
+	}
 	return (FALSE);
 }
