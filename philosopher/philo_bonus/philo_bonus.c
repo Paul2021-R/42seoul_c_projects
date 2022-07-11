@@ -5,14 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/30 15:10:29 by haryu             #+#    #+#             */
-/*   Updated: 2022/04/30 15:33:18 by haryu            ###   ########.fr       */
+/*   Created: 2022/07/07 14:23:54 by haryu             #+#    #+#             */
+/*   Updated: 2022/07/12 00:47:53 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int ac, char **av)
+#include "philo_bonus.h"
+
+void	ft_exit(void)
 {
-	(void)ac;
-	(void)av;
-	return (0);
+	system("leaks philo");
+	return ;
+}
+
+int	main(int argc, char **argv)
+{
+	t_common	*common;
+
+	if (check_error(argc, argv))
+		return (TRUE);
+	if (init_data(argc, argv, &common))
+		return (TRUE);
+	printf_main(common);
+	return (FALSE);
 }

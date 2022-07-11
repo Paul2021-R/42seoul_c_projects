@@ -5,19 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/30 15:10:16 by haryu             #+#    #+#              #
-#    Updated: 2022/04/30 15:33:17 by haryu            ###   ########.fr        #
+#    Created: 2022/04/30 15:10:23 by haryu             #+#    #+#              #
+#    Updated: 2022/07/12 00:41:47 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-SRCNAME				= philo_bonus.c
+SRCNAME				= $(wildcard ./*.c)
 
 OBJS 				= $(SRCNAME:.c=.o)
 
 NAME				= philo_bonus
 CC					= gcc
-CFLAGS				= -Wall -Wextra -Werror -O3
+CFLAGS				= -Wall -Wextra -Werror -g -fsanitize=address
 RM					= rm -f
 
 sky					:=$(shell tput setaf 6)
@@ -40,7 +39,7 @@ clean				:
 
 fclean				: clean
 					$(info $(sky)========== fclean ==========$(reset))
-					$(RM) $(NAME)
+					$(RM) $(NAME) $(OBJS)
 
 re					:fclean all
 					$(info $(shell tput setaf 1)========== re ==========$(reset))
