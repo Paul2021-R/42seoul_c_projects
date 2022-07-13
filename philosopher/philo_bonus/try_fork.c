@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arround_table.c                                    :+:      :+:    :+:   */
+/*   try_fork.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 07:06:23 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/13 15:25:28 by haryu            ###   ########.fr       */
+/*   Created: 2022/07/13 14:04:07 by haryu             #+#    #+#             */
+/*   Updated: 2022/07/13 14:31:40 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	arround_table(t_person *philosopher, t_common *common, int index)
+void	try_fork(t_person *man, t_common *common, int code)
 {
-	t_person	*man;
-
-	man = &philosopher[index];
-	sem_wait(common->fork_sem);
-	man->prev_eat_ms = get_ms();
-	common->dining_time = get_ms();
-	sem_post(common->fork_sem);
-	dining_session(man, common);
-	exit (0);
+	while (TRUE)
+	{
+		check_death(man, common, get_ms());
+		if (code == 0)
+		{
+			sem_wait(common->fork_sem);
+			sem_wait(common->fork_sem);
+		}
+		printf_action(0, get_ms() - common->dining_time, \
+man, common->print_sem);
+		check_death(man, common, get_ms());
+		break ;
+	}
 }

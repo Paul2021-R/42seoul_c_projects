@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arround_table.c                                    :+:      :+:    :+:   */
+/*   take_sleep.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 07:06:23 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/13 15:25:28 by haryu            ###   ########.fr       */
+/*   Created: 2022/07/13 14:25:42 by haryu             #+#    #+#             */
+/*   Updated: 2022/07/13 14:40:40 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	arround_table(t_person *philosopher, t_common *common, int index)
+void	take_sleep(t_person *man, t_common *common)
 {
-	t_person	*man;
+	long	point;
+	long	now;
 
-	man = &philosopher[index];
-	sem_wait(common->fork_sem);
-	man->prev_eat_ms = get_ms();
-	common->dining_time = get_ms();
-	sem_post(common->fork_sem);
-	dining_session(man, common);
-	exit (0);
+	check_death(man, common, get_ms());
+	printf_action(2, get_ms() - common->dining_time, \
+man, common->print_sem);
+	point = get_ms();
+	while (TRUE)
+	{
+		now = get_ms() - point;
+		check_death(man, common, get_ms());
+		if (now >= man->sleep_ms)
+			break ;
+	}
+	return ;
 }

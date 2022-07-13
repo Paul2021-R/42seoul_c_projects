@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 02:29:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/12 06:37:47 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/13 15:14:47 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ t_person	*init_philos(t_common **data)
 	t_init		*init_copy;
 
 	init_copy = (*data)->init;
-	philos = ft_malloc_wrapper(sizeof(t_person) * init_copy->num_philo, "allocation is failed : t_person");
+	philos = ft_malloc_wrapper(sizeof(t_person) * \
+init_copy->num_philo, "allocation is failed : t_person");
 	if (!philos)
 		return (NULL);
 	put_common_to_philos(data, &philos);

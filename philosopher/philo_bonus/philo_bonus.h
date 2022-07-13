@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 15:05:30 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/12 07:28:16 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/13 15:34:31 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,5 +149,13 @@ void		del_resource(t_common **common, t_person **philosopher);
 
 /* dining philosopher */
 void		arround_table(t_person *philosopher, t_common *common, int index);
-void		get_status_philosopher(t_person *philosopher, t_common *common);
+void		dining_session(t_person *man, t_common *common);
+void		get_status_philosopher(t_common *common);
+void		check_death(t_person *man, t_common *common, long now);
+void		try_fork(t_person *man, t_common *common, int code);
+void		take_meal(t_person *man, t_common *common);
+void		put_down_forks(t_person *man, t_common *common);
+void		take_sleep(t_person *man, t_common *common);
+int			try_thought(t_person *man, t_common *common);
+
 #endif

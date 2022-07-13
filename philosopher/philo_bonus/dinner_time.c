@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 06:22:09 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/12 07:28:01 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/13 15:34:44 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ int	dinner_time(t_person *philosopher, t_common *common)
 {
 	fork_hold(common->fork_sem, common->init->num_philo);
 	philosopher_seat(philosopher, common);
-	get_status_philosopher(philosopher, common);
+	get_status_philosopher(common);
 	return (0);
 }

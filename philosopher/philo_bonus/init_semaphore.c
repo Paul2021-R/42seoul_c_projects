@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 02:43:59 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/12 06:26:49 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/13 15:15:00 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	sem_open_wrapper(int code, sem_t **ptr, size_t size)
 	return ;
 }
 
-int			init_semaphore(t_common **data)
+int	init_semaphore(t_common **data)
 {
 	sem_open_wrapper(1, &(*data)->fork_sem, (*data)->init->num_philo);
 	sem_open_wrapper(2, &(*data)->death_sem, 1);
