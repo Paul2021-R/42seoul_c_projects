@@ -7,3 +7,6 @@
 [submodule "push_swap/push_swap_speed_tester"]
 	path = push_swap/push_swap_speed_tester
 	url = https://github.com/mikysett/push_swap_speed_tester.git
+[submodule "Minishell"]
+	path = Minishell
+	url = https://github.com/Eingerjar/Minishell.git

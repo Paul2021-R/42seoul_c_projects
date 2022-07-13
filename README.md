@@ -1,4 +1,5 @@
-#Cadet-42_C
+#
+Cadet-42_C
 C project in Cadet course in 42 Seoul
 
 ## Outline
@@ -9,7 +10,7 @@ However, I am required to respect the rule of 42 programs.
 For that reason, It doesn't have any file which contains the intellectual property(Documents, Files and Etc...)
 
 ## time line
-* 2021-11-08 Before start, prepare study of C.
+z 2021-11-08 Before start, prepare study of C.
 * 2021-11-09 Start Libft Subjects
 * 2021-11-25 Finish Libft Subjects and Peer evaluations. 
 		Result : 'cheating' -> Using internal funcs(calloc) except ft_calloc.
@@ -37,3 +38,7 @@ For that reason, It doesn't have any file which contains the intellectual proper
 * 2022-04-25 Peer evaluation got faild because of error handling.
 * 2022-04-27 Passed push_swap project.
 * 2022-04-27 start Phlosopher project.
+* 2022-05-11 statrt Minishell project.
+* 2022-07-08 Finish Minishell Project.
+* 2022-07-14 Finish Philosopher Project.
+* 
