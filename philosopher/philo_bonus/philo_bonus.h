@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 15:05:30 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/12 00:58:04 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/13 15:34:31 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <string.h>
 # include <stdlib.h>
 # include <pthread.h>
+# include <semaphore.h>
+# include <signal.h>
 # include <time.h>
 # include <unistd.h>
 # include <sys/time.h>
@@ -61,13 +63,11 @@ typedef struct s_init
 typedef struct s_common
 {
 	t_init			*init;
-	int				*fork_array;
-	int				death_flag;
 	long			dining_time;
-	pthread_t		*threads;
-	pthread_mutex_t	*fork_mutex;
-	pthread_mutex_t	*print;
-	pthread_mutex_t	*death;
+	pid_t			*philo_pid;
+	sem_t			*fork_sem;
+	sem_t			*death_sem;
+	sem_t			*print_sem;
 }				t_common;
 
 /**
@@ -121,8 +121,7 @@ void		*ft_malloc_wrapper(size_t size, char *error);
 void		printf_philos(t_common *data, t_person *philos);
 int			return_error(char *error, int value);
 int			printf_action(int code, long time, \
-t_person *man, pthread_mutex_t *key);
-int			check_death(t_common *pub, t_person *man, long now, int *fork);
+t_person *man, sem_t *key);
 
 /* error */
 
@@ -144,20 +143,19 @@ int			init_mutex(t_common **data);
 
 int			init_data(int ac, char **av, t_common **data);
 t_person	*init_philos(t_common **data);
-void		put_common_to_philos(t_common **data, t_person **philos);
-int			init_pthread(t_common **data, t_person **philos);
-int			init_monitor(t_common *common);
-
-/* mutex utils */
-
-void		pthread_mutex_lock_fork(pthread_mutex_t *key, t_common	*data);
-void		pthread_mutex_unlock_fork(pthread_mutex_t *key, t_common *data);
+int			init_semaphore(t_common **data);
+int			dinner_time(t_person *philosopher, t_common *data);
+void		del_resource(t_common **common, t_person **philosopher);
 
 /* dining philosopher */
-void		*around_table(void *data);
-int			try_fork(t_person *man, int *fork);
-int			take_meal(t_person *man, int *fork);
-int			put_down_forks(t_person *man, int *fork);
-int			take_sleep(t_person *man, int *fork);
+void		arround_table(t_person *philosopher, t_common *common, int index);
+void		dining_session(t_person *man, t_common *common);
+void		get_status_philosopher(t_common *common);
+void		check_death(t_person *man, t_common *common, long now);
+void		try_fork(t_person *man, t_common *common, int code);
+void		take_meal(t_person *man, t_common *common);
+void		put_down_forks(t_person *man, t_common *common);
+void		take_sleep(t_person *man, t_common *common);
+int			try_thought(t_person *man, t_common *common);
 
 #endif
