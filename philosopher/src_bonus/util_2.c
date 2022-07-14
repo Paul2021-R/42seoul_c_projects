@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:11:01 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/12 06:20:48 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/14 17:47:21 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	printf_action(int code, long time, t_person *man, sem_t *key)
 {
 	char	*str;
 	char	*color;
+	int		i;
 
-	sem_wait(key);
 	color = which_color(code);
 	if (code == 0)
 		str = FORK;
@@ -49,6 +49,16 @@ int	printf_action(int code, long time, t_person *man, sem_t *key)
 		str = THOUGHT;
 	else
 		str = DEATH;
+	i = 0;
+	i = sem_wait(man->public->death_sem);
+	if (i == -1)
+	{
+		sem_post(man->public->death_sem);
+		return (FALSE);
+	}
+	sem_post(man->public->death_sem);
+	usleep(100 * (code + 1));
+	sem_wait(key);
 	printf("%s%ld %d %s%s\n", color, time, man->id, str, WHITE);
 	sem_post(key);
 	return (FALSE);

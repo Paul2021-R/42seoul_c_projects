@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 02:43:59 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/13 15:15:00 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/14 10:53:42 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	sem_open_wrapper(int code, sem_t **ptr, size_t size)
 	(*ptr) = sem_open(str, O_CREAT | O_EXCL, 0644, size);
 	if ((*ptr) == SEM_FAILED)
 	{
-		printf("error is here\n");
 		sem_unlink(str);
 		sem_open_wrapper(code, ptr, size);
 	}

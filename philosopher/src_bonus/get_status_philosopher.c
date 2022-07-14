@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 07:13:27 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/13 15:41:54 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/14 17:51:14 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void	kill_others(pid_t temp, pid_t *philosopher, int max_len)
 	i = -1;
 	while (++i < max_len)
 	{
-		if (temp == *philosopher)
+		if (temp == philosopher[i])
 			continue ;
-		kill(philosopher[i], SIGQUIT);
+		kill(philosopher[i], SIGINT);
 	}
 	return ;
 }
@@ -40,11 +40,10 @@ static int	check_status(int status, t_common *common, pid_t temp)
 {
 	if (WIFSIGNALED(status))
 		return (0);
-	if (WIFEXITED(status))
+	if (status)
 	{
 		if (WEXITSTATUS(status) != 0)
 		{
-			sem_wait(common->death_sem);
 			kill_others(temp, common->philo_pid, common->init->num_philo);
 			usleep(400);
 			sem_post(common->death_sem);
@@ -68,6 +67,7 @@ void	get_status_philosopher(t_common *common)
 	{
 		temp = waitpid(-1, &status, 0);
 		sem_wait(common->print_sem);
+		sem_wait(common->death_sem);
 		status = check_status(status, common, temp);
 		sem_post(common->print_sem);
 	}
