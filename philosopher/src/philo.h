@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 15:05:30 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 23:50:31 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/15 00:47:23 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_common
 	t_init			*init;
 	int				*fork_array;
 	int				death_flag;
+	int				eat_flag;
 	long			dining_time;
 	pthread_t		*threads;
 	pthread_mutex_t	*fork_mutex;

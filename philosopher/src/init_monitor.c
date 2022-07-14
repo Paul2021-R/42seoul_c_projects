@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:01:31 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/12 00:13:31 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/15 01:03:32 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,26 @@ static void	waiting_die(t_common *common)
 	return ;
 }
 
+static void	detect_death_flag(t_common *common)
+{
+	if (common->death_flag != -1)
+	{
+		usleep(20);
+		pthread_mutex_lock(common->print);
+		printf("%s%ld %d %s%s\n", RED, \
+				get_ms() - common->dining_time, \
+		common->death_flag, DEATH, WHITE);
+	}
+	pthread_mutex_lock(common->death);
+}
+
+static void	detect_eat_flag(t_common *common)
+{
+	pthread_mutex_lock(common->print);
+	pthread_mutex_lock(common->death);
+	common->death_flag = -1;
+}
+
 void	*monitor_thread(void *data)
 {
 	t_common	*common;
@@ -36,18 +56,15 @@ void	*monitor_thread(void *data)
 	{
 		if (common->death_flag != 0)
 		{
-			if (common->death_flag != -1)
-			{
-				usleep(20);
-				pthread_mutex_lock(common->print);
-				printf("%s%ld %d %s%s\n", RED, \
-						get_ms() - common->dining_time, \
-						common->death_flag, DEATH, WHITE);
-			}
-			pthread_mutex_lock(common->death);
+			detect_death_flag(common);
 			break ;
 		}
-		usleep(10);
+		if (common->eat_flag == common->init->num_philo)
+		{
+			detect_eat_flag(common);
+			break ;
+		}
+		usleep(100);
 	}
 	usleep(100);
 	pthread_mutex_unlock(common->death);

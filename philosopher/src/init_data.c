@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:05:58 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/07 21:54:54 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/15 00:47:56 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ ft_malloc_wrapper(sizeof(int) * (*data)->init->num_philo, \
 		return (TRUE);
 	memset((*data)->fork_array, 0, sizeof(int) * (*data)->init->num_philo);
 	(*data)->death_flag = 0;
+	(*data)->eat_flag = 0;
 	return (FALSE);
 }

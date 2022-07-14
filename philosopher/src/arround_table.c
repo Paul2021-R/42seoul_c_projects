@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:53:27 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/12 00:24:49 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/15 00:58:12 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ man->prev_eat_ms) * 2 > man->die_ms)
 	return (FALSE);
 }
 
+static void	eat_count(t_person *man)
+{
+	pthread_mutex_lock(man->public->death);
+	man->public->eat_flag++;
+	man->must_eat = -1;
+	pthread_mutex_unlock(man->public->death);
+}
+
 static void	*dining_session(t_person *man, int *fork)
 {
 	while (TRUE && man->must_eat)
@@ -40,11 +48,12 @@ static void	*dining_session(t_person *man, int *fork)
 			break ;
 		if (put_down_forks(man, fork))
 			break ;
-		man->must_eat--;
+		if (man->must_eat != -1)
+			man->must_eat--;
 		if (take_sleep(man, fork))
 			break ;
 		if (man->must_eat == 0)
-			man->public->death_flag = -1;
+			eat_count(man);
 		if (try_thought(man->public, man, fork))
 			break ;
 	}

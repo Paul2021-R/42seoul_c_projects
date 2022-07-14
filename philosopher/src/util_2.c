@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_2.c                                          :+:      :+:    :+:   */
+/*   util_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:11:01 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/11 23:37:18 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/15 00:54:44 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	check_death(t_common *pub, t_person *man, long now, int *fork)
 {
 	long	interval;
 
-	if (pub->death_flag != 0 && pub->death_flag != -1)
+	if (pub->death_flag != 0)
 	{
 		pub->fork_array[fork[0]] = 0;
 		pub->fork_array[fork[1]] = 0;
@@ -71,13 +71,6 @@ int	check_death(t_common *pub, t_person *man, long now, int *fork)
 		return (FALSE);
 	else
 	{
-		if (pub->death_flag == -1)
-		{
-			if (man->must_eat != 0)
-				return (TRUE);
-			else
-				return (FALSE);
-		}
 		pub->death_flag = man->id;
 		return (TRUE);
 	}
