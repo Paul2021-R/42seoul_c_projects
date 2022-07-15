@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 07:13:27 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/14 17:51:14 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/15 01:21:28 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	check_status(int status, t_common *common, pid_t temp)
 		if (WEXITSTATUS(status) != 0)
 		{
 			kill_others(temp, common->philo_pid, common->init->num_philo);
-			usleep(400);
+			usleep(300);
 			sem_post(common->death_sem);
 		}
 	}

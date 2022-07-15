@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:23:54 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/14 20:06:48 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/15 01:12:40 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int	main(int argc, char **argv)
 	if (dinner_time(philosopher, common))
 		return (TRUE);
 	del_resource(&common, &philosopher);
-	return (FALSE);
+	//return (FALSE);
+	ft_exit();
 }
