@@ -78,3 +78,9 @@ UPTO This
 2. 정상 인자면 패스를 따라가서 한 라인 씩 읽고 저장한다. 
 3. 2차원 문자열을 만들고, 바탕이 되는 문자를 넣는다. 
 4. 그 다음 문장들을 해석해가며, 필요한 위치에 값을 집어 넣는다.
+Hint:
+If a point is defined as (Xa, Ya)
+And a rectangle with a top left corner (Xtl, Ytl) and a bottom right corner (Xbr, Ybr)
+If Xtl <= Xa <= Xbr and Ytl <= Ya <= Ybr then the point is in the rectangle
+
+
