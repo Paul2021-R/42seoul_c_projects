@@ -62,7 +62,7 @@ UPTO This
 당신은 우리의 our_micro_paint를 당신의 프로그램을 몇몇 operation_file.example 로 테스트하는데 도움이 되니 찾아야 합니다. 
 
 힌트 : 
-만약 포인트가 (Xa, Ya) 라고 정의 내려 지면,
+만약 특정 포인트가 (Xa, Ya) 라고 정의 내려 지면,
 그리고 좌상단 (Xtl, Ytl) 과 직사각형 그리고 우하단 코너(Xbr, Ybr)
 만약 Xtl <= Xa <= Xbr 그리고 Ytl <= Ya <= Ybr 라면, 직사각형 안에 포인트가 존재합니다. 
 
