@@ -1,4 +1,4 @@
-gcc my_micro.c -o nooriginal -Wall -Wextra -Werror
+gcc	last_micro.c -o nooriginal -Wall -Wextra -Werror
 gcc our_micro_paint.c -o original -Wall -Wextra -Werror
 echo ""
 echo "TEST - <ex_1>"

@@ -1,4 +1,4 @@
-gcc my_mini.c -o nooriginal -Wall -Wextra -Werror -lm
+gcc last_mini.c -o nooriginal -Wall -Wextra -Werror -lm
 gcc mini.c -o original -Wall -Wextra -Werror -lm
 echo ""
 echo "TEST - <ex_1>"
