@@ -1,0 +1,34 @@
+Assignment name  : microshell
+Expected files   : *.c *.h
+Allowed functions: malloc, free, write, close, fork, waitpid, signal, kill, exit, chdir, execve, dup, dup2, pipe, strcmp, strncmp
+--------------------------------------------------------------------------------------
+
+쉘 명령어를 실행하는 프로그램을 작성하시오.
+- 실행할 명령어 라인은 이 프로그램의 인자가 될것입니다. 
+- 실행가능한 경로는 절대 혹은 상대 경로 입니다. 그러나 당신의 프로그램은 경로를 빌드하진 말아야 합니다. 
+- 당신은 반드시 | 와 ; 를 bash 안에서 작동하듯 구현해야 합니다.
+	- 아무것도 없거나, | 혹은 ; 에 의한 처리 되는 혹은 | 가 즉시 따라오는 경우는 시도하지 않습니다. ]
+	- 당신의 프로그램은 반드시 빌트인 커맨드 cd 를 구현해야 합니다. 단 -, 인자 없는 경우는 구현하지 않습니다.
+	- 만약 cd가 잘못된 숫자의 인자를 받은 경우, 당신의 프로그램은 반드시 STDERR 로 "error: cd: bad arguments\n"라고 출력해야 합니다. 
+	- 만약 cd가 실패하면, 당신의 프로그램은 STDERR 로 "error: cd: cannot change directoryu to path_to_change\n" 라고 출력해야합니다. 
+	- 이때, path_to_change 부분에 들어온 경로로 대체 해야 한다. 
+	- cd 커맨드는 |  가 따라오는 경우, 혹은 | 처리 이후 즉시 실행될 순 없다. 
+- 와일드 카드의 어떤 종류라도 대응할 필요가 없습니다.
+- 환경변수를 관리할 필요는 없습니다.
+"
+- 만약 시스템 호출이 있다면, chdir, execve를 제외하고 에러를 리턴하며, 당신의 프로그램은 즉시  "error: fatal" 이라고 표준 에러로 출력해야 하며, 프로그램을 종료 해야 합니다.
+- 만약 execve 가 실패하면 반드시 "error: cannot execute executable_that_fauiled\n" 라고 출력해야 합니다,  executable_that_failed 실패한 실행 가능한 파일의 경로로 대체 됩니다. (첫 번째 인자)
+- 당신의 프로그램은 반드시 |의 수백개 이상을 관리할 수 있어야 하며, 심지어 "open file"의 제한 숫자를 넘어서라도 관리 가능해야 합니다. 
+
+예를 들면 이렇게 작동해야 합니다 :
+$>./microshell /bin/ls "|" /usr/bin/grep microshell ";" /bin/echo i love my microshell
+microshell
+i love my microshell
+$>
+
+힌트 : 
+환경변수를 execve에 전달한다는 점을 잊지 마십시오.
+
+힌트 : 
+파일 디스크립터에서 릭이 나면 안됩니다. 
+
