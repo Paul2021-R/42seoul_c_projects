@@ -41,4 +41,5 @@ z 2021-11-08 Before start, prepare study of C.
 * 2022-05-11 statrt Minishell project.
 * 2022-07-08 Finish Minishell Project.
 * 2022-07-14 Finish Philosopher Project.
+* 2022-07-19 Exam rank 03 success.
 * 
