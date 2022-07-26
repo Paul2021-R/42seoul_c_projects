@@ -42,4 +42,4 @@ z 2021-11-08 Before start, prepare study of C.
 * 2022-07-08 Finish Minishell Project.
 * 2022-07-14 Finish Philosopher Project.
 * 2022-07-19 Exam rank 03 success.
-* 
+* 2022-07-20 NetPractice, cub3D projects start.
