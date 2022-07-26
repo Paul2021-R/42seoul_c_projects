@@ -1,5 +1,5 @@
-#
-Cadet-42_C
+#Cadet-42_C
+
 C project in Cadet course in 42 Seoul
 
 ## Outline
