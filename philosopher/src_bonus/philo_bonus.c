@@ -33,6 +33,6 @@ int	main(int argc, char **argv)
 	if (dinner_time(philosopher, common))
 		return (TRUE);
 	del_resource(&common, &philosopher);
-	//return (FALSE);
-	ft_exit();
+	return (FALSE);
+	//ft_exit();
 }
