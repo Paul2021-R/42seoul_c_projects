@@ -1,6 +1,6 @@
 NAME				= phonebook
 
-CC					= clang++
+CC					= g++
 CFLAG				= -Wall -Wextra -Werror -std=c++98
 
 SRCS_DIR			= ./
