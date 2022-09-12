@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 21:43:28 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/09 17:09:41 by haryu            ###   ########.fr       */
+/*   Updated: 2022/09/13 01:35:06 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 
 class PhoneBook {
 	ContactElement		Contacts[8];
-	int					Indexed;
 	public:
-		PhoneBook();
-		~PhoneBook();
+		PhoneBook() {};
+		~PhoneBook() {
+			std::cout << "Delete All Contacts." << std::endl;
+		};
 		PhoneBook(const PhoneBook& Data);
 		PhoneBook& operator=(const PhoneBook& Data);
-		void	AddDatas();
-		void	DeleteDatas();
-		void	SearchDatas();
+		void	AddDatas(int index);
+		void	SearchDatas(std::string& target);
 		void	ShowAll();
 };
 

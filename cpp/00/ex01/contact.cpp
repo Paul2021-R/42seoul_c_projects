@@ -6,23 +6,26 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:38:12 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/09 16:24:21 by haryu            ###   ########.fr       */
+/*   Updated: 2022/09/13 01:51:56 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "contact.hpp"
 
-ContactElement::ContactElement(int i) {
-	int	IsEmpty = 0;
-	int	index = i;
-	first = last = nickname = number = secret = "          ";
-	(void)IsEmpty;
-	(void)index;
+int ContactElement::TotalIndexedNum = 0;
+int ContactElement::pos = 0;
+
+ContactElement::ContactElement(): IsEmpty(false), index(pos) {
+	if (TotalIndexedNum < 8) {
+		TotalIndexedNum++;
+		pos++;
+	}
 }
 
 ContactElement::~ContactElement(){
-	std::cout << "Contact [" << nickname << "] is deleted." << std::endl;
-	IsEmpty = 0;
+	//std::cout << "Contact '" << nickname << "' is deleted." << std::endl;
+	IsEmpty = true;
+	TotalIndexedNum--;
 }
 
 ContactElement::ContactElement(const ContactElement& ce) {
@@ -30,7 +33,7 @@ ContactElement::ContactElement(const ContactElement& ce) {
 	last = ce.last;
 	nickname = ce.nickname;
 	secret = ce.secret;
-	IsEmpty = 1;
+	IsEmpty = false;
 }
 
 ContactElement& ContactElement::operator=(const ContactElement &ce) {
@@ -44,7 +47,7 @@ ContactElement& ContactElement::operator=(const ContactElement &ce) {
 
 void	ContactElement::ShowContact(void) {
 	std::cout << "==============" << std::endl;
-	std::cout << "| " << "index  : " << index << " |" << std::endl;
+	std::cout << "| " << "index  : " << index + 1 << " |" << std::endl;
 	std::cout << "| " << first << " |" << std::endl;
 	std::cout << "| " <<  last << " |" << std::endl;
 	std::cout << "| " <<  nickname << " |" << std::endl;
@@ -100,5 +103,24 @@ void	ContactElement::AddContact(void) {
 	std::getline (std::cin, temp);
 	MakeTenString(temp, temp2);
 	secret = temp;
-	IsEmpty = 1;
+	IsEmpty = false;
+}
+
+bool	ContactElement::FindContact(std::string &target) {
+	std::string temp;
+	std::string temp2 = ".";
+
+	temp = target;
+	MakeTenString(temp, temp2);
+	if (!first.compare(temp))
+		return (true);
+	if (!last.compare(temp))
+		return (true);
+	if (!nickname.compare(temp))
+		return (true);
+	if (!number.compare(temp))
+		return (true);
+	if (!secret.compare(temp))
+		return (true);
+	return (false);
 }
