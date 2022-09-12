@@ -65,7 +65,6 @@ void	MakeTenString(std::string& temp, std::string& temp2){
 	temp3.resize(10);
 	if (size > 10){
 		temp.resize(9);
-		temp.shrink_to_fit();
 		temp.insert(9, temp2);
 		}
 	else {
@@ -75,7 +74,6 @@ void	MakeTenString(std::string& temp, std::string& temp2){
 		temp3 += temp;
 		temp.swap(temp3);
 	}
-	temp3.clear();
 	return ;
 }
 

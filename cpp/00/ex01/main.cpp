@@ -59,9 +59,9 @@ int	main(void){
 			std::cout << "Terminate Phone Book" << std::endl;
 			break ;
 		}
-		else
+		else {
 			std::cout << "Please Your command is wrong. : " << target << std::endl;
-			target.clear();
+		}
 		std::cout << "================================================" << std::endl;
 		if (index == 8) index = 0;
 	}
