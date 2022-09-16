@@ -1,4 +1,4 @@
-NAME				= ex03
+NAME				= test
 
 CC					= g++
 CFLAG				= -Wall -Wextra -Werror -std=c++98
