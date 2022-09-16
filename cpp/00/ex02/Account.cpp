@@ -12,7 +12,24 @@
 
 #include "Account.hpp"
 
-Account::Account() {
+Account::Account() :
+	_accountIndex (0),
+	_amount(0),
+	_nbDeposits(0),
+	_nbWithdrawals(0)
+{}
+
+Account::Account(const int* deposit_arr, int* ptr) {
+	int* CopyArr = (int *)deposit_arr;
+	int	size = (ptr - CopyArr) / sizeof(int);
+	Account* t = new Account[size];
+	for (int i = 0; i < size; i++) {
+		t[i]._accountIndex = i;
+		t[i]._amount = deposit_arr[i];
+		t[i]._nbDeposits = 0;
+		t[i]._nbWithdrawals = 0;
+		std::cout << "날짜 어떻게 함?" << " index:" << i << ";ammount:" << t[i]._amount << "; created" << std::endl;
+	}
 
 }
 
