@@ -6,31 +6,12 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 17:30:02 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/13 01:27:31 by haryu            ###   ########.fr       */
+/*   Updated: 2022/09/17 18:47:00 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "contact.hpp"
 #include "phone.hpp"
-//#include "phone.hpp"
-
-/*
-int main(void){
-	ContactElement cur[9];
-	int				j;
-
-	for (int i = 0; i < 9; i++) cur[i].ShowContact();
-
-	for (int i = 0; i < 11; i++)
-	{
-		if (i > 8) j = i - 9;
-		else j = i;
-		cur[j].AddContact();
-		cur[j].ShowContact();
-		std::cout << "전체 할당 연락처 수 : " << ContactElement::ShowTotal() << "/8"  << std::endl;
-	}
-	return (0);
-}*/
 
 int	main(void){
 	std::string	target;
