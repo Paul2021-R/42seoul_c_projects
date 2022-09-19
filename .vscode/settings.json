@@ -21,7 +21,9 @@
 	"pushswap_bonus.h": "c",
 	"pthread.h": "c",
 	"numbers": "c",
-	"philo_bonus.h": "c"
+	"philo_bonus.h": "c",
+	"*.tcc": "cpp",
+	"new": "cpp"
 },
   "cmake.configureOnOpen": false
 }
