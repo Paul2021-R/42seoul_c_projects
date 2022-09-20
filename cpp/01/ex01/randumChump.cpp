@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   randumChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 02:09:39 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/21 02:13:22 by haryu            ###   ########.fr       */
+/*   Created: 2022/09/21 01:44:11 by haryu             #+#    #+#             */
+/*   Updated: 2022/09/21 01:51:47 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main(void) {
-	Zombie* horde;
-	std::string name;
+void	randomChump(std::string name) {
+	Zombie *target;
 
-	getline(std::cin, name);
-	horde = zombieHorde(5, name);
-	for (int idx = 0; idx < 5; idx++) {
-		horde[idx].announce();
-	}
-	delete[] horde;
-	return 0;
-}
+	target = newZombie(name);
+	target->announce();
+	delete target;
+};
+
+// 클래스 포인터 변수는 .이 아닌 -> 로 클래스 변수(함수)에 접근한다. 

@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 02:09:39 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/21 02:13:22 by haryu            ###   ########.fr       */
+/*   Created: 2022/09/21 01:39:35 by haryu             #+#    #+#             */
+/*   Updated: 2022/09/21 01:52:32 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main(void) {
-	Zombie* horde;
-	std::string name;
+Zombie* newZombie(std::string name) {
+	Zombie	*target;
 
-	getline(std::cin, name);
-	horde = zombieHorde(5, name);
-	for (int idx = 0; idx < 5; idx++) {
-		horde[idx].announce();
-	}
-	delete[] horde;
-	return 0;
+	target = new Zombie(name);
+	return target;
 }
+// 새로이 할당하는 클래스에 생성자를 활용하면 클래스 포인터에 새로이 클래스 포인터 변수를 할당 받을 수 있다.

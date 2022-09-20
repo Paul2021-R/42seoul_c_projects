@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 02:09:39 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/21 02:13:22 by haryu            ###   ########.fr       */
+/*   Created: 2022/09/21 02:25:37 by haryu             #+#    #+#             */
+/*   Updated: 2022/09/21 02:49:40 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-int main(void) {
-	Zombie* horde;
-	std::string name;
+#include <iostream>
+#include <string>
 
-	getline(std::cin, name);
-	horde = zombieHorde(5, name);
-	for (int idx = 0; idx < 5; idx++) {
-		horde[idx].announce();
-	}
-	delete[] horde;
-	return 0;
-}
+class Weapon {
+	std::string type;
+	
+	public:
+		const std::string& getType(void);
+		void	setType(std::string newWeapon);
+};
+
+# define ATTACK " attacks with their ";
+
+#endif 

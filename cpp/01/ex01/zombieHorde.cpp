@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 02:09:39 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/21 02:13:22 by haryu            ###   ########.fr       */
+/*   Created: 2022/09/21 01:55:03 by haryu             #+#    #+#             */
+/*   Updated: 2022/09/21 02:09:22 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main(void) {
-	Zombie* horde;
-	std::string name;
-
-	getline(std::cin, name);
-	horde = zombieHorde(5, name);
-	for (int idx = 0; idx < 5; idx++) {
-		horde[idx].announce();
+Zombie* zombieHorde(int N, std::string name) {
+	if (N <= 0) return NULL;
+	
+	Zombie* Horde;
+	
+	Horde = new Zombie[N];
+	if (!Horde)
+		return NULL;
+	for (int idx = 0; idx < N; idx++) {
+		Horde[idx].addName(name);
 	}
-	delete[] horde;
-	return 0;
+	return Horde;
 }

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 17:46:07 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/21 01:43:44 by haryu            ###   ########.fr       */
+/*   Updated: 2022/09/21 02:14:40 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,31 @@
 class  Zombie
 {
 private:
-	std::string name;
+	std::string _name;
 
 public:
 	Zombie(void){
-		name = "";
+		_name = "";
 	};
-	Zombie(std::string name): name(name){
+	Zombie(std::string name): _name(name){
 	};
 	Zombie(Zombie& copy) {
-		name = *(new std::string((copy.name)));
+		_name = *(new std::string((copy._name)));
 	};
 	~Zombie(void) {
-		std::cout << name << " is destructed." << std::endl;
+		std::cout << _name << " is destructed." << std::endl;
 	};
 	Zombie& operator=(Zombie& target) {
-		size_t length = target.name.size();
-		name = target.name.substr(0, length);
+		size_t length = target._name.size();
+		_name = target._name.substr(0, length);
 		return *this;
 	};
 	void announce(void);
+	void addName(std::string name);
 };
 
 Zombie*	newZombie(std::string name);
 void	randomChump(std::string name);
-
+Zombie* zombieHorde(int N, std::string name);
 
 #endif
