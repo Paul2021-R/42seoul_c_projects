@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:44:03 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/20 13:23:27 by haryu            ###   ########.fr       */
+/*   Updated: 2022/09/21 17:57:10 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ public:
 	MyString&		insert(int loc, const MyString& str);
 	MyString&		insert(int loc, const char* str);
 	MyString&		insert(int loc, char c);
+
+	MyString&		erase(int loc, int num);
+
+	int find(int find_from, MyString& str) const;
+	int find(int find_from, const char* str) const;
+	int find(int find_from, char c) const;
+
+	int compare(const MyString& str) const;
 
 	size_t			length(void) const ;
 	void			print(void) const ;
@@ -212,6 +220,70 @@ MyString&	MyString::insert(int loc, const char* str) {
 MyString&	MyString::insert(int loc, char c) {
 	MyString temp(c);
 	return insert(loc, temp);
+}
+
+MyString&	MyString::erase(int loc, int num) {
+	if (loc < 0 || num < 0 || loc > StringSize) return *this;
+
+	int left = num + loc;
+
+	for (int idx = left; idx < StringSize; idx++) {
+		StringContent[idx - num] = StringContent[idx];
+	}
+	if (left < StringSize) StringSize -= num;
+	else {StringSize -= num - (left - StringSize);}
+
+	return *this;
+}
+
+int MyString::find(int find_from, MyString& str) const {
+	if (find_from > StringSize || find_from < 0 || str.StringSize < 0) return -1;
+
+	int i; 
+	int	j = str.StringSize - 1;
+	int prevPos = -1;
+
+	for (i = StringSize - 1; i >= find_from; i--) {
+		if (StringContent[i] == str.StringContent[j]) {
+			int k = i - j;
+			if (k < 0)
+				return prevPos;
+			for (int idx = 0; idx < str.StringSize; idx++) {
+				if (k < find_from) return prevPos;
+				if (StringContent[k++] == str.StringContent[idx]) continue;
+				else break;
+			}
+			if (k - (i - j) == str.StringSize) 
+				prevPos = i - j;
+			else 
+				i -= j;
+
+		}
+		if (i < str.StringSize)
+			break ;
+	}
+	return prevPos;
+}
+
+int MyString::find(int find_from, const char* str) const {
+	MyString temp(str);
+	return (find(find_from, temp));
+}
+int MyString::find(int find_from, char c) const {
+	MyString temp(c);
+	return (find(find_from, temp));
+}
+
+int MyString::compare(const MyString& str) const {
+	for (int idx = 0; idx < std::min(StringSize, str.StringSize); i++) {
+		if (StringContent[i] > str.StringContent[i])
+			return 1;
+		else if (StringContent[i] < str.StringContent[i])
+			return -1;
+	}
+	if (StringSize == str.StringSize) return 0;
+	else if (StringSize > str.StringSize) return 1;
+	else return -1;
 }
 
 #endif
