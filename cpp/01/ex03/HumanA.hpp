@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 02:36:08 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/21 03:10:55 by haryu            ###   ########.fr       */
+/*   Updated: 2022/09/23 14:14:56 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,15 @@ class HumanA
 {
 private:
 	std::string name;
-	Weapon weaponA;
+	Weapon& WeaponA;
 
 public:
 	HumanA(std::string name, Weapon& Weapon);
-	HumanA(HumanA &target);
-	~HumanA(void);
-	HumanA	&operator=(HumanA &target);
 
 	void	attack(void);
+	void	setWeapon(Weapon Weapon);
 	const std::string getName(void);
-	const Weapon& HumanA::getWeapon(void);
+	Weapon& getWeapon(void);
 };
 
 #endif

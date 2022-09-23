@@ -6,13 +6,25 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 02:24:26 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/21 02:25:16 by haryu            ###   ########.fr       */
+/*   Updated: 2022/09/23 13:45:09 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
+
+/*
+	요구사항 
+	- 웨폰
+		- getter(상수 레퍼런스 타입 반환), setter(새로운 값으로 지정)
+	- Human 공통 
+		- name, 웨폰, attack()
+	- HumanA 
+		- 생성자 안에서 웨폰을 얻음
+	- HumanB 
+		- 생성자 안에서 웨폰을 항상 갖지 않음
+*/
 
 int main() {
 	{
