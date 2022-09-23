@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:24:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/23 17:01:33 by haryu            ###   ########.fr       */
+/*   Updated: 2022/09/24 03:02:55 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,51 @@
 #include <fstream>
 #include <string>
 
-size_t	ft_strlen(const char *str) {
+/**
+ * @brief string 자료형을 활용한 ft_strlen 구현
+ * 
+ * @param str 
+ * @return size_t 
+ */
+size_t	MyStrlen(const char *str) {
 	std::string target(str);
 
 	return target.size();
+}
+
+/**
+ * @brief 입력받은 파일의 크기를 확인하는 함수
+ * 
+ * @param ifs 입력 받은 파일
+ * @return int 문자열 크기
+ */
+int		GetStringSize(std::ifstream& ifs) {
+	int	length;
+
+	ifs.seekg(0, ifs.end);
+	length = ifs.tellg();
+	ifs.seekg(0, ifs.beg);
+	return length;
+}
+
+/**
+ * @brief s1 문장을 s2 문장으로 바꾸기 
+ * 
+ * @param temp 타겟이 되는 파일 string 객체
+ * @param openedFile 입력받은 파일
+ * @param av s1, s2 문자열
+ */
+void	ChangeS1toS2(std::string& temp, char *openedFile, char **av) {
+	size_t	pos;
+
+	temp.clear();
+	temp.assign(openedFile);
+	pos = temp.find(av[2]);
+	while (pos != std::string::npos) { 
+		temp.erase(pos, MyStrlen(av[2]));
+		temp.insert(pos, av[3]);
+		pos = temp.find(av[2]);
+	}
 }
 
 /**
@@ -30,7 +71,7 @@ size_t	ft_strlen(const char *str) {
 int main(int ac, char **av) {
 	if (ac != 4) {
 		std::cout << "Please, type 3 arguments for proper execution." << std::endl;
-		std::cout << "> ex04 {file} {string s1} {string s2}" << std::endl;
+		std::cout << "> ./ex04 {file} {string s1} {string s2}" << std::endl;
 		return (1);
 	}
 
@@ -39,12 +80,9 @@ int main(int ac, char **av) {
 	std::string		temp;
 	char*			openedFile;
 	int				length;
-	size_t			pos;
 
 	temp.assign(av[1]);
-	if (ifs.is_open()) {
-		std::cout << "File is opened : " << temp << std::endl;
-	}
+	if (ifs.is_open()) {std::cout << "File is opened : " << temp << std::endl;}
 	else {
 		std::cerr << "Their is no file : " << temp << std::endl;
 		return (1);
@@ -56,19 +94,10 @@ int main(int ac, char **av) {
 		return (1);
 	}
 	std::cout << "Replacement is ready : " << temp << std::endl;
-	ifs.seekg(0, ifs.end);
-	length = ifs.tellg();
-	ifs.seekg(0, ifs.beg);
+	length = GetStringSize(ifs);
 	openedFile = new char[length];
 	ifs.read(openedFile, length);
-	temp.clear();
-	temp.assign(openedFile);
-	pos = temp.find(av[2]);
-	while (pos != std::string::npos) { 
-		temp.erase(pos, ft_strlen(av[2]));
-		temp.insert(pos, av[3]);
-		pos = temp.find(av[2]);
-	}
+	ChangeS1toS2(temp, openedFile, av);
 	ofs << temp;
 	ofs.close();
 	ifs.close();
