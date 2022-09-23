@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:24:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/23 16:51:08 by haryu            ###   ########.fr       */
+/*   Updated: 2022/09/23 17:01:33 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ int main(int ac, char **av) {
 	if (ac != 4) {
 		std::cout << "Please, type 3 arguments for proper execution." << std::endl;
 		std::cout << "> ex04 {file} {string s1} {string s2}" << std::endl;
+		return (1);
 	}
 
-	std::ifstream	ifs(av[1], std::fstream::in);
+	std::ifstream	ifs(av[1], std::ios_base::in);
 	std::ofstream	ofs;
 	std::string		temp;
 	char*			openedFile;
@@ -49,7 +50,7 @@ int main(int ac, char **av) {
 		return (1);
 	}
 	temp.append(".replace");
-	ofs.open(temp, std::fstream::out | std::fstream::trunc);
+	ofs.open(temp.c_str(), std::ios_base::out | std::ios_base::trunc);
 	if (!ofs.is_open()) {
 		std::cerr << "Making replacement is failed : " << temp << std::endl;
 		return (1);
