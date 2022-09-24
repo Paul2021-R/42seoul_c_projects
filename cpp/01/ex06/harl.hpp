@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 03:12:14 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/24 10:48:49 by haryu            ###   ########.fr       */
+/*   Created: 2022/09/24 03:17:21 by haryu             #+#    #+#             */
+/*   Updated: 2022/09/24 10:37:20 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include "harl.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
 
-int main(int ac, char **av) {
-	harl		harl;
-	std::string	Command;
+# include <string>
+# include <iostream>
 
-	if (ac != 2)
-		return (1);
-	Command.assign(av[1]);
-	harl.complain(Command);
-	return (0);
-}
+class harl;
+
+typedef struct s_type {
+		std::string	level;
+		void		(harl::*funcPtr)(void);
+	}				t_type;
+
+class harl 
+{
+private:
+	t_type	funct[5];
+	
+	void	debug(void);
+	void	info(void);
+	void	warning(void);
+	void	error(void);
+	void	wrongType(void);
+
+public:
+	harl(void);
+	void	complain(std::string level);
+};
+
+#endif

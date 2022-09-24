@@ -46,3 +46,6 @@ z 2021-11-08 Before start, prepare study of C.
 * 2022-08-24 Finish NetPractice.
 * 2022-08-30 Finish exam 04.
 * 2022-09-02 CPP Module 00 start.
+* 2022-09-22 CPP Module 00 finished.
+* 2022-09-22 CPP Module 01 start.
+* 2022-09-24 CPP Module 01 finished.

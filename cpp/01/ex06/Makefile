@@ -1,4 +1,4 @@
-NAME				= test
+NAME				= harlfilter
 
 CC					= g++
 CFLAG				= -Wall -Wextra -Werror -std=c++98
