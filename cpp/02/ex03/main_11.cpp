@@ -46,8 +46,6 @@ int main(void) {
 		std::cout << "Please type for Coordinate y for Point a: " << std::endl;
 		getline(std::cin, temp);
 		y = std::stoi(temp, nullptr, 10);
-	
-		Point	c(x, y);
 
 		std::cout << "Please type for Coordinate x for Point Target: " << std::endl;
 		getline(std::cin, temp);
