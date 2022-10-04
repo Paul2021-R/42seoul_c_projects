@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   main_11.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:35:03 by haryu             #+#    #+#             */
-/*   Updated: 2022/09/30 16:56:52 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/04 15:58:22 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(void) {
 		std::cout << "Please type for Coordinate x for Point b: " << std::endl;
 		getline(std::cin, temp);
 		x = std::stoi(temp, nullptr, 10);
-		std::cout << "Please type for Coordinate y for Point a: " << std::endl;
+		std::cout << "Please type for Coordinate y for Point b: " << std::endl;
 		getline(std::cin, temp);
 		y = std::stoi(temp, nullptr, 10);
 	
@@ -43,9 +43,11 @@ int main(void) {
 		std::cout << "Please type for Coordinate x for Point c: " << std::endl;
 		getline(std::cin, temp);
 		x = std::stoi(temp, nullptr, 10);
-		std::cout << "Please type for Coordinate y for Point a: " << std::endl;
+		std::cout << "Please type for Coordinate y for Point c: " << std::endl;
 		getline(std::cin, temp);
 		y = std::stoi(temp, nullptr, 10);
+		
+		Point	c(x, y);
 
 		std::cout << "Please type for Coordinate x for Point Target: " << std::endl;
 		getline(std::cin, temp);
