@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:03:04 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/04 15:58:35 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/04 19:53:43 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point) {
 
 	checkLine(b, a, crossCount, point);
 	checkLine(b, c, crossCount, point);
-	checkLine(a, c, crossCount, point);
+	checkLine(c, a, crossCount, point);
 	if (crossCount % 2 == 1)
 		return (true);
 	return (false);
