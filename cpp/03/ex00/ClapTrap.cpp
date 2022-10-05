@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:35:29 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/03 17:54:57 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/05 16:43:12 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ ClapTrap::ClapTrap(void):
 	printConstructor();
 }
 
+ClapTrap::ClapTrap(std::string name):
+	name(name),
+	hitPoint(10),
+	energyPoint(10),
+	attackDamage(0)
+{
+	std::cout << "Default Constructor operated." << std::endl;
+	printConstructor();
+}
+
 ClapTrap::ClapTrap(std::string name, Point_i hp, Point_i ep, Point_i ad):
 	name(name),
 	hitPoint(hp),
@@ -31,7 +41,7 @@ ClapTrap::ClapTrap(std::string name, Point_i hp, Point_i ep, Point_i ad):
 	printConstructor();
 }
 
-ClapTrap::ClapTrap(ClapTrap &target){
+ClapTrap::ClapTrap(const ClapTrap& target){
 	name.clear();
 	name.assign(target.name);
 	hitPoint = target.hitPoint;
@@ -41,103 +51,73 @@ ClapTrap::ClapTrap(ClapTrap &target){
 	printConstructor();
 }
 
+ClapTrap& ClapTrap::operator=(const ClapTrap& target) {
+	name.clear();
+	name.assign(target.name);
+	hitPoint = target.hitPoint;
+	energyPoint = target.energyPoint;
+	attackDamage = target.attackDamage;
+	std::cout << "Copy Assign operator operated" << std::endl;
+	printConstructor();
+
+	return *this;
+}
+
 ClapTrap::~ClapTrap(void){
-	std::cout << "ClapTrap(" << name << ") is destroyed." << std::endl;
-}
-
-/**
- * @brief 얕은 복사로 진행함. 이는 동적 할당을 따로 고려한 생성자까지 만들지 않기 위해서다. 
- * 
- * @param target 
- * @return ClapTrap& 
- */
-ClapTrap	&ClapTrap::operator=(ClapTrap &target){	
-	return (target);
-}
-
-void	ClapTrap::printConstructor(void) {
-	std::cout << "=====================================" << std::endl;
-	std::cout << "ClapTrap : " << name << std::endl;
-	std::cout << "Hit Point : " << hitPoint << std::endl;
-	std::cout << "Energy Point : " << energyPoint << std::endl;
-	std::cout << "Attack Damage : " << attackDamage << std::endl;
-	std::cout << "=====================================" << std::endl;
+	std::cout << "ClapTrap : \" " << name << " \" is destroyed" << std::endl;
 }
 
 bool	ClapTrap::useEnergy(void) {
-	if (energyPoint == 0){
-		std::cout << "ClapTrap : " << name << std::endl;
-		std::cout << "Not enough Energy." << std::endl;
-		return (false);
-	}
-	std::cout << "ClapTrap : " << name << std::endl;
-	std::cout << "Use " << name << "'s Energy : " << --energyPoint << std::endl;
+	if (energyPoint == 0){ return (false); }
+	
+	--energyPoint;
 	return (true);
 }
 
 void	ClapTrap::attack(const std::string& target) {
-	if (hitPoint == 0) {
-		std::cout << "ClapTrap : " << name << " is nockedout." << std::endl;
-		return ;
-	}
-	if (useEnergy()) {
-		std::cout << "ClapTrap : " << name << " attacks " << target << " with " << attackDamage << " points of attack" << std::endl;
-		printConstructor();
-		return ;
-	}
-	else {
-		std::cout << "ClapTrap" << name << " is failed to attack " << target  << std::endl;
-		return ;
-	}
+	if (hitPoint == 0) { printAttack(target, 0); }
+	else if (useEnergy()) { printAttack(target, 1); }
+	else { printAttack(target, 2); }
+	return ;
 }
 
-void	ClapTrap::takeDamange(Point_i amount) {
-	if (hitPoint == 0) {
-		std::cout << "ClapTrap : " << name << "is nockedout." << std::endl;
-		return ;
-	}
-	std::cout << "ClapTrap : " << name << " is attacked with " << amount << "of Damage." << std::endl;
-	if (amount >= hitPoint) {
-		hitPoint = 0;
-		std::cout << "ClapTrap : " << name << " is nocked out." << std::endl;
-		printConstructor();
-	}
+void	ClapTrap::takeDamage(Point_i amount) {
+	if (hitPoint == 0) { printTakeDamage(amount, 0); }
 	else {
-		hitPoint -= amount;
+		if (amount >= hitPoint) { hitPoint = 0; }
+		else { hitPoint -= amount; }
+		printTakeDamage(amount, 1);
 	}
 	return ;
 }
 
 void	ClapTrap::beRepaired(Point_i amount) {
-	if (useEnergy()) {
-		std::cout << "ClapTrap : " << name << " is repaired" << amount << std::endl;
+	if (hitPoint == 0) { printBeRepaired(amount, 0); }
+	else if (useEnergy()) {
+		printBeRepaired(amount, 1);
 		hitPoint += amount;
-		printConstructor();
-		return ;
 	}
-	else {
-		std::cout << "ClapTrap : " << name << " is failed to be repaired." << amount << std::endl;
-		return ;
-	}
+	else { printBeRepaired(amount, 2); }
+	return ;
 }
 
 bool	ClapTrap::initHitPoint(Point_i amount) {
 	hitPoint = amount;
-	std::cout << "ClapTrap : " << name << " set hitpoint" << std::endl;
+	std::cout << "\nSYSTEM : ClapTrap : " << name << " set Hit Point : " << GREEN  << amount << WHITE  << std::endl;
 	printConstructor();
 	return (true);
 }
 
 bool	ClapTrap::initEnergyPoint(Point_i amount) {
 	energyPoint = amount;
-	std::cout << "ClapTrap : " << name << " set energy point" << std::endl;
+	std::cout << "\nSYSTEM : ClapTrap : " << name << " set Energy Point : "  << BLUE << amount << WHITE << std::endl;
 	printConstructor();
 	return (true);
 }
 
 bool	ClapTrap::initAttackDamage(Point_i amount) {
 	attackDamage = amount;
-	std::cout << "ClapTrap : " << name << " set attack damage" << std::endl;
+	std::cout << "\nSYSTEM : ClapTrap : " << name << " set Attack Damage : " << RED << amount << WHITE << std::endl;
 	printConstructor();
 	return (true);
 }
@@ -145,7 +125,63 @@ bool	ClapTrap::initAttackDamage(Point_i amount) {
 bool	ClapTrap::setName(std::string target) {
 	name.clear();
 	name.assign(target);
-	std::cout << "ClapTrap : " << name << " set his name" << std::endl;
+	std::cout << "\nSYSTEM : ClapTrap : " << name << " set his name : \" " << YELLOW << target << WHITE << " \" " << std::endl;
 	printConstructor();
 	return (true);
+}
+
+
+void	ClapTrap::printBeRepaired(Point_i amount, int code) {
+	std::cout << GREEN;
+	switch (code) {
+		case 0 :
+			std::cout << "ClapTrap : \" " << name << " \" is failed to be repaired : " << amount << " : HP is 0" << std::endl;
+			break ;
+		case 1 : 
+			std::cout << "ClapTrap : \" " << name << " \" is repaired : " << amount << std::endl;
+			break ;
+		default : 
+			std::cout << "ClapTrap : \" " << name << " \" is failed to be repaired : " << amount << " : EP is 0" << std::endl;
+	}
+	std::cout << WHITE;
+}
+
+void	ClapTrap::printTakeDamage(Point_i amount, int code) {
+	std::cout << RED;
+	switch (code) {
+		case 0 :
+			std::cout << "ClapTrap : \" " << name << " \" is already nocked out" << std::endl;
+			break ;
+		default :
+			std::cout << "ClapTrap : \" " << name << " \" taked damage : " << amount;
+			if (hitPoint == 0) { std::cout << " : HP is 0";}
+			std::cout << std::endl;
+	}
+	std::cout << WHITE;
+}
+
+void	ClapTrap::printAttack(const std::string& target, const int code) {
+	std::cout << CYAN;
+	switch (code) {
+		case 0 :
+			std::cout << "ClapTrap : \" " << name << " \" is failed to attack. : [ " << target << " ] : HP is 0" << std::endl;
+			break ;
+		case 1 :
+			std::cout << "ClapTrap : \" " << name << " \" attacks [ " << target << " ] : " << attackDamage << std::endl;
+			break ;
+		default :
+			std::cout << "ClapTrap : \" " << name << " \" is failed to attack : [ " << target << " ] : EP is 0" << std::endl;
+			break ;
+	}
+	std::cout << WHITE;	
+}
+
+void	ClapTrap::printConstructor(void) {
+	std::cout << YELLOW;
+	std::cout << "\n=====================================" << std::endl << WHITE;
+	std::cout << "ClapTrap : " << name << std::endl;
+	std::cout << GREEN << "Hit Point : " << hitPoint << std::endl;
+	std::cout << BLUE << "Energy Point : " << energyPoint << std::endl;
+	std::cout << RED << "Attack Damage : " << attackDamage << std::endl;
+	std::cout << YELLOW << "=====================================\n" << WHITE << std::endl;
 }
