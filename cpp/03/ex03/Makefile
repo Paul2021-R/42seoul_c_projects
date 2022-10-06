@@ -1,7 +1,7 @@
 NAME				= ex03
 
 CC					= c++
-CFLAG				= -Wall -Wextra -Werror -std=c++98
+CFLAG				= -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
 
 SRCS_DIR			= ./
 SRCS				= $(wildcard $(SRCS_DIR)*.cpp)
