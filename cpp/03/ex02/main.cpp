@@ -6,11 +6,13 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 19:06:51 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/07 01:13:43 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/07 01:36:20 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 /*
 	- occf
@@ -30,12 +32,13 @@
 
 int main(void) {
 	// occf test
-	ClapTrap n1("Dragon");
-	ClapTrap n2("paul", 20, 5, 5);
-	ClapTrap n3(n2);
-	ClapTrap n4;
-	std::string type = "ClapTrap";
+	FragTrap n1("Dragon");
+	FragTrap n3(n1);
+	FragTrap n4;
 	n4 = n1;
+	
+
+	n1.initEnergyPoint(10);
 	
 	// Attack & Energy TEST
 	for (int idx = 0; idx <= 10; idx++) {
@@ -44,7 +47,7 @@ int main(void) {
 	
 	// takeDamage 
 	for (int idx = 0; idx <= 5; idx++) {
-		n1.takeDamage(2);
+		n1.takeDamage(30);
 	}
 
 	// HP = 0 case
@@ -60,5 +63,7 @@ int main(void) {
 
 	n1.initAttackDamage(1000);
 	n1.setName("Charlee");
+
+	n1.highFiveGuys();
     return 0;
 }

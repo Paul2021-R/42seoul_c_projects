@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:07:09 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/07 01:31:41 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/07 01:34:32 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ScavTrap_hpp
-#define ScavTrap_hpp
+#ifndef FragTrap_hpp
+#define FragTrap_hpp
 
 #include "ClapTrap.hpp"
 
@@ -36,16 +36,17 @@ ex00 에서 해야할 일
 2) 강제 세팅하는 함수들의 경우 ClapTrap 등의 구체적인 표현은 삭제 해야 한다. 
 */
 
-class ScavTrap : public ClapTrap {
+class FragTrap : public ClapTrap {
 private : 
 	Point_i&	hitPoint;
 public :
-    ScavTrap(void);
-    ScavTrap(const std::string& name);
-    ScavTrap(const ScavTrap& target);
-    ScavTrap& operator=(const ScavTrap& target);
-    ~ScavTrap(void);
-    void    guardGate(void);
+    FragTrap(void);
+    FragTrap(const std::string& name);
+    FragTrap(const FragTrap& target);
+    FragTrap& operator=(const FragTrap& target);
+    ~FragTrap(void);
+
+    void    highFiveGuys(void);
 };
 
 #endif

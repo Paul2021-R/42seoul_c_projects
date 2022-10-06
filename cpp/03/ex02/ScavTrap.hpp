@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:07:09 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/07 01:31:41 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/07 01:31:55 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ public :
     ScavTrap(const ScavTrap& target);
     ScavTrap& operator=(const ScavTrap& target);
     ~ScavTrap(void);
+
     void    guardGate(void);
 };
 
