@@ -21,10 +21,10 @@ class DiamondTrap : virtual public ScavTrap, virtual public FragTrap
 {
 	private:
 		std::string name;
-		Point_i		hitPoint;
-		Point_i		eneregyPoint;
-		Point_i		attackDamage;
 		std::string type;
+		Point_i&	hitPoint;
+		Point_i&	energyPoint;
+		Point_i&	attackDamage;
 	public:
 
 	DiamondTrap(void);
@@ -33,10 +33,21 @@ class DiamondTrap : virtual public ScavTrap, virtual public FragTrap
 	~DiamondTrap(void);
 	DiamondTrap&	operator=(const DiamondTrap& target);
 
-	void	attack(const std::string& target);
+	void		whoAmI(void);
+    void        attack(const std::string& target);
+    void        takeDamage(Point_i amount);
+    void        beRepaired(Point_i amount);
 
-	void	whoAmI(void);
-	void	printConstructor(std::string type);
+    bool        initHitPoint(Point_i amount);
+    bool        initEnergyPoint(Point_i amount);
+    bool        initAttackDamage(Point_i amount);
+    bool        setName(std::string target);
+
+	std::string&    getName(void){ return name; }
+    std::string&    getType(void){ return type; }
+    Point_i&        getHp(void){ return hitPoint; }
+    Point_i&        getEp(void){ return energyPoint; }
+    Point_i&        getAd(void){ return attackDamage; }
 };
 
 #endif

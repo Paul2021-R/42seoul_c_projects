@@ -38,7 +38,11 @@ ex00 에서 해야할 일
 
 class FragTrap : public ClapTrap {
 private : 
+	std::string name;
+    std::string type;
 	Point_i&	hitPoint;
+    Point_i     energyPoint;
+    Point_i     attackDamage;
 public :
     FragTrap(void);
     FragTrap(const std::string& name);
@@ -46,7 +50,22 @@ public :
     FragTrap& operator=(const FragTrap& target);
     ~FragTrap(void);
 
-    void    highFiveGuys(void);
+    void        highFiveGuys(void);
+
+    void        attack(const std::string& target);
+    void        takeDamage(Point_i amount);
+    void        beRepaired(Point_i amount);
+
+    bool        initHitPoint(Point_i amount);
+    bool        initEnergyPoint(Point_i amount);
+    bool        initAttackDamage(Point_i amount);
+    bool        setName(std::string target);
+
+	std::string&    getName(void){ return name; }
+    std::string&    getType(void){ return type; }
+    Point_i&        getHp(void){ return hitPoint; }
+    Point_i&        getEp(void){ return energyPoint; }
+    Point_i&        getAd(void){ return attackDamage; }
 };
 
 #endif

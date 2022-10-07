@@ -53,12 +53,19 @@ public :
 
     void        guardGate(void);
     void        attack(const std::string& target);
+    void        takeDamage(Point_i amount);
+    void        beRepaired(Point_i amount);
 
-    std::string&    getName(void);
-    std::string&    getType(void);
-    Point_i&        getHp(void);
-    Point_i&        getEp(void);
-    Point_i&        getAd(void);
+    bool        initHitPoint(Point_i amount);
+    bool        initEnergyPoint(Point_i amount);
+    bool        initAttackDamage(Point_i amount);
+    bool        setName(std::string target);
+
+	std::string&    getName(void){ return name; }
+    std::string&    getType(void){ return type; }
+    Point_i&        getHp(void){ return hitPoint; }
+    Point_i&        getEp(void){ return energyPoint; }
+    Point_i&        getAd(void){ return attackDamage; }
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:07:09 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/07 02:19:47 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/07 01:31:41 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,36 @@ ex00 에서 해야할 일
 */
 
 class ScavTrap : virtual public ClapTrap {
-private : 
+private :
+    std::string name;
+    std::string type;
 	Point_i&	hitPoint;
+    Point_i     energyPoint;
+    Point_i     attackDamage;
 public :
     ScavTrap(void);
     ScavTrap(const std::string& name);
-	ScavTrap(const std::string& name, Point_i hp, Point_i ep, Point_i ad);
     ScavTrap(const ScavTrap& target);
     ScavTrap& operator=(const ScavTrap& target);
     ~ScavTrap(void);
 
-    void    guardGate(void);
+
+    void        guardGate(void);
+    
+    void        attack(const std::string& target);
+    void        takeDamage(Point_i amount);
+    void        beRepaired(Point_i amount);
+
+    bool        initHitPoint(Point_i amount);
+    bool        initEnergyPoint(Point_i amount);
+    bool        initAttackDamage(Point_i amount);
+    bool        setName(std::string target);
+
+	std::string&    getName(void){ return name; }
+    std::string&    getType(void){ return type; }
+    Point_i&        getHp(void){ return hitPoint; }
+    Point_i&        getEp(void){ return energyPoint; }
+    Point_i&        getAd(void){ return attackDamage; }
 };
 
 #endif

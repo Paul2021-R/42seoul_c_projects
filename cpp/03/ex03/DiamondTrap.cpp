@@ -16,68 +16,94 @@ DiamondTrap::DiamondTrap(void) :
 	ClapTrap(),
 	ScavTrap(),
 	FragTrap(),
-	name(ClapTrap::name),
-	hitPoint(ClapTrap::hitPoint),
-	eneregyPoint(ScavTrap::energyPoint),
-	attackDamage(FragTrap::attackDamage){
-	type.assign("DiamondTrap");
-	ClapTrap::name.append("_clap_name");
+	name("default"),
+	type("DiamondTrap"),
+	hitPoint(FragTrap::getHp()),
+	energyPoint(ScavTrap::getEp()),
+	attackDamage(FragTrap::getAd()){
+	ClapTrap::setName("default_clap_name");
 	std::cout << type << " : Default Constructor operated." << std::endl;
-    printConstructor(type);
+    printConstructor(getName(), getType(), getHp(), getEp(), getAd());
 }
 DiamondTrap::DiamondTrap(std::string name) :
  	ClapTrap(name),
 	ScavTrap(name),
 	FragTrap(name),
 	name(name),
-	hitPoint(ClapTrap::hitPoint),
-	eneregyPoint(ScavTrap::energyPoint),
-	attackDamage(FragTrap::attackDamage) {
-	type.assign("DiamondTrap");
-	ClapTrap::name.append("_clap_name");
+	type("DiamondTrap"),
+	hitPoint(FragTrap::getHp()),
+	energyPoint(ScavTrap::getEp()),
+	attackDamage(FragTrap::getAd()) {
+	name.append("_clap_name");
+	ClapTrap::setName(name);
 	std::cout << type << " : Default Constructor operated." << std::endl;
-    printConstructor(type);
+    printConstructor(getName(), getType(), getHp(), getEp(), getAd());
 }
 DiamondTrap::DiamondTrap(const DiamondTrap& target) :
-	ClapTrap(target.name, target.hitPoint, target.eneregyPoint, target.attackDamage),
-	ScavTrap(target.name, target.hitPoint, target.eneregyPoint, target.attackDamage),
-	FragTrap(target.name, target.hitPoint, target.eneregyPoint, target.attackDamage),
+	ClapTrap(target.name),
+	ScavTrap(target.name),
+	FragTrap(target.name),
 	name(target.name),
-	hitPoint(ClapTrap::hitPoint),
-	eneregyPoint(ScavTrap::energyPoint),
-	attackDamage(FragTrap::attackDamage){
-	type.assign("DiamondTrap");
+	type("DiamondTrap"),
+	hitPoint(FragTrap::getHp()),
+	energyPoint(ScavTrap::getEp()),
+	attackDamage(FragTrap::getAd()) {
 	ClapTrap::name.append("_clap_name");
 	std::cout << type << " : Copy constructor operated" << std::endl;
-    printConstructor(type);
+    printConstructor(getName(), getType(), getHp(), getEp(), getAd());
+}
+DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& target) {
+	name.assign(target.name);
+    hitPoint = target.hitPoint;
+    energyPoint = target.energyPoint;
+    attackDamage = target.attackDamage;
+    std::cout << type << " : Copy Assign operator operated" << std::endl;
+    ClapTrap::printConstructor(getName(), getType(), getHp(), getEp(), getAd());
+    return *this;
 }
 DiamondTrap::~DiamondTrap(void) {
 	std::cout << "DiamondTrap \" " << name << " \" is destroyed" << std::endl;
 }
-DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& target) {
-	name = target.name;
-	std::string temp(target.name);
-	ClapTrap::name.assign(temp.append("_clap_name"));
-	hitPoint = target.hitPoint;
-	eneregyPoint = target.eneregyPoint;
-	attackDamage = target.attackDamage;
-	std::cout << type << " : Copy Assign operator operated" << std::endl;
-	printConstructor(type);
-	return *this;
-}
-void	DiamondTrap::attack(const std::string& target) {
-	ScavTrap::attack(target);
-}
+
 void	DiamondTrap::whoAmI(void) {
-	std::cout << name << " " << ClapTrap::name << std::endl;
+	std::cout << "I am \" " << name << " \"" << " My ClapTrap Name is \"" << ClapTrap::getName() << " \"" << std::endl;
 }
 
-void	DiamondTrap::printConstructor(std::string type) {
-	std::cout << YELLOW;
-	std::cout << "\n=====================================" << std::endl << WHITE;
-	std::cout << type << " : \" " << name << " \" " << std::endl;
-	std::cout << GREEN << "Hit Point : " << hitPoint << std::endl;
-	std::cout << BLUE << "Energy Point : " << energyPoint << std::endl;
-	std::cout << RED << "Attack Damage : " << attackDamage << std::endl;
-	std::cout << YELLOW << "=====================================\n" << WHITE << std::endl;
+void    DiamondTrap::attack(const std::string& target) {
+    ScavTrap::attack(target);
+}
+void    DiamondTrap::takeDamage(Point_i amount) {
+    ClapTrap::takeDamage(amount, getName(), getType(), getHp());
+}
+void    DiamondTrap::beRepaired(Point_i amount) {
+    ClapTrap::beRepaired(amount, getName(), getType(), getHp(), getEp());
+}
+
+bool    DiamondTrap::initHitPoint(Point_i amount) {
+    bool    ret;
+    
+    ret = ClapTrap::initHitPoint(amount, getName(), getType(), getHp());
+    ClapTrap::printConstructor(getName(), getType(), getHp(), getEp(), getAd());
+    return (ret);
+}
+bool    DiamondTrap::initEnergyPoint(Point_i amount) {
+    bool    ret;
+
+    ret = ClapTrap::initEnergyPoint(amount, getName(), getType(), getEp());
+    ClapTrap::printConstructor(getName(), getType(), getHp(), getEp(), getAd());
+    return (ret);
+}
+bool    DiamondTrap::initAttackDamage(Point_i amount) {
+    bool    ret;
+
+    ret = ClapTrap::initAttackDamage(amount, getName(), getType(), getAd());
+    ClapTrap::printConstructor(getName(), getType(), getHp(), getEp(), getAd());
+    return (ret);
+}
+bool    DiamondTrap::setName(std::string target) {
+    bool    ret;
+
+    ret = ClapTrap::setName(target, getName(), getType());
+    ClapTrap::printConstructor(getName(), getType(), getHp(), getEp(), getAd());
+    return (ret);
 }

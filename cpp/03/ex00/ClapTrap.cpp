@@ -120,7 +120,7 @@ void	ClapTrap::takeDamage(Point_i amount, const std::string& name_, const std::s
 	else {
 		if (amount >= hp) { hp = 0; }
 		else { hp -= amount; }
-		printTakeDamage(amount, 0, name_, type_, hp);
+		printTakeDamage(amount, 1, name_, type_, hp);
 	}
 	return ;
 }

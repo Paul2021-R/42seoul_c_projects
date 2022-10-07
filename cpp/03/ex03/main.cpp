@@ -63,6 +63,11 @@ int main(void) {
 	n1.attack("sand bag");
 
 	n1.initAttackDamage(1000);
+
+	n1.guardGate();
+	n1.highFiveGuys();
+	n1.whoAmI();
+
 	n1.setName("Charlee");
 
 	n1.guardGate();

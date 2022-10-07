@@ -120,7 +120,7 @@ void	ClapTrap::takeDamage(Point_i amount, const std::string& name_, const std::s
 	else {
 		if (amount >= hp) { hp = 0; }
 		else { hp -= amount; }
-		printTakeDamage(amount, 0, name_, type_, hp);
+		printTakeDamage(amount, 1, name_, type_, hp);
 	}
 	return ;
 }
@@ -140,10 +140,10 @@ void	ClapTrap::beRepaired(Point_i amount) {
 void	ClapTrap::beRepaired(Point_i amount, const std::string name_, const std::string& type_, Point_i& hp, Point_i& ep) {
 	if (hp == 0) { printBeRepaired(amount, 0, name_, type_); }
 	else if (useEnergy(ep)) {
-		printBeRepaired(amount, 0, name_, type_);
+		printBeRepaired(amount, 1, name_, type_);
 		hp += amount;
 	}
-	else { printBeRepaired(amount, 0, name_, type_); }
+	else { printBeRepaired(amount, 2, name_, type_); }
 	return ;
 }
 
@@ -172,6 +172,7 @@ bool	ClapTrap::initEnergyPoint(Point_i amount) {
 bool	ClapTrap::initEnergyPoint(Point_i amount, const std::string& name_, const std::string& type_, Point_i& ep) {
 	ep = amount;
 	std::cout << "SYSTEM : " << type_ << " : \" " << name_ << " \" set Energy Point : "  << BLUE << amount << WHITE << std::endl;
+
 	return (true);
 }
 

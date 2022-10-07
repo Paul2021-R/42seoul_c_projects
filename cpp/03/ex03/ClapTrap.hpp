@@ -42,7 +42,7 @@ typedef	unsigned int			Point_i;
 
 class ClapTrap 
 {
-private:
+protected:
 	std::string 	name;
 	std::string		type;
 	Point_i			hitPoint;
@@ -164,6 +164,12 @@ public:
 	 */
 	void	printConstructor(std::string type);
 	void	printConstructor(std::string name_, std::string type_, Point_i hp, Point_i ep, Point_i ad) const;
+
+	std::string&    getName(void){ return name; }
+    std::string&    getType(void){ return type; }
+    Point_i&        getHp(void){ return hitPoint; }
+    Point_i&        getEp(void){ return energyPoint; }
+    Point_i&        getAd(void){ return attackDamage; }
 };
 
 # define BLACK "\033[0;30m"

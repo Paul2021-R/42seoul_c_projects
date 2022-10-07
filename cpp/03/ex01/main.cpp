@@ -55,7 +55,7 @@ int main(void) {
 	n1.beRepaired(10);
 
 	// HP forcely recovered/
-	n1.initHitPoint(1);
+	n1.initHitPoint(100);
 	// beRepairing is okay
 	n1.beRepaired(10);
 	n1.attack("sand bag");
