@@ -42,7 +42,7 @@ typedef	unsigned int			Point_i;
 
 class ClapTrap 
 {
-protected:
+private:
 	std::string 	name;
 	std::string		type;
 	Point_i			hitPoint;
@@ -65,24 +65,31 @@ public:
 	 * @return false 에너지 사용 불가 
 	 */
 	bool	useEnergy(void);
+	bool	useEnergy(Point_i& ep);
+
 	/**
 	 * @brief 타겟을 지정된 데미지 만큼 공격하고, 활동한 것 만큼 에너지를 소비한다.
 	 * 
 	 * @param target 
 	 */
 	void	attack(const std::string& target);
+	void	attack(const std::string& target, const std::string name_, const std::string& type_, const Point_i hp, Point_i& ep, const Point_i ad);
+
 	/**
 	 * @brief 지정된 양만큼의 공격을 당한다. 
 	 *
 	 * @param amount 
 	 */
 	void	takeDamage(Point_i amount);
+	void	takeDamage(Point_i amount, const std::string& name_, const std::string& type_, Point_i& hp);
+
 	/**
 	 * @brief 지정된 양 만큼 회복한다. 
 	 *
 	 * @param amount 
 	 */
 	void	beRepaired(Point_i amount);
+	void	beRepaired(Point_i amount, const std::string name_, const std::string& type_, Point_i& hp, Point_i& ep);
 
 	/**
 	 * @brief System 권한, 인자 만큼 객체의 값을 수정한다. 
@@ -116,14 +123,40 @@ public:
 	 * @return false 값 수정 실패
 	 */
 	bool	setName(std::string target);
+
+	/**
+	 * @brief 공격에 대한 출력 파트
+	 * 
+	 * @param target 
+	 * @param code 
+	 */
 	void	printAttack(const std::string& target, const int code);
+	void	printAttack(const std::string& target, const int code, const std::string& name_, const std::string& type_, const Point_i ad);
+
+	/**
+	 * @brief 공격받음 대한 출력 파트
+	 * 
+	 * @param amount 
+	 * @param code 
+	 */
 	void	printTakeDamage(Point_i amount, int code);
+	void	printTakeDamage(Point_i amount, int code, const std::string name_, const std::string type_, const Point_i& hp);
+
+	/**
+	 * @brief 회복 활동에 대한 출력 파트
+	 * 
+	 * @param amount 
+	 * @param code 
+	 */
 	void	printBeRepaired(Point_i amount, int code);
+	void	printBeRepaired(Point_i amount, int code, const std::string& name_, const std::string& type_);
+
 	/**
 	 * @brief 생성자 생성 성공 시 출력할 메시지
 	 *
 	 */
 	void	printConstructor(std::string type);
+	void	printConstructor(std::string name_, std::string type_, Point_i hp, Point_i ep, Point_i ad) const;
 };
 
 # define BLACK "\033[0;30m"
