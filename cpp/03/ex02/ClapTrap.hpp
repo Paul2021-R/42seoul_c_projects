@@ -99,6 +99,8 @@ public:
 	 * @return false 값 수정 실패
 	 */
 	bool	initHitPoint(Point_i amount);
+	bool	initHitPoint(Point_i amount, const std::string& name, const std::string& type_, Point_i& hp);
+
 	/**
 	 * @brief System 권한, 인자 만큼 객체의 값을 수정한다. 
 	 *
@@ -107,6 +109,8 @@ public:
 	 * @return false 값 수정 실패
 	 */
 	bool	initEnergyPoint(Point_i amount);
+	bool	initEnergyPoint(Point_i amount, const std::string& name_, const std::string& type_, Point_i& ep);
+
 	/**
 	 * @brief System 권한, 인자 만큼 객체의 값을 수정한다. 
 	 *
@@ -115,6 +119,8 @@ public:
 	 * @return false 값 수정 실패
 	 */
 	bool	initAttackDamage(Point_i amount);
+	bool	initAttackDamage(Point_i amount, const std::string& name_, const std::string& type_, Point_i& ad);
+
 	/**
 	 * @brief System 권한, string 클래스 인자로 수정된다.
 	 *
@@ -123,6 +129,7 @@ public:
 	 * @return false 값 수정 실패
 	 */
 	bool	setName(std::string target);
+	bool	setName(std::string target, std::string& name_, const std::string& type_);
 
 	/**
 	 * @brief 공격에 대한 출력 파트

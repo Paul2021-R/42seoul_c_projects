@@ -37,15 +37,28 @@ ex00 에서 해야할 일
 */
 
 class ScavTrap : public ClapTrap {
-private : 
+private :
+    std::string name;
+    std::string type;
 	Point_i&	hitPoint;
+    Point_i     energyPoint;
+    Point_i     attackDamage;
 public :
     ScavTrap(void);
     ScavTrap(const std::string& name);
     ScavTrap(const ScavTrap& target);
     ScavTrap& operator=(const ScavTrap& target);
     ~ScavTrap(void);
-    void    guardGate(void);
+
+
+    void        guardGate(void);
+    void        attack(const std::string& target);
+
+    std::string&    getName(void);
+    std::string&    getType(void);
+    Point_i&        getHp(void);
+    Point_i&        getEp(void);
+    Point_i&        getAd(void);
 };
 
 #endif

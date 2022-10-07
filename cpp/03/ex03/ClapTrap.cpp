@@ -156,10 +156,22 @@ bool	ClapTrap::initHitPoint(Point_i amount) {
 	return (true);
 }
 
+bool	ClapTrap::initHitPoint(Point_i amount, const std::string& name_, const std::string& type_, Point_i& hp) {
+	hp = amount;
+	std::cout << "SYSTEM : " << type_ << " : \" " << name_ << " \" set Hit Point : " << GREEN  << amount << WHITE  << std::endl;
+	return (true);
+}
+
 bool	ClapTrap::initEnergyPoint(Point_i amount) {
 	energyPoint = amount;
 	std::cout << "SYSTEM : " << type << " : \" " << name << " \" set Energy Point : "  << BLUE << amount << WHITE << std::endl;
 	printConstructor(type);
+	return (true);
+}
+
+bool	ClapTrap::initEnergyPoint(Point_i amount, const std::string& name_, const std::string& type_, Point_i& ep) {
+	ep = amount;
+	std::cout << "SYSTEM : " << type_ << " : \" " << name_ << " \" set Energy Point : "  << BLUE << amount << WHITE << std::endl;
 	return (true);
 }
 
@@ -170,13 +182,27 @@ bool	ClapTrap::initAttackDamage(Point_i amount) {
 	return (true);
 }
 
-bool	ClapTrap::setName(std::string target) {
-	std::cout << "SYSTEM : " << type << " : \" " << name << " \" set his name : \" " << YELLOW << target << WHITE << " \" " << std::endl;
-	printConstructor(type);
-	name.clear();
-	name.assign(target);
+bool	ClapTrap::initAttackDamage(Point_i amount, const std::string& name_, const std::string& type_, Point_i& ad) {
+	ad = amount;
+	std::cout << "SYSTEM : " << type_ << " : \" " << name_ << " \" set Attack Damage : " << RED << amount << WHITE << std::endl;
 	return (true);
 }
+
+bool	ClapTrap::setName(std::string target) {
+	std::cout << "SYSTEM : " << type << " : \" " << name << " \" set his name : \" " << YELLOW << target << WHITE << " \" " << std::endl;
+	name.clear();
+	name.assign(target);
+	printConstructor(type);
+	return (true);
+}
+
+bool	ClapTrap::setName(std::string target, std::string& name_, const std::string& type_) {
+	std::cout << "SYSTEM : " << type_ << " : \" " << name_ << " \" set his name : \" " << YELLOW << target << WHITE << " \" " << std::endl;
+	name_.clear();
+	name_.assign(target);
+	return (true);
+}
+
 
 /////////////////////////////////////////////////////
 
