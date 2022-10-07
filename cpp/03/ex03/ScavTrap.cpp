@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:15:47 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/07 01:30:21 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/08 02:17:25 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ ScavTrap::~ScavTrap(void) {
 void    ScavTrap::guardGate(void) {
     std::cout << PURPLE << "<<< " << type << "'s Guard Gate Mode >>>" << std::endl;
     ClapTrap::printConstructor(getName(), getType(), getHp(), getEp(), getAd());
+}
+
+void    ScavTrap::guardGate(std::string& name_, std::string& type_, Point_i& hp, Point_i& ep, Point_i& ad) {
+    std::cout << PURPLE << "<<< " << type_ << "'s Guard Gate Mode >>>" << std::endl;
+    ClapTrap::printConstructor(name_, type_, hp, ep, ad);
 }
 
 void        ScavTrap::attack(const std::string& target) {

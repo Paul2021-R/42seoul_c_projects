@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:15:47 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/07 01:37:42 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/08 02:20:23 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ FragTrap::~FragTrap(void) {
 
 void    FragTrap::highFiveGuys(void) {
     std::cout << type << " \" " << name << " \" wanna make a high five" << std::endl;
+}
+
+void    FragTrap::highFiveGuys(std::string& name_, std::string& type_) {
+    std::cout << type_ << " \" " << name_ << " \" wanna make a high five" << std::endl;
 }
 
 void    FragTrap::attack(const std::string& target) {

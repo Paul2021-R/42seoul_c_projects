@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:07:09 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/07 01:34:32 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/08 02:20:34 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ public :
     ~FragTrap(void);
 
     void        highFiveGuys(void);
+	void		highFiveGuys(std::string& name_, std::string& type_);
 
     void        attack(const std::string& target);
     void        takeDamage(Point_i amount);

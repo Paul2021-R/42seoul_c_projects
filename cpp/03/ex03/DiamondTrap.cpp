@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 01:48:28 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/07 02:40:57 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/08 02:22:16 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,14 @@ DiamondTrap::~DiamondTrap(void) {
 
 void	DiamondTrap::whoAmI(void) {
 	std::cout << "I am \" " << name << " \"" << " My ClapTrap Name is \"" << ClapTrap::getName() << " \"" << std::endl;
+}
+
+void	DiamondTrap::guardGate(void) {
+	ScavTrap::guardGate(getName(), getType(), getHp(), getEp(), getAd());
+}
+
+void	DiamondTrap::highFiveGuys(void) {
+	FragTrap::highFiveGuys(getName(), getType());
 }
 
 void    DiamondTrap::attack(const std::string& target) {

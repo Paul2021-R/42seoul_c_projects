@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 01:48:00 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/07 02:44:44 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/08 02:21:41 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ class DiamondTrap : virtual public ScavTrap, virtual public FragTrap
 	DiamondTrap&	operator=(const DiamondTrap& target);
 
 	void		whoAmI(void);
+	void		guardGate(void);
+	void		highFiveGuys(void);
+
     void        attack(const std::string& target);
     void        takeDamage(Point_i amount);
     void        beRepaired(Point_i amount);

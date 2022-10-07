@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:07:09 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/07 01:31:41 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/08 02:17:32 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ public :
 
 
     void        guardGate(void);
+	void		guardGate(std::string& name_, std::string& type_, Point_i& hp, Point_i& ep, Point_i& ad);
     
     void        attack(const std::string& target);
     void        takeDamage(Point_i amount);
