@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   animal.hpp                                         :+:      :+:    :+:   */
+/*   derived.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 09:32:52 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/12 15:22:12 by haryu            ###   ########.fr       */
+/*   Created: 2022/10/12 15:19:06 by haryu             #+#    #+#             */
+/*   Updated: 2022/10/12 15:34:37 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Animal_hpp
-#define Animal_hpp
+#ifndef derived_hpp
+#define derived_hpp
 
 #include <iostream>
 #include <string>
+#include "Animal.hpp"
 
-class Animal {
-protected:
-    std::string type;        
+
+class Dog : public Animal {
 public:
-    Animal(void);
-	Animal(const std::string& target);
+    Dog(void);
+    Dog(const Dog& target);
+    ~Dog(void);
+    Dog&	operator=(const Dog& target);
 
-    Animal(const Animal& target);
-    virtual ~Animal(void);
-    Animal&	operator=(const Animal& target);
-    
-    virtual void        		makeSound(void) const;
-    const std::string&	getType(void) const;
+    void	makeSound(void) const ;
+};
+
+class Cat : public Animal { 
+public:
+    Cat(void);
+    Cat(const Cat& target);
+    ~Cat(void);
+    Cat&	operator=(const Cat& target);
+
+	void    makeSound(void) const;
 };
 
 #endif
