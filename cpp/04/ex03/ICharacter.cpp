@@ -6,11 +6,11 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 03:10:46 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/14 04:14:30 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/14 15:16:34 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ICharacter.hpp"
+#include "master.hpp"
 
 Character::Character(void): name("NULL"){
 	slot = new AMateria*[4];
@@ -47,32 +47,35 @@ Character::~Character(void){
 	std::cout << name << " is deleted." << std::endl;
 	
 	int idx = 0;
-	while(slot[idx] != NULL) 
+	while(idx < slotNum) 
 		delete slot[idx++];
 	delete[] slot;
-	delete this;
 }
 Character&	Character::operator=(const Character& target){
 	Character* temp = new Character(target.getName());
-	slot = new AMateria*[4];
+	temp->slot = new AMateria*[4];
 
 	int idx = 0;
 	while(target.slot[idx] != NULL) {
-		slot[idx] = target.slot[idx]->clone();
+		temp->slot[idx] = target.slot[idx]->clone();
 		idx++;
 	}
-	slotNum = target.slotNum;
+	temp->slotNum = target.slotNum;
 	std::cout << name << " is created. : Copy Assign Operator" << std::endl;
 	printSlot();
-	return *this;
+	return *temp;
 }
 
 std::string const & Character::getName() const { return name; }
 
 void Character::equip(AMateria* M) {
-	if (M == NULL) return ;
+	if (M == NULL) {
+		std::cout << name << " : this is fake!" << std::endl;
+		return ;
+	} 
 	if (slotNum == 4) {
 		std::cout << name << " has full slot of Materia."  << std::endl;
+		delete M;
 		return ;
 	}
 

@@ -6,16 +6,17 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 03:47:13 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/14 05:02:08 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/14 15:13:01 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "IMateriaSource.hpp"
+#include "master.hpp"
 
 MateriaSource::MateriaSource(void) {
 	slot = new AMateria*[4];
 	for (int idx = 0; idx < 4; idx++) slot[idx] = NULL;
 	slotNum = 0;
+	std::cout << "MateriaSource is ready : Deafualt Cosntructor" << std::endl;
 }
 MateriaSource::MateriaSource(const MateriaSource& target) {
 	slot = new AMateria*[4];
@@ -31,6 +32,7 @@ MateriaSource::MateriaSource(const MateriaSource& target) {
 		slotNum++;
 		idx++;
 	}
+	std::cout << "MateriaSource is ready : Deafualt Cosntructor" << std::endl;
 }
 MateriaSource& MateriaSource::operator=(const MateriaSource& target) {
 	MateriaSource* temp = new MateriaSource;
@@ -52,28 +54,47 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& target) {
 
 MateriaSource::~MateriaSource(void) {
 	int idx = 0;
-	while (slot[idx] != NULL) {
+	while (idx < slotNum) {
 		delete slot[idx++];
 	}
 	delete[] slot;
-	delete this;
 }
 
 void MateriaSource::learnMateria(AMateria* M) {
 	int idx = 0;
 
 	while (idx < slotNum) idx++;
-	if (idx == 4 && slotNum == 4)
+	if (slotNum == 4)
 		return ;
-	slot[idx] = M->clone();
+	slot[idx] = M;
 	slotNum++;
+	printMateriaSlot();
 }
 AMateria* MateriaSource::createMateria(std::string const & type) {
 	int idx = 0;
 
-	while (idx < 4 && slot[idx] != NULL) {
-		if (slot[idx]->getType().compare(type) == 0)
+	while (idx < 4) {
+		if (slot[idx] != NULL && slot[idx]->getType().compare(type) == 0)
 			return (slot[idx]->clone());
+		else if (slot[idx] == NULL){
+			std::cout << "Materia creation is failed" << std::endl;
+			return (NULL);
+		}
 		idx++;
 	}
+	std::cout << "Slot is full." << std::endl;
+	return (NULL);
+}
+
+void MateriaSource::printMateriaSlot(void) {
+	std::cout << "MateriaSource Slot Status" << std::endl;
+	std::cout << "===========================" << std::endl;
+	for (int idx = 0; idx < 4 ; idx++) {
+		if (slot[idx] != NULL) {
+			std::cout << "[ " << idx << " ] " << slot[idx]->getType() << std::endl;
+		}
+		else
+			std::cout << "[ " << idx << " ] " << "empty" << std::endl;
+	}
+	std::cout << "===========================" << std::endl;
 }

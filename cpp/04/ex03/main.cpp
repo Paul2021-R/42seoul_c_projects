@@ -6,15 +6,12 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 02:19:28 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/14 05:02:54 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/14 15:21:05 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
-#include "IMateriaSource.hpp"
+#include "master.hpp"
+// #include "unistd.h"
 
 int main(void) {
 	IMateriaSource* src = new MateriaSource();
@@ -28,11 +25,23 @@ int main(void) {
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
 
 	ICharacter* bob = new Character("bob");
 
 	me->use(0, *bob);
 	me->use(1, *bob);
+
+	// system("leaks ex03");
 
 	delete bob;
 	delete me;

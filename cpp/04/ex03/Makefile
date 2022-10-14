@@ -26,6 +26,11 @@ fclean				:
 					$(info $(alret)====================  fclean $(NAME)  ====================$(reset))
 					rm -rf $(NAME)
 					rm -rf $(SRCS_DIR)*.o
+					rm -rf $(NAME).dSYM
+
+debug				:
+					$(info $(alret)====================  Debug $(NAME)  ====================$(reset))
+					$(CC) $(CFLAG) -g3 -fsanitize=address -o $(NAME) $(OBJS)
 
 re					: fclean all
 					$(info $(green)====================  remake $(NAME)  ====================$(reset))
