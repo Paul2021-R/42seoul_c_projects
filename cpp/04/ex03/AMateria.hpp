@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 02:20:47 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/15 11:50:39 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/15 13:14:25 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ public:
 								~Ice(void);
 
 	const std::string&			getType(void) const;
-	AMateria* 			å	å	clone(void) const;
+	AMateria* 					clone(void) const;
 	void 						use(ICharacter& target);
 };
 
