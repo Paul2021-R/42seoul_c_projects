@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 09:32:52 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/12 17:13:45 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/15 11:46:40 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ public:
     Animal&	operator=(const Animal& target);
     
     virtual void        		makeSound(void) const;
-    const std::string&	getType(void) const;
-	virtual void	setIdeas(const std::string& idea) = 0;
-	virtual void	setIdeas(const std::string& idea, int num) = 0;
-	virtual void	showIdeas(void) = 0;
-	virtual std::string&	getIdea(int num) = 0;
+    const std::string&      	getType(void) const;
+	virtual void            	setIdeas(const std::string& idea) = 0;
+	virtual void            	setIdeas(const std::string& idea, int num) = 0;
+	virtual void	            showIdeas(void) = 0;
+	virtual std::string&    	getIdea(int num) = 0;
 };
 
 #endif
