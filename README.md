@@ -56,3 +56,5 @@ z 2021-11-08 Before start, prepare study of C.
 - 2022-10-04 CPP Module 02 finished.
 - 2022-10-07 CPP Module 03 finished.
 - 2022-10-08 CPP Module 04 start.
+- 2022-10-15 CPP Module 04 finished.
+- 2022-10-15 CPP Module 05 start.

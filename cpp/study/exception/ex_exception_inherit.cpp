@@ -3,12 +3,12 @@
 
 class Parent : public std::exception {
 public:
-    virtual const char* what(void) const noexcept override { return "Parent!\n"; }
+    virtual const char* what(void) const _NOEXCEPT { return "Parent!\n"; }
 };
 
 class Child : public Parent {
 public:
-    const char* what() const noexcept override { return "Child\n"; }
+    const char* what() const _NOEXCEPT { return "Child\n"; }
 };
 
 int func(int c) {
@@ -26,11 +26,11 @@ int main(void) {
 
     try {
         func(c);
-    } catch (Parent& p) {
-        std::cout << "Parent Catch!" << std::endl;
-        std::cout << p.what();
-    } catch (Child& c) {
+    } catch (const Child & c) {
         std::cout << "Child Catch!" << std::endl;
         std::cout << c.what();
-    }
+    } catch (const Parent & p) {
+    	std::cout << "Parent Catch!" << std::endl;
+        std::cout << p.what();
+	}
 }
