@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:13:43 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/12 17:01:28 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/15 11:47:55 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ public:
 	Brain(void);
 	Brain(const Brain& target);
 	~Brain(void);
-	Brain&	operator=(const Brain& target);
-	void setIdeas(const std::string& str);
-	void setIdeas(const std::string& str, int num);
-	std::string& getIdeas(int num);
+	Brain&			operator=(const Brain& target);
+	void 			setIdeas(const std::string& str);
+	void			setIdeas(const std::string& str, int num);
+	std::string&	getIdeas(int num);
 };
 
 #endif

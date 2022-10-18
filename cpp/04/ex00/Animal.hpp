@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   animal.hpp                                         :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 09:32:52 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/12 15:22:12 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/15 11:46:13 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
     Animal&	operator=(const Animal& target);
     
     virtual void        		makeSound(void) const;
-    const std::string&	getType(void) const;
+    const std::string&      	getType(void) const;
 };
 
 #endif
