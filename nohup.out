@@ -1,0 +1,3 @@
+[2022-10-18T02:48:08.999Z] info  code-server 4.7.1 207b6ffc90cfc2a6bd2d4b64bf13bf639287f0c0
+[2022-10-18T02:48:09.000Z] info  Using user-data-dir ~/.local/share/code-server
+[2022-10-18T02:48:09.159Z] error listen EADDRINUSE: address already in use 125.133.169.17:3000
