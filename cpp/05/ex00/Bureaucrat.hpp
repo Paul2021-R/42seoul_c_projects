@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 00:10:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/19 00:30:32 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/19 13:20:18 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,41 @@ class Bureaucrat {
 private:
 	const std::string			name;
 	Grade						grade;
+	void						tryGradeIsOk(void);
 public:
+								Bureaucrat(void);
 								Bureaucrat(const std::string& name, Grade grade);
 								Bureaucrat(const Bureaucrat& target);
-								~Bureaucrat(void);
+	virtual						~Bureaucrat(void);
 	Bureaucrat&					operator=(const Bureaucrat& target);
 
-	const std::string&			getName(void) const;
-	const Grade&				getGrade(void);
-	bool						setName(std::string& value);
-	bool						setGrade(Grade value);
+	std::string					getName(void) const;
+	Grade						getGrade(void) const;
 
-	std::exception&				GradeTooHighException(void); // 고민 필요함. 어서 어떻게 호출 될  것인가?
-	std::exception&				GradeTooLowException(void); // 고민 필요함. 어서 어떻게 호출 될  것인가?
+	void						setGrade(Grade value);
+
+	void						increaseGrade(Grade value);
+	void						increaseGrade(void);
+	void						decreaseGrade(Grade value);
+	void						decreaseGrade(void);
+
+	/**
+	 * @brief Construct a new Grade Too High Exception object, exception 처리를 위한 예외 객체 설정
+	 * 
+	 */
+	class GradeTooHighException : public std::exception {
+	public:
+		virtual const char*				what(void) const throw();		
+	};
+
+	/**
+	 * @brief Construct a new Grade Too Low Exception object, exception 처리를 위한 예외 객체 설정
+	 * 
+	 */
+	class GradeTooLowException : public std::exception {
+	public:
+		virtual const char*				what(void) const throw();
+	};
 };
 
 std::ostream& operator<<(std::ostream& s, const Bureaucrat& target);
