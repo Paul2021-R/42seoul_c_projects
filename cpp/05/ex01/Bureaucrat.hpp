@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 00:10:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/19 19:27:02 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/19 21:06:39 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef unsigned int			Grade;
 # define GRADE_LOW "Grade setting is too low. : "
 # define GRADE_CHANGE "Grade is changed : "
 
+class Form;
+
 class Bureaucrat {
 public:
 								Bureaucrat(void);
@@ -39,7 +41,7 @@ public:
 
 	void						increaseGrade(void);
 	void						decreaseGrade(void);
-
+	//void						signForm(Form& paper);
 
 private:
 	const std::string			name;

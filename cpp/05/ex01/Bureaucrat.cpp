@@ -6,28 +6,11 @@
 /*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 00:28:55 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/19 19:40:02 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/19 21:24:00 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
-void    Bureaucrat::tryGradeIsOk(void) {
-    if (grade < 1)
-        throw GradeTooHighException();
-    else if (grade > 150)
-        throw GradeTooLowException();
-    return ;
-}
-
-void    Bureaucrat::printExceptError(GradeTooLowException& e) {
-    std::cout << GRADE_HIGH << name << std::endl;
-    std::cout << e.what() << name << std::endl;
-}
-void    Bureaucrat::printExceptError(GradeTooHighException& e) {
-    std::cout << GRADE_LOW  << name << std::endl;
-    std::cout << e.what() << name << std::endl;
-}
 
 /* ************************************************************************** */
 
@@ -76,8 +59,27 @@ void    Bureaucrat::setGrade(Grade value) {
     std::cout << GRADE_CHANGE << name << " : " << temp << " => " << grade << std::endl;
 }
 
+/* ************************************************************************** */
+
 void    Bureaucrat::increaseGrade(void){ setGrade(getGrade() - 1); }
 void	Bureaucrat::decreaseGrade(void){ setGrade(getGrade() + 1); }
+
+void    Bureaucrat::tryGradeIsOk(void) {
+    if (grade < 1)
+        throw GradeTooHighException();
+    else if (grade > 150)
+        throw GradeTooLowException();
+    return ;
+}
+
+void    Bureaucrat::printExceptError(GradeTooLowException& e) {
+    std::cout << GRADE_HIGH << name << std::endl;
+    std::cout << e.what() << name << std::endl;
+}
+void    Bureaucrat::printExceptError(GradeTooHighException& e) {
+    std::cout << GRADE_LOW  << name << std::endl;
+    std::cout << e.what() << name << std::endl;
+}
 
 std::ostream&   operator<<(std::ostream& s, const Bureaucrat& target) {
     std::cout << target.getName() << " [ " << target.getGrade() << " ] ";
