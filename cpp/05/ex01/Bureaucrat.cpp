@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 00:28:55 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/19 21:24:00 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/20 01:35:24 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 /* ************************************************************************** */
 
@@ -72,16 +73,33 @@ void    Bureaucrat::tryGradeIsOk(void) {
     return ;
 }
 
-void    Bureaucrat::printExceptError(GradeTooLowException& e) {
-    std::cout << GRADE_HIGH << name << std::endl;
-    std::cout << e.what() << name << std::endl;
-}
 void    Bureaucrat::printExceptError(GradeTooHighException& e) {
-    std::cout << GRADE_LOW  << name << std::endl;
     std::cout << e.what() << name << std::endl;
+    std::cout << GRADE_HIGH << name << std::endl;
+}
+void    Bureaucrat::printExceptError(GradeTooLowException& e) {
+    std::cout << e.what() << name << std::endl;
+    std::cout << GRADE_LOW  << name << std::endl;
 }
 
 std::ostream&   operator<<(std::ostream& s, const Bureaucrat& target) {
     std::cout << target.getName() << " [ " << target.getGrade() << " ] ";
     return s;
+}
+
+void	Bureaucrat::signForm(Form& paper) {
+	if (paper.getSignOrNot() == true) {
+		std::cout << name << " ouldn't sign : " << paper.getName() << std::endl;
+		std::cout << paper.getName() << " is already signed." << std::endl;
+		return ;
+	}
+	paper.beSigned(*this);
+	if (paper.getSignOrNot() == true) {
+		std::cout << name << " signed : " << paper.getName() << std::endl;
+	}
+	else {
+		std::cout << name << " couldn't sign : " << paper.getName() << std::endl;
+		std::cout << "reason : " << name << " doesn't have enough grade : " << " [Form : " << paper.getGrade("sign") << " / Grade : " << getGrade() << "] " << std::endl;
+	}
+	return ;
 }

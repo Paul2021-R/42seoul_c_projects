@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 00:28:55 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/19 19:40:02 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/20 01:31:53 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void    Bureaucrat::tryGradeIsOk(void) {
     return ;
 }
 
-void    Bureaucrat::printExceptError(GradeTooLowException& e) {
+void    Bureaucrat::printExceptError(GradeTooHighException& e) {
     std::cout << GRADE_HIGH << name << std::endl;
     std::cout << e.what() << name << std::endl;
 }
-void    Bureaucrat::printExceptError(GradeTooHighException& e) {
+void    Bureaucrat::printExceptError(GradeTooLowException& e) {
     std::cout << GRADE_LOW  << name << std::endl;
     std::cout << e.what() << name << std::endl;
 }

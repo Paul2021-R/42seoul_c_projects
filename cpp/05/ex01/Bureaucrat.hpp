@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 00:10:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/19 21:06:39 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/20 01:13:26 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ public:
 
 	void						increaseGrade(void);
 	void						decreaseGrade(void);
-	//void						signForm(Form& paper);
+	void						signForm(Form& paper);
 
 private:
 	const std::string			name;
