@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 00:10:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/20 01:13:26 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/21 09:21:26 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ public:
 	Grade						getGrade(void) const;
 
 	void						setGrade(Grade value);
-
 	void						increaseGrade(void);
 	void						decreaseGrade(void);
+
 	void						signForm(Form& paper);
 
 private:

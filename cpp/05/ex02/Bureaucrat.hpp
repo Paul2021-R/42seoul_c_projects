@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 00:10:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/21 02:51:19 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/21 09:21:58 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ public:
 	void						decreaseGrade(void);
 
 	void						signForm(Form& paper);
-	// 구현 대상
-	//void						executeForm(Form const & form);
+	void						executeForm(Form const & form);
 private:
 	const std::string			name;
 	Grade						grade;
