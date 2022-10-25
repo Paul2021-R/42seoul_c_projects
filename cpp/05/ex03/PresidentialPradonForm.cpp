@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 02:13:54 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 21:39:44 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/25 22:47:37 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	PresidentialPradonForm::execute(const Bureaucrat & Executor) const {
 	}
 	Form *temp = (PresidentialPradonForm *)this;
 	temp->beSigned(Executor);
-	std::cout << target << "has been pardoned by Zaphod Beeblebrox. : " << Executor.getName() << std::endl;
+	std::cout << target << " has been pardoned by Zaphod Beeblebrox. : " << Executor.getName() << std::endl;
 }
 
 /* ************************************************************************** */

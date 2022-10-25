@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:52:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 22:45:33 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/25 22:48:54 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,11 @@ void	ShrubberyCrationForm::makeShruberry(const Bureaucrat & Executor) const {
 	berry.open(filename.c_str(), std::ofstream::out | std::ofstream::trunc);
 
 	tree.open("ascii-art.txt", std::ifstream::in);
+	berry << filename;
 	while (true) {
 		char *buffer = new char [101];
-		buffer[100] = 0;
 		tree.read(buffer, 100);
+		buffer[100] = 0;
 		berry << buffer;
 		delete[] buffer;
 		if (tree.eof())

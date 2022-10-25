@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPradonForm.cpp                         :+:      :+:    :+:   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 02:13:54 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 21:39:44 by haryu            ###   ########.fr       */
+/*   Created: 2022/10/21 02:30:27 by haryu             #+#    #+#             */
+/*   Updated: 2022/10/25 22:47:09 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PresidentialPradonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 // OCCF
-PresidentialPradonForm::PresidentialPradonForm(void):
-	Form("PresidentialPardon", 25, 5), target("none") {}
+RobotomyRequestForm::RobotomyRequestForm(void):
+	Form("RobotomyRequest", 72, 45), target("none") {}
 
-PresidentialPradonForm::PresidentialPradonForm(const std::string& target): 
-	Form("PresidentialPardon", 25, 5), target(target) {}
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target):
+	Form("RobotomyRequest", 72, 45), target(target) {}
 
-PresidentialPradonForm::PresidentialPradonForm(const PresidentialPradonForm& target):
-	Form("PresidentialPardon", 25, 5), target(target.target) {} 
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& target):
+	Form("RobotomyRequest", 72, 45), target(target.target) {}
 
-PresidentialPradonForm::~PresidentialPradonForm(void) {}
+RobotomyRequestForm::~RobotomyRequestForm(void) {}
 
-PresidentialPradonForm	&PresidentialPradonForm::operator=(const PresidentialPradonForm& target) {
+RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm& target) {
 	this->target = target.target;
 	return *this;
 }
@@ -32,7 +32,7 @@ PresidentialPradonForm	&PresidentialPradonForm::operator=(const PresidentialPrad
 /* ************************************************************************** */
 // execute
 
-void	PresidentialPradonForm::execute(const Bureaucrat & Executor) const {
+void	RobotomyRequestForm::execute(const Bureaucrat & Executor) const {
 	if (this->getSignOrNot() == true) {
 		std::cout << "This form is already signed. : " << target << std::endl;
 		return ;
@@ -43,15 +43,24 @@ void	PresidentialPradonForm::execute(const Bureaucrat & Executor) const {
 		printExceptError(e);
 		return ;
 	}
-	Form *temp = (PresidentialPradonForm *)this;
+	std::cout << "Drrrr...Drrrrr..Drrrr!!!!" << std::endl;
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<int> dis(0, 1);
+
+	if (dis(gen) == 0) {
+		std::cout << "Robotomizing is failed : " << target << std::endl;
+		return ;
+	}
+	Form *temp = (RobotomyRequestForm *)this;
 	temp->beSigned(Executor);
-	std::cout << target << "has been pardoned by Zaphod Beeblebrox. : " << Executor.getName() << std::endl;
+	std::cout << target << " has been Robotomized : " << Executor.getName() << std::endl;
 }
 
 /* ************************************************************************** */
 // exception
 
-void	PresidentialPradonForm::tryGradeIsOk(const Bureaucrat& Executor) const {
+void	RobotomyRequestForm::tryGradeIsOk(const Bureaucrat& Executor) const {
 	if (getGrade(0) < Executor.getGrade()) {
 		std::cout << "Not enough grade to sign this form. : " << Executor.getName() << std::endl;
 		throw GradeTooLowException();
@@ -63,8 +72,8 @@ void	PresidentialPradonForm::tryGradeIsOk(const Bureaucrat& Executor) const {
 	return ;
 }
 
-const char* PresidentialPradonForm::GradeTooLowException::what() const throw() { return (EXCEPT_FAILED); }
+const char* RobotomyRequestForm::GradeTooLowException::what() const throw() { return (EXCEPT_FAILED); }
 
-void    PresidentialPradonForm::printExceptError(GradeTooLowException& e) const {
+void    RobotomyRequestForm::printExceptError(GradeTooLowException& e) const {
     std::cout << e.what() << *this << std::endl;
 }
