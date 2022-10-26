@@ -11,8 +11,7 @@ For that reason, It doesn't have any file which contains the intellectual proper
 
 ## time line
 
-z 2021-11-08 Before start, prepare study of C.
-
+- 2021-11-08 Before start, prepare study of C.
 - 2021-11-09 Start Libft Subjects
 - 2021-11-25 Finish Libft Subjects and Peer evaluations.
   Result : 'cheating' -> Using internal funcs(calloc) except ft_calloc.
@@ -60,3 +59,4 @@ z 2021-11-08 Before start, prepare study of C.
 - 2022-10-15 CPP Module 05 start.
 - 2022-10-25 CPP Module 05 finished.
 - 2022-10-25 CPP Module 06 start.
+- 2022-10-26 CPP Module 05 failed.

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 00:10:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/21 09:21:26 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/26 18:01:00 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include <iostream>
 # include <string>
-# include <stdexcept>
+# include <exception>
+# include "Form.hpp"
 
 typedef unsigned int			Grade;
 
@@ -37,17 +38,11 @@ public:
 	std::string					getName(void) const;
 	Grade						getGrade(void) const;
 
-	void						setGrade(Grade value);
 	void						increaseGrade(void);
 	void						decreaseGrade(void);
-
 	void						signForm(Form& paper);
-
-private:
-	const std::string			name;
-	Grade						grade;
-	void						tryGradeIsOk(void);
-
+	
+protected:
 	class GradeTooHighException : public std::exception {
 	public:
 		virtual const char*				what(void) const throw();		
@@ -56,8 +51,14 @@ private:
 	public:
 		virtual const char*				what(void) const throw();
 	};
+	void						tryGradeIsOk(void);
 	void						printExceptError(GradeTooLowException& e);
 	void						printExceptError(GradeTooHighException& e);
+	void						setGrade(Grade value);
+
+private:
+	const std::string			name;
+	Grade						grade;
 };
 
 std::ostream& operator<<(std::ostream& s, const Bureaucrat& target);

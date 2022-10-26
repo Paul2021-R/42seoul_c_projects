@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 00:10:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/19 19:27:02 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/26 17:58:14 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <iostream>
 # include <string>
-# include <stdexcept>
+# include <exception>
 
 typedef unsigned int			Grade;
 
@@ -23,6 +23,8 @@ typedef unsigned int			Grade;
 # define GRADE_HIGH "Grade setting is too high. : "
 # define GRADE_LOW "Grade setting is too low. : "
 # define GRADE_CHANGE "Grade is changed : "
+
+class Form;
 
 class Bureaucrat {
 public:
@@ -35,17 +37,10 @@ public:
 	std::string					getName(void) const;
 	Grade						getGrade(void) const;
 
-	void						setGrade(Grade value);
-
 	void						increaseGrade(void);
 	void						decreaseGrade(void);
-
-
-private:
-	const std::string			name;
-	Grade						grade;
-	void						tryGradeIsOk(void);
-
+	
+protected:
 	class GradeTooHighException : public std::exception {
 	public:
 		virtual const char*				what(void) const throw();		
@@ -54,8 +49,14 @@ private:
 	public:
 		virtual const char*				what(void) const throw();
 	};
+	void						tryGradeIsOk(void);
 	void						printExceptError(GradeTooLowException& e);
 	void						printExceptError(GradeTooHighException& e);
+	void						setGrade(Grade value);
+
+private:
+	const std::string			name;
+	Grade						grade;
 };
 
 std::ostream& operator<<(std::ostream& s, const Bureaucrat& target);

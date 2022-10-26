@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 21:06:48 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/21 09:18:53 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/26 18:01:57 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
+/* ************************************************************************** */
 // OCCF
 Form::Form(void): name("default"), gradeForSign(0), gradeForEx(0), blank(0) {}
 Form::Form(const std::string& name, Grade sign, Grade ex): 
@@ -41,7 +42,6 @@ Form    &Form::operator=(const Form& target) {
 }
 
 /* ************************************************************************** */
-
 // getter
 std::string Form::getName(void) const { return name; }
 

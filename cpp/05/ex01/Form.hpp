@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 19:43:10 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 18:17:17 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/26 18:02:46 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,8 @@ public:
 	bool							getSignOrNot(void) const;
     
     void                            beSigned(const Bureaucrat& Charger);
-    
-private:
-    const std::string               name;
-    const Grade                     gradeForSign;
-    const Grade                     gradeForEx;
-    bool                            blank;
-    
+
+protected:
     void                            tryGradeIsOk(const Grade& value);
     class GradeTooHighException : public std::exception {
     public:
@@ -46,6 +41,13 @@ private:
     };
     void				    		printExceptError(GradeTooLowException& e);
     void				    		printExceptError(GradeTooHighException& e);
+
+private:
+    const std::string               name;
+    const Grade                     gradeForSign;
+    const Grade                     gradeForEx;
+    bool                            blank;
+    
 };
 
 std::ostream& operator<<(std::ostream& s, const Form& target);
