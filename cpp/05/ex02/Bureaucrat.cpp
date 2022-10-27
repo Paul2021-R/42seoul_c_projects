@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 00:28:55 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 19:33:30 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 00:39:45 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,36 +66,45 @@ void    Bureaucrat::setGrade(Grade value) {
         grade = 150;
         return ;
     }
-    std::cout << GRADE_CHANGE << name << " : " << temp << " => " << grade << std::endl;
+    std::cout << "[Bureaucrat] " << GRADE_CHANGE << name << " : " << temp << " => " << grade << std::endl;
 }
 
 /* ************************************************************************** */
 // required functions
 
-void	Bureaucrat::signForm(Form& paper) {
-	if (paper.getSignOrNot() == true) {
-		std::cout << name << " ouldn't sign : " << paper.getName() << std::endl;
-		std::cout << paper.getName() << " is already signed." << std::endl;
-		return ;
-	}
+void	Bureaucrat::signForm(Form & paper) {
 	paper.beSigned(*this);
 	if (paper.getSignOrNot() == true) {
-		std::cout << name << " signed : " << paper.getName() << std::endl;
+		std::cout << "[Bureaucrat] " << name << " signed : " << paper.getName() << std::endl;
 	}
 	else {
-		std::cout << name << " couldn't sign : " << paper.getName() << std::endl;
-		std::cout << "reason : " << name << " doesn't have enough grade : " << " [Form : " << paper.getGrade(0) << " / Grade : " << getGrade() << "] " << std::endl;
+		std::cout << "[Bureaucrat] " << name << " couldn't sign : " << paper.getName() << std::endl;
 	}
 	return ;
 }
 
 void	Bureaucrat::executeForm(Form const & form) {
-	if (form.getGrade(0) >= getGrade() && form.getGrade(1) >= getGrade()) {
+	if (form.getGrade(0) >= getGrade() && form.getGrade(1) >= getGrade())
 		form.execute(*this);
-		std::cout << this << " excuted " << form << std::endl;
-	}
-	std::cout << this << " couldn't have enough grade" << form << std::endl;
+		std::cout << "[Bureaucrat] " << *this << " excuted " << form << std::endl;
 	return ;
+}
+
+void	Bureaucrat::signAndExecute(Form & paper) {
+	if (paper.getSignOrNot() == true) {
+		std::cout << "[Bureaucrat] " << name << " couldn't sign : " << paper.getName() << " is already signed." << std::endl;
+		return ;
+	}
+	signForm(paper);
+	if (paper.getSignOrNot() == false)
+		return ;
+	if (paper.getGrade(1) < getGrade()) {
+		std::cout << "[Bureaucrat] " << *this << " couldn't have enough grade for execution. " << std::endl;;
+		std::cout << "[" << paper.getName() << "] " << paper << std::endl;
+		paper.setBlank();
+		return ;	
+	}
+	executeForm(paper);
 }
 
 /* ************************************************************************** */

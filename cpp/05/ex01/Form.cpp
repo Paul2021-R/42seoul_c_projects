@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 21:06:48 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/26 18:01:57 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/27 18:18:32 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,32 @@ Form::Form(const std::string& name, Grade sign, Grade ex):
 }
 Form::Form(const Form& target):
 	name(target.getName()),
-	gradeForSign(target.getGrade("sign")),
-	gradeForEx(target.getGrade("execute")),
+	gradeForSign(target.getGrade(0)),
+	gradeForEx(target.getGrade(1)),
 	blank(target.blank) {
 }
 Form::~Form(void) {}
 Form    &Form::operator=(const Form& target) {
-	Form* temp = new Form(target);
-	return *temp; 
+	int	condition = 0;
+
+	condition = name.compare(target.getName());
+	condition = this->getGrade(0) - target.getGrade(0);
+	condition = this->getGrade(1) - target.getGrade(1);
+	if (condition == 0)
+		blank = target.blank;
+	else
+		std::cout << "= operator can't work." << std::endl;
+	return *this;
 }
 
 /* ************************************************************************** */
 // getter
 std::string Form::getName(void) const { return name; }
 
-Grade   Form::getGrade(const std::string& type) const {
-	if (!type.compare("sign"))
+Grade   Form::getGrade(char var) const {
+	if (var == 0)
 		return (gradeForSign);
-	else if (!type.compare("execute"))
+	else if (var == 1)
 		return (gradeForEx);
 	return (0);
 }
@@ -97,7 +105,7 @@ const char* Form::GradeTooLowException::what() const throw() { return (EXCEPT_FA
 // operator overriding
 
 std::ostream& operator<<(std::ostream& s, const Form& target) {
-    std::cout << target.getName() << " [Grade for Sign : " << target.getGrade("sign") << " / Grade for Execute : " << target.getGrade("execute") << "] ";
+    std::cout << target.getName() << " [Grade for Sign : " << target.getGrade(0) << " / Grade for Execute : " << target.getGrade(1) << "] ";
     return s;
 }
 

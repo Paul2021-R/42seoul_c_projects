@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 02:13:56 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 21:37:02 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 00:22:53 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,5 @@ public:
 	void							execute(const Bureaucrat & Executor) const;
 private:
 	std::string						target;
-	class GradeTooLowException : public std::exception {
-    public:
-        virtual const char*			what(void) const throw();
-    };
-	void							printExceptError(GradeTooLowException& e) const;
-	void							tryGradeIsOk(const Bureaucrat& Executor) const;
 };
 #endif

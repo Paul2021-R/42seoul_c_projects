@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 02:13:54 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 22:47:37 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 00:41:07 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,38 +33,5 @@ PresidentialPradonForm	&PresidentialPradonForm::operator=(const PresidentialPrad
 // execute
 
 void	PresidentialPradonForm::execute(const Bureaucrat & Executor) const {
-	if (this->getSignOrNot() == true) {
-		std::cout << "This form is already signed. : " << target << std::endl;
-		return ;
-	}
-	try {
-		tryGradeIsOk(Executor); 
-	} catch (GradeTooLowException& e) {
-		printExceptError(e);
-		return ;
-	}
-	Form *temp = (PresidentialPradonForm *)this;
-	temp->beSigned(Executor);
-	std::cout << target << " has been pardoned by Zaphod Beeblebrox. : " << Executor.getName() << std::endl;
-}
-
-/* ************************************************************************** */
-// exception
-
-void	PresidentialPradonForm::tryGradeIsOk(const Bureaucrat& Executor) const {
-	if (getGrade(0) < Executor.getGrade()) {
-		std::cout << "Not enough grade to sign this form. : " << Executor.getName() << std::endl;
-		throw GradeTooLowException();
-	}
-	else if (getGrade(1) < Executor.getGrade()) {
-		std::cout << "Not enough grade to execute this form. : " << Executor.getName() << std::endl;
-		throw GradeTooLowException();
-	}
-	return ;
-}
-
-const char* PresidentialPradonForm::GradeTooLowException::what() const throw() { return (EXCEPT_FAILED); }
-
-void    PresidentialPradonForm::printExceptError(GradeTooLowException& e) const {
-    std::cout << e.what() << *this << std::endl;
+	std::cout <<"[Forms] " << target << " has been pardoned by Zaphod Beeblebrox. : " << Executor.getName() << std::endl;
 }

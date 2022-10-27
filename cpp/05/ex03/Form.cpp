@@ -6,18 +6,20 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 21:06:48 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 21:22:12 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 00:43:09 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
 // OCCF
-Form::Form(void): name("default"), gradeForSign(0), gradeForEx(0), blank(0) {}
+Form::Form(void): name("default"), gradeForSign(1), gradeForEx(1), blank(0) {}
 Form::Form(const std::string& name, Grade sign, Grade ex): 
 	name(name), 
 	gradeForSign(sign), 
-	gradeForEx(ex) {
+	gradeForEx(ex),
+	blank(false)	
+ {
 	try {
 		tryGradeIsOk(gradeForSign);
 		tryGradeIsOk(gradeForEx);
@@ -26,7 +28,6 @@ Form::Form(const std::string& name, Grade sign, Grade ex):
 	} catch (GradeTooLowException& e) {
 		printExceptError(e);
 	}
-	blank = false;
 }
 Form::Form(const Form& target):
 	name(target.getName()),
@@ -36,7 +37,18 @@ Form::Form(const Form& target):
 }
 Form::~Form(void) {}
 Form&	Form::operator=(const Form& target) {
-	return (Form &)target; 
+	int	condition = 0;
+
+	condition = name.compare(target.getName());
+	condition = this->getGrade(0) - target.getGrade(0);
+	condition = this->getGrade(1) - target.getGrade(1);
+	if (condition == 0) {
+		blank = target.blank;
+		std::cout << "[Form]" << "= operator worked." << std::endl;
+	}
+	else
+		std::cout << "[Form]" << "= operator can't work." << std::endl;
+	return *this;
 }
 
 /* ************************************************************************** */
@@ -54,17 +66,31 @@ Grade   Form::getGrade(char var) const {
 
 bool	Form::getSignOrNot(void) const { return blank; }
 
+bool	Form::getRandomVal(void) {
+	bool	ret;
+
+	srand(time(NULL));
+	ret = std::rand() % 2;
+	std::cout << "[Forms] " << "Drrrr...Drrrrr..Drrrr!!!!" << std::endl;
+	if (ret == false)
+		std::cout << "[Forms] " << "Robotomizing is failed : " << std::endl;
+	return ret;
+}
+
+void	Form::setBlank(void) {
+	blank = false;
+}
+
 /* ************************************************************************** */
 
 void    Form::beSigned(const Bureaucrat& Charger) {
-	try {
-		if (Charger.getGrade() > gradeForSign)
-			throw GradeTooLowException();
-	} catch (GradeTooLowException& e) {
-		printExceptError(e);
+	if (Charger.getGrade() > gradeForSign){
+		std::cout << "[Forms] Grade is not enough to sign it." << std::endl;
 		return ;
 	}
 	blank = true;
+	if (name.compare("RobotomyRequest") == 0)
+		blank = getRandomVal();
 	return ;
 }
 
@@ -79,10 +105,10 @@ void    Form::tryGradeIsOk(const Grade& value) {
     return ;
 }
 
-void    Form::printExceptError(GradeTooHighException& e) {
+void    Form::printExceptError(GradeTooHighException& e) const {
 	std::cout << e.what() << *this << std::endl;
 }
-void    Form::printExceptError(GradeTooLowException& e) {
+void    Form::printExceptError(GradeTooLowException& e) const {
 	std::cout << e.what() << *this << std::endl;
 }
 

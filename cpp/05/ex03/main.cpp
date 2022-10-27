@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:26:57 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 22:46:30 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/27 19:27:26 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,29 @@ int main(void) {
 
 	std::cout << "==========================Shrubbery Cration Form============================" << std::endl;
 	task = someRandomIntern.makeForm("shrubbery cration", target);
-	task->execute(toolow);
+	toolow.signAndExecute(*task);
 	std::cout << "Signed : " << task->getSignOrNot() << std::endl;
-	task->execute(good);
+	good.signAndExecute(*task);
 	std::cout << "Signed : " << task->getSignOrNot() << std::endl;
 	delete task;
 
 	std::cout << "==========================Robotomy Request Form============================" << std::endl;
 	task = someRandomIntern.makeForm("robotomy request", target);
-	task->execute(toolow);
+	toolow.signAndExecute(*task);
 	std::cout << "Signed : " << task->getSignOrNot() << std::endl;
-	task->execute(good);
-	task->execute(good);
-	task->execute(good);
-	task->execute(good);
+	good.signAndExecute(*task);	
+	good.signAndExecute(*task);
+	good.signAndExecute(*task);
+	good.signAndExecute(*task);
+	good.signAndExecute(*task);
 	std::cout << "Signed : " << task->getSignOrNot() << std::endl;
 	delete task;
 
 	std::cout << "==========================Presidential Pardon Form============================" << std::endl;
 	task = someRandomIntern.makeForm("presidential pardon", target);
-	task->execute(toolow);
+	toolow.signAndExecute(*task);
 	std::cout << "Signed : " << task->getSignOrNot() << std::endl;
-	task->execute(good);
+	good.signAndExecute(*task);
 	std::cout << "Signed : " << task->getSignOrNot() << std::endl;
 	delete task;
 

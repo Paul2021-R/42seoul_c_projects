@@ -6,24 +6,16 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 22:09:18 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 22:46:38 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 01:02:57 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
 
-Intern::Intern(void) {
-	forms[0] = "shrubbery cration";
-	forms[1] = "robotomy request";
-	forms[2] = "presidential pardon";
-	forms[3].clear();
-}
+std::string Intern::forms[4] = { "shrubbery cration", "robotomy request", "presidential pardon", "" };
 
-Intern::Intern(const Intern& target) {
-	forms[0] = target.forms[0];
-	forms[1] = target.forms[1];
-	forms[2] = target.forms[2];
-	forms[3].clear();
+Intern::Intern(void) {
+	std::cout << "[Intern] Intern is ready for making forms." << std::endl;
 }
 
 Intern::~Intern(void) {}
@@ -50,6 +42,6 @@ Form*	Intern::makeForm(const std::string & type, const std::string & target){
 	}
 	if (!ret) { std::cout << type << " is not exist" << std::endl; }
 	else 
-		std::cout << "Intern creates : " << forms[idx] << std::endl;
+		std::cout << "[Intern] Intern creates : " << forms[idx] << std::endl;
 	return ret;
 }

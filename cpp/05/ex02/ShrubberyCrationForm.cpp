@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:52:42 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 22:45:33 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 00:23:35 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,6 @@ ShrubberyCrationForm& ShrubberyCrationForm::operator=(const ShrubberyCrationForm
 // execute
 
 void	ShrubberyCrationForm::execute(const Bureaucrat & Executor) const {
-	if (this->getSignOrNot() == true) {
-		std::cout << "This form is already signed. : " << target << std::endl;
-		return ;
-	}
-	try {
-		tryGradeIsOk(Executor); 
-	} catch (GradeTooLowException& e) {
-		printExceptError(e);
-		return ;
-	}
-	Form *temp = (ShrubberyCrationForm *)this;
-	temp->beSigned(Executor);
-	makeShruberry(Executor);
-}
-
-void	ShrubberyCrationForm::makeShruberry(const Bureaucrat & Executor) const {
 	std::ofstream	berry;
 	std::ifstream	tree;
 	std::string		filename = target;
@@ -67,26 +51,5 @@ void	ShrubberyCrationForm::makeShruberry(const Bureaucrat & Executor) const {
 	}
 	tree.close();
 	berry.close();
-	std::cout << "Making Shrubbery cration is completed. : " << Executor.getName() << std::endl;
-}
-
-/* ************************************************************************** */
-// exception
-
-void	ShrubberyCrationForm::tryGradeIsOk(const Bureaucrat& Executor) const {
-	if (getGrade(0) < Executor.getGrade()) {
-		std::cout << "Not enough grade to sign this form. : " << Executor.getName() << std::endl;
-		throw GradeTooLowException();
-	}
-	else if (getGrade(1) < Executor.getGrade()) {
-		std::cout << "Not enough grade to execute this form. : " << Executor.getName() << std::endl;
-		throw GradeTooLowException();
-	}
-	return ;
-}
-
-const char* ShrubberyCrationForm::GradeTooLowException::what() const throw() { return (EXCEPT_FAILED); }
-
-void    ShrubberyCrationForm::printExceptError(GradeTooLowException& e) const {
-    std::cout << e.what() << *this << std::endl;
+	std::cout << "[Forms] " <<  "Making Shrubbery cration is completed. : " << Executor.getName() << std::endl;
 }

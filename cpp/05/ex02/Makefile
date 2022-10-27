@@ -21,6 +21,8 @@ $(NAME)				: $(OBJS)
 clean				:
 					$(info $(alret)====================  clean $(NAME)  ====================$(reset))
 					rm -rf $(SRCS_DIR)*.o
+					rm -rf *_shrubbery
+					rm -rf $(NAME).dSYM
 
 fclean				: 
 					$(info $(alret)====================  fclean $(NAME)  ====================$(reset))

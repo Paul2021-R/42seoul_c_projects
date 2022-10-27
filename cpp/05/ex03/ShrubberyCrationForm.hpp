@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:52:44 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 21:23:30 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 00:23:03 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "Form.hpp"
 # include <fstream>
 
-class ShrubberyCrationForm: virtual public Form {
+class ShrubberyCrationForm: public Form {
 public:
 								ShrubberyCrationForm(void);
 								ShrubberyCrationForm(const std::string& target);
@@ -27,12 +27,5 @@ public:
 	void						execute(const Bureaucrat & Executor) const;
 private:
 	std::string					target;
-	void						makeShruberry(const Bureaucrat & Executor) const;
-	class GradeTooLowException : public std::exception {
-    public:
-        virtual const char*		what(void) const throw();
-    };
-	void						printExceptError(GradeTooLowException& e) const;
-	void						tryGradeIsOk(const Bureaucrat& Executor) const;
 };
 #endif

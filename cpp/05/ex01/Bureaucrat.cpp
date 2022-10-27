@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 00:28:55 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/26 17:57:06 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/27 18:22:15 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	Bureaucrat::signForm(Form& paper) {
 	}
 	else {
 		std::cout << name << " couldn't sign : " << paper.getName() << std::endl;
-		std::cout << "reason : " << name << " doesn't have enough grade : " << " [Form : " << paper.getGrade("sign") << " / Grade : " << getGrade() << "] " << std::endl;
+		std::cout << "reason : " << name << " doesn't have enough grade : " << " [Form : " << paper.getGrade(0) << " / Grade : " << getGrade() << "] " << std::endl;
 	}
 	return ;
 }

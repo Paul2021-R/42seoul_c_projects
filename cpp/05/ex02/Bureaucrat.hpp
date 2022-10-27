@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 00:10:11 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/26 18:05:21 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/27 18:39:28 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ public:
 	virtual						~Bureaucrat(void);
 	Bureaucrat&					operator=(const Bureaucrat& target);
 
+/* ************************************************************************** */
+
 	std::string					getName(void) const;
 	Grade						getGrade(void) const;
 
@@ -42,11 +44,19 @@ public:
 	void						increaseGrade(void);
 	void						decreaseGrade(void);
 
-	void						signForm(Form& paper);
+/* ************************************************************************** */
+
+	void						signForm(Form & paper);
 	void						executeForm(Form const & form);
+	void						signAndExecute(Form & paper);
+
+/* ************************************************************************** */
+
 private:
 	const std::string			name;
 	Grade						grade;
+
+/* ************************************************************************** */
 	void						tryGradeIsOk(void);
 
 	class GradeTooHighException : public std::exception {

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 19:43:10 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 21:01:57 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 00:34:38 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,33 +44,35 @@ public:
 	 */
     Grade							getGrade(char val) const;
 	bool							getSignOrNot(void) const;
+	void							setBlank(void);
 
 /* ************************************************************************** */
     
-    void							beSigned(const Bureaucrat& Charger);
+   	void							beSigned(const Bureaucrat& Charger);
 	/**
 	 * @brief 추상 클래스 근거, 파생 클래스들에서 해야할 작업들에 대한 순수 추상함수
 	 * 
 	 * @param Executor 권한을 가지고 실행할 대상
 	 */
 	virtual void					execute(const Bureaucrat& Executor) const = 0;
+	bool							getRandomVal(void);
+protected:
+	void							tryGradeIsOk(const Grade& value);
+	class GradeTooHighException : public std::exception {
+	public:
+		virtual const char*         what(void) const throw();
+	};
+	class GradeTooLowException : public std::exception {
+	public:
+    	virtual const char*         what(void) const throw();
+	};
+	void							printExceptError(GradeTooHighException& e) const;
+	void							printExceptError(GradeTooLowException& e) const;
 private:
     const std::string               name;
     const Grade                     gradeForSign;
     const Grade                     gradeForEx;
     bool                            blank;
-    
-    void							tryGradeIsOk(const Grade& value);
-	class GradeTooHighException : public std::exception {
-    public:
-        virtual const char*         what(void) const throw();
-    };
-    class GradeTooLowException : public std::exception {
-    public:
-        virtual const char*         what(void) const throw();
-    };
-    void							printExceptError(GradeTooLowException& e);
-    void							printExceptError(GradeTooHighException& e);
 };
 
 std::ostream& operator<<(std::ostream& s, const Form& target);

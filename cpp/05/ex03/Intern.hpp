@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 22:09:01 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/25 22:18:23 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 01:01:36 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 
 class Intern {
 private:
-	std::string forms[4];
+	static std::string forms[4];
+	Intern(const Intern& target) { (void)target; }
 public:
 	Intern(void);
-	Intern(const Intern& target);
 	~Intern(void);
 	Intern&	operator=(const Intern& target);
 

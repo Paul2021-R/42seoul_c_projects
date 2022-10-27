@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 19:43:10 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/26 18:02:46 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/27 18:08:47 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define From_hpp
 
 # include "Bureaucrat.hpp"
+
+typedef unsigned int			Grade;
+class Bureaucrat;
 
 class Form {
 public:
@@ -24,7 +27,7 @@ public:
     Form&                           operator=(const Form& target);
 
     std::string                     getName(void) const;
-    Grade                           getGrade(const std::string& type) const;
+    Grade							getGrade(char val) const;
 	bool							getSignOrNot(void) const;
     
     void                            beSigned(const Bureaucrat& Charger);
