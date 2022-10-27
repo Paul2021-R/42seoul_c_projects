@@ -45,7 +45,8 @@
 	"streambuf": "cpp",
 	"system_error": "cpp",
 	"type_traits": "cpp",
-	"typeinfo": "cpp"
+	"typeinfo": "cpp",
+	"__config": "cpp"
 },
   "cmake.configureOnOpen": false
 }

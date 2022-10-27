@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 03:20:16 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/28 07:27:26 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 07:43:53 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ int main(int ac, char **av) {
 	}
 	convert	val(av[1]);
 	std::cout << val << std::endl;
+	std::cout << std::stod(av[1]) << std::endl;
 	return 0;
 }

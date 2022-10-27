@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 02:27:15 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/28 05:40:44 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 07:55:36 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string>
 # include <cstdlib>
 # include <exception>
-# include <cmath>
+# include <limits>
 
 # define ND "Non displayable"
 # define NAN1 "impossible"

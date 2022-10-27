@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 02:38:26 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/28 07:30:30 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 07:48:17 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,9 +187,10 @@ void	convert::printChar(void) const {
 		break;
 	case 2:
 		std::cout << ND;
-		break ;
+		break;
 	case 3:
 		std::cout << ND;
+		break;
 	case 4:
 		std::cout << ND;
 		break;
