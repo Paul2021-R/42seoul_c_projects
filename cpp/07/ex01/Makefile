@@ -27,7 +27,6 @@ fclean				:
 					rm -rf $(NAME)
 					rm -rf $(SRCS_DIR)*.o
 					rm -rf $(NAME).dSYM
-					rm -rf *_shrubbery
 
 
 debug				:
