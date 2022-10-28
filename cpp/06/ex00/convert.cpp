@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 02:38:26 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/28 07:48:17 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 17:33:46 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ convert::convert(void):
 }
 
 convert::convert(const char * str) {
-	temp.assign(str);
 	alphabet = convertToChar(str);
 	numInt = convertToInt(str);
 	numFloat = convertToFloat(str);
@@ -43,8 +42,6 @@ convert::convert(const convert& target):
 	while (i < 4) {
 		type[i] = target.type[i];
 	}
-	temp.clear();
-	temp.assign(target.temp);
 }
 
 convert::~convert(void) {}
@@ -54,7 +51,6 @@ convert& convert::operator=(const convert& target) {
 	numInt = target.numInt;
 	numFloat = target.numFloat;
 	numDouble = target.numDouble;
-	temp = target.temp;
 	int i = 0;
 
 	while (i < 4) {
@@ -78,7 +74,7 @@ char	convert::convertToChar(const char * str) {
 		type[1] = 4;
 	}	
 	try {
-		checker = std::stod(temp);
+		checker = strtod(str, NULL);
 	} catch (...) {
 		ret = 0;
 		type[0] = 4;
@@ -92,7 +88,8 @@ char	convert::convertToChar(const char * str) {
 	return (static_cast<char>(ret));
 }
 int		convert::convertToInt(const char * str) {
-	int ret;
+	int 	ret;
+	double	checker;
 
 	if (str[0] == '-' || str[0] == '+') {
 		if (str[1] < '0' || str[1] > '9') {
@@ -105,17 +102,26 @@ int		convert::convertToInt(const char * str) {
 		type[1] = 4;
 	}
 	try {
-		ret = std::stoi(temp);
+		checker = strtod(str, NULL);
 	} catch (...) {
 		ret = 0;
 		type[1] = 4;
 		return (ret);
 	}
-	type[1] = 1;
+	if(checker > __INT_MAX__ || checker < INT_MIN) {
+		ret = 0;
+		type[1] = 4;
+	}
+	else {
+		ret = static_cast<int>(checker);
+		type[1] = 1;
+	}
 	return (ret);
 }
 float	convert::convertToFloat(const char * str) {
-	float ret;
+	float 	ret;
+	double	checker;
+
 	std::string	infCheck(str);
 
 	if (str[0] == '-' || str[0] == '+') {
@@ -129,7 +135,7 @@ float	convert::convertToFloat(const char * str) {
 		type[2] = 4;
 	}
 	try {
-		ret = std::stof(temp);
+		checker = strtod(str, NULL);
 	} catch(...) {
 		ret = 0.0;
 		type[2] = 4;
@@ -141,6 +147,7 @@ float	convert::convertToFloat(const char * str) {
 		type[2] = 2;
 	else
 		type[2] = 1;
+	ret = static_cast<float>(checker);
 	return (ret);
 }
 double	convert::convertToDouble(const char * str) {
@@ -158,7 +165,7 @@ double	convert::convertToDouble(const char * str) {
 		type[3] = 4;
 	}
 	try {
-		ret = std::stod(temp);
+		ret = strtod(str, NULL);
 	} catch(...) {
 		type[3] = 4;
 		return (ret);
@@ -225,17 +232,13 @@ void	convert::printInt(void) const {
 }
 void	convert::printFloat(void) const {
 	std::cout << "float: ";
-	float	temp = numFloat;
 	switch (type[2])
 	{
 	case 0:
 		std::cout << "no input";
 		break;
 	case 1:
-		if (temp - static_cast<int>(temp) == 0) 
-			std::cout << numFloat << ".0" << "f";
-		else
-			std::cout << numFloat << "f";
+		std::cout << numFloat << "f";
 		break;
 	case 2:
 		std::cout << "-" << IN << "f";
@@ -253,16 +256,12 @@ void	convert::printFloat(void) const {
 }
 void	convert::printDouble(void) const {
 	std::cout << "double: ";
-	double	temp = numDouble;
 	switch (type[3])
 	{
 	case 0:
 		std::cout << "no input";
 		break;
 	case 1:
-		if (temp - static_cast<int>(temp) == 0)
-			std::cout << numDouble << ".0";
-		else
 			std::cout << numDouble;
 		break;
 	case 2:
@@ -282,6 +281,8 @@ void	convert::printDouble(void) const {
 std::ostream&	operator<<(std::ostream& s, const convert& target) {
 	target.printChar();
 	target.printInt();
+	std::cout.setf(std::ios::showpoint);
+	std::cout << std::setprecision(3) << std::fixed;
 	target.printFloat();
 	target.printDouble();
 	return s;

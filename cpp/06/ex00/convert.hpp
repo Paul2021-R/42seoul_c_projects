@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 02:27:15 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/28 07:55:36 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 17:33:17 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include <iostream>
 # include <string>
+# include <iomanip>
 # include <cstdlib>
 # include <exception>
-# include <limits>
+# include <climits>
 
 # define ND "Non displayable"
 # define NAN1 "impossible"
@@ -35,7 +36,6 @@ private:
 	int			numInt;
 	float		numFloat;
 	double		numDouble;
-	std::string	temp;
 	/**
 	 * @brief 0 : 값이 없는 상태, 1 : 출력 가능 상태, 2 : -inf, 3: +inf, 4: nan
 	 * 

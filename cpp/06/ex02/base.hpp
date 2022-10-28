@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 09:01:56 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/28 09:59:24 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 17:52:30 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include <iostream>
 #include <string>
+#include <ctime>
+#include <cstdlib>
+#include <stdexcept>
 
 class Base {
 public:

@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 09:05:18 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/28 09:54:25 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/28 17:53:32 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define Derived_hpp
 
 # include "base.hpp"
-# include <iostream>
 
 class A : public Base {
 public:
