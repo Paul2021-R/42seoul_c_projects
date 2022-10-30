@@ -62,3 +62,4 @@ For that reason, It doesn't have any file which contains the intellectual proper
 - 2022-10-26 CPP Module 05 failed.
 - 2022-10-27 CPP Module 05 improveed weak points.
 - 2022-10-28 CPP Module 06 finished.
+- 2022-10-30 CPP Module 05 ~ 07 evaluation finished.

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 14:35:57 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/29 21:24:14 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/30 18:25:06 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ class Array {
 private:
 	unsigned int len;
 	unsigned int capacity;
+	class IndexOutOfRange : public std::exception {
+		public:
+			const char *	what() const throw() { return "size is over."; }
+	};
 public:
 	T*	array;
 	Array(void);
@@ -36,6 +40,7 @@ public:
 	 */
 	unsigned int size(void) const; 
 };
+
 
 #include "Array.tpp"
 #endif

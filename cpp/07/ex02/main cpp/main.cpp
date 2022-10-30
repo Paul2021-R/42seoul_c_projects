@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 14:28:55 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/29 21:18:19 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/30 18:58:41 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int main(void) {
 		Array<int> myArr2(1);
 		std::cout << "error : " << myArr2[6] << std::endl;
 	}
-	catch (const char *str)
+	catch (const std::exception & e)
 	{
-		std::cerr << str << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	return (0);
 }

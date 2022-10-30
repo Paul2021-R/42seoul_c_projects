@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 14:40:13 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/29 21:22:57 by haryu            ###   ########.fr       */
+/*   Updated: 2022/10/30 18:24:32 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ Array<T>& Array<T>::operator=(const Array<T>& target) {
 template <typename T>
 T& Array<T>::operator[](unsigned int idx) const {
 	if (idx >= len)
-		throw("size is over.");
+		throw IndexOutOfRange();
+	else if (idx < 0)
+		throw IndexOutOfRange();
 	return (array[idx]);
 }
 
@@ -67,4 +69,3 @@ template <typename T>
 unsigned int Array<T>::size(void) const {
 	return (len);
 }
-	
