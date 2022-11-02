@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haryu <haryu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:07:28 by haryu             #+#    #+#             */
-/*   Updated: 2022/10/30 13:28:50 by haryu            ###   ########.fr       */
+/*   Updated: 2022/11/02 23:47:03 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 # define EASYFIND_HPP
 
 # include <iostream>
-# include <exception>
 # include <vector>
 
 /**
- * @brief 타입 T를 받아들여서. T 가 정수들의 컨테이너라고 추정하고, 이 함수는 두번째 매개변수 의 첫 발견을 첫 매개변수에서 발견해 내야 함. 
- * 미 발견 시, 예외 처리 해줘야 함, 또는 에러 값을 전달해야 함. 표준 컨테이너의 동작에 대해 공부할 것.
- * 
+ * @brief 타입 T를 받아들여서. 벡터 T 안을 반복자로 확인 및, valTwo가 존재하면 이에 대한 대응한 반환값을 전달
  * 
  * @tparam T 
- * @param valOne 컨테이너
+ * @param intContainer 컨테이너
  * @param valTwo 
- * @return int 
+ * @return int 0 ~ n 벡터 상에 valTwo의 위치, -1 찾지 못한 경우
  */
 template<typename T>
-int easyfind(T intContainer, int valTwo);
+int easyfind(const std::vector<T>& intContainer, int valTwo);
 
 
 # include "easyfind.tpp"

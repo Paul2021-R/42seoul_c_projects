@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 21:53:03 by haryu             #+#    #+#             */
-/*   Updated: 2022/11/02 22:03:55 by haryu            ###   ########.fr       */
+/*   Created: 2022/11/02 22:45:14 by haryu             #+#    #+#             */
+/*   Updated: 2022/11/02 23:00:18 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
+#include "Span.hpp"
 
 template<typename T>
 void printVector(std::vector<T>& vec) {
@@ -23,18 +23,28 @@ void printVector(std::vector<T>& vec) {
 	std::cout << " ]" << std::endl;
 }
 
-int main(void) {
-	std::vector<int> test1;
-	int value;
+int main() 
+{ 
+	Span sp = Span(5); 
+	sp.addNumber(5); 
+	sp.addNumber(3); 
+	sp.addNumber(17); 
+	sp.addNumber(9); 
+	sp.addNumber(20); 
+	printVector(sp.getVec());
+	//3 5 9 11 17
+	std::cout << sp.shortestSpan() << std::endl; 
+	std::cout << sp.longestSpan() << std::endl; 
+
+	std::cout << "1000개 테스트" << std::endl;
+	Span sp2 = Span(1000);
 	srand(time(NULL));
-
-
-	std::cout << "랜덤 값 0 ~ 9까지 입력" << std::endl;
-	for (int idx = 0; idx < 10; idx++) {
-		value = rand() % 10;
-		test1.push_back(value);
+	for (int idx = 0; idx < 1000; idx++) {
+		sp2.addNumber(rand());
 	}
-	printVector(test1);
-	std::cout << "값 7의 위치는? : " << easyfind(test1, 7) << std::endl;
-	std::cout << "값 11의 위치는? : " << easyfind(test1, 11) << std::endl;
+	printVector(sp2.getVec());
+	std::cout << "min : " << sp2.shortestSpan() << std::endl;
+	std::cout << "max : " << sp2.longestSpan() << std::endl;
+
+	return 0;
 }
