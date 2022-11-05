@@ -6,11 +6,11 @@
 #    By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 21:04:10 by haryu             #+#    #+#              #
-#    Updated: 2022/11/06 01:07:53 by haryu            ###   ########.fr        #
+#    Updated: 2022/11/06 03:26:40 by haryu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCNAME			= ${wildcard *.c}
+SRCNAME			= main.c
 
 SRCS_DIR = src/
 SRCS_B_DIR = src_bonus/
@@ -26,7 +26,7 @@ SRC_GNL			= library/gnl/get_next_line.c\
 OBJS_GNL		= ${SRC_GNL:.c=.o}
 
 MLX				= mlx
-MLX_FLAGS		= -L library/mlx -lmlx
+MLX_FLAGS		= -L library/mlx -lmlx -framework Metal -framework MetalKit
 
 INC_FLAGS		= -I inlcudes/mandatory/so_long\
 				-I library/${LIBFT} -I library/gnl -I library/mlx/${mlx}
@@ -55,7 +55,7 @@ ${MLX}			:
 				${info ${sky}2. make MinilibX_mms - make complete$(reset)}
 
 ${NAME}			: ${OBJS} ${OBJS_GNL}
-				${info ${sky}3. make so_long${reset}}
+				${info ${sky}3. make $(NAME) ${reset}}
 				${CC} ${CFLAGS} -o $@ $^ ${LIBFT_FLAGS} ${MLX_FLAGS}
 				cp library/mlx/libmlx.dylib ${CURDIR}/
 

@@ -6,15 +6,15 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 01:03:59 by haryu             #+#    #+#             */
-/*   Updated: 2022/11/06 01:32:14 by haryu            ###   ########.fr       */
+/*   Updated: 2022/11/06 03:27:25 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
-# include "../../library/libft/libft.h"
-# include "../../library/get_next_line/get_next_line.h"
+# include "libft.h"
+# include "get_next_line.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>

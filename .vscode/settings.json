@@ -46,7 +46,10 @@
 	"system_error": "cpp",
 	"type_traits": "cpp",
 	"typeinfo": "cpp",
-	"__config": "cpp"
+	"__config": "cpp",
+	"cub3d.h": "c",
+	"map.h": "c",
+	"libft.h": "c"
 },
   "cmake.configureOnOpen": false
 }
