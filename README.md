@@ -63,3 +63,5 @@ For that reason, It doesn't have any file which contains the intellectual proper
 - 2022-10-27 CPP Module 05 improveed weak points.
 - 2022-10-28 CPP Module 06 finished.
 - 2022-10-30 CPP Module 05 ~ 07 evaluation finished.
+- 2022-11-05 CPP Module 08 finished.
+- 2022-11-06 cub3D start.
