@@ -6,15 +6,20 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 01:16:58 by haryu             #+#    #+#             */
-/*   Updated: 2022/11/06 02:04:51 by haryu            ###   ########.fr       */
+/*   Updated: 2022/11/06 21:23:49 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/mandatory/cub3d.h"
 
-int	check_config(char * config)
+int	check_config(char* config)
 {
 	return (TRUE);
+}
+
+void printError(unsigned int code)
+{
+	printf("%s\n")
 }
 
 int read_map(t_meta_map* meta_data, int fd)
