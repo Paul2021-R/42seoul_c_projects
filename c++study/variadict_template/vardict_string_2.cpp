@@ -10,7 +10,9 @@ size_t GetStringSize(const String& s, Strings... strs) {
 	return GetStringSize(s) + GetStringSize(strs...);
 }
 
-void AppendToString(std::string* concat_star) { return ; }
+void AppendToString(std::string* concat_star) { 
+	return ; 
+}
 
 template <typename String, typename... Strings>
 void AppendToString(std::string* concat_str, const String& s, Strings... strs) {
