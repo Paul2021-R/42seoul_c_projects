@@ -1,5 +1,5 @@
 CC				= c++
-CFLAG			=
+CFLAG			= -std=c++11
 SRC_DIR			= ./
 SRCS			= $(wildcard $(SRC_DIR)*.cpp)
 OBJS			= $(SRCS:.cpp=.o)
