@@ -5,6 +5,7 @@
 #include <string>
 #include "Fwoosh.hpp"
 #include "Dummy.hpp"
+#include "SpellBook.hpp"
 
 #define OUT std::cout 
 #define ENDL std::endl;
@@ -14,6 +15,7 @@ private:
 	std::string name;
 	std::string title;
 	ASpell * mySpell;
+	SpellBook learnedMySpell;
 
 
 	Warlock();

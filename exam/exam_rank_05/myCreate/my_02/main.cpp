@@ -3,6 +3,9 @@
 #include "Fwoosh.hpp"
 #include "Fireball.hpp"
 #include "Polymorph.hpp"
+#include "BrickWall.hpp"
+#include "TargetGenerator.hpp"
+#include "SpellBook.hpp"
 
 int main()
 {

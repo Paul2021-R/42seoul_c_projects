@@ -5,6 +5,11 @@ ATarget::ATarget(const std::string& type):
 
 ATarget::~ATarget() {
 }
+
+// ATarget& ATarget::operator=(const ATarget& other){
+// 	this->type = other.type;
+// }
+
 const std::string& ATarget::getType() const {
 	return this->type;
 }

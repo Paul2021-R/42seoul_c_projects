@@ -25,21 +25,18 @@ void Warlock::introduce() const {
 }
 
 void Warlock::learnSpell(ASpell * spell) {
-	this->mySpell = spell;
+	learnedMySpell.learnSpell(spell);
 }
 void Warlock::forgetSpell(std::string spellName) {
-	if (mySpell == NULL)
-		return ;
-	if (!mySpell->getName().compare(spellName))
-		this->mySpell = NULL;
-	else
-		return ;
+	learnedMySpell.forgetSpell(spellName);
 }
 void Warlock::launchSpell(std::string spellName, ATarget& target) {
-	if (mySpell == NULL)
+	if (learnedMySpell.isEmpty())
 		return ;
-	if (!mySpell->getName().compare(spellName))
-		mySpell->launch(target);
+	ASpell * temp;
+	temp = learnedMySpell.createSpell(spellName);
+	if (temp == NULL)
+		return ;
 	else
-		return ;
+		temp->launch(target);
 }
