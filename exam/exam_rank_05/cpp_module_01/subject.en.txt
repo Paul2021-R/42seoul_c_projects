@@ -9,8 +9,7 @@ Expected files   : Warlock.cpp Warlock.hpp
 In the Warlock class, the switch statement is FORBIDDEN and its use would
 result in a -42.
 
-Create an abstract class called ASpell, in Coplien's form, that has the
-following protected attributes:
+Create an abstract class called ASpell, in Coplien's form, that has the following protected attributes:
 
 * name (string)
 * effects (string)
