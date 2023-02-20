@@ -6,7 +6,7 @@
 #include <string>
 
 #include "Dummy.hpp"
-#include "Fwoosh.hpp"
+#include "SpellBook.hpp"
 
 #define SOUT std::cout
 #define SEND std::endl;
@@ -16,6 +16,7 @@ class Warlock {
   std::string name;
   std::string title;
   std::map<std::string, ASpell*> learned;
+  SpellBook learnedBook;
 
   Warlock();
   Warlock(const Warlock& other);
