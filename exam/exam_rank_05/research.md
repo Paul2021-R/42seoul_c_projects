@@ -57,7 +57,7 @@ int& nonConstRef = 10; // error
 
 즉, 기본적으로 비 상수인 상태에서 레퍼런스를 변수를 작성하게 되면, 해당 내용은 컴파일러에의해 알아서 원본 메모리 저장소에있는 변수로 변환이 이루어진다. 그런데 실제 10은 현재 literal 로 stack에 저장되는 비상수형 변수가 아니기 때문에, 컴파일 과정에서 원본 포인터 연산으로 자동 변경을 시켜주지 못한다. 따라서 에러를 발생시키게 된다. 
 
-따라서 class 에 대해서 본다고 할 때 인스턴스& 를 요구하는 operator= 에서는 return 값을 전달할 때, 컴파일 되는 과정에서 특정 위치를 가리켜야 하고, this 는 개체 값 자체를 의미하는 예약어 이므로, `*this`가 오는게 정상이다.  
+따라서 class 에 대해서 본다고 할 때 인스턴스& 를 요구하는 operator= 에서는 return 값을 전달할 때, 컴파일 되는 과정에서 특정 위치를 가리켜야 하고, this 는 개체 값 자체를 의미하는 예약어 이므로, `*this`가 오는게 정상이다.이는 this 예약어는 -> 를 사용하고, 즉, this는 현재 클래스의 멤버 변수나 함수의 포인터 역할을 한다는 것이기에 실제 데이터를 가리키고 있는 변수가 아니다. 따라서 이는 lvalue가 아닌 것이므로 rvalue일것이다. 따라서 레퍼런스에 넣으려면 그것이 가리키는 실제 this가 저장한 메모리 값인 클래스 데이터위치를 가리켜야 한다. 
 
 이와 반대로 상수 레퍼런스 는 lvalue, rvalue(메모리 주소를 갖지 않는 일시적인 값) 모두를 담을 수 있다. 
 ```cpp
@@ -67,15 +67,13 @@ const int& constRef2 = 10; // 가능
 
 순수 가상 함수가 아닌 경우에는 해당 함수 자체를 지정해줘야한다. 
 
-In C++, a class is said to be in canonical form if it has a specific set of member functions defined or declared. The canonical form of a class includes the default constructor, destructor, copy constructor, copy assignment operator, move constructor, and move assignment operator.
-
-By defining or declaring these member functions in a specific way, the class can be properly managed with respect to dynamic memory allocation and object ownership. This ensures that the class is easy to use and maintain, and that it behaves as expected in different contexts, such as when it is used as a member of another class, or when it is passed to a function or returned from a function.
-
-The Rule of 5 is a design guideline that recommends implementing these member functions for classes that manage resources, such as memory or file handles. In addition to the six member functions in the canonical form, it also includes the copy constructor and copy assignment operator, which are defined or deleted depending on the needs of the class. By following the Rule of 5, a class can be managed safely and efficiently, and can be used with confidence in a wide range of scenarios.
-
 # canonical form 
 
-canonical form 이란 정이된 멤버 함수 혹은 선언들의 일련의 형태를 나타낸다. 캐노니컬 form의 클래스는 기본생성자, 소멸자, 복사 생성자, 복사 할당 연산자, 이동 생성자, 이동 할당 연산자를 포함하고 있어야 한다. 
+canonical form 이란 정이된 멤버 함수 혹은 선언들의 일련의 형태를 나타낸다. 캐노니컬 form의 클래스는 `기본생성자`, `소멸자`, `복사 생성자`, `복사 할당 연산자`, `이동 생성자`, `이동 할당 연산자`를 포함하고 있어야 한다. 
+
+구적으로 이러한 멤버 함수들을 정의내리거나, 선언함으로써 클래스는 동적 할당에서 조중 받으며 관리되거나, 객체의 오너십을 소유한체 적절한 관리가 가능해진다. 이것은 클래스가 사용하고, 관리되기 쉽다는 것을 보장해주며, 다른 문맥속에서도 예상된 대로 행동할 것이라는 것을 보장한다. 
+
+메모리 자원을 관리하거나, 파일을 다루는 등의 클래스들을 위한 이러한 멤버 함수들을 구현하는 것에서 추천하는 디자인 가이드 라인의 다섯 번째 룰이다. canonical form 상에서 여섯번째 멤버 함수는 복사 생성자, 그리고 복사 할당 연산자를 포함하는데, 이는 정의하거나 클래스에 필요에 따라 delete 될 수도 있다. 
 
 이동 생성자(move constructor) : 
 C++ 에서 이미 존재하는 객체의 자원을 빼앗음으로서 새로운 객체를 생성하는 특수한 생성자이다. 이는 원본 객체에서 더 이상 필요시 되지 않거나, 혹은 소멸되기 직전에, 또 다른 객체에 자원의 소유권을 이전하는 형태로 구현된다. 해당 생송자는 다음 형태의 문법으로 구현된다. 

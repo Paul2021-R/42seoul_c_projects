@@ -51,5 +51,6 @@
 	"map.h": "c",
 	"libft.h": "c"
 },
-  "cmake.configureOnOpen": false
+"cmake.configureOnOpen": false,
+"C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
 }

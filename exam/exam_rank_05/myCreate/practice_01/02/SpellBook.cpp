@@ -5,10 +5,11 @@ SpellBook::SpellBook() {}
 SpellBook::~SpellBook() {
   ssize_t limit = book.size();
 
+  std::map<std::string, ASpell*>::iterator it = book.begin();
   for (ssize_t i = 0; i < limit; i++) {
-    std::map<std::string, ASpell*>::iterator it = book.begin();
+    if (it == book.end()) break;
     delete it.operator->()->second;
-    book.erase(it.operator->()->first);
+    it++;
   }
   book.clear();
 }
@@ -38,7 +39,7 @@ void SpellBook::forgetSpell(const std::string& spell_name) {
 ASpell* SpellBook::createSpell(const std::string& spell_name) {
   std::map<std::string, ASpell*>::iterator it = book.find(spell_name);
   if (it != book.end()) {
-    return (it.operator->()->second->clone());
+    return (book[spell_name]);
   } else {
     return (NULL);
   }
