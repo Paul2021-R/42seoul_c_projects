@@ -29,7 +29,6 @@ reference to constant string.
 In much the same way as ASpell, it has a clone() pure method.
 
 All these functions can be called on a constant object.
-
 It has a constructor that takes its type.
 
 Now, add to your ATarget a getHitBySpell function that takes a reference to
